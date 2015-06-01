@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="utf-8"?>
+<brl xmlns="http://schemas.microsoft.com/businessruleslanguage/2002">
+  <vocabulary id="c93df0d0-19c9-4917-aad5-be006e1a88c3" name="ESB Validation Actions" uri="" description="">
+    <version major="1" minor="0" description="" modifiedby="WIN-8L35R8E7JJS\Administrator" date="2015-05-10TT00:00:00.0000000+00:00" />
+    <vocabularydefinition id="73a6699f-77e5-4a95-a309-cba0f6347d6c" name="Log a validation warning - Description, code and type" description="Logs a validation warning with a description, code and type.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="LogWarning" type="void">
+          <classinfo class="Validations" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="2">
+            <valuedefinitionliteral type="long">
+              <long>0</long>
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[  Warning  ]  Code: {2}, &lt;{1}&gt; {0}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="2">
+          <valuedefinitionliteral type="long">
+            <long>0</long>
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="acfe236e-76d1-4ab5-80e6-3262a32434ea" name="Log a validation error - Description, code, type and severity" description="Logs a validation error with a description, code, type and severity.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="LogError" type="void">
+          <classinfo class="Validations" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="2">
+            <valuedefinitionliteral type="long">
+              <long>0</long>
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="3">
+            <valuedefinitionliteral type="int">
+              <int>0</int>
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[  Error: severity = {3}]  Code: {2}, &lt;{1}&gt; {0}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="2">
+          <valuedefinitionliteral type="long">
+            <long>0</long>
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="3">
+          <valuedefinitionliteral type="int">
+            <int>0</int>
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="ad916e13-a423-4968-8482-72c85811a20f" name="Log a validation error - Description and severity" description="Logs a validation error with a description and severity.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="LogError" type="void">
+          <classinfo class="Validations" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="int">
+              <int>0</int>
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[  Error: severity = {1}]  {0}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="int">
+            <int>0</int>
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="76cdff53-d93c-408b-bf6a-717fb6a5aae6" name="Log a validation error - Description, code and severity" description="Logs a validation error with a description, code and severity.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="LogError" type="void">
+          <classinfo class="Validations" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="long">
+              <long>0</long>
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="2">
+            <valuedefinitionliteral type="int">
+              <int>0</int>
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[  Error: severity = {2}]  Code: {1}, {0}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="long">
+            <long>0</long>
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="2">
+          <valuedefinitionliteral type="int">
+            <int>0</int>
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="2a04c334-7bf0-426a-8703-0b356744565e" name="Log a validation warning - Description only" description="Logs a validation warning with a description.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="LogWarning" type="void">
+          <classinfo class="Validations" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[  Warning  ]  {0}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="05777585-85a3-44ce-9a52-ad45304098d9" name="Log a validation warning - Description and code" description="Logs a validation warning with a description and code.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="LogWarning" type="void">
+          <classinfo class="Validations" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="long">
+              <long>0</long>
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[  Warning  ]  Code: {1}, {0}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="long">
+            <long>0</long>
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="e3d448c4-3bc4-4f4e-b59b-702301928da5" name="Log a validation warning - Description and type" description="Logs a validation warning with a description and type.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="LogWarning" type="void">
+          <classinfo class="Validations" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[  Warning  ]  &lt;{1}&gt; {0}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="01fe8232-aca5-477f-bab6-4a6fd127dd49" name="Log validation information - Description and code" description="Logs validation information with a description and code.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="LogInformation" type="void">
+          <classinfo class="Validations" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="long">
+              <long>0</long>
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[  Information  ]  Code: {1}, {0}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="long">
+            <long>0</long>
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="ea53f561-a030-4a2e-9f47-eff0fed7043a" name="Log validation information - Description, code and type" description="Logs validation information with a description, code and type.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="LogInformation" type="void">
+          <classinfo class="Validations" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="2">
+            <valuedefinitionliteral type="long">
+              <long>0</long>
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[  Information  ]  Code: {2}, &lt;{1}&gt; {0}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="2">
+          <valuedefinitionliteral type="long">
+            <long>0</long>
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="83261d78-75a0-431a-a201-daf4c7f9b5a3" name="Log validation information - Description only" description="Logs validation information with a description.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="LogInformation" type="void">
+          <classinfo class="Validations" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[  Information  ]  {0}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="6c128189-cd04-45a4-80fe-4093596ed6e7" name="Log a validation error - Description, code and type" description="Logs a validation error with a description, code and type.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="LogError" type="void">
+          <classinfo class="Validations" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="2">
+            <valuedefinitionliteral type="long">
+              <long>0</long>
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[  Error  ]  Code: {2}, &lt;{1}&gt; {0}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="2">
+          <valuedefinitionliteral type="long">
+            <long>0</long>
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="307f4e46-a210-4826-9dee-8199307cbe04" name="Log a validation error - Description and code" description="Logs a validation error with a description and code.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="LogError" type="void">
+          <classinfo class="Validations" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="long">
+              <long>0</long>
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[  Error  ]  Code: {1}, {0}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="long">
+            <long>0</long>
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="536d4cf6-157c-4b31-b214-a998dc1a0895" name="Log validation information - Description and type" description="Logs validation information with a description and type.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="LogInformation" type="void">
+          <classinfo class="Validations" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[  Information  ]  &lt;{1}&gt; {0}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="6a90e304-92cf-432c-870d-312b8417f5ef" name="Log a validation error - Description, type and severity" description="Logs a validation error with a description, type and severity.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="LogError" type="void">
+          <classinfo class="Validations" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="2">
+            <valuedefinitionliteral type="int">
+              <int>0</int>
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[  Error: severity = {2}]  &lt;{1}&gt; {0}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="2">
+          <valuedefinitionliteral type="int">
+            <int>0</int>
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="db526512-c1f3-4ca6-8d99-0965d20d4f4a" name="Log a validation error - Description and type" description="Logs a validation error with a description and type.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="LogError" type="void">
+          <classinfo class="Validations" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[  Error  ]  &lt;{1}&gt; {0}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="f2af378f-484f-481f-9123-5cf452b42d02" name="Log a validation error - Description only" description="Logs a validation error with a description.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="LogError" type="void">
+          <classinfo class="Validations" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[  Error  ]  {0}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+  </vocabulary>
+</brl>

@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<brl xmlns="http://schemas.microsoft.com/businessruleslanguage/2002">
+  <ruleset name="Esb Demo BAM">
+    <version major="1" minor="2" description="" modifiedby="WIN-8L35R8E7JJS\Administrator" date="2014-05-23T22:04:45.287139+01:00" />
+    <version major="1" minor="0" description="" modifiedby="WIN-8L35R8E7JJS\Administrator" date="2014-05-24T00:05:46.4459035+01:00" />
+    <configuration />
+    <bindings>
+      <class ref="BamActivityStep" class="BamActivityStep" instance="0" instances="16" selectivity="1">
+        <assembly>Solidsoft.Esb.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+        <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\Solidsoft.Esb.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\Solidsoft.Esb.Facts.dll-->
+        <namespace>Solidsoft.Esb.Facts</namespace>
+      </class>
+    </bindings>
+    <rule name="Purchase Order Processing 1" priority="0" active="true">
+      <if>
+        <compare operator="equal">
+          <vocabularylink uri="3f0e9bcc-6212-4e6a-853c-e517f157a626" element="05703dd9-1111-40b8-890d-ad7bfc45a925" />
+          <lhs>
+            <function>
+              <vocabularylink uri="88b38591-1b61-4b42-a5c0-b19816d55776" element="c668cc07-c873-4fa1-bc91-607d5573fe03" />
+              <classmember member="get_ActivityName" sideeffects="true">
+                <classref ref="BamActivityStep" />
+              </classmember>
+            </function>
+          </lhs>
+          <rhs>
+            <constant>
+              <string>Purchase Order Processing</string>
+            </constant>
+          </rhs>
+        </compare>
+      </if>
+      <then>
+        <function>
+          <vocabularylink uri="88b38591-1b61-4b42-a5c0-b19816d55776" element="3725f454-51e0-4cfa-b56d-df0abfd8ec14" />
+          <classmember member="RegisterStartNewEx" sideeffects="true">
+            <classref ref="BamActivityStep" />
+            <argument>
+              <constant>
+                <string>PO Received</string>
+              </constant>
+            </argument>
+            <argument>
+              <constant>
+                <string>/*[local-name()='purchaseOrder' and namespace-uri()='http://solidsoftreply.com/purchaseorder/2014/01']/@*[local-name()='id' and namespace-uri()='']</string>
+              </constant>
+            </argument>
+          </classmember>
+        </function>
+        <function>
+          <vocabularylink uri="88b38591-1b61-4b42-a5c0-b19816d55776" element="73192756-16e5-4084-9894-a60661c73a44" />
+          <classmember member="RegisterDataExtraction" sideeffects="true">
+            <classref ref="BamActivityStep" />
+            <argument>
+              <constant>
+                <string>PO Received</string>
+              </constant>
+            </argument>
+            <argument>
+              <constant>
+                <string>PO Received</string>
+              </constant>
+            </argument>
+            <argument>
+              <constant>
+                <string>{date}</string>
+              </constant>
+            </argument>
+          </classmember>
+        </function>
+        <function>
+          <vocabularylink uri="88b38591-1b61-4b42-a5c0-b19816d55776" element="73192756-16e5-4084-9894-a60661c73a44" />
+          <classmember member="RegisterDataExtraction" sideeffects="true">
+            <classref ref="BamActivityStep" />
+            <argument>
+              <constant>
+                <string>Order Customer</string>
+              </constant>
+            </argument>
+            <argument>
+              <constant>
+                <string>PO Received</string>
+              </constant>
+            </argument>
+            <argument>
+              <constant>
+                <string>/*[local-name()='purchaseOrder' and namespace-uri()='http://solidsoftreply.com/purchaseorder/2014/01']/@*[local-name()='customerId' and namespace-uri()='']</string>
+              </constant>
+            </argument>
+          </classmember>
+        </function>
+        <function>
+          <vocabularylink uri="88b38591-1b61-4b42-a5c0-b19816d55776" element="73192756-16e5-4084-9894-a60661c73a44" />
+          <classmember member="RegisterDataExtraction" sideeffects="true">
+            <classref ref="BamActivityStep" />
+            <argument>
+              <constant>
+                <string>Order Value</string>
+              </constant>
+            </argument>
+            <argument>
+              <constant>
+                <string>PO Received</string>
+              </constant>
+            </argument>
+            <argument>
+              <constant>
+                <string>/*[local-name()='purchaseOrder' and namespace-uri()='http://solidsoftreply.com/purchaseorder/2014/01']/*[local-name()='totals' and namespace-uri()='http://solidsoftreply.com/purchaseorder/2014/01']/*[local-name()='billamount' and namespace-uri()='http://solidsoftreply.com/purchaseorder/2014/01']</string>
+              </constant>
+            </argument>
+          </classmember>
+        </function>
+        <function>
+          <vocabularylink uri="88b38591-1b61-4b42-a5c0-b19816d55776" element="0246e1a8-0578-4a30-9af3-68313fe7a59b" />
+          <classmember member="RegisterEnableContinuation" sideeffects="true">
+            <classref ref="BamActivityStep" />
+            <argument>
+              <constant>
+                <string>PO Received</string>
+              </constant>
+            </argument>
+            <argument>
+              <constant>
+                <string>/*[local-name()='purchaseOrder' and namespace-uri()='http://solidsoftreply.com/purchaseorder/2014/01']/@*[local-name()='id' and namespace-uri()='']</string>
+              </constant>
+            </argument>
+            <argument>
+              <constant>
+                <string>POSubmitted</string>
+              </constant>
+            </argument>
+          </classmember>
+        </function>
+        <function>
+          <vocabularylink uri="88b38591-1b61-4b42-a5c0-b19816d55776" element="128940f6-4253-490c-9d98-11d990bfe175" />
+          <classmember member="RegisterContinueEx" sideeffects="true">
+            <classref ref="BamActivityStep" />
+            <argument>
+              <constant>
+                <string>PO Submitted</string>
+              </constant>
+            </argument>
+            <argument>
+              <constant>
+                <string>{property:http://DemoEsb.Esb.Bam#BamActivityId}</string>
+              </constant>
+            </argument>
+            <argument>
+              <constant>
+                <string>POSubmitted</string>
+              </constant>
+            </argument>
+          </classmember>
+        </function>
+        <function>
+          <vocabularylink uri="88b38591-1b61-4b42-a5c0-b19816d55776" element="73192756-16e5-4084-9894-a60661c73a44" />
+          <classmember member="RegisterDataExtraction" sideeffects="true">
+            <classref ref="BamActivityStep" />
+            <argument>
+              <constant>
+                <string>PO Submitted</string>
+              </constant>
+            </argument>
+            <argument>
+              <constant>
+                <string>PO Submitted</string>
+              </constant>
+            </argument>
+            <argument>
+              <constant>
+                <string>{now}</string>
+              </constant>
+            </argument>
+          </classmember>
+        </function>
+      </then>
+    </rule>
+    <rule name="Purchase Order Processing" priority="0" active="false">
+      <if>
+        <compare operator="equal">
+          <vocabularylink uri="3f0e9bcc-6212-4e6a-853c-e517f157a626" element="05703dd9-1111-40b8-890d-ad7bfc45a925" />
+          <lhs>
+            <function>
+              <vocabularylink uri="88b38591-1b61-4b42-a5c0-b19816d55776" element="c668cc07-c873-4fa1-bc91-607d5573fe03" />
+              <classmember member="get_ActivityName" sideeffects="true">
+                <classref ref="BamActivityStep" />
+              </classmember>
+            </function>
+          </lhs>
+          <rhs>
+            <constant>
+              <string>Purchase Order Processing</string>
+            </constant>
+          </rhs>
+        </compare>
+      </if>
+      <then>
+        <function>
+          <vocabularylink uri="88b38591-1b61-4b42-a5c0-b19816d55776" element="3725f454-51e0-4cfa-b56d-df0abfd8ec14" />
+          <classmember member="RegisterStartNewEx" sideeffects="true">
+            <classref ref="BamActivityStep" />
+            <argument>
+              <constant>
+                <string>PO Received</string>
+              </constant>
+            </argument>
+            <argument>
+              <constant>
+                <string>/*[local-name()='purchaseOrder' and namespace-uri()='http://solidsoftreply.com/purchaseorder/2014/01']/@*[local-name()='id' and namespace-uri()='']</string>
+              </constant>
+            </argument>
+          </classmember>
+        </function>
+        <function>
+          <vocabularylink uri="88b38591-1b61-4b42-a5c0-b19816d55776" element="73192756-16e5-4084-9894-a60661c73a44" />
+          <classmember member="RegisterDataExtraction" sideeffects="true">
+            <classref ref="BamActivityStep" />
+            <argument>
+              <constant>
+                <string>PO Received</string>
+              </constant>
+            </argument>
+            <argument>
+              <constant>
+                <string>PO Received</string>
+              </constant>
+            </argument>
+            <argument>
+              <constant>
+                <string>{date}</string>
+              </constant>
+            </argument>
+          </classmember>
+        </function>
+        <function>
+          <vocabularylink uri="88b38591-1b61-4b42-a5c0-b19816d55776" element="73192756-16e5-4084-9894-a60661c73a44" />
+          <classmember member="RegisterDataExtraction" sideeffects="true">
+            <classref ref="BamActivityStep" />
+            <argument>
+              <constant>
+                <string>Order Customer</string>
+              </constant>
+            </argument>
+            <argument>
+              <constant>
+                <string>PO Received</string>
+              </constant>
+            </argument>
+            <argument>
+              <constant>
+                <string>/*[local-name()='purchaseOrder' and namespace-uri()='http://solidsoftreply.com/purchaseorder/2014/01']/@*[local-name()='customerId' and namespace-uri()='']</string>
+              </constant>
+            </argument>
+          </classmember>
+        </function>
+        <function>
+          <vocabularylink uri="88b38591-1b61-4b42-a5c0-b19816d55776" element="73192756-16e5-4084-9894-a60661c73a44" />
+          <classmember member="RegisterDataExtraction" sideeffects="true">
+            <classref ref="BamActivityStep" />
+            <argument>
+              <constant>
+                <string>Order Value</string>
+              </constant>
+            </argument>
+            <argument>
+              <constant>
+                <string>PO Received</string>
+              </constant>
+            </argument>
+            <argument>
+              <constant>
+                <string>/*[local-name()='purchaseOrder' and namespace-uri()='http://solidsoftreply.com/purchaseorder/2014/01']/*[local-name()='totals' and namespace-uri()='http://solidsoftreply.com/purchaseorder/2014/01']/*[local-name()='billamount' and namespace-uri()='http://solidsoftreply.com/purchaseorder/2014/01']</string>
+              </constant>
+            </argument>
+          </classmember>
+        </function>
+        <function>
+          <vocabularylink uri="88b38591-1b61-4b42-a5c0-b19816d55776" element="0246e1a8-0578-4a30-9af3-68313fe7a59b" />
+          <classmember member="RegisterEnableContinuation" sideeffects="true">
+            <classref ref="BamActivityStep" />
+            <argument>
+              <constant>
+                <string>PO Received</string>
+              </constant>
+            </argument>
+            <argument>
+              <constant>
+                <string>/*[local-name()='purchaseOrder' and namespace-uri()='http://solidsoftreply.com/purchaseorder/2014/01']/@*[local-name()='id' and namespace-uri()='']</string>
+              </constant>
+            </argument>
+            <argument>
+              <constant>
+                <string>POSubmitted</string>
+              </constant>
+            </argument>
+          </classmember>
+        </function>
+        <function>
+          <vocabularylink uri="88b38591-1b61-4b42-a5c0-b19816d55776" element="128940f6-4253-490c-9d98-11d990bfe175" />
+          <classmember member="RegisterContinueEx" sideeffects="true">
+            <classref ref="BamActivityStep" />
+            <argument>
+              <constant>
+                <string>PO Submitted</string>
+              </constant>
+            </argument>
+            <argument>
+              <constant>
+                <string>{property:http://DemoEsb.Esb.Bam#BamActivityId}</string>
+              </constant>
+            </argument>
+            <argument>
+              <constant>
+                <string>POSubmitted</string>
+              </constant>
+            </argument>
+          </classmember>
+        </function>
+        <function>
+          <vocabularylink uri="88b38591-1b61-4b42-a5c0-b19816d55776" element="73192756-16e5-4084-9894-a60661c73a44" />
+          <classmember member="RegisterDataExtraction" sideeffects="true">
+            <classref ref="BamActivityStep" />
+            <argument>
+              <constant>
+                <string>PO Submitted</string>
+              </constant>
+            </argument>
+            <argument>
+              <constant>
+                <string>PO Submitted</string>
+              </constant>
+            </argument>
+            <argument>
+              <constant>
+                <string>{now}</string>
+              </constant>
+            </argument>
+          </classmember>
+        </function>
+      </then>
+    </rule>
+  </ruleset>
+</brl>

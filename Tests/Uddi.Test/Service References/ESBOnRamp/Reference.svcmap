@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2dfb77fe-efdb-476a-914a-85bdbaecc591" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/OnRamp/Solidsoft_BizTalk_ESB_OnRamp_OnRampInterface_OnRamp.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Solidsoft_BizTalk_ESB_OnRamp_OnRampInterface_OnRamp.disco" MetadataType="Disco" ID="048364cf-6a11-4363-853d-63ef1415573c" SourceId="1" SourceUrl="http://hxl-tap-devjh/OnRamp/Solidsoft_BizTalk_ESB_OnRamp_OnRampInterface_OnRamp.svc?disco" />
+    <MetadataFile FileName="BizTalkServiceInstance.wsdl" MetadataType="Wsdl" ID="0e55d139-cc82-4982-8791-fe7345d0fcc2" SourceId="1" SourceUrl="http://hxl-tap-devjh/OnRamp/Solidsoft_BizTalk_ESB_OnRamp_OnRampInterface_OnRamp.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

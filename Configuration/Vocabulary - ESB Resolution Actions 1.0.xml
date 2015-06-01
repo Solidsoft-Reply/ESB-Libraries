@@ -1,0 +1,857 @@
+<?xml version="1.0" encoding="utf-8"?>
+<brl xmlns="http://schemas.microsoft.com/businessruleslanguage/2002">
+  <vocabulary id="5307b377-4da8-4aa5-94f4-4b22fe859fad" name="ESB Resolution Actions" uri="" description="">
+    <version major="1" minor="0" description="" modifiedby="SOLIDSOFTREPLY\Author" date="2015-05-10TT00:00:00.0000000+00:00" />
+    <vocabularydefinition id="4632dd85-a232-41f4-8374-327f40b0b5f8" name="Time: End of Day" description="End of day.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="MaxValue" type="datetime">
+          <classinfo class="DateTime" instance="0">
+            <assembly>mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</assembly>
+            <!--C:\Windows\Microsoft.NET\Framework\v4.0.30319\mscorlib.dll-->
+            <namespace>System</namespace>
+          </classinfo>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="the end of the day" />
+    </vocabularydefinition>
+    <vocabularydefinition id="52f07b7a-0af7-4b5d-bbea-241ded626ff4" name="Define a BAM activity step" description="Set a step for a given BAM activity.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="SetBamInterception" type="void">
+          <classinfo class="Interchange" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="2">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[ Directive {0} ]  Define a step called {2} for BAM activity {1}." delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="2">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="8d2c5974-2794-4721-8418-fe6f68945947" name="Perform retries at a given level" description="Set a retry policy on a directive for a given level.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="SetRetryPolicy" type="void">
+          <classinfo class="Interchange" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="int">
+              <int>3</int>
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="2">
+            <valuedefinitionliteral type="int">
+              <int>1</int>
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="3">
+            <valuedefinitionliteral type="int">
+              <int>0</int>
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[ Directive {0} ]  On failure, perform {1} level {3} retries at {2} minute intervals" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="int">
+            <int>3</int>
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="2">
+          <valuedefinitionliteral type="int">
+            <int>1</int>
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="3">
+          <valuedefinitionliteral type="int">
+            <int>0</int>
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="ef325365-788f-446c-b70f-4ac7d5cba27a" name="Time: hh:mm:ss" description="A time.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="Parse" type="datetime">
+          <classinfo class="DateTime" instance="0">
+            <assembly>mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</assembly>
+            <!--C:\Windows\Microsoft.NET\Framework\v4.0.30319\mscorlib.dll-->
+            <namespace>System</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string>00:00:00</string>
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="time {0}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string>00:00:00</string>
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="b7a31ee3-f841-4b02-9a35-51ecfcec8630" name="Time: Start of Day" description="Start of day.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="MinValue" type="datetime">
+          <classinfo class="DateTime" instance="0">
+            <assembly>mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</assembly>
+            <!--C:\Windows\Microsoft.NET\Framework\v4.0.30319\mscorlib.dll-->
+            <namespace>System</namespace>
+          </classinfo>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="the start of the day" />
+    </vocabularydefinition>
+    <vocabularydefinition id="40789c96-f6d1-443a-b40d-0104ac067263" name="Send to an endpoint with a specified transport and configuration" description="Set endpoint attributes on a directive.   Specify a transport and configuration.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="SetEndpoint" type="void">
+          <classinfo class="Interchange" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="2">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="3">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[ Directive {0} ]  Send the message to {1} using transport type {2} and the following configuration:{3}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="2">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="3">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="021185f8-2394-44b0-88b3-c7c8431f767f" name="Assign a value to a BTS GlobalSchema property" description="Set a value on a directive for a BizTalk Server GlobalSchema property.   The property may optionally be promoted.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="SetBtsGlobalProperty" type="void">
+          <classinfo class="Interchange" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="2">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="3">
+            <valuedefinitionliteral type="boolean">
+              <boolean>false</boolean>
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[ Directive {0} ]  Assign the value {2} to the {1} BizTalk Server global property.  Mark as promoted? {3}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="2">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="3">
+          <valuedefinitionliteral type="boolean">
+            <boolean>false</boolean>
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="5b653d7a-9bbd-42e6-80c4-bab211f2a522" name="Send to an endpoint" description="Set endpoint attributes on a directive.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="SetEndpoint" type="void">
+          <classinfo class="Interchange" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[ Directive {0} ]  Send the message to {1}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="7bcb2535-1d2e-43a9-97c3-439b2ef027f1" name="Assign a value to a promoted BTS GlobalSchema property" description="Set a value on a directive for a BizTalk Server GlobalSchema property, and mark as promoted.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="SetBtsGlobalProperty" type="void">
+          <classinfo class="Interchange" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="2">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[ Directive {0} ]  Assign the value {2} to the {1} BizTalk Server global property and mark as promoted" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="2">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="f3a5eb27-d903-4838-b36d-80ebb646fa69" name="Perform retries" description="Set a retry policy on a directive (level 0).">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="SetRetryPolicy" type="void">
+          <classinfo class="Interchange" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="int">
+              <int>3</int>
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="2">
+            <valuedefinitionliteral type="int">
+              <int>1</int>
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[ Directive {0} ]  On failure, perform {1} retries at {2} minute intervals" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="int">
+            <int>3</int>
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="2">
+          <valuedefinitionliteral type="int">
+            <int>1</int>
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="e979c647-c6d5-4234-90ca-5e61e1d7d20e" name="Define a post-transformation BAM activity step" description="Set a step for a given BAM activity.   The step will be located after a transformation.   The step will only be implemented if the directive defines a transformation.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="SetBamInterceptionAfterMap" type="void">
+          <classinfo class="Interchange" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="2">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[ Directive {0} ]  Define a post-transformation step called {2} for BAM activity {1}." delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="2">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="d72c2145-66e8-4bc9-80d7-1d55b0d32cf1" name="Set the SOAP Action header" description="Set the SOAPAction header on  a SOAP interchange">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="SetSoapAction" type="void">
+          <classinfo class="Interchange" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[ Directive {0} ]  Set the SOAP Action header to {1}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="ba0262ed-4ed4-4b60-8b70-aef437af01f6" name="Assign a value to a promoted BTS Property" description="Set a value on a directive for a BizTalk Server property, and mark as promoted.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="SetBtsProperty" type="void">
+          <classinfo class="Interchange" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="2">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="3">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[ Directive {0} ]  Assign the value {2} to the {1} BizTalk Server property in the {3} namespace and mark as promoted" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="2">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="3">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="f40ae6c4-5303-4f12-8660-163b255288c1" name="Define a service window" description="Sets a service window for a directive.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="SetServiceWindow" type="void">
+          <classinfo class="Interchange" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="datetime">
+              <datetime>0001-01-01T00:00:00</datetime>
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="2">
+            <valuedefinitionliteral type="datetime">
+              <datetime>9999-12-31T23:59:59</datetime>
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[ Directive {0} ]  Define a service window that opens at {1} and closes at {2}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="datetime">
+            <datetime>0001-01-01T00:00:00</datetime>
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="2">
+          <valuedefinitionliteral type="datetime">
+            <datetime>9999-12-31T23:59:59</datetime>
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="6b61f174-02b6-491c-b52c-ac3abdfa8f25" name="Configure a BAM interceptor" description="Set configuration properties for the BAM interceptor.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="SetBamConfiguration" type="void">
+          <classinfo class="Interchange" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="string">
+              <string>Data Source=.;Initial Catalog=BizTalkMsgBoxDB;Integrated Security=SSPI;</string>
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="2">
+            <valuedefinitionliteral type="boolean">
+              <boolean>true</boolean>
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="3">
+            <valuedefinitionliteral type="int">
+              <int>1</int>
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[ Directive {0} ]  Configure the BAM interceptor to use the following connection string: {1}. Use a buffered event stream? {2}.  Set the flush threshold to {3}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="string">
+            <string>Data Source=.;Initial Catalog=BizTalkMsgBoxDB;Integrated Security=SSPI;</string>
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="2">
+          <valuedefinitionliteral type="boolean">
+            <boolean>true</boolean>
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="3">
+          <valuedefinitionliteral type="int">
+            <int>1</int>
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="0ce8c6e7-d572-4931-b101-967d10ffb432" name="Assign a value to a BTS property" description="Set a value on a directive for a BizTalk Server property.   The property may optionally be promoted.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="SetBtsProperty" type="void">
+          <classinfo class="Interchange" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="2">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="3">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="4">
+            <valuedefinitionliteral type="boolean">
+              <boolean>false</boolean>
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[ Directive {0} ]  Assign the value {2} to the {1} BizTalk Server property in the {3} namespace.  Mark as promoted? {4}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="2">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="3">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="4">
+          <valuedefinitionliteral type="boolean">
+            <boolean>false</boolean>
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="83e7b4e6-d7fa-414c-ad56-dc9b149a2ad7" name="Assign a value to a property" description="Set a value on a directive for a general purpose property.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="SetProperty" type="void">
+          <classinfo class="Interchange" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="2">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[ Directive {0} ]  Assign the value {2} to the {1} property" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="2">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="7b42cfe1-cd41-4f0a-9e3f-53c7ff76048a" name="Apply a transformation" description="Set transformation attributes on a directive.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="SetTransformation" type="void">
+          <classinfo class="Interchange" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[ Directive {0} ]  Apply a transformation using the following BizTalk Server map: {1}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="bb1b9694-64a3-46e3-bc17-e0688ffb4708" name="Send to an endpoint with a specified transport" description="Set endpoint attributes on a directive.   Specify a transport">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="SetEndpoint" type="void">
+          <classinfo class="Interchange" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="2">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[ Directive {0} ]  Send the message to {1} using transport type {2}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="2">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="a1b0ebc0-c493-4a45-80fb-4e989964b282" name="Specify the BAM trackpoint policy" description="Specifies the trackpoint policy to be used for a BAM step">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="SetBamTrackpointPolicy" type="void">
+          <classinfo class="Interchange" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[ Directive {0} ]  Use policy {1} for BAM trackpoint configuration" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="955be2d5-ab3e-46b2-b167-641a59ce175e" name="Specify the BAM trackpoint policy and version" description="Specifies the trackpoint policy and version to be used for a BAM step">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="SetBamTrackpointPolicy" type="void">
+          <classinfo class="Interchange" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="2">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[ Directive {0} ]  Use version {2} of {1} policy for BAM trackpoint configuration" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="2">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+  </vocabulary>
+</brl>

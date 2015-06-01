@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AppSettingEsbBamBufferedConnectionString" xml:space="preserve">
+    <value>ESB.BAM.BufferedConnectionString</value>
+  </data>
+  <data name="AppSettingEsbBamDirectConnectionString" xml:space="preserve">
+    <value>ESB.BAM.DirectConnectionString</value>
+  </data>
+  <data name="AppSettingEsbBamFlushThreshold" xml:space="preserve">
+    <value>ESB.BAM.FlushThreshold</value>
+  </data>
+  <data name="AppSettingEsbBamIsBuffered" xml:space="preserve">
+    <value>ESB.BAM.IsBuffered</value>
+  </data>
+  <data name="AppSettingEsbCacheExpiration" xml:space="preserve">
+    <value>ESB.DirectivesCacheExpiration</value>
+  </data>
+  <data name="AppSettingEsbBamDefaultTrackpointPolicy" xml:space="preserve">
+    <value>ESB.BAM.DefaultTrackpointPolicyName</value>
+  </data>
+  <data name="AppSettingEsbBamDefaultTrackpointPolicyVersion" xml:space="preserve">
+    <value>ESB.BAM.DefaultTrackpointPolicyVersion</value>
+  </data>
+  <data name="AppSettingEsbDefaultPolicy" xml:space="preserve">
+    <value>ESB.DefaultPolicyName</value>
+  </data>
+  <data name="AppSettingEsbServiceEndPoint" xml:space="preserve">
+    <value>ESB.ServiceEndPoint</value>
+  </data>
+  <data name="BamActivityKey" xml:space="preserve">
+    <value>BAMActivity_{0}_{1}_{2}{3}</value>
+  </data>
+  <data name="ExceptionBamActivityNameInvalid" xml:space="preserve">
+    <value>BAM activity name is null or empty.</value>
+  </data>
+  <data name="ExceptionBamTrackpointPolicyUndetermined" xml:space="preserve">
+    <value>BAM trackpoint policy cannot be determined.</value>
+  </data>
+  <data name="ExceptionElementNotOnList" xml:space="preserve">
+    <value>The element asked is not on the actual list.</value>
+  </data>
+  <data name="ExceptionEsbPolicyUndetermined" xml:space="preserve">
+    <value>ESB policy cannot be determined.  Add an AppSetting to the configuration file called '{0}'.</value>
+  </data>
+  <data name="ExceptionInfoNull" xml:space="preserve">
+    <value>Serialization failure: info cannot be null on {0}.</value>
+  </data>
+  <data name="ExceptionInterceptionFailedNotXml" xml:space="preserve">
+    <value>BAM interception failure.  The data passed to the XPath data extractor is not XML.</value>
+  </data>
+  <data name="ExceptionInterceptionFailedNotXPath" xml:space="preserve">
+    <value>BAM interception failure.  The extraction information passed to the XPath data extractor is not a valid XPath string.   Check the  resolver's BAM policy.  XPath: {0}</value>
+  </data>
+  <data name="ExceptionInterceptorNotObtained" xml:space="preserve">
+    <value>Failed to obtain a BAM interceptor for activity {0} while processing resolver directive {1}.</value>
+  </data>
+  <data name="ExceptionKeyNotFound" xml:space="preserve">
+    <value>Key not found in cache</value>
+  </data>
+  <data name="ExceptionMapClassInvalid" xml:space="preserve">
+    <value>The map class '{0}' is not valid and cannot be instantiated</value>
+  </data>
+  <data name="ExceptionMapFullName" xml:space="preserve">
+    <value>The map has an invalid strong name.  Full name is {0}</value>
+  </data>
+  <data name="ExceptionNoActivity" xml:space="preserve">
+    <value>Resolver directive {0} indicates that BAM interception is required, but no activity has been specified.</value>
+  </data>
+  <data name="ExceptionNoActivityStep" xml:space="preserve">
+    <value>Resolver directive {0} indicates that BAM interception is required, but no activity step has been specified.</value>
+  </data>
+  <data name="ExceptionNoBamActivity" xml:space="preserve">
+    <value>Failed to get the Bam Activity object</value>
+  </data>
+  <data name="ExceptionNoPolicyDefined" xml:space="preserve">
+    <value>No policy defined.</value>
+  </data>
+  <data name="ExceptionNoTrackpoints" xml:space="preserve">
+    <value>No TrackPoints from the BRE</value>
+  </data>
+  <data name="ExceptionObjectMisconstructed" xml:space="preserve">
+    <value>The object is not constructed properly.</value>
+  </data>
+  <data name="ExceptionXmlTransformationFailedOnNull" xml:space="preserve">
+    <value>The XML document/message could not be transformed for resolver directive {0}.  Message is null.</value>
+  </data>
+  <data name="UriAggSchema" xml:space="preserve">
+    <value>http://schemas.microsoft.com/BizTalk/2003/aggschema</value>
+  </data>
+  <data name="XmlFileDictionarySchema" xml:space="preserve">
+    <value>SolidsoftReply.Esb.Libraries.Resolution.Resources.DictionarySchema.xsd</value>
+  </data>
+  <data name="XPathExtensionObject" xml:space="preserve">
+    <value>//ExtensionObjects/ExtensionObject</value>
+  </data>
+  <data name="ExceptionBamTrackpointPolicyVersionInvalid" xml:space="preserve">
+    <value>BAM Trackpoint policy version is invalid.  Specified version is {0}.</value>
+  </data>
+  <data name="ExceptionWrongNumberOfMacroParameters" xml:space="preserve">
+    <value>The BAM macro defines {0} parameters, but only {1} values have been provided.</value>
+  </data>
+  <data name="ExceptionPropertyNotAvailable" xml:space="preserve">
+    <value>The BAM step has attempted to access a missing property named {0}.</value>
+  </data>
+  <data name="MacroExpression" xml:space="preserve">
+    <value>(?&lt;!{)(?:{)(?:(?'invalidParenthesis'(?:{){2})*)(?'macro'(?:now|date|day|dayofweek|dayofyear|hour|millisecond|minute|month|second|ticks|timeofday|today|utcnow|year|guid|property))(?::(?'format'[^}]+))?(?&lt;!})(?:})(?:(?'-invalidParenthesis'(?:}){2})*)</value>
+    <comment>Matches all defined macros in a string</comment>
+  </data>
+  <data name="ExceptionInterceptionInvalidParenthesis" xml:space="preserve">
+    <value>The BAM extraction string contains a macro with invalid brace nesting.  Extraction string is {0}</value>
+  </data>
+  <data name="DictionaryNamespace" xml:space="preserve">
+    <value>http://solidsoftreply.com/schemas/webservices/esbresolutionservice/2015/05</value>
+  </data>
+  <data name="ExceptionDeserializationInvalidKeyElement" xml:space="preserve">
+    <value>The {0} cannot be de-serialized.   The &lt;Key&gt; element has invalid content.</value>
+  </data>
+  <data name="ExceptionDeserializationNoElement" xml:space="preserve">
+    <value>The {0} cannot be de-serialised.   No &lt;{1}&gt; element was found.</value>
+  </data>
+  <data name="ExceptionReaderIsNull" xml:space="preserve">
+    <value>The XML reader passed to the {0} method is null.</value>
+  </data>
+  <data name="ExceptionSchemaResourceNotFound" xml:space="preserve">
+    <value>Failed to find XSD schema in assembly resources.</value>
+  </data>
+  <data name="ExceptionSchemaSetIsNull" xml:space="preserve">
+    <value>The XML schema set passed to the {0} method is null.</value>
+  </data>
+  <data name="ExceptionSerialization" xml:space="preserve">
+    <value>The {0} cannot be serialized.   See inner exception.</value>
+  </data>
+  <data name="ExceptionUnexpectedError" xml:space="preserve">
+    <value>An unexpected error occurred when calling {0}.  See inner exception.</value>
+  </data>
+  <data name="ExceptionValueIsNull" xml:space="preserve">
+    <value>Value cannot be null.</value>
+  </data>
+  <data name="ExceptionWriterIsNull" xml:space="preserve">
+    <value>The XML writer passed to the {0} method is null.</value>
+  </data>
+  <data name="XsdBtsPropertyValuesSchemaFile" xml:space="preserve">
+    <value>SolidsoftReply.Esb.Libraries.Resolution.Dictionaries.Resources.BtsPropertyValuesSchema.xsd</value>
+  </data>
+  <data name="XsdDictionarySchemaFile" xml:space="preserve">
+    <value>SolidsoftReply.Esb.Libraries.Resolution.Dictionaries.Resources..DictionarySchema.xsd</value>
+  </data>
+  <data name="XsdDirectiveSchemaFile" xml:space="preserve">
+    <value>SolidsoftReply.Esb.Libraries.Resolution.Dictionaries.Resources.DirectivesSchema.xsd</value>
+  </data>
+  <data name="XsdDirectiveSchemaPropertiesFile" xml:space="preserve">
+    <value>SolidsoftReply.Esb.Libraries.Resolution.Dictionaries.Resources.DirectivesSchemaProperties.xsd</value>
+  </data>
+  <data name="XsdGeneralPropertyValuesSchemaFile" xml:space="preserve">
+    <value>SolidsoftReply.Esb.Libraries.Resolution.Dictionaries.Resources.GeneralPropertyValuesSchema.xsd</value>
+  </data>
+  <data name="XsdParameterSchemaFile" xml:space="preserve">
+    <value>SolidsoftReply.Esb.Libraries.Resolution.Dictionaries.Resources.ParametersSchema.xsd</value>
+  </data>
+  <data name="AppSettingsEsbBrePolicyTester" xml:space="preserve">
+    <value>ESB.BRE.PolicyTester</value>
+  </data>
+  <data name="AppSettingsEsbBreTrace" xml:space="preserve">
+    <value>ESB.BRE.Trace</value>
+  </data>
+  <data name="AppSettingsEsbBreTraceFileLocation" xml:space="preserve">
+    <value>ESB.BRE.TraceFileLocation</value>
+  </data>
+</root>

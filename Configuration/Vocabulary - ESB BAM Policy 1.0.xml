@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<brl xmlns="http://schemas.microsoft.com/businessruleslanguage/2002">
+  <vocabulary id="88b38591-1b61-4b42-a5c0-b19816d55776" name="ESB BAM Policy" uri="" description="">
+    <version major="1" minor="0" description="" modifiedby="SOLIDSOFTREPLY\Author" date="2015-05-10T00:00:00.0000000+00:00" />
+    <vocabularydefinition id="50a993c3-f881-46bc-b340-0c3c07be483b" name="Define Reference" description="">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="RegisterReference" type="void">
+          <classinfo class="BamActivityStep" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="2">
+            <valuedefinitionliteral type="object" />
+          </argument>
+          <argument position="3">
+            <valuedefinitionliteral type="object" />
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[ Step {2} ]  Create a reference named {0} of type {1} using the following XPath or macro to extract the instance ID: {3}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="2">
+          <valuedefinitionliteral type="object" />
+        </argument>
+        <argument position="3">
+          <valuedefinitionliteral type="object" />
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="73192756-16e5-4084-9894-a60661c73a44" name="Extract Data" description="Register BAM data extraction of a named data item for an activity step">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="RegisterDataExtraction" type="void">
+          <classinfo class="BamActivityStep" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="object" />
+          </argument>
+          <argument position="2">
+            <valuedefinitionliteral type="object" />
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[ Step {1} ]  Extract the data item named {0} using the following XPath or macro: {2}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="object" />
+        </argument>
+        <argument position="2">
+          <valuedefinitionliteral type="object" />
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="eae92985-9234-43c6-aa45-f95bc5bdcfc3" name="Continue Activity" description="Register a BAM continution for an activity step.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="RegisterContinueEx" type="void">
+          <classinfo class="BamActivityStep" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="object" />
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="object" />
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[ Step {0} ]  Continue a previous activity using {1} as the continuation ID" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="object" />
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="object" />
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="be369495-0ea9-4d70-a273-7952846cea49" name="Define Relationship" description="Regsiters the extraction of relationship information between BAM activities.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="RegisterRelationship" type="void">
+          <classinfo class="BamActivityStep" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="object" />
+          </argument>
+          <argument position="2">
+            <valuedefinitionliteral type="object" />
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[ Step {1} ]  Create a relationship between this activity and the {0} activity using the following XPath or macro to extract the ID of the other activity: {2}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="object" />
+        </argument>
+        <argument position="2">
+          <valuedefinitionliteral type="object" />
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="828b5453-4667-4df4-a17d-456f710350e7" name="Record Milestone" description="Register data extraction for BAM milestone for an activity step">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="RegisterDataExtraction" type="void">
+          <classinfo class="BamActivityStep" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="object" />
+          </argument>
+          <argument position="2">
+            <valuedefinitionliteral type="object">
+              <object encoding="base64">AAEAAAD/////AQAAAAAAAAAGAQAAAAV7bm93fQs=</object>
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[ Step {1} ]  Record milestone {0} as {2}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="object" />
+        </argument>
+        <argument position="2">
+          <valuedefinitionliteral type="object">
+            <object encoding="base64">AAEAAAD/////AQAAAAAAAAAGAQAAAAV7bm93fQs=</object>
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="128940f6-4253-490c-9d98-11d990bfe175" name="Continue Activity with Unique ID Prefix" description="Register a BAM continution for an activity step using a unique ID prefix.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="RegisterContinueEx" type="void">
+          <classinfo class="BamActivityStep" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="object" />
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="object" />
+          </argument>
+          <argument position="2">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[ Step {0} ]  Continue a previous activity using {1} as the activity ID and {2} as the unique ID prefix" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="object" />
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="object" />
+        </argument>
+        <argument position="2">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="0246e1a8-0578-4a30-9af3-68313fe7a59b" name="Enable Continuation with Unique ID Prefix" description="Register the enablement of a BAM continution for an activity step using a unique ID prefix">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="RegisterEnableContinuation" type="void">
+          <classinfo class="BamActivityStep" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="object" />
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="object" />
+          </argument>
+          <argument position="2">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[ Step {0} ]  Enable continuation of the current activity using {1} as the activity ID and {2} as the unique ID prefix" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="object" />
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="object" />
+        </argument>
+        <argument position="2">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="c668cc07-c873-4fa1-bc91-607d5573fe03" name="Activity Name" description="The name of a defined BAM activity.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="get_ActivityName" type="string">
+          <classinfo class="BamActivityStep" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="Activity Name" />
+    </vocabularydefinition>
+    <vocabularydefinition id="3725f454-51e0-4cfa-b56d-df0abfd8ec14" name="Start Activity" description="Register the start of a BAM activity.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="RegisterStartNewEx" type="void">
+          <classinfo class="BamActivityStep" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="object" />
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="object" />
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[ Step {0} ]  Start an activity using the following XPath or macro to extract the activity ID: {1}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="object" />
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="object" />
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="d1e61392-de7a-458a-85be-b95953364bc9" name="Step Name" description="The name of a BAM activity step.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="get_StepName" type="string">
+          <classinfo class="BamActivityStep" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="Step Name" />
+    </vocabularydefinition>
+    <vocabularydefinition id="312ac3d8-a2db-4eb9-b809-30975212c76e" name="Enable Continuation" description="Register the enablement of a BAM continution for an activity step.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="RegisterEnableContinuation" type="void">
+          <classinfo class="BamActivityStep" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="object" />
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="object" />
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[ Step {0} ]  Enable continuation of the current activity using {1} as the continuation ID" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="object" />
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="object" />
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+  </vocabulary>
+</brl>

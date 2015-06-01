@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<brl xmlns="http://schemas.microsoft.com/businessruleslanguage/2002">
+  <vocabulary id="9f19c1be-f329-41bb-8526-97de6fb3beb4" name="ESB Resolution Criteria" uri="" description="">
+    <version major="1" minor="0" description="" modifiedby="SOLIDSOFTREPLY\Author" date="2015-05-10TT00:00:00.0000000+00:00" />
+    <vocabularydefinition id="1dd42392-5723-4302-b074-c237c5efc02e" name="Time: End of Day" description="End of day.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="MaxValue" type="datetime">
+          <classinfo class="DateTime" instance="0">
+            <assembly>mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</assembly>
+            <!--C:\Windows\Microsoft.NET\Framework\v4.0.30319\mscorlib.dll-->
+            <namespace>System</namespace>
+          </classinfo>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="the end of the day" />
+    </vocabularydefinition>
+    <vocabularydefinition id="c277dd16-7fe0-4a09-95e1-8b525e5c9f41" name="Provider Name" description="Returns the UDDI-style name of a service provider">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="get_ProviderName" type="string">
+          <classinfo class="Interchange" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="Provider Name" />
+    </vocabularydefinition>
+    <vocabularydefinition id="a33ba20a-9a26-436c-a1c6-66df2da345cc" name="Message Role" description="Returns a role specifier played by a message within the context of a given operation.   This is identical to the messageLabel specifier in WSDL 2.0.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="get_MessageRole" type="string">
+          <classinfo class="Interchange" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="Message Role" />
+    </vocabularydefinition>
+    <vocabularydefinition id="58e352de-2cc9-4a78-bf68-970664b15505" name="Message Direction" description="Returns the direction of the message in regard to the message exchange pattern implemented by an operation.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="get_MessageDirection" type="SolidsoftReply.Esb.Libraries.Facts.Interchange+MessageDirectionTypes, SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62">
+          <classinfo class="Interchange" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="Message Direction" />
+    </vocabularydefinition>
+    <vocabularydefinition id="2994581e-1cf8-4500-bb21-d11f6c827744" name="Message Direction: IN" description="Represents the direction of an input message on a service operation.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="MsgIn" type="SolidsoftReply.Esb.Libraries.Facts.Interchange+MessageDirectionTypes, SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62">
+          <classinfo class="Interchange+MessageDirectionTypes" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="IN" />
+    </vocabularydefinition>
+    <vocabularydefinition id="8f3e0a89-c5e7-4705-a576-cc69fdaec96f" name="Time: Start of Day" description="Start of day.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="MinValue" type="datetime">
+          <classinfo class="DateTime" instance="0">
+            <assembly>mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</assembly>
+            <!--C:\Windows\Microsoft.NET\Framework\v4.0.30319\mscorlib.dll-->
+            <namespace>System</namespace>
+          </classinfo>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="the start of the day" />
+    </vocabularydefinition>
+    <vocabularydefinition id="8cc6fa4e-b9ac-4652-8892-b44fda7eba61" name="Message Direction: OUT" description="Represents the direction of an output message on a service operation.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="MsgOut" type="SolidsoftReply.Esb.Libraries.Facts.Interchange+MessageDirectionTypes, SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62">
+          <classinfo class="Interchange+MessageDirectionTypes" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="OUT" />
+    </vocabularydefinition>
+    <vocabularydefinition id="5b4cf73f-719c-48eb-ab61-d29e0b37f5c8" name="Binding Access Point" description="Returns the UDDI-style access point for a binding within a service.   This is generally an endpoint address (URI).">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="get_BindingAccessPoint" type="string">
+          <classinfo class="Interchange" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="Binding Access Point" />
+    </vocabularydefinition>
+    <vocabularydefinition id="afa87c6a-f21d-4d89-bfe4-04d807b5f0b0" name="Service Name" description="Returns the UDDI-style name of a service">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="get_ServiceName" type="string">
+          <classinfo class="Interchange" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="Service Name" />
+    </vocabularydefinition>
+    <vocabularydefinition id="75e8f056-3b3c-426c-8888-a6bbabccdc1a" name="Operation Name" description="Returns the name of an operation defined on a service interface.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="get_OperationName" type="string">
+          <classinfo class="Interchange" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="Operation Name" />
+    </vocabularydefinition>
+    <vocabularydefinition id="8f595705-10f9-43b2-b36a-9e3b71302235" name="Binding Url Type" description="Returns the UDDI-style URL type for a binding within a service.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="get_BindingUrlType" type="string">
+          <classinfo class="Interchange" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="Binding Url Type" />
+    </vocabularydefinition>
+    <vocabularydefinition id="6c5f990b-8005-4369-998d-744dd82e416d" name="Message Type" description="Returns the type of the message.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="get_MessageType" type="string">
+          <classinfo class="Interchange" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="Message Type" />
+    </vocabularydefinition>
+    <vocabularydefinition id="cf05f117-13d8-468f-b38c-90e3c8c58c91" name="Parameter" description="Get the value of a named parameter">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="GetParameterValue" type="string">
+          <classinfo class="Interchange" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="Parameter {0}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="a5ff1fa6-9353-4160-b3b4-2a7b7a533fa8" name="Time Stamp" description="Returns the date and time at which this attribute is first evaluated.   Use to control service windows.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="get_TimeStamp" type="datetime">
+          <classinfo class="Interchange" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="Time Stamp" />
+    </vocabularydefinition>
+  </vocabulary>
+</brl>

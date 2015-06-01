@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="8677b84a-ee25-48a2-93e0-11f86741e918" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/TestService1/Service1.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Service1.xsd" MetadataType="Schema" ID="f621357e-f632-46e1-90dd-c988ba25833f" SourceId="1" SourceUrl="http://hxl-tap-devjh/TestService1/Service1.svc?xsd=xsd0" />
+    <MetadataFile FileName="Service11.xsd" MetadataType="Schema" ID="4bb2b2f8-b899-4389-8ce8-bf6e32d7f23d" SourceId="1" SourceUrl="http://hxl-tap-devjh/TestService1/Service1.svc?xsd=xsd1" />
+    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="7bbf3bd9-c3ab-4f80-8413-39e74a210002" SourceId="1" SourceUrl="http://hxl-tap-devjh/TestService1/Service1.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="Service11.wsdl" MetadataType="Wsdl" ID="48952c24-9631-4631-8b9d-b4692b415664" SourceId="1" SourceUrl="http://hxl-tap-devjh/TestService1/Service1.svc?wsdl" />
+    <MetadataFile FileName="Service12.xsd" MetadataType="Schema" ID="0a8c7b99-575e-453c-84d4-710fe1e3a66c" SourceId="1" SourceUrl="http://hxl-tap-devjh/TestService1/Service1.svc?xsd=xsd2" />
+    <MetadataFile FileName="Service1.disco" MetadataType="Disco" ID="50c25311-e85d-4478-9752-7590374aaaa7" SourceId="1" SourceUrl="http://hxl-tap-devjh/TestService1/Service1.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-16"?>
+<xs:schema xmlns:b="http://schemas.microsoft.com/BizTalk/2003" xmlns="http://unum.co.uk/schemas/esbresolution/2008/06/15" elementFormDefault="qualified" targetNamespace="http://unum.co.uk/schemas/esbresolution/2008/06/15" id="DictionarySchema" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:complexType name="DictionaryType">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="Item" type="DictionaryItem" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DictionaryItem">
+		<xs:sequence>
+			<xs:element name="Key">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:any namespace="##any" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Value">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:any namespace="##any" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Dictionary" type="DictionaryType">
+		<xs:annotation>
+			<xs:appinfo>
+				<recordInfo xmlns="http://schemas.microsoft.com/BizTalk/2003" />
+			</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>

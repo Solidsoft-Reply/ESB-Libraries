@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AppSettingEsbBamBufferedConnectionString" xml:space="preserve">
+    <value>ESB.BAM.BufferedConnectionString</value>
+  </data>
+  <data name="AppSettingEsbBamDirectConnectionString" xml:space="preserve">
+    <value>ESB.BAM.DirectConnectionString</value>
+  </data>
+  <data name="AppSettingEsbBamFlushThreshold" xml:space="preserve">
+    <value>ESB.BAM.FlushThreshold</value>
+  </data>
+  <data name="AppSettingEsbBamIsBuffered" xml:space="preserve">
+    <value>ESB.BAM.IsBuffered</value>
+  </data>
+  <data name="AppSettingEsbBamDefaultTrackpointPolicyName" xml:space="preserve">
+    <value>ESB.BAM.DefaultTrackpointPolicyName</value>
+  </data>
+  <data name="AppSettingEsbBamDefaultTrackpointPolicyVersion" xml:space="preserve">
+    <value>ESB.BAM.DefaultTrackpointPolicyVersion</value>
+  </data>
+  <data name="AssemblyQNameMicrosoftBizTalkGlobalPropertySchemas" xml:space="preserve">
+    <value>Microsoft.BizTalk.GlobalPropertySchemas, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</value>
+  </data>
+  <data name="ExceptionBamActivity" xml:space="preserve">
+    <value>The {0} directive can encode steps for a single BAM activity only.   Use multiple directives for multiple BAM steps.</value>
+  </data>
+  <data name="ExceptionBamActivityName" xml:space="preserve">
+    <value>The directive {0} can only manage a single BAM activity name.   Check the resolution policy.   If neccessary, create multiple directives to handle different activities.</value>
+  </data>
+  <data name="ExceptionBamAfterMapStepName" xml:space="preserve">
+    <value>The directive {0} can only manage a single after-map step name for a single BAM activity.   Check the resolution policy.   If neccessary, create multiple directives to handle different steps.</value>
+  </data>
+  <data name="ExceptionBamConnectionString" xml:space="preserve">
+    <value>The {0} directive can encode a single BAM connection string only.   Use multiple directives for multiple BAM steps.</value>
+  </data>
+  <data name="ExceptionBamFlushThreshold" xml:space="preserve">
+    <value>The {0} directive can encode a single BAM flush threshold only.   Use multiple directives for multiple BAM steps.</value>
+  </data>
+  <data name="ExceptionBamFlushThresholdLt1" xml:space="preserve">
+    <value>The BAM flush threshold in the {0} directive must be set to a value of 1 or greater.</value>
+  </data>
+  <data name="ExceptionBamIsBufferedFlag" xml:space="preserve">
+    <value>The {0} directive can encode a single BAM is-buffered flag only.   Use multiple directives for multiple BAM steps.</value>
+  </data>
+  <data name="ExceptionBamPostTransformationStep" xml:space="preserve">
+    <value>The {0} directive can encode a single BAM post-transformation step only.   Use multiple directives for multiple BAM steps.</value>
+  </data>
+  <data name="ExceptionBamStep" xml:space="preserve">
+    <value>The {0} directive can encode a single BAM step only.   Use multiple directives for multiple BAM steps.</value>
+  </data>
+  <data name="ExceptionBamStepName" xml:space="preserve">
+    <value>The directive {0} can only manage a single step name for a single BAM activity.   Check the resolution policy.   If neccessary, create multiple directives to handle different steps.</value>
+  </data>
+  <data name="ExceptionBamTrackpointPolicyName" xml:space="preserve">
+    <value>The {0} directive can encode a single BAM Trackpoint policy name only.   Use multiple directives for multiple BAM steps.</value>
+  </data>
+  <data name="ExceptionBamTrackpointPolicyVersion" xml:space="preserve">
+    <value>The {0} directive can encode a single BAM Trackpoint policy version only.   Use multiple directives for multiple BAM steps.</value>
+  </data>
+  <data name="ExceptionDeserializationNoElement" xml:space="preserve">
+    <value>The {0} cannot be de-serialised.   No &lt;{1}&gt; element was found.</value>
+  </data>
+  <data name="ExceptionDeserializationInvalidKeyElement" xml:space="preserve">
+    <value>The {0} cannot be de-serialized.   The &lt;Key&gt; element has invalid content.</value>
+  </data>
+  <data name="ExceptionEndPoint" xml:space="preserve">
+    <value>The {0} directive can encode a single endpoint URL only.   Use multiple directives for multiple endpoints.</value>
+  </data>
+  <data name="ExceptionEndPointConfiguration" xml:space="preserve">
+    <value>The {0} directive can encode a single endpoint configuration token only.   Use multiple directives for multiple endpoints.</value>
+  </data>
+  <data name="ExceptionEndPointInvalidUri" xml:space="preserve">
+    <value>The endpoint URL set in directive {0} is an invalid URI.\r\n</value>
+  </data>
+  <data name="ExceptionInvalidBamConnectionstring" xml:space="preserve">
+    <value>The BAM connection string for directive {0} cannot be null, empty or whitespace.</value>
+  </data>
+  <data name="ExceptionInvalidBamInterceptionActivity" xml:space="preserve">
+    <value>The BAM activity name for directive {0} cannot be null, empty or whitespace.</value>
+  </data>
+  <data name="ExceptionInvalidBamInterceptionStepName" xml:space="preserve">
+    <value>The BAM interception step name for directive {0} cannot be null, empty or whitespace.</value>
+  </data>
+  <data name="ExceptionInvalidBamTrackpointPolicyName" xml:space="preserve">
+    <value>The BAM trackpoint policy name for directive {0} cannot be null, empty or whitespace.</value>
+  </data>
+  <data name="ExceptionInvalidBamTrackpointPolicyVersion" xml:space="preserve">
+    <value>The BAM trackpoint policy version for directive {0} cannot be null, empty or whitespace.</value>
+  </data>
+  <data name="ExceptionInvalidBizTalkPropertyName" xml:space="preserve">
+    <value>The BizTalk property name for directive {0} cannot be null, empty or whitespace.</value>
+  </data>
+  <data name="ExceptionInvalidBizTalkPropertyNamespace" xml:space="preserve">
+    <value>The BizTalk property namespace for directive {0} cannot be null, empty or whitespace.</value>
+  </data>
+  <data name="ExceptionInvalidBizTalkPropertyValue" xml:space="preserve">
+    <value>The BizTalk property value for directive {0} cannot be null, empty or whitespace.</value>
+  </data>
+  <data name="ExceptionInvalidDirective" xml:space="preserve">
+    <value>Invalid directive name for {0} {1}.</value>
+  </data>
+  <data name="ExceptionInvalidEndpoint" xml:space="preserve">
+    <value>The endpoint for directive {0} cannot be null, empty or whitespace.</value>
+  </data>
+  <data name="ExceptionInvalidEndpointConfiguration" xml:space="preserve">
+    <value>The configuration for directive {0} and endpoint {1} cannot be null, empty or whitespace.</value>
+  </data>
+  <data name="ExceptionInvalidEndpointTransport" xml:space="preserve">
+    <value>The transport for directive {0} and endpoint {1} cannot be null, empty or whitespace.</value>
+  </data>
+  <data name="ExceptionInvalidProperty" xml:space="preserve">
+    <value>'{0}' is not a valid property</value>
+  </data>
+  <data name="ExceptionInvalidPropertyName" xml:space="preserve">
+    <value>The property name for directive {0} cannot be null, empty or whitespace.</value>
+  </data>
+  <data name="ExceptionInvalidPropertyValue" xml:space="preserve">
+    <value>The property value for directive {0} cannot be null, empty or whitespace.</value>
+  </data>
+  <data name="ExceptionInvalidSoapAction" xml:space="preserve">
+    <value>The SOAP action for directive {0} cannot be null, empty or whitespace.</value>
+  </data>
+  <data name="ExceptionInvalidTransformationMap" xml:space="preserve">
+    <value>The transformation map for directive {0} cannot be null, empty or whitespace.</value>
+  </data>
+  <data name="ExceptionMapToApply" xml:space="preserve">
+    <value>The {0} directive can encode a single transformation (BizTalk map) only.   Use multiple directives for multiple transformations.</value>
+  </data>
+  <data name="ExceptionNotImplemented" xml:space="preserve">
+    <value>The method or operation is not implemented.</value>
+  </data>
+  <data name="ExceptionReaderIsNull" xml:space="preserve">
+    <value>The XML reader passed to the {0} method is null.</value>
+  </data>
+  <data name="ExceptionRetryCount" xml:space="preserve">
+    <value>The {0} directive can encode a single retry count only.   Use multiple directives for multiple retry counts.</value>
+  </data>
+  <data name="ExceptionRetryInterval" xml:space="preserve">
+    <value>The {0} directive can encode a single retry interval only.   Use multiple directives for multiple retry intervals.</value>
+  </data>
+  <data name="ExceptionRetryLevel" xml:space="preserve">
+    <value>The {0} directive can encode a single retry level only.   Use multiple directives for multiple retry levels.</value>
+  </data>
+  <data name="ExceptionSchemaResourceNotFound" xml:space="preserve">
+    <value>Failed to find XSD schema in assembly resources.</value>
+  </data>
+  <data name="ExceptionSchemaSetIsNull" xml:space="preserve">
+    <value>The XML schema set passed to the {0} method is null.</value>
+  </data>
+  <data name="ExceptionSerialization" xml:space="preserve">
+    <value>The {0} cannot be serialized.   See inner exception.</value>
+  </data>
+  <data name="ExceptionServiceWindowStartTime" xml:space="preserve">
+    <value>The {0} directive can encode a single service window start time only.   Use multiple directives for multiple service windows.</value>
+  </data>
+  <data name="ExceptionSoapAction" xml:space="preserve">
+    <value>The {0} directive can encode a single SOAP Action only.   Use multiple directives for multiple endpoints.</value>
+  </data>
+  <data name="ExceptionSoapActionInvalidUri" xml:space="preserve">
+    <value>The SOAP Action set in directive {0} is an invalid URI.\r\n</value>
+  </data>
+  <data name="ExceptionBamTrackpointPolicyVersionInvalid" xml:space="preserve">
+    <value>The Trackpoint policy version set in directive {0} is an invalid version specifier.\r\n</value>
+  </data>
+  <data name="ExceptionTransportType" xml:space="preserve">
+    <value>The {0} directive can encode a single transport type only.   Use multiple directives for multiple endpoints.</value>
+  </data>
+  <data name="ExceptionUnexpectedError" xml:space="preserve">
+    <value>An unexpected error occurred when calling {0}.  See inner exception.</value>
+  </data>
+  <data name="ExceptionValueIsNull" xml:space="preserve">
+    <value>Value cannot be null.</value>
+  </data>
+  <data name="ExceptionWriterIsNull" xml:space="preserve">
+    <value>The XML writer passed to the {0} method is null.</value>
+  </data>
+  <data name="DictionaryNamespace" xml:space="preserve">
+    <value>http://solidsoftreply.com/schemas/webservices/esbresolutionservice/2015/05</value>
+  </data>
+  <data name="QNameDictionaryType" xml:space="preserve">
+    <value>DictionaryType</value>
+  </data>
+  <data name="QNameDirectiveDictionaryType" xml:space="preserve">
+    <value>DirectivesDictionaryType</value>
+  </data>
+  <data name="QNameParameterDictionaryType" xml:space="preserve">
+    <value>ParametersDictionaryType</value>
+  </data>
+  <data name="XsdDirectiveSchemaFile" xml:space="preserve">
+    <value>SolidsoftReply.Esb.Libraries.Facts.Dictionaries.Resources.DirectivesSchema.xsd</value>
+  </data>
+  <data name="XsdDirectiveSchemaPropertiesFile" xml:space="preserve">
+    <value>SolidsoftReply.Esb.Libraries.Facts.Dictionaries.Resources.DirectivesSchemaProperties.xsd</value>
+  </data>
+  <data name="XsdParameterSchemaFile" xml:space="preserve">
+    <value>SolidsoftReply.Esb.Libraries.Facts.Dictionaries.Resources.ParametersSchema.xsd</value>
+  </data>
+  <data name="XsdBtsPropertyValuesSchemaFile" xml:space="preserve">
+    <value>SolidsoftReply.Esb.Libraries.Facts.Dictionaries.Resources.BtsPropertyValuesSchema.xsd</value>
+  </data>
+  <data name="XsdGeneralPropertyValuesSchemaFile" xml:space="preserve">
+    <value>SolidsoftReply.Esb.Libraries.Facts.Dictionaries.Resources.GeneralPropertyValuesSchema.xsd</value>
+  </data>
+  <data name="String" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="XsdDictionarySchemaFile" xml:space="preserve">
+    <value>SolidsoftReply.Esb.Libraries.Facts.Dictionaries.Resources..DictionarySchema.xsd</value>
+  </data>
+  <data name="AppSettingEsbValidationPolicyName" xml:space="preserve">
+    <value>ESB.ValidationPolicyName</value>
+  </data>
+  <data name="AppSettingEsbValidationPolicyVersion" xml:space="preserve">
+    <value>ESB.ValidationPolicyVersion</value>
+  </data>
+  <data name="ExceptionInvalidValidationPolicyName" xml:space="preserve">
+    <value>The validation policy name for directive {0} cannot be null, empty or whitespace.</value>
+  </data>
+  <data name="ExceptionInvalidValidationPolicyVersion" xml:space="preserve">
+    <value>The validation policy version for directive {0} cannot be null, empty or whitespace.</value>
+  </data>
+  <data name="ExceptionValidationPolicyName" xml:space="preserve">
+    <value>The {0} directive can encode a single validation policy name only.   Use multiple directives for multiple validation rule sets.</value>
+  </data>
+  <data name="ExceptionValidationPolicyVersion" xml:space="preserve">
+    <value>The {0} directive can encode a single validation policy version only.   Use multiple directives for multiple validation rule sets.</value>
+  </data>
+  <data name="ExceptionValidationPolicyVersionInvalid" xml:space="preserve">
+    <value>The validation policy version set in directive {0} is an invalid version specifier.\r\n</value>
+  </data>
+  <data name="AppSettingEsbErrorOnInvalid" xml:space="preserve">
+    <value>ESB.ErrorOnInvalid</value>
+  </data>
+  <data name="ExceptionErrorOnInvalidFlag" xml:space="preserve">
+    <value>The {0} directive can encode a single 'error-on-invalid' flag only for a single validation rule set.   Use multiple directives for multiple validation rule sets.</value>
+  </data>
+</root>

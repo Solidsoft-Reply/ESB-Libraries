@@ -1,0 +1,1559 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>System.Runtime.Caching.4.0.0.0.Fakes</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.QualityTools.Testing.Fakes.Delegates.SystemRuntimeCachingDelegates">
+            <summary>Contains custom delegates used for the stubs and shims of System.Runtime.Caching</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Configuration.Fakes.ShimCachingSectionGroup">
+            <summary>Shim type of System.Runtime.Caching.Configuration.CachingSectionGroup</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Configuration.Fakes.ShimCachingSectionGroup.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Configuration.Fakes.ShimCachingSectionGroup.#ctor(System.Runtime.Caching.Configuration.CachingSectionGroup)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Configuration.Fakes.ShimCachingSectionGroup.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Configuration.Fakes.ShimCachingSectionGroup.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimCachingSectionGroup.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimCachingSectionGroup.Constructor">
+            <summary>Sets the shim of CachingSectionGroup.CachingSectionGroup()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimCachingSectionGroup.MemoryCachesGet">
+            <summary>Sets the shim of CachingSectionGroup.get_MemoryCaches()</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Configuration.Fakes.ShimCachingSectionGroup.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimCachingSectionGroup.AllInstances.MemoryCachesGet">
+            <summary>Sets the shim of CachingSectionGroup.get_MemoryCaches()</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheElement">
+            <summary>Shim type of System.Runtime.Caching.Configuration.MemoryCacheElement</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheElement.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheElement.#ctor(System.Runtime.Caching.Configuration.MemoryCacheElement)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheElement.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheElement.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheElement.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheElement.CacheMemoryLimitMegabytesGet">
+            <summary>Sets the shim of MemoryCacheElement.get_CacheMemoryLimitMegabytes()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheElement.CacheMemoryLimitMegabytesSetInt32">
+            <summary>Sets the shim of MemoryCacheElement.set_CacheMemoryLimitMegabytes(Int32 value)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheElement.Constructor">
+            <summary>Sets the shim of MemoryCacheElement.MemoryCacheElement()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheElement.ConstructorString">
+            <summary>Sets the shim of MemoryCacheElement.MemoryCacheElement(String name)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheElement.NameGet">
+            <summary>Sets the shim of MemoryCacheElement.get_Name()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheElement.NameSetString">
+            <summary>Sets the shim of MemoryCacheElement.set_Name(String value)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheElement.PhysicalMemoryLimitPercentageGet">
+            <summary>Sets the shim of MemoryCacheElement.get_PhysicalMemoryLimitPercentage()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheElement.PhysicalMemoryLimitPercentageSetInt32">
+            <summary>Sets the shim of MemoryCacheElement.set_PhysicalMemoryLimitPercentage(Int32 value)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheElement.PollingIntervalGet">
+            <summary>Sets the shim of MemoryCacheElement.get_PollingInterval()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheElement.PollingIntervalSetTimeSpan">
+            <summary>Sets the shim of MemoryCacheElement.set_PollingInterval(TimeSpan value)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheElement.PropertiesGet">
+            <summary>Sets the shim of MemoryCacheElement.get_Properties()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheElement.StaticConstructor">
+            <summary>Sets the shim of MemoryCacheElement.MemoryCacheElement()</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheElement.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheElement.AllInstances.CacheMemoryLimitMegabytesGet">
+            <summary>Sets the shim of MemoryCacheElement.get_CacheMemoryLimitMegabytes()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheElement.AllInstances.CacheMemoryLimitMegabytesSetInt32">
+            <summary>Sets the shim of MemoryCacheElement.set_CacheMemoryLimitMegabytes(Int32 value)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheElement.AllInstances.NameGet">
+            <summary>Sets the shim of MemoryCacheElement.get_Name()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheElement.AllInstances.NameSetString">
+            <summary>Sets the shim of MemoryCacheElement.set_Name(String value)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheElement.AllInstances.PhysicalMemoryLimitPercentageGet">
+            <summary>Sets the shim of MemoryCacheElement.get_PhysicalMemoryLimitPercentage()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheElement.AllInstances.PhysicalMemoryLimitPercentageSetInt32">
+            <summary>Sets the shim of MemoryCacheElement.set_PhysicalMemoryLimitPercentage(Int32 value)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheElement.AllInstances.PollingIntervalGet">
+            <summary>Sets the shim of MemoryCacheElement.get_PollingInterval()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheElement.AllInstances.PollingIntervalSetTimeSpan">
+            <summary>Sets the shim of MemoryCacheElement.set_PollingInterval(TimeSpan value)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheElement.AllInstances.PropertiesGet">
+            <summary>Sets the shim of MemoryCacheElement.get_Properties()</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSection">
+            <summary>Shim type of System.Runtime.Caching.Configuration.MemoryCacheSection</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSection.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSection.#ctor(System.Runtime.Caching.Configuration.MemoryCacheSection)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSection.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSection.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSection.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSection.Constructor">
+            <summary>Sets the shim of MemoryCacheSection.MemoryCacheSection()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSection.NamedCachesGet">
+            <summary>Sets the shim of MemoryCacheSection.get_NamedCaches()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSection.PropertiesGet">
+            <summary>Sets the shim of MemoryCacheSection.get_Properties()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSection.StaticConstructor">
+            <summary>Sets the shim of MemoryCacheSection.MemoryCacheSection()</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSection.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSection.AllInstances.NamedCachesGet">
+            <summary>Sets the shim of MemoryCacheSection.get_NamedCaches()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSection.AllInstances.PropertiesGet">
+            <summary>Sets the shim of MemoryCacheSection.get_Properties()</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection">
+            <summary>Shim type of System.Runtime.Caching.Configuration.MemoryCacheSettingsCollection</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.#ctor(System.Runtime.Caching.Configuration.MemoryCacheSettingsCollection)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.Bind(System.Collections.ICollection)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.Bind(System.Collections.IEnumerable)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.AddMemoryCacheElement">
+            <summary>Sets the shim of MemoryCacheSettingsCollection.Add(MemoryCacheElement cache)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.Clear">
+            <summary>Sets the shim of MemoryCacheSettingsCollection.Clear()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.CollectionTypeGet">
+            <summary>Sets the shim of MemoryCacheSettingsCollection.get_CollectionType()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.Constructor">
+            <summary>Sets the shim of MemoryCacheSettingsCollection.MemoryCacheSettingsCollection()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.CreateNewElement">
+            <summary>Sets the shim of MemoryCacheSettingsCollection.CreateNewElement()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.CreateNewElementString">
+            <summary>Sets the shim of MemoryCacheSettingsCollection.CreateNewElement(String elementName)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.GetElementKeyConfigurationElement">
+            <summary>Sets the shim of MemoryCacheSettingsCollection.GetElementKey(ConfigurationElement element)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.IndexOfMemoryCacheElement">
+            <summary>Sets the shim of MemoryCacheSettingsCollection.IndexOf(MemoryCacheElement cache)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.ItemGetInt32">
+            <summary>Sets the shim of MemoryCacheSettingsCollection.get_Item(Int32 index)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.ItemGetString">
+            <summary>Sets the shim of MemoryCacheSettingsCollection.get_Item(String key)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.ItemSetInt32MemoryCacheElement">
+            <summary>Sets the shim of MemoryCacheSettingsCollection.set_Item(Int32 index, MemoryCacheElement value)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.PropertiesGet">
+            <summary>Sets the shim of MemoryCacheSettingsCollection.get_Properties()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.RemoveAtInt32">
+            <summary>Sets the shim of MemoryCacheSettingsCollection.RemoveAt(Int32 index)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.RemoveMemoryCacheElement">
+            <summary>Sets the shim of MemoryCacheSettingsCollection.Remove(MemoryCacheElement cache)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.StaticConstructor">
+            <summary>Sets the shim of MemoryCacheSettingsCollection.MemoryCacheSettingsCollection()</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.AllInstances.AddMemoryCacheElement">
+            <summary>Sets the shim of MemoryCacheSettingsCollection.Add(MemoryCacheElement cache)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.AllInstances.Clear">
+            <summary>Sets the shim of MemoryCacheSettingsCollection.Clear()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.AllInstances.CollectionTypeGet">
+            <summary>Sets the shim of MemoryCacheSettingsCollection.get_CollectionType()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.AllInstances.CreateNewElement">
+            <summary>Sets the shim of MemoryCacheSettingsCollection.CreateNewElement()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.AllInstances.CreateNewElementString">
+            <summary>Sets the shim of MemoryCacheSettingsCollection.CreateNewElement(String elementName)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.AllInstances.GetElementKeyConfigurationElement">
+            <summary>Sets the shim of MemoryCacheSettingsCollection.GetElementKey(ConfigurationElement element)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.AllInstances.IndexOfMemoryCacheElement">
+            <summary>Sets the shim of MemoryCacheSettingsCollection.IndexOf(MemoryCacheElement cache)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.AllInstances.ItemGetInt32">
+            <summary>Sets the shim of MemoryCacheSettingsCollection.get_Item(Int32 index)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.AllInstances.ItemGetString">
+            <summary>Sets the shim of MemoryCacheSettingsCollection.get_Item(String key)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.AllInstances.ItemSetInt32MemoryCacheElement">
+            <summary>Sets the shim of MemoryCacheSettingsCollection.set_Item(Int32 index, MemoryCacheElement value)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.AllInstances.PropertiesGet">
+            <summary>Sets the shim of MemoryCacheSettingsCollection.get_Properties()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.AllInstances.RemoveAtInt32">
+            <summary>Sets the shim of MemoryCacheSettingsCollection.RemoveAt(Int32 index)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Configuration.Fakes.ShimMemoryCacheSettingsCollection.AllInstances.RemoveMemoryCacheElement">
+            <summary>Sets the shim of MemoryCacheSettingsCollection.Remove(MemoryCacheElement cache)</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Fakes.ShimCacheEntryChangeMonitor">
+            <summary>Shim type of System.Runtime.Caching.CacheEntryChangeMonitor</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimCacheEntryChangeMonitor.#ctor(System.Runtime.Caching.CacheEntryChangeMonitor)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimCacheEntryChangeMonitor.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimCacheEntryChangeMonitor.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimCacheEntryChangeMonitor.Bind(System.IDisposable)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheEntryChangeMonitor.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheEntryChangeMonitor.Constructor">
+            <summary>Sets the shim of CacheEntryChangeMonitor.CacheEntryChangeMonitor()</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Fakes.ShimCacheEntryChangeMonitor.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Fakes.ShimCacheEntryRemovedArguments">
+            <summary>Shim type of System.Runtime.Caching.CacheEntryRemovedArguments</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimCacheEntryRemovedArguments.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimCacheEntryRemovedArguments.#ctor(System.Runtime.Caching.CacheEntryRemovedArguments)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimCacheEntryRemovedArguments.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimCacheEntryRemovedArguments.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheEntryRemovedArguments.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheEntryRemovedArguments.CacheItemGet">
+            <summary>Sets the shim of CacheEntryRemovedArguments.get_CacheItem()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheEntryRemovedArguments.ConstructorObjectCacheCacheEntryRemovedReasonCacheItem">
+            <summary>Sets the shim of CacheEntryRemovedArguments.CacheEntryRemovedArguments(ObjectCache source, CacheEntryRemovedReason reason, CacheItem cacheItem)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheEntryRemovedArguments.RemovedReasonGet">
+            <summary>Sets the shim of CacheEntryRemovedArguments.get_RemovedReason()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheEntryRemovedArguments.SourceGet">
+            <summary>Sets the shim of CacheEntryRemovedArguments.get_Source()</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Fakes.ShimCacheEntryRemovedArguments.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheEntryRemovedArguments.AllInstances.CacheItemGet">
+            <summary>Sets the shim of CacheEntryRemovedArguments.get_CacheItem()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheEntryRemovedArguments.AllInstances.RemovedReasonGet">
+            <summary>Sets the shim of CacheEntryRemovedArguments.get_RemovedReason()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheEntryRemovedArguments.AllInstances.SourceGet">
+            <summary>Sets the shim of CacheEntryRemovedArguments.get_Source()</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Fakes.ShimCacheEntryUpdateArguments">
+            <summary>Shim type of System.Runtime.Caching.CacheEntryUpdateArguments</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimCacheEntryUpdateArguments.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimCacheEntryUpdateArguments.#ctor(System.Runtime.Caching.CacheEntryUpdateArguments)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimCacheEntryUpdateArguments.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimCacheEntryUpdateArguments.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheEntryUpdateArguments.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheEntryUpdateArguments.ConstructorObjectCacheCacheEntryRemovedReasonStringString">
+            <summary>Sets the shim of CacheEntryUpdateArguments.CacheEntryUpdateArguments(ObjectCache source, CacheEntryRemovedReason reason, String key, String regionName)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheEntryUpdateArguments.KeyGet">
+            <summary>Sets the shim of CacheEntryUpdateArguments.get_Key()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheEntryUpdateArguments.RegionNameGet">
+            <summary>Sets the shim of CacheEntryUpdateArguments.get_RegionName()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheEntryUpdateArguments.RemovedReasonGet">
+            <summary>Sets the shim of CacheEntryUpdateArguments.get_RemovedReason()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheEntryUpdateArguments.SourceGet">
+            <summary>Sets the shim of CacheEntryUpdateArguments.get_Source()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheEntryUpdateArguments.UpdatedCacheItemGet">
+            <summary>Sets the shim of CacheEntryUpdateArguments.get_UpdatedCacheItem()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheEntryUpdateArguments.UpdatedCacheItemPolicyGet">
+            <summary>Sets the shim of CacheEntryUpdateArguments.get_UpdatedCacheItemPolicy()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheEntryUpdateArguments.UpdatedCacheItemPolicySetCacheItemPolicy">
+            <summary>Sets the shim of CacheEntryUpdateArguments.set_UpdatedCacheItemPolicy(CacheItemPolicy value)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheEntryUpdateArguments.UpdatedCacheItemSetCacheItem">
+            <summary>Sets the shim of CacheEntryUpdateArguments.set_UpdatedCacheItem(CacheItem value)</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Fakes.ShimCacheEntryUpdateArguments.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheEntryUpdateArguments.AllInstances.KeyGet">
+            <summary>Sets the shim of CacheEntryUpdateArguments.get_Key()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheEntryUpdateArguments.AllInstances.RegionNameGet">
+            <summary>Sets the shim of CacheEntryUpdateArguments.get_RegionName()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheEntryUpdateArguments.AllInstances.RemovedReasonGet">
+            <summary>Sets the shim of CacheEntryUpdateArguments.get_RemovedReason()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheEntryUpdateArguments.AllInstances.SourceGet">
+            <summary>Sets the shim of CacheEntryUpdateArguments.get_Source()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheEntryUpdateArguments.AllInstances.UpdatedCacheItemGet">
+            <summary>Sets the shim of CacheEntryUpdateArguments.get_UpdatedCacheItem()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheEntryUpdateArguments.AllInstances.UpdatedCacheItemPolicyGet">
+            <summary>Sets the shim of CacheEntryUpdateArguments.get_UpdatedCacheItemPolicy()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheEntryUpdateArguments.AllInstances.UpdatedCacheItemPolicySetCacheItemPolicy">
+            <summary>Sets the shim of CacheEntryUpdateArguments.set_UpdatedCacheItemPolicy(CacheItemPolicy value)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheEntryUpdateArguments.AllInstances.UpdatedCacheItemSetCacheItem">
+            <summary>Sets the shim of CacheEntryUpdateArguments.set_UpdatedCacheItem(CacheItem value)</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Fakes.ShimCacheItem">
+            <summary>Shim type of System.Runtime.Caching.CacheItem</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimCacheItem.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimCacheItem.#ctor(System.Runtime.Caching.CacheItem)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimCacheItem.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimCacheItem.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItem.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItem.Constructor">
+            <summary>Sets the shim of CacheItem.CacheItem()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItem.ConstructorString">
+            <summary>Sets the shim of CacheItem.CacheItem(String key)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItem.ConstructorStringObject">
+            <summary>Sets the shim of CacheItem.CacheItem(String key, Object value)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItem.ConstructorStringObjectString">
+            <summary>Sets the shim of CacheItem.CacheItem(String key, Object value, String regionName)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItem.KeyGet">
+            <summary>Sets the shim of CacheItem.get_Key()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItem.KeySetString">
+            <summary>Sets the shim of CacheItem.set_Key(String value)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItem.RegionNameGet">
+            <summary>Sets the shim of CacheItem.get_RegionName()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItem.RegionNameSetString">
+            <summary>Sets the shim of CacheItem.set_RegionName(String value)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItem.ValueGet">
+            <summary>Sets the shim of CacheItem.get_Value()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItem.ValueSetObject">
+            <summary>Sets the shim of CacheItem.set_Value(Object value)</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Fakes.ShimCacheItem.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItem.AllInstances.KeyGet">
+            <summary>Sets the shim of CacheItem.get_Key()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItem.AllInstances.KeySetString">
+            <summary>Sets the shim of CacheItem.set_Key(String value)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItem.AllInstances.RegionNameGet">
+            <summary>Sets the shim of CacheItem.get_RegionName()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItem.AllInstances.RegionNameSetString">
+            <summary>Sets the shim of CacheItem.set_RegionName(String value)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItem.AllInstances.ValueGet">
+            <summary>Sets the shim of CacheItem.get_Value()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItem.AllInstances.ValueSetObject">
+            <summary>Sets the shim of CacheItem.set_Value(Object value)</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Fakes.ShimCacheItemPolicy">
+            <summary>Shim type of System.Runtime.Caching.CacheItemPolicy</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimCacheItemPolicy.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimCacheItemPolicy.#ctor(System.Runtime.Caching.CacheItemPolicy)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimCacheItemPolicy.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimCacheItemPolicy.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItemPolicy.AbsoluteExpirationGet">
+            <summary>Sets the shim of CacheItemPolicy.get_AbsoluteExpiration()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItemPolicy.AbsoluteExpirationSetDateTimeOffset">
+            <summary>Sets the shim of CacheItemPolicy.set_AbsoluteExpiration(DateTimeOffset value)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItemPolicy.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItemPolicy.ChangeMonitorsGet">
+            <summary>Sets the shim of CacheItemPolicy.get_ChangeMonitors()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItemPolicy.Constructor">
+            <summary>Sets the shim of CacheItemPolicy.CacheItemPolicy()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItemPolicy.PriorityGet">
+            <summary>Sets the shim of CacheItemPolicy.get_Priority()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItemPolicy.PrioritySetCacheItemPriority">
+            <summary>Sets the shim of CacheItemPolicy.set_Priority(CacheItemPriority value)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItemPolicy.RemovedCallbackGet">
+            <summary>Sets the shim of CacheItemPolicy.get_RemovedCallback()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItemPolicy.RemovedCallbackSetCacheEntryRemovedCallback">
+            <summary>Sets the shim of CacheItemPolicy.set_RemovedCallback(CacheEntryRemovedCallback value)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItemPolicy.SlidingExpirationGet">
+            <summary>Sets the shim of CacheItemPolicy.get_SlidingExpiration()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItemPolicy.SlidingExpirationSetTimeSpan">
+            <summary>Sets the shim of CacheItemPolicy.set_SlidingExpiration(TimeSpan value)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItemPolicy.UpdateCallbackGet">
+            <summary>Sets the shim of CacheItemPolicy.get_UpdateCallback()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItemPolicy.UpdateCallbackSetCacheEntryUpdateCallback">
+            <summary>Sets the shim of CacheItemPolicy.set_UpdateCallback(CacheEntryUpdateCallback value)</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Fakes.ShimCacheItemPolicy.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItemPolicy.AllInstances.AbsoluteExpirationGet">
+            <summary>Sets the shim of CacheItemPolicy.get_AbsoluteExpiration()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItemPolicy.AllInstances.AbsoluteExpirationSetDateTimeOffset">
+            <summary>Sets the shim of CacheItemPolicy.set_AbsoluteExpiration(DateTimeOffset value)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItemPolicy.AllInstances.ChangeMonitorsGet">
+            <summary>Sets the shim of CacheItemPolicy.get_ChangeMonitors()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItemPolicy.AllInstances.PriorityGet">
+            <summary>Sets the shim of CacheItemPolicy.get_Priority()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItemPolicy.AllInstances.PrioritySetCacheItemPriority">
+            <summary>Sets the shim of CacheItemPolicy.set_Priority(CacheItemPriority value)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItemPolicy.AllInstances.RemovedCallbackGet">
+            <summary>Sets the shim of CacheItemPolicy.get_RemovedCallback()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItemPolicy.AllInstances.RemovedCallbackSetCacheEntryRemovedCallback">
+            <summary>Sets the shim of CacheItemPolicy.set_RemovedCallback(CacheEntryRemovedCallback value)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItemPolicy.AllInstances.SlidingExpirationGet">
+            <summary>Sets the shim of CacheItemPolicy.get_SlidingExpiration()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItemPolicy.AllInstances.SlidingExpirationSetTimeSpan">
+            <summary>Sets the shim of CacheItemPolicy.set_SlidingExpiration(TimeSpan value)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItemPolicy.AllInstances.UpdateCallbackGet">
+            <summary>Sets the shim of CacheItemPolicy.get_UpdateCallback()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimCacheItemPolicy.AllInstances.UpdateCallbackSetCacheEntryUpdateCallback">
+            <summary>Sets the shim of CacheItemPolicy.set_UpdateCallback(CacheEntryUpdateCallback value)</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Fakes.ShimChangeMonitor">
+            <summary>Shim type of System.Runtime.Caching.ChangeMonitor</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimChangeMonitor.#ctor(System.Runtime.Caching.ChangeMonitor)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimChangeMonitor.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimChangeMonitor.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimChangeMonitor.Bind(System.IDisposable)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimChangeMonitor.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimChangeMonitor.Constructor">
+            <summary>Sets the shim of ChangeMonitor.ChangeMonitor()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimChangeMonitor.Dispose">
+            <summary>Sets the shim of ChangeMonitor.Dispose()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimChangeMonitor.HasChangedGet">
+            <summary>Sets the shim of ChangeMonitor.get_HasChanged()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimChangeMonitor.InitializationComplete">
+            <summary>Sets the shim of ChangeMonitor.InitializationComplete()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimChangeMonitor.IsDisposedGet">
+            <summary>Sets the shim of ChangeMonitor.get_IsDisposed()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimChangeMonitor.NotifyOnChangedOnChangedCallback">
+            <summary>Sets the shim of ChangeMonitor.NotifyOnChanged(OnChangedCallback onChangedCallback)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimChangeMonitor.OnChangedObject">
+            <summary>Sets the shim of ChangeMonitor.OnChanged(Object state)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimChangeMonitor.StaticConstructor">
+            <summary>Sets the shim of ChangeMonitor.ChangeMonitor()</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Fakes.ShimChangeMonitor.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimChangeMonitor.AllInstances.Dispose">
+            <summary>Sets the shim of ChangeMonitor.Dispose()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimChangeMonitor.AllInstances.HasChangedGet">
+            <summary>Sets the shim of ChangeMonitor.get_HasChanged()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimChangeMonitor.AllInstances.InitializationComplete">
+            <summary>Sets the shim of ChangeMonitor.InitializationComplete()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimChangeMonitor.AllInstances.IsDisposedGet">
+            <summary>Sets the shim of ChangeMonitor.get_IsDisposed()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimChangeMonitor.AllInstances.NotifyOnChangedOnChangedCallback">
+            <summary>Sets the shim of ChangeMonitor.NotifyOnChanged(OnChangedCallback onChangedCallback)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimChangeMonitor.AllInstances.OnChangedObject">
+            <summary>Sets the shim of ChangeMonitor.OnChanged(Object state)</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Fakes.ShimFileChangeMonitor">
+            <summary>Shim type of System.Runtime.Caching.FileChangeMonitor</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimFileChangeMonitor.#ctor(System.Runtime.Caching.FileChangeMonitor)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimFileChangeMonitor.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimFileChangeMonitor.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimFileChangeMonitor.Bind(System.IDisposable)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimFileChangeMonitor.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimFileChangeMonitor.Constructor">
+            <summary>Sets the shim of FileChangeMonitor.FileChangeMonitor()</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Fakes.ShimFileChangeMonitor.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Fakes.ShimHostFileChangeMonitor">
+            <summary>Shim type of System.Runtime.Caching.HostFileChangeMonitor</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimHostFileChangeMonitor.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimHostFileChangeMonitor.#ctor(System.Runtime.Caching.HostFileChangeMonitor)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimHostFileChangeMonitor.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimHostFileChangeMonitor.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimHostFileChangeMonitor.Bind(System.IDisposable)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimHostFileChangeMonitor.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimHostFileChangeMonitor.Constructor">
+            <summary>Sets the shim of HostFileChangeMonitor.HostFileChangeMonitor()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimHostFileChangeMonitor.ConstructorIListOfString">
+            <summary>Sets the shim of HostFileChangeMonitor.HostFileChangeMonitor(IList`1&lt;String&gt; filePaths)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimHostFileChangeMonitor.DisposeBoolean">
+            <summary>Sets the shim of HostFileChangeMonitor.Dispose(Boolean disposing)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimHostFileChangeMonitor.FilePathsGet">
+            <summary>Sets the shim of HostFileChangeMonitor.get_FilePaths()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimHostFileChangeMonitor.LastModifiedGet">
+            <summary>Sets the shim of HostFileChangeMonitor.get_LastModified()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimHostFileChangeMonitor.UniqueIdGet">
+            <summary>Sets the shim of HostFileChangeMonitor.get_UniqueId()</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Fakes.ShimHostFileChangeMonitor.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimHostFileChangeMonitor.AllInstances.DisposeBoolean">
+            <summary>Sets the shim of HostFileChangeMonitor.Dispose(Boolean disposing)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimHostFileChangeMonitor.AllInstances.FilePathsGet">
+            <summary>Sets the shim of HostFileChangeMonitor.get_FilePaths()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimHostFileChangeMonitor.AllInstances.LastModifiedGet">
+            <summary>Sets the shim of HostFileChangeMonitor.get_LastModified()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimHostFileChangeMonitor.AllInstances.UniqueIdGet">
+            <summary>Sets the shim of HostFileChangeMonitor.get_UniqueId()</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Fakes.ShimMemoryCache">
+            <summary>Shim type of System.Runtime.Caching.MemoryCache</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimMemoryCache.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimMemoryCache.#ctor(System.Runtime.Caching.MemoryCache)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimMemoryCache.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimMemoryCache.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimMemoryCache.Bind(System.IDisposable)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimMemoryCache.Bind(System.Collections.IEnumerable)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimMemoryCache.Bind(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}})">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.AddCacheItemCacheItemPolicy">
+            <summary>Sets the shim of MemoryCache.Add(CacheItem item, CacheItemPolicy policy)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.AddOrGetExistingCacheItemCacheItemPolicy">
+            <summary>Sets the shim of MemoryCache.AddOrGetExisting(CacheItem item, CacheItemPolicy policy)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.AddOrGetExistingStringObjectCacheItemPolicyString">
+            <summary>Sets the shim of MemoryCache.AddOrGetExisting(String key, Object value, CacheItemPolicy policy, String regionName)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.AddOrGetExistingStringObjectDateTimeOffsetString">
+            <summary>Sets the shim of MemoryCache.AddOrGetExisting(String key, Object value, DateTimeOffset absoluteExpiration, String regionName)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.CacheMemoryLimitGet">
+            <summary>Sets the shim of MemoryCache.get_CacheMemoryLimit()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.Constructor">
+            <summary>Sets the shim of MemoryCache.MemoryCache()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.ConstructorStringNameValueCollection">
+            <summary>Sets the shim of MemoryCache.MemoryCache(String name, NameValueCollection config)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.ContainsStringString">
+            <summary>Sets the shim of MemoryCache.Contains(String key, String regionName)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.CreateCacheEntryChangeMonitorIEnumerableOfStringString">
+            <summary>Sets the shim of MemoryCache.CreateCacheEntryChangeMonitor(IEnumerable`1&lt;String&gt; keys, String regionName)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.DefaultCacheCapabilitiesGet">
+            <summary>Sets the shim of MemoryCache.get_DefaultCacheCapabilities()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.DefaultGet">
+            <summary>Sets the shim of MemoryCache.get_Default()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.Dispose">
+            <summary>Sets the shim of MemoryCache.Dispose()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.GetCacheItemStringString">
+            <summary>Sets the shim of MemoryCache.GetCacheItem(String key, String regionName)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.GetCountString">
+            <summary>Sets the shim of MemoryCache.GetCount(String regionName)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.GetEnumerator">
+            <summary>Sets the shim of MemoryCache.GetEnumerator()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.GetStringString">
+            <summary>Sets the shim of MemoryCache.Get(String key, String regionName)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.GetValuesIEnumerableOfStringString">
+            <summary>Sets the shim of MemoryCache.GetValues(IEnumerable`1&lt;String&gt; keys, String regionName)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.ItemGetString">
+            <summary>Sets the shim of MemoryCache.get_Item(String key)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.ItemSetStringObject">
+            <summary>Sets the shim of MemoryCache.set_Item(String key, Object value)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.NameGet">
+            <summary>Sets the shim of MemoryCache.get_Name()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.PhysicalMemoryLimitGet">
+            <summary>Sets the shim of MemoryCache.get_PhysicalMemoryLimit()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.PollingIntervalGet">
+            <summary>Sets the shim of MemoryCache.get_PollingInterval()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.RemoveStringString">
+            <summary>Sets the shim of MemoryCache.Remove(String key, String regionName)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.SetCacheItemCacheItemPolicy">
+            <summary>Sets the shim of MemoryCache.Set(CacheItem item, CacheItemPolicy policy)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.SetStringObjectCacheItemPolicyString">
+            <summary>Sets the shim of MemoryCache.Set(String key, Object value, CacheItemPolicy policy, String regionName)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.SetStringObjectDateTimeOffsetString">
+            <summary>Sets the shim of MemoryCache.Set(String key, Object value, DateTimeOffset absoluteExpiration, String regionName)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.StaticConstructor">
+            <summary>Sets the shim of MemoryCache.MemoryCache()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.SystemCollectionsIEnumerableGetEnumerator">
+            <summary>Sets the shim of MemoryCache.System.Collections.IEnumerable.GetEnumerator()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.TrimInt32">
+            <summary>Sets the shim of MemoryCache.Trim(Int32 percent)</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Fakes.ShimMemoryCache.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.AllInstances.AddCacheItemCacheItemPolicy">
+            <summary>Sets the shim of MemoryCache.Add(CacheItem item, CacheItemPolicy policy)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.AllInstances.AddOrGetExistingCacheItemCacheItemPolicy">
+            <summary>Sets the shim of MemoryCache.AddOrGetExisting(CacheItem item, CacheItemPolicy policy)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.AllInstances.AddOrGetExistingStringObjectCacheItemPolicyString">
+            <summary>Sets the shim of MemoryCache.AddOrGetExisting(String key, Object value, CacheItemPolicy policy, String regionName)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.AllInstances.AddOrGetExistingStringObjectDateTimeOffsetString">
+            <summary>Sets the shim of MemoryCache.AddOrGetExisting(String key, Object value, DateTimeOffset absoluteExpiration, String regionName)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.AllInstances.CacheMemoryLimitGet">
+            <summary>Sets the shim of MemoryCache.get_CacheMemoryLimit()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.AllInstances.ContainsStringString">
+            <summary>Sets the shim of MemoryCache.Contains(String key, String regionName)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.AllInstances.CreateCacheEntryChangeMonitorIEnumerableOfStringString">
+            <summary>Sets the shim of MemoryCache.CreateCacheEntryChangeMonitor(IEnumerable`1&lt;String&gt; keys, String regionName)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.AllInstances.DefaultCacheCapabilitiesGet">
+            <summary>Sets the shim of MemoryCache.get_DefaultCacheCapabilities()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.AllInstances.Dispose">
+            <summary>Sets the shim of MemoryCache.Dispose()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.AllInstances.GetCacheItemStringString">
+            <summary>Sets the shim of MemoryCache.GetCacheItem(String key, String regionName)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.AllInstances.GetCountString">
+            <summary>Sets the shim of MemoryCache.GetCount(String regionName)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.AllInstances.GetEnumerator">
+            <summary>Sets the shim of MemoryCache.GetEnumerator()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.AllInstances.GetStringString">
+            <summary>Sets the shim of MemoryCache.Get(String key, String regionName)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.AllInstances.GetValuesIEnumerableOfStringString">
+            <summary>Sets the shim of MemoryCache.GetValues(IEnumerable`1&lt;String&gt; keys, String regionName)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.AllInstances.ItemGetString">
+            <summary>Sets the shim of MemoryCache.get_Item(String key)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.AllInstances.ItemSetStringObject">
+            <summary>Sets the shim of MemoryCache.set_Item(String key, Object value)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.AllInstances.NameGet">
+            <summary>Sets the shim of MemoryCache.get_Name()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.AllInstances.PhysicalMemoryLimitGet">
+            <summary>Sets the shim of MemoryCache.get_PhysicalMemoryLimit()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.AllInstances.PollingIntervalGet">
+            <summary>Sets the shim of MemoryCache.get_PollingInterval()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.AllInstances.RemoveStringString">
+            <summary>Sets the shim of MemoryCache.Remove(String key, String regionName)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.AllInstances.SetCacheItemCacheItemPolicy">
+            <summary>Sets the shim of MemoryCache.Set(CacheItem item, CacheItemPolicy policy)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.AllInstances.SetStringObjectCacheItemPolicyString">
+            <summary>Sets the shim of MemoryCache.Set(String key, Object value, CacheItemPolicy policy, String regionName)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.AllInstances.SetStringObjectDateTimeOffsetString">
+            <summary>Sets the shim of MemoryCache.Set(String key, Object value, DateTimeOffset absoluteExpiration, String regionName)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.AllInstances.SystemCollectionsIEnumerableGetEnumerator">
+            <summary>Sets the shim of MemoryCache.System.Collections.IEnumerable.GetEnumerator()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimMemoryCache.AllInstances.TrimInt32">
+            <summary>Sets the shim of MemoryCache.Trim(Int32 percent)</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Fakes.ShimObjectCache">
+            <summary>Shim type of System.Runtime.Caching.ObjectCache</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimObjectCache.#ctor(System.Runtime.Caching.ObjectCache)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimObjectCache.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimObjectCache.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimObjectCache.Bind(System.Collections.IEnumerable)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimObjectCache.Bind(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}})">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimObjectCache.AddCacheItemCacheItemPolicy">
+            <summary>Sets the shim of ObjectCache.Add(CacheItem item, CacheItemPolicy policy)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimObjectCache.AddStringObjectCacheItemPolicyString">
+            <summary>Sets the shim of ObjectCache.Add(String key, Object value, CacheItemPolicy policy, String regionName)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimObjectCache.AddStringObjectDateTimeOffsetString">
+            <summary>Sets the shim of ObjectCache.Add(String key, Object value, DateTimeOffset absoluteExpiration, String regionName)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimObjectCache.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimObjectCache.Constructor">
+            <summary>Sets the shim of ObjectCache.ObjectCache()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimObjectCache.GetValuesStringStringArray">
+            <summary>Sets the shim of ObjectCache.GetValues(String regionName, String[] keys)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimObjectCache.HostGet">
+            <summary>Sets the shim of ObjectCache.get_Host()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimObjectCache.HostSetIServiceProvider">
+            <summary>Sets the shim of ObjectCache.set_Host(IServiceProvider value)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimObjectCache.StaticConstructor">
+            <summary>Sets the shim of ObjectCache.ObjectCache()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimObjectCache.SystemCollectionsGenericIEnumerableSystemCollectionsGenericKeyValuePairSystemStringSystemObjectGetEnumerator">
+            <summary>Sets the shim of ObjectCache.System.Collections.Generic.IEnumerable&lt;System.Collections.Generic.KeyValuePair&lt;System.String,System.Object&gt;&gt;.GetEnumerator()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimObjectCache.SystemCollectionsIEnumerableGetEnumerator">
+            <summary>Sets the shim of ObjectCache.System.Collections.IEnumerable.GetEnumerator()</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Fakes.ShimObjectCache.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimObjectCache.AllInstances.AddCacheItemCacheItemPolicy">
+            <summary>Sets the shim of ObjectCache.Add(CacheItem item, CacheItemPolicy policy)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimObjectCache.AllInstances.AddStringObjectCacheItemPolicyString">
+            <summary>Sets the shim of ObjectCache.Add(String key, Object value, CacheItemPolicy policy, String regionName)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimObjectCache.AllInstances.AddStringObjectDateTimeOffsetString">
+            <summary>Sets the shim of ObjectCache.Add(String key, Object value, DateTimeOffset absoluteExpiration, String regionName)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimObjectCache.AllInstances.GetValuesStringStringArray">
+            <summary>Sets the shim of ObjectCache.GetValues(String regionName, String[] keys)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimObjectCache.AllInstances.SystemCollectionsGenericIEnumerableSystemCollectionsGenericKeyValuePairSystemStringSystemObjectGetEnumerator">
+            <summary>Sets the shim of ObjectCache.System.Collections.Generic.IEnumerable&lt;System.Collections.Generic.KeyValuePair&lt;System.String,System.Object&gt;&gt;.GetEnumerator()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimObjectCache.AllInstances.SystemCollectionsIEnumerableGetEnumerator">
+            <summary>Sets the shim of ObjectCache.System.Collections.IEnumerable.GetEnumerator()</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Fakes.ShimSqlChangeMonitor">
+            <summary>Shim type of System.Runtime.Caching.SqlChangeMonitor</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimSqlChangeMonitor.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimSqlChangeMonitor.#ctor(System.Runtime.Caching.SqlChangeMonitor)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimSqlChangeMonitor.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimSqlChangeMonitor.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.ShimSqlChangeMonitor.Bind(System.IDisposable)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimSqlChangeMonitor.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimSqlChangeMonitor.Constructor">
+            <summary>Sets the shim of SqlChangeMonitor.SqlChangeMonitor()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimSqlChangeMonitor.ConstructorSqlDependency">
+            <summary>Sets the shim of SqlChangeMonitor.SqlChangeMonitor(SqlDependency dependency)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimSqlChangeMonitor.DisposeBoolean">
+            <summary>Sets the shim of SqlChangeMonitor.Dispose(Boolean disposing)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimSqlChangeMonitor.UniqueIdGet">
+            <summary>Sets the shim of SqlChangeMonitor.get_UniqueId()</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Fakes.ShimSqlChangeMonitor.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimSqlChangeMonitor.AllInstances.DisposeBoolean">
+            <summary>Sets the shim of SqlChangeMonitor.Dispose(Boolean disposing)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.ShimSqlChangeMonitor.AllInstances.UniqueIdGet">
+            <summary>Sets the shim of SqlChangeMonitor.get_UniqueId()</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Fakes.StubCacheEntryChangeMonitor">
+            <summary>Stub type of System.Runtime.Caching.CacheEntryChangeMonitor</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubCacheEntryChangeMonitor.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubCacheEntryChangeMonitor.CacheKeysGet">
+            <summary>Sets the stub of CacheEntryChangeMonitor.get_CacheKeys()</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubCacheEntryChangeMonitor.Dispose(System.Boolean)">
+            <summary>Sets the stub of ChangeMonitor.Dispose(Boolean disposing)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubCacheEntryChangeMonitor.DisposeBoolean">
+            <summary>Sets the stub of ChangeMonitor.Dispose(Boolean disposing)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubCacheEntryChangeMonitor.InitializeStub">
+            <summary>Initializes a new instance of type StubCacheEntryChangeMonitor</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubCacheEntryChangeMonitor.LastModifiedGet">
+            <summary>Sets the stub of CacheEntryChangeMonitor.get_LastModified()</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubCacheEntryChangeMonitor.RegionNameGet">
+            <summary>Sets the stub of CacheEntryChangeMonitor.get_RegionName()</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubCacheEntryChangeMonitor.UniqueIdGet">
+            <summary>Sets the stub of ChangeMonitor.get_UniqueId()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubCacheEntryChangeMonitor.CacheKeys">
+            <summary>Sets the stub of CacheEntryChangeMonitor.get_CacheKeys()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubCacheEntryChangeMonitor.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubCacheEntryChangeMonitor.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubCacheEntryChangeMonitor.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubCacheEntryChangeMonitor.LastModified">
+            <summary>Sets the stub of CacheEntryChangeMonitor.get_LastModified()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubCacheEntryChangeMonitor.RegionName">
+            <summary>Sets the stub of CacheEntryChangeMonitor.get_RegionName()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubCacheEntryChangeMonitor.UniqueId">
+            <summary>Sets the stub of ChangeMonitor.get_UniqueId()</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Fakes.StubCacheEntryRemovedArguments">
+            <summary>Stub type of System.Runtime.Caching.CacheEntryRemovedArguments</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubCacheEntryRemovedArguments.#ctor(System.Runtime.Caching.ObjectCache,System.Runtime.Caching.CacheEntryRemovedReason,System.Runtime.Caching.CacheItem)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubCacheEntryRemovedArguments.InitializeStub">
+            <summary>Initializes a new instance of type StubCacheEntryRemovedArguments</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubCacheEntryRemovedArguments.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubCacheEntryRemovedArguments.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubCacheEntryRemovedArguments.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Fakes.StubCacheEntryUpdateArguments">
+            <summary>Stub type of System.Runtime.Caching.CacheEntryUpdateArguments</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubCacheEntryUpdateArguments.#ctor(System.Runtime.Caching.ObjectCache,System.Runtime.Caching.CacheEntryRemovedReason,System.String,System.String)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubCacheEntryUpdateArguments.InitializeStub">
+            <summary>Initializes a new instance of type StubCacheEntryUpdateArguments</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubCacheEntryUpdateArguments.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubCacheEntryUpdateArguments.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubCacheEntryUpdateArguments.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Fakes.StubCacheItem">
+            <summary>Stub type of System.Runtime.Caching.CacheItem</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubCacheItem.#ctor(System.String)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubCacheItem.#ctor(System.String,System.Object)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubCacheItem.#ctor(System.String,System.Object,System.String)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubCacheItem.InitializeStub">
+            <summary>Initializes a new instance of type StubCacheItem</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubCacheItem.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubCacheItem.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubCacheItem.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Fakes.StubCacheItemPolicy">
+            <summary>Stub type of System.Runtime.Caching.CacheItemPolicy</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubCacheItemPolicy.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubCacheItemPolicy.InitializeStub">
+            <summary>Initializes a new instance of type StubCacheItemPolicy</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubCacheItemPolicy.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubCacheItemPolicy.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubCacheItemPolicy.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Fakes.StubChangeMonitor">
+            <summary>Stub type of System.Runtime.Caching.ChangeMonitor</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubChangeMonitor.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubChangeMonitor.Dispose(System.Boolean)">
+            <summary>Sets the stub of ChangeMonitor.Dispose(Boolean disposing)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubChangeMonitor.DisposeBoolean">
+            <summary>Sets the stub of ChangeMonitor.Dispose(Boolean disposing)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubChangeMonitor.InitializeStub">
+            <summary>Initializes a new instance of type StubChangeMonitor</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubChangeMonitor.UniqueIdGet">
+            <summary>Sets the stub of ChangeMonitor.get_UniqueId()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubChangeMonitor.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubChangeMonitor.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubChangeMonitor.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubChangeMonitor.UniqueId">
+            <summary>Sets the stub of ChangeMonitor.get_UniqueId()</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Fakes.StubFileChangeMonitor">
+            <summary>Stub type of System.Runtime.Caching.FileChangeMonitor</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubFileChangeMonitor.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubFileChangeMonitor.Dispose(System.Boolean)">
+            <summary>Sets the stub of ChangeMonitor.Dispose(Boolean disposing)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubFileChangeMonitor.DisposeBoolean">
+            <summary>Sets the stub of ChangeMonitor.Dispose(Boolean disposing)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubFileChangeMonitor.FilePathsGet">
+            <summary>Sets the stub of FileChangeMonitor.get_FilePaths()</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubFileChangeMonitor.InitializeStub">
+            <summary>Initializes a new instance of type StubFileChangeMonitor</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubFileChangeMonitor.LastModifiedGet">
+            <summary>Sets the stub of FileChangeMonitor.get_LastModified()</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubFileChangeMonitor.UniqueIdGet">
+            <summary>Sets the stub of ChangeMonitor.get_UniqueId()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubFileChangeMonitor.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubFileChangeMonitor.FilePaths">
+            <summary>Sets the stub of FileChangeMonitor.get_FilePaths()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubFileChangeMonitor.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubFileChangeMonitor.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubFileChangeMonitor.LastModified">
+            <summary>Sets the stub of FileChangeMonitor.get_LastModified()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubFileChangeMonitor.UniqueId">
+            <summary>Sets the stub of ChangeMonitor.get_UniqueId()</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Fakes.StubMemoryCache">
+            <summary>Stub type of System.Runtime.Caching.MemoryCache</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubMemoryCache.#ctor(System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubMemoryCache.Add(System.Runtime.Caching.CacheItem,System.Runtime.Caching.CacheItemPolicy)">
+            <summary>Sets the stub of MemoryCache.Add(CacheItem item, CacheItemPolicy policy)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubMemoryCache.Add(System.String,System.Object,System.Runtime.Caching.CacheItemPolicy,System.String)">
+            <summary>Sets the stub of ObjectCache.Add(String key, Object value, CacheItemPolicy policy, String regionName)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubMemoryCache.Add(System.String,System.Object,System.DateTimeOffset,System.String)">
+            <summary>Sets the stub of ObjectCache.Add(String key, Object value, DateTimeOffset absoluteExpiration, String regionName)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubMemoryCache.AddCacheItemCacheItemPolicy">
+            <summary>Sets the stub of MemoryCache.Add(CacheItem item, CacheItemPolicy policy)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubMemoryCache.AddOrGetExisting(System.Runtime.Caching.CacheItem,System.Runtime.Caching.CacheItemPolicy)">
+            <summary>Sets the stub of MemoryCache.AddOrGetExisting(CacheItem item, CacheItemPolicy policy)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubMemoryCache.AddOrGetExisting(System.String,System.Object,System.Runtime.Caching.CacheItemPolicy,System.String)">
+            <summary>Sets the stub of MemoryCache.AddOrGetExisting(String key, Object value, CacheItemPolicy policy, String regionName)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubMemoryCache.AddOrGetExisting(System.String,System.Object,System.DateTimeOffset,System.String)">
+            <summary>Sets the stub of MemoryCache.AddOrGetExisting(String key, Object value, DateTimeOffset absoluteExpiration, String regionName)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubMemoryCache.AddOrGetExistingCacheItemCacheItemPolicy">
+            <summary>Sets the stub of MemoryCache.AddOrGetExisting(CacheItem item, CacheItemPolicy policy)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubMemoryCache.AddOrGetExistingStringObjectCacheItemPolicyString">
+            <summary>Sets the stub of MemoryCache.AddOrGetExisting(String key, Object value, CacheItemPolicy policy, String regionName)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubMemoryCache.AddOrGetExistingStringObjectDateTimeOffsetString">
+            <summary>Sets the stub of MemoryCache.AddOrGetExisting(String key, Object value, DateTimeOffset absoluteExpiration, String regionName)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubMemoryCache.AddStringObjectCacheItemPolicyString">
+            <summary>Sets the stub of ObjectCache.Add(String key, Object value, CacheItemPolicy policy, String regionName)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubMemoryCache.AddStringObjectDateTimeOffsetString">
+            <summary>Sets the stub of ObjectCache.Add(String key, Object value, DateTimeOffset absoluteExpiration, String regionName)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubMemoryCache.Contains(System.String,System.String)">
+            <summary>Sets the stub of MemoryCache.Contains(String key, String regionName)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubMemoryCache.ContainsStringString">
+            <summary>Sets the stub of MemoryCache.Contains(String key, String regionName)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubMemoryCache.CreateCacheEntryChangeMonitor(System.Collections.Generic.IEnumerable{System.String},System.String)">
+            <summary>Sets the stub of MemoryCache.CreateCacheEntryChangeMonitor(IEnumerable`1&lt;String&gt; keys, String regionName)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubMemoryCache.CreateCacheEntryChangeMonitorIEnumerableOfStringString">
+            <summary>Sets the stub of MemoryCache.CreateCacheEntryChangeMonitor(IEnumerable`1&lt;String&gt; keys, String regionName)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubMemoryCache.DefaultCacheCapabilitiesGet">
+            <summary>Sets the stub of MemoryCache.get_DefaultCacheCapabilities()</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubMemoryCache.Get(System.String,System.String)">
+            <summary>Sets the stub of MemoryCache.Get(String key, String regionName)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubMemoryCache.GetCacheItem(System.String,System.String)">
+            <summary>Sets the stub of MemoryCache.GetCacheItem(String key, String regionName)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubMemoryCache.GetCacheItemStringString">
+            <summary>Sets the stub of MemoryCache.GetCacheItem(String key, String regionName)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubMemoryCache.GetCount(System.String)">
+            <summary>Sets the stub of MemoryCache.GetCount(String regionName)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubMemoryCache.GetCountString">
+            <summary>Sets the stub of MemoryCache.GetCount(String regionName)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubMemoryCache.GetEnumerator">
+            <summary>Sets the stub of MemoryCache.GetEnumerator()</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubMemoryCache.GetEnumerator01">
+            <summary>Sets the stub of MemoryCache.GetEnumerator()</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubMemoryCache.GetStringString">
+            <summary>Sets the stub of MemoryCache.Get(String key, String regionName)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubMemoryCache.GetValues(System.String,System.String[])">
+            <summary>Sets the stub of ObjectCache.GetValues(String regionName, String[] keys)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubMemoryCache.GetValues(System.Collections.Generic.IEnumerable{System.String},System.String)">
+            <summary>Sets the stub of MemoryCache.GetValues(IEnumerable`1&lt;String&gt; keys, String regionName)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubMemoryCache.GetValuesIEnumerableOfStringString">
+            <summary>Sets the stub of MemoryCache.GetValues(IEnumerable`1&lt;String&gt; keys, String regionName)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubMemoryCache.GetValuesStringStringArray">
+            <summary>Sets the stub of ObjectCache.GetValues(String regionName, String[] keys)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubMemoryCache.InitializeStub">
+            <summary>Initializes a new instance of type StubMemoryCache</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubMemoryCache.ItemGetString">
+            <summary>Sets the stub of MemoryCache.get_Item(String key)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubMemoryCache.ItemSetStringObject">
+            <summary>Sets the stub of MemoryCache.set_Item(String key, Object value)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubMemoryCache.NameGet">
+            <summary>Sets the stub of MemoryCache.get_Name()</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubMemoryCache.Remove(System.String,System.String)">
+            <summary>Sets the stub of MemoryCache.Remove(String key, String regionName)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubMemoryCache.RemoveStringString">
+            <summary>Sets the stub of MemoryCache.Remove(String key, String regionName)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubMemoryCache.Set(System.Runtime.Caching.CacheItem,System.Runtime.Caching.CacheItemPolicy)">
+            <summary>Sets the stub of MemoryCache.Set(CacheItem item, CacheItemPolicy policy)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubMemoryCache.Set(System.String,System.Object,System.Runtime.Caching.CacheItemPolicy,System.String)">
+            <summary>Sets the stub of MemoryCache.Set(String key, Object value, CacheItemPolicy policy, String regionName)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubMemoryCache.Set(System.String,System.Object,System.DateTimeOffset,System.String)">
+            <summary>Sets the stub of MemoryCache.Set(String key, Object value, DateTimeOffset absoluteExpiration, String regionName)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubMemoryCache.SetCacheItemCacheItemPolicy">
+            <summary>Sets the stub of MemoryCache.Set(CacheItem item, CacheItemPolicy policy)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubMemoryCache.SetStringObjectCacheItemPolicyString">
+            <summary>Sets the stub of MemoryCache.Set(String key, Object value, CacheItemPolicy policy, String regionName)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubMemoryCache.SetStringObjectDateTimeOffsetString">
+            <summary>Sets the stub of MemoryCache.Set(String key, Object value, DateTimeOffset absoluteExpiration, String regionName)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubMemoryCache.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubMemoryCache.DefaultCacheCapabilities">
+            <summary>Sets the stub of MemoryCache.get_DefaultCacheCapabilities()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubMemoryCache.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubMemoryCache.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubMemoryCache.Item(System.String)">
+            <summary>Sets the stub of MemoryCache.get_Item(String key)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubMemoryCache.Name">
+            <summary>Sets the stub of MemoryCache.get_Name()</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Fakes.StubObjectCache">
+            <summary>Stub type of System.Runtime.Caching.ObjectCache</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubObjectCache.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubObjectCache.Add(System.Runtime.Caching.CacheItem,System.Runtime.Caching.CacheItemPolicy)">
+            <summary>Sets the stub of ObjectCache.Add(CacheItem item, CacheItemPolicy policy)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubObjectCache.Add(System.String,System.Object,System.Runtime.Caching.CacheItemPolicy,System.String)">
+            <summary>Sets the stub of ObjectCache.Add(String key, Object value, CacheItemPolicy policy, String regionName)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubObjectCache.Add(System.String,System.Object,System.DateTimeOffset,System.String)">
+            <summary>Sets the stub of ObjectCache.Add(String key, Object value, DateTimeOffset absoluteExpiration, String regionName)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubObjectCache.AddCacheItemCacheItemPolicy">
+            <summary>Sets the stub of ObjectCache.Add(CacheItem item, CacheItemPolicy policy)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubObjectCache.AddOrGetExisting(System.Runtime.Caching.CacheItem,System.Runtime.Caching.CacheItemPolicy)">
+            <summary>Sets the stub of ObjectCache.AddOrGetExisting(CacheItem value, CacheItemPolicy policy)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubObjectCache.AddOrGetExisting(System.String,System.Object,System.DateTimeOffset,System.String)">
+            <summary>Sets the stub of ObjectCache.AddOrGetExisting(String key, Object value, DateTimeOffset absoluteExpiration, String regionName)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubObjectCache.AddOrGetExisting(System.String,System.Object,System.Runtime.Caching.CacheItemPolicy,System.String)">
+            <summary>Sets the stub of ObjectCache.AddOrGetExisting(String key, Object value, CacheItemPolicy policy, String regionName)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubObjectCache.AddOrGetExistingCacheItemCacheItemPolicy">
+            <summary>Sets the stub of ObjectCache.AddOrGetExisting(CacheItem value, CacheItemPolicy policy)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubObjectCache.AddOrGetExistingStringObjectCacheItemPolicyString">
+            <summary>Sets the stub of ObjectCache.AddOrGetExisting(String key, Object value, CacheItemPolicy policy, String regionName)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubObjectCache.AddOrGetExistingStringObjectDateTimeOffsetString">
+            <summary>Sets the stub of ObjectCache.AddOrGetExisting(String key, Object value, DateTimeOffset absoluteExpiration, String regionName)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubObjectCache.AddStringObjectCacheItemPolicyString">
+            <summary>Sets the stub of ObjectCache.Add(String key, Object value, CacheItemPolicy policy, String regionName)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubObjectCache.AddStringObjectDateTimeOffsetString">
+            <summary>Sets the stub of ObjectCache.Add(String key, Object value, DateTimeOffset absoluteExpiration, String regionName)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubObjectCache.Contains(System.String,System.String)">
+            <summary>Sets the stub of ObjectCache.Contains(String key, String regionName)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubObjectCache.ContainsStringString">
+            <summary>Sets the stub of ObjectCache.Contains(String key, String regionName)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubObjectCache.CreateCacheEntryChangeMonitor(System.Collections.Generic.IEnumerable{System.String},System.String)">
+            <summary>Sets the stub of ObjectCache.CreateCacheEntryChangeMonitor(IEnumerable`1&lt;String&gt; keys, String regionName)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubObjectCache.CreateCacheEntryChangeMonitorIEnumerableOfStringString">
+            <summary>Sets the stub of ObjectCache.CreateCacheEntryChangeMonitor(IEnumerable`1&lt;String&gt; keys, String regionName)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubObjectCache.DefaultCacheCapabilitiesGet">
+            <summary>Sets the stub of ObjectCache.get_DefaultCacheCapabilities()</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubObjectCache.Get(System.String,System.String)">
+            <summary>Sets the stub of ObjectCache.Get(String key, String regionName)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubObjectCache.GetCacheItem(System.String,System.String)">
+            <summary>Sets the stub of ObjectCache.GetCacheItem(String key, String regionName)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubObjectCache.GetCacheItemStringString">
+            <summary>Sets the stub of ObjectCache.GetCacheItem(String key, String regionName)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubObjectCache.GetCount(System.String)">
+            <summary>Sets the stub of ObjectCache.GetCount(String regionName)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubObjectCache.GetCountString">
+            <summary>Sets the stub of ObjectCache.GetCount(String regionName)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubObjectCache.GetEnumerator">
+            <summary>Sets the stub of ObjectCache.GetEnumerator()</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubObjectCache.GetEnumerator01">
+            <summary>Sets the stub of ObjectCache.GetEnumerator()</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubObjectCache.GetStringString">
+            <summary>Sets the stub of ObjectCache.Get(String key, String regionName)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubObjectCache.GetValues(System.String,System.String[])">
+            <summary>Sets the stub of ObjectCache.GetValues(String regionName, String[] keys)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubObjectCache.GetValues(System.Collections.Generic.IEnumerable{System.String},System.String)">
+            <summary>Sets the stub of ObjectCache.GetValues(IEnumerable`1&lt;String&gt; keys, String regionName)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubObjectCache.GetValuesIEnumerableOfStringString">
+            <summary>Sets the stub of ObjectCache.GetValues(IEnumerable`1&lt;String&gt; keys, String regionName)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubObjectCache.GetValuesStringStringArray">
+            <summary>Sets the stub of ObjectCache.GetValues(String regionName, String[] keys)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubObjectCache.InitializeStub">
+            <summary>Initializes a new instance of type StubObjectCache</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubObjectCache.ItemGetString">
+            <summary>Sets the stub of ObjectCache.get_Item(String key)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubObjectCache.ItemSetStringObject">
+            <summary>Sets the stub of ObjectCache.set_Item(String key, Object value)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubObjectCache.NameGet">
+            <summary>Sets the stub of ObjectCache.get_Name()</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubObjectCache.Remove(System.String,System.String)">
+            <summary>Sets the stub of ObjectCache.Remove(String key, String regionName)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubObjectCache.RemoveStringString">
+            <summary>Sets the stub of ObjectCache.Remove(String key, String regionName)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubObjectCache.Set(System.Runtime.Caching.CacheItem,System.Runtime.Caching.CacheItemPolicy)">
+            <summary>Sets the stub of ObjectCache.Set(CacheItem item, CacheItemPolicy policy)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubObjectCache.Set(System.String,System.Object,System.DateTimeOffset,System.String)">
+            <summary>Sets the stub of ObjectCache.Set(String key, Object value, DateTimeOffset absoluteExpiration, String regionName)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Fakes.StubObjectCache.Set(System.String,System.Object,System.Runtime.Caching.CacheItemPolicy,System.String)">
+            <summary>Sets the stub of ObjectCache.Set(String key, Object value, CacheItemPolicy policy, String regionName)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubObjectCache.SetCacheItemCacheItemPolicy">
+            <summary>Sets the stub of ObjectCache.Set(CacheItem item, CacheItemPolicy policy)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubObjectCache.SetStringObjectCacheItemPolicyString">
+            <summary>Sets the stub of ObjectCache.Set(String key, Object value, CacheItemPolicy policy, String regionName)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Fakes.StubObjectCache.SetStringObjectDateTimeOffsetString">
+            <summary>Sets the stub of ObjectCache.Set(String key, Object value, DateTimeOffset absoluteExpiration, String regionName)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubObjectCache.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubObjectCache.DefaultCacheCapabilities">
+            <summary>Sets the stub of ObjectCache.get_DefaultCacheCapabilities()</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubObjectCache.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubObjectCache.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubObjectCache.Item(System.String)">
+            <summary>Sets the stub of ObjectCache.get_Item(String key)</summary>
+        </member>
+        <member name="P:System.Runtime.Caching.Fakes.StubObjectCache.Name">
+            <summary>Sets the stub of ObjectCache.get_Name()</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Hosting.Fakes.StubIApplicationIdentifier">
+            <summary>Stub type of System.Runtime.Caching.Hosting.IApplicationIdentifier</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Hosting.Fakes.StubIApplicationIdentifier.#ctor">
+            <summary>Initializes a new instance of type StubIApplicationIdentifier</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Hosting.Fakes.StubIApplicationIdentifier.GetApplicationId">
+            <summary>Sets the stub of IApplicationIdentifier.GetApplicationId()</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Hosting.Fakes.StubIApplicationIdentifier.src::System#Runtime#Caching#Hosting#IApplicationIdentifier#GetApplicationId">
+            <summary>Sets the stub of IApplicationIdentifier.GetApplicationId()</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Hosting.Fakes.StubIFileChangeNotificationSystem">
+            <summary>Stub type of System.Runtime.Caching.Hosting.IFileChangeNotificationSystem</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Hosting.Fakes.StubIFileChangeNotificationSystem.#ctor">
+            <summary>Initializes a new instance of type StubIFileChangeNotificationSystem</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Hosting.Fakes.StubIFileChangeNotificationSystem.StartMonitoringStringOnChangedCallbackObjectOutDateTimeOffsetOutInt64Out">
+            <summary>Sets the stub of IFileChangeNotificationSystem.StartMonitoring(String filePath, OnChangedCallback onChangedCallback, Object&amp; state, DateTimeOffset&amp; lastWriteTime, Int64&amp; fileSize)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Hosting.Fakes.StubIFileChangeNotificationSystem.StopMonitoringStringObject">
+            <summary>Sets the stub of IFileChangeNotificationSystem.StopMonitoring(String filePath, Object state)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Hosting.Fakes.StubIFileChangeNotificationSystem.src::System#Runtime#Caching#Hosting#IFileChangeNotificationSystem#StartMonitoring(System.String,System.Runtime.Caching.OnChangedCallback,System.Object@,System.DateTimeOffset@,System.Int64@)">
+            <summary>Sets the stub of IFileChangeNotificationSystem.StartMonitoring(String filePath, OnChangedCallback onChangedCallback, Object&amp; state, DateTimeOffset&amp; lastWriteTime, Int64&amp; fileSize)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Hosting.Fakes.StubIFileChangeNotificationSystem.src::System#Runtime#Caching#Hosting#IFileChangeNotificationSystem#StopMonitoring(System.String,System.Object)">
+            <summary>Sets the stub of IFileChangeNotificationSystem.StopMonitoring(String filePath, Object state)</summary>
+        </member>
+        <member name="T:System.Runtime.Caching.Hosting.Fakes.StubIMemoryCacheManager">
+            <summary>Stub type of System.Runtime.Caching.Hosting.IMemoryCacheManager</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Hosting.Fakes.StubIMemoryCacheManager.#ctor">
+            <summary>Initializes a new instance of type StubIMemoryCacheManager</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Hosting.Fakes.StubIMemoryCacheManager.ReleaseCacheMemoryCache">
+            <summary>Sets the stub of IMemoryCacheManager.ReleaseCache(MemoryCache cache)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Hosting.Fakes.StubIMemoryCacheManager.src::System#Runtime#Caching#Hosting#IMemoryCacheManager#ReleaseCache(System.Runtime.Caching.MemoryCache)">
+            <summary>Sets the stub of IMemoryCacheManager.ReleaseCache(MemoryCache cache)</summary>
+        </member>
+        <member name="M:System.Runtime.Caching.Hosting.Fakes.StubIMemoryCacheManager.src::System#Runtime#Caching#Hosting#IMemoryCacheManager#UpdateCacheSize(System.Int64,System.Runtime.Caching.MemoryCache)">
+            <summary>Sets the stub of IMemoryCacheManager.UpdateCacheSize(Int64 size, MemoryCache cache)</summary>
+        </member>
+        <member name="F:System.Runtime.Caching.Hosting.Fakes.StubIMemoryCacheManager.UpdateCacheSizeInt64MemoryCache">
+            <summary>Sets the stub of IMemoryCacheManager.UpdateCacheSize(Int64 size, MemoryCache cache)</summary>
+        </member>
+    </members>
+</doc>

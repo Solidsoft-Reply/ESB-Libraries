@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:iis="http://schemas.microsoft.com/wix/IIsExtension">
+	<Product Id="*" Name="SolidsoftReply.Esb.Libraries.Setup" Language="1033" Version="1.0.0.0" Manufacturer="http://solidsoftreply.com Reply" UpgradeCode="3aab6ac1-7cd6-4653-889f-ba31c635f259">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of http://solidsoftreply.com Reply ESB Libraries is already installed." />
+		<MediaTemplate />
+    
+    <Property Id="WWWROOT">
+        <RegistrySearch Id='REG_WWWROOT' Type='directory' Root='HKLM' Key='SOFTWARE\Microsoft\InetStp' Name='PathWWWRoot' />
+    </Property>
+
+		<Directory Id="TARGETDIR"  Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="GAC" Name="GAC" />
+				<Directory Id="BIZTALKSERVER2013" Name="Microsoft BizTalk Server 2013" >
+				  <Directory Id="PIPELINECOMPONENTS" Name="Pipeline Components" >
+            <Component Id="RegisteredPipelineComponents" Guid="75CBFEA9-59DE-456E-BA79-B39C0930C408" KeyPath="yes"  Permanent="no">
+              <File Id="PipelineComponents" Name="SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.dll" Source="$(var.SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.TargetPath)"/>
+              <RemoveFile Id="PipelineComponents" Name="SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.dll" On="uninstall"/>
+            </Component>
+          </Directory>
+        </Directory>
+		  </Directory>
+      <Directory Id ="INSTALLFOLDER"  Name="SolidsoftReply.Esb">
+        <Component Id="EsbResolutionWebsiteAppPool" Guid="19229225-F920-423E-AF92-4CF1B357E950" KeyPath="yes"  Permanent="no">
+          <iis:WebAppPool Id="EsbResolution"
+                          Name="EsbResolution"
+                          Identity="applicationPoolIdentity"
+                          ManagedPipelineMode="Integrated" 
+                          ManagedRuntimeVersion="v4.0" />
+        </Component>
+        <Directory Id ="EsbResolution" Name ="EsbResolution">
+          <Directory Id ="EsbResolutionBin" Name ="Bin" >
+            <Component Id="ResolutionService" Guid="9071A449-909E-457A-8C5C-258C8CA2AEE1" KeyPath="yes"  Permanent="no">
+              <File Source="$(var.SolidsoftReply.Esb.Libraries.ResolutionService.TargetPath)" />
+            </Component>
+          </Directory>
+          <Component Id="EsbResolutionWebService" Guid="F194EB3A-25FF-4288-AAB7-CA831C05E667" KeyPath="yes"  Permanent="no">
+            <iis:WebSite Id="EsbResolution" Description='http://solidsoftreply.com Reply ESB Resolution Web Service' Directory='EsbResolution' AutoStart='yes' StartOnInstall='yes'>
+              <iis:WebAddress Id="AllUnassigned" Port="8080" />
+              <iis:WebApplication Id="EsbResolution" Name="EsbResolution" WebAppPool="EsbResolution" />
+            </iis:WebSite>
+          </Component>
+        </Directory>
+      </Directory>
+		</Directory>
+    
+    <ComponentGroup Id="GacdAssemblies" Directory="GAC">
+			<Component Id="Uddi" Guid="EE779FBF-E813-4A86-8A5B-8ECE85BB539A" Permanent="no">
+        <File Source="$(var.SolidsoftReply.Esb.Libraries.Uddi.TargetPath)" ProcessorArchitecture="msil" Name="SolidsoftReply.Esb.Libraries.Uddi.dll" Assembly=".net" KeyPath="yes"/>
+			</Component>
+			<Component Id="Facts" Guid="70C3CDEC-625E-4E87-BC55-EAC8C7CC3A88"  Permanent="no">
+				<File Source="$(var.SolidsoftReply.Esb.Libraries.Facts.TargetPath)" ProcessorArchitecture="msil" Name="SolidsoftReply.Esb.Libraries.Facts.dll" Assembly=".net" KeyPath="yes"/>
+			</Component>
+			<Component Id="Resolution" Guid="854B7327-4C5E-47C8-9EB5-B9301F15E077"  Permanent="no">
+				<File Source="$(var.SolidsoftReply.Esb.Libraries.Resolution.TargetPath)" ProcessorArchitecture="msil" Name="SolidsoftReply.Esb.Libraries.Resolution.dll" Assembly=".net" KeyPath="yes"/>
+			</Component>
+			<Component Id="PipelineComponents" Guid="258FEC9E-3A9A-4376-A680-672655E8CE6D"  Permanent="no">
+        <File Source="$(var.SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.TargetPath)" ProcessorArchitecture="msil" Name="SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.dll" Assembly=".net" KeyPath="yes"/>
+			</Component>
+      <Component Id="Orchestration" Guid="E81717FF-89A1-49F2-80D1-D5562BC44196" Permanent="no">
+        <File Source="$(var.SolidsoftReply.Esb.Libraries.BizTalk.Orchestration.TargetPath)" ProcessorArchitecture="msil" Name="SolidsoftReply.Esb.Libraries.BizTalk.Orchestration.dll" Assembly=".net" KeyPath="yes"/>
+      </Component>
+    </ComponentGroup>
+    
+    <ComponentGroup Id="EsbResolutionIisConfiguration">
+      <ComponentRef Id="EsbResolutionWebsiteAppPool" />
+      <ComponentRef Id="EsbResolutionWebService" />
+    </ComponentGroup>
+
+    <ComponentGroup Id="EsbResolutionWebService" Directory="EsbResolution">
+			<Component Id="ResolverSvc" Guid="5284547A-BBAE-4C28-A7FB-845700A7FD47" KeyPath="yes"  Permanent="no">
+        <File Source="$(var.SolidsoftReply.Esb.Libraries.ResolutionService.ProjectDir)\Resolver.svc" />
+			</Component>
+			<Component Id="WebConfig" Guid="CBE49394-7830-4CD6-91E8-7A9EA2167B28" KeyPath="yes"  Permanent="no">
+				<File Source="$(var.SolidsoftReply.Esb.Libraries.ResolutionService.ProjectDir)\Web.config" />
+			</Component>
+    </ComponentGroup>
+    
+		<Feature Id="ProductFeature" Title="SolidsoftReply.Esb.Libraries.Setup" Level="1">
+			<ComponentGroupRef Id="GacdAssemblies" />
+      <ComponentRef Id="RegisteredPipelineComponents" />
+			<ComponentGroupRef Id="EsbResolutionIisConfiguration" />
+      <ComponentRef Id="ResolutionService" />
+			<ComponentGroupRef Id="EsbResolutionWebService" />
+		</Feature>
+  </Product>
+</Wix>

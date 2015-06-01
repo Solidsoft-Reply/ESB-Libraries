@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Solidsoft.Esb</id>
+    <version>1.0.0</version>
+    <authors>Charles Young</authors>
+    <owners>Solidsoft Reply</owners>
+    <licenseUrl>http://www.solidsoft.com</licenseUrl>
+    <projectUrl>http://www.solidsoft.com</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>The Solidsoft ESB libraries.</description>
+    <releaseNotes>This is the first release of the updated ESB Libraries 1.0.</releaseNotes>
+    <summary>The ESB Libraries provide a framework for implementing and enforcing run-time governance in service bus environments.</summary>
+    <copyright>© 2014 Solidsoft Reply</copyright>
+    <tags>ESB Governance BizTalk WCF</tags>
+  </metadata>
+</package>

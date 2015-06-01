@@ -1,0 +1,21 @@
+C:\Source\ServiceBus\1.0\Solidsoft.Esb.Test\Fakes\System.Runtime.Caching.fakes : warning : Cannot generate stub for System.Runtime.Caching.CacheItemPriority: type is a value type.
+C:\Source\ServiceBus\1.0\Solidsoft.Esb.Test\Fakes\System.Runtime.Caching.fakes : warning : Cannot generate stub for System.Runtime.Caching.CacheEntryRemovedCallback: type is sealed.
+C:\Source\ServiceBus\1.0\Solidsoft.Esb.Test\Fakes\System.Runtime.Caching.fakes : warning : Cannot generate stub for System.Runtime.Caching.CacheEntryRemovedReason: type is a value type.
+C:\Source\ServiceBus\1.0\Solidsoft.Esb.Test\Fakes\System.Runtime.Caching.fakes : warning : Cannot generate stub for System.Runtime.Caching.CacheEntryUpdateCallback: type is sealed.
+C:\Source\ServiceBus\1.0\Solidsoft.Esb.Test\Fakes\System.Runtime.Caching.fakes : warning : Cannot generate stub for System.Runtime.Caching.DefaultCacheCapabilities: type is a value type.
+C:\Source\ServiceBus\1.0\Solidsoft.Esb.Test\Fakes\System.Runtime.Caching.fakes : warning : Cannot generate stub for System.Runtime.Caching.HostFileChangeMonitor: type is sealed.
+C:\Source\ServiceBus\1.0\Solidsoft.Esb.Test\Fakes\System.Runtime.Caching.fakes : warning : Cannot generate stub for System.Runtime.Caching.OnChangedCallback: type is sealed.
+C:\Source\ServiceBus\1.0\Solidsoft.Esb.Test\Fakes\System.Runtime.Caching.fakes : warning : Cannot generate stub for System.Runtime.Caching.SqlChangeMonitor: type is sealed.
+C:\Source\ServiceBus\1.0\Solidsoft.Esb.Test\Fakes\System.Runtime.Caching.fakes : warning : Cannot generate stub for System.Runtime.Caching.Configuration.CachingSectionGroup: type is sealed.
+C:\Source\ServiceBus\1.0\Solidsoft.Esb.Test\Fakes\System.Runtime.Caching.fakes : warning : Cannot generate stub for System.Runtime.Caching.Configuration.MemoryCacheElement: type is sealed.
+C:\Source\ServiceBus\1.0\Solidsoft.Esb.Test\Fakes\System.Runtime.Caching.fakes : warning : Cannot generate stub for System.Runtime.Caching.Configuration.MemoryCacheSection: type is sealed.
+C:\Source\ServiceBus\1.0\Solidsoft.Esb.Test\Fakes\System.Runtime.Caching.fakes : warning : Cannot generate stub for System.Runtime.Caching.Configuration.MemoryCacheSettingsCollection: type is sealed.
+C:\Source\ServiceBus\1.0\Solidsoft.Esb.Test\Fakes\System.Runtime.Caching.fakes : warning : Cannot generate shim for System.Runtime.Caching.CacheItemPriority: type is an enum.
+C:\Source\ServiceBus\1.0\Solidsoft.Esb.Test\Fakes\System.Runtime.Caching.fakes : warning : Cannot generate shim for System.Runtime.Caching.CacheEntryRemovedCallback: type is a delegate.
+C:\Source\ServiceBus\1.0\Solidsoft.Esb.Test\Fakes\System.Runtime.Caching.fakes : warning : Cannot generate shim for System.Runtime.Caching.CacheEntryRemovedReason: type is an enum.
+C:\Source\ServiceBus\1.0\Solidsoft.Esb.Test\Fakes\System.Runtime.Caching.fakes : warning : Cannot generate shim for System.Runtime.Caching.CacheEntryUpdateCallback: type is a delegate.
+C:\Source\ServiceBus\1.0\Solidsoft.Esb.Test\Fakes\System.Runtime.Caching.fakes : warning : Cannot generate shim for System.Runtime.Caching.DefaultCacheCapabilities: type is an enum.
+C:\Source\ServiceBus\1.0\Solidsoft.Esb.Test\Fakes\System.Runtime.Caching.fakes : warning : Cannot generate shim for System.Runtime.Caching.Hosting.IFileChangeNotificationSystem: type is an interface.
+C:\Source\ServiceBus\1.0\Solidsoft.Esb.Test\Fakes\System.Runtime.Caching.fakes : warning : Cannot generate shim for System.Runtime.Caching.OnChangedCallback: type is a delegate.
+C:\Source\ServiceBus\1.0\Solidsoft.Esb.Test\Fakes\System.Runtime.Caching.fakes : warning : Cannot generate shim for System.Runtime.Caching.Hosting.IApplicationIdentifier: type is an interface.
+C:\Source\ServiceBus\1.0\Solidsoft.Esb.Test\Fakes\System.Runtime.Caching.fakes : warning : Cannot generate shim for System.Runtime.Caching.Hosting.IMemoryCacheManager: type is an interface.

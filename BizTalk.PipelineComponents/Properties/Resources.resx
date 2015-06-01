@@ -1,0 +1,376 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AppSettingsEsbDefaultPolicy" xml:space="preserve">
+    <value>ESB.DefaultPolicy</value>
+  </data>
+  <data name="DescAllowUnrecognizedMessage" xml:space="preserve">
+    <value>Indicates whether to allow messages that do not have a recognized schema to be passed through the disassembler.</value>
+  </data>
+  <data name="DescBindingAccessPoint" xml:space="preserve">
+    <value>An identifier for a binding access point.   The identifier should  be in the form of a URL.   This may be used when the endpoint URL is known, but other resolution is required, or as a 'virtual' URL.  This is based on UDDI.</value>
+  </data>
+  <data name="DescBindingUrlType" xml:space="preserve">
+    <value>The type (scheme) of URL for the target service.   This is based on UDDI.</value>
+  </data>
+  <data name="DescBodyContainerXPath" xml:space="preserve">
+    <value>An XPath that addresses the element that contains the body of the message.    If blank, the conceptual 'Root' node (parent of the Document Element) is used.</value>
+  </data>
+  <data name="DescDocumentSpecName" xml:space="preserve">
+    <value>Indicates the schema to be applied to the document.</value>
+  </data>
+  <data name="DescDocumentSpecNames" xml:space="preserve">
+    <value>Indicates the schema(s) to be applied to the document.</value>
+  </data>
+  <data name="DescEnvelopeSpecNames" xml:space="preserve">
+    <value>Indicates the schema(s) to be applied to the envelope.</value>
+  </data>
+  <data name="DescFFDasmDesription" xml:space="preserve">
+    <value>Flat file disassembler component</value>
+  </data>
+  <data name="DescFFDasmName" xml:space="preserve">
+    <value>Indicates the name of the component.</value>
+  </data>
+  <data name="DescFFDasmVersion" xml:space="preserve">
+    <value>Version description</value>
+  </data>
+  <data name="DescHeaderSpecName" xml:space="preserve">
+    <value>Indicates the schema to be applied to the header.</value>
+  </data>
+  <data name="DescMessageDirection" xml:space="preserve">
+    <value>Direction of message.</value>
+  </data>
+  <data name="DescMessageRole" xml:space="preserve">
+    <value>A role specifier for the message.   Equivalent to messageLabel in WSDL 2.0</value>
+  </data>
+  <data name="DescMessageType" xml:space="preserve">
+    <value>Type of message.   In a BizTalk Server context, this should generally be equivalent to the BTS.MessageType property.</value>
+  </data>
+  <data name="DescOperationName" xml:space="preserve">
+    <value>Name of the service operation to be invoked.</value>
+  </data>
+  <data name="DescPolicy" xml:space="preserve">
+    <value>Name of the rule policy to be executed.</value>
+  </data>
+  <data name="DescPolicyVersion" xml:space="preserve">
+    <value>Version of rule policy to be executed. If empty, the latest version will be executed.</value>
+  </data>
+  <data name="DescPreserveHeader" xml:space="preserve">
+    <value>Indicates the header document will be preserved.</value>
+  </data>
+  <data name="DescProviderName" xml:space="preserve">
+    <value>Human-friendly name of service provider.   This is equivalent to the business entity name in UDDI.</value>
+  </data>
+  <data name="DescRecoverableInterchangeProcessing" xml:space="preserve">
+    <value>Specifies whether the disassembler will attempt to recover from errors during interchange processing.</value>
+  </data>
+  <data name="DescServiceName" xml:space="preserve">
+    <value>Human-friendly name for target service.   This is equivalent to the business service name in UDDI.</value>
+  </data>
+  <data name="DescSynchronizeBam" xml:space="preserve">
+    <value>Indicates whether the BAM event stream will be synchronized with the pipeline context.  When set to true, this setting overrides event stream buffering defined in directives.</value>
+  </data>
+  <data name="DescTrailerSpecName" xml:space="preserve">
+    <value>Indicates the schema to be applied to the trailer.</value>
+  </data>
+  <data name="DescValidate" xml:space="preserve">
+    <value>Indicates whether to validate the envelope and document structures of incoming messages.</value>
+  </data>
+  <data name="DescValidateDocumentStructure" xml:space="preserve">
+    <value>Indicates whether to validate the header, the trailer and the document structures of incoming messages.</value>
+  </data>
+  <data name="DescXmlDasmDesription" xml:space="preserve">
+    <value>Xml disassembler component with ESB governance.</value>
+  </data>
+  <data name="DescXmlDasmName" xml:space="preserve">
+    <value>Indicates the name of the component.</value>
+  </data>
+  <data name="DescXmlDasmVersion" xml:space="preserve">
+    <value>Version description</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="DisassemblerIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DisassemblerIcon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExceptionNoValidMessagePart" xml:space="preserve">
+    <value>Cannot find a valid message part.  The XML content of the body part is invalid, or the part does not exist:\r\n\r\n{0}</value>
+  </data>
+  <data name="ExceptionPolicyUndetermined" xml:space="preserve">
+    <value>ESB policy cannot be determined.  Add an AppSetting to the config file called '{0}'.</value>
+  </data>
+  <data name="FlatFileDasmGovernanceComponentClassId" xml:space="preserve">
+    <value>5EEEF32A-5601-4D8D-B2DA-D939484F08E7</value>
+  </data>
+  <data name="FlatFileDasmGovernanceComponentDescription" xml:space="preserve">
+    <value>Applies ESB governance in the context of a Fat File Disassembler within a BizTalk Server pipeline.</value>
+  </data>
+  <data name="FlatFileDasmGovernanceComponentName" xml:space="preserve">
+    <value>Flat file disassembler with ESB Governance</value>
+  </data>
+  <data name="GovernanceComponentClassId" xml:space="preserve">
+    <value>59CFD96B-20EE-40ad-BFD0-319B59A0DDBC</value>
+  </data>
+  <data name="GovernanceComponentDescription" xml:space="preserve">
+    <value>Applies ESB governance within a BizTalk Server pipeline.</value>
+  </data>
+  <data name="GovernanceComponentName" xml:space="preserve">
+    <value>ESB Governance</value>
+  </data>
+  <data name="PeopFFDasmVersion" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="PropAllowUnrecognizedMessage" xml:space="preserve">
+    <value>Allow unrecognized message</value>
+  </data>
+  <data name="PropBindingAccessPoint" xml:space="preserve">
+    <value>Binding access point</value>
+  </data>
+  <data name="PropBindingUrlType" xml:space="preserve">
+    <value>Binding URL type</value>
+  </data>
+  <data name="PropBodyContainerXPath" xml:space="preserve">
+    <value>Body container XPath</value>
+  </data>
+  <data name="PropDocumentSpecName" xml:space="preserve">
+    <value>Document schema</value>
+  </data>
+  <data name="PropDocumentSpecNames" xml:space="preserve">
+    <value>Document schemas</value>
+  </data>
+  <data name="PropEnvelopeSpecNames" xml:space="preserve">
+    <value>Envelope schemas</value>
+  </data>
+  <data name="PropFFDasmDesription" xml:space="preserve">
+    <value>Desription</value>
+  </data>
+  <data name="PropFFDasmName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="PropHeaderSpecName" xml:space="preserve">
+    <value>Header schema</value>
+  </data>
+  <data name="PropMessageDirection" xml:space="preserve">
+    <value>Message direction</value>
+  </data>
+  <data name="PropMessageRole" xml:space="preserve">
+    <value>Message role</value>
+  </data>
+  <data name="PropMessageType" xml:space="preserve">
+    <value>Message type</value>
+  </data>
+  <data name="PropOperationName" xml:space="preserve">
+    <value>Operation name</value>
+  </data>
+  <data name="PropPolicy" xml:space="preserve">
+    <value>Policy</value>
+  </data>
+  <data name="PropPolicyVersion" xml:space="preserve">
+    <value>Policy version</value>
+  </data>
+  <data name="PropPreserveHeader" xml:space="preserve">
+    <value>Preserve header</value>
+  </data>
+  <data name="PropProviderName" xml:space="preserve">
+    <value>Provider name</value>
+  </data>
+  <data name="PropRecoverableInterchangeProcessing" xml:space="preserve">
+    <value>Recoverable interchange processing</value>
+  </data>
+  <data name="PropServiceName" xml:space="preserve">
+    <value>Service name</value>
+  </data>
+  <data name="PropSynchronizeBam" xml:space="preserve">
+    <value>Synchronize BAM</value>
+  </data>
+  <data name="PropTrailerSpecName" xml:space="preserve">
+    <value>Trailer schema</value>
+  </data>
+  <data name="PropValidate" xml:space="preserve">
+    <value>Validate document structure</value>
+  </data>
+  <data name="PropValidateDocumentStructure" xml:space="preserve">
+    <value>Validate document structure</value>
+  </data>
+  <data name="PropXmlDasmDescription" xml:space="preserve">
+    <value>Streaming XML disassembler with ESB governance</value>
+  </data>
+  <data name="PropXmlDasmName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="PropXmlDasmVersion" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="UriBtsSystemProperties" xml:space="preserve">
+    <value>http://schemas.microsoft.com/BizTalk/2003/system-properties</value>
+  </data>
+  <data name="UriMicrosoftBizTalkXLANGsBTXEngineProperties" xml:space="preserve">
+    <value>http://schemas.microsoft.com/BizTalk/2003/xlangs-properties</value>
+  </data>
+  <data name="UriWseProperties" xml:space="preserve">
+    <value>http://schemas.microsoft.com/BizTalk/2003/wse-properties</value>
+  </data>
+  <data name="UriXmlNormProperties" xml:space="preserve">
+    <value>http://schemas.microsoft.com/BizTalk/2003/xmlnorm-properties</value>
+  </data>
+  <data name="UriXsd" xml:space="preserve">
+    <value>http://www.w3.org/2001/XMLSchema-instance</value>
+  </data>
+  <data name="XmlDasmGovernanceComponentClassId" xml:space="preserve">
+    <value>DA2A8452-88E1-4C96-B5E7-8B04AABBFBF3</value>
+  </data>
+  <data name="XmlDasmGovernanceComponentDescription" xml:space="preserve">
+    <value>Applies ESB governance in the context of an XML Disassembler within a BizTalk Server pipeline.</value>
+  </data>
+  <data name="XmlDasmGovernanceComponentName" xml:space="preserve">
+    <value>XML disassembler with ESB Governance</value>
+  </data>
+  <data name="AppSettingsEsbBrePolicyTester" xml:space="preserve">
+    <value>ESB.BRE.PolicyTester</value>
+  </data>
+  <data name="AppSettingsEsbBreTrace" xml:space="preserve">
+    <value>ESB.BRE.Trace</value>
+  </data>
+  <data name="AppSettingsEsbBreTraceFileLocation" xml:space="preserve">
+    <value>ESB.BRE.TraceFileLocation</value>
+  </data>
+  <data name="ConnectionString" xml:space="preserve">
+    <value>Server={0};Database={1};Integrated Security=SSPI</value>
+  </data>
+  <data name="RegKey" xml:space="preserve">
+    <value>SOFTWARE\\Microsoft\\BusinessRules\\3.0</value>
+  </data>
+  <data name="RegKeyDatabaseName" xml:space="preserve">
+    <value>DatabaseName</value>
+  </data>
+  <data name="RegKeyDatabaseServer" xml:space="preserve">
+    <value>DatabaseServer</value>
+  </data>
+  <data name="RegKeyWow6432" xml:space="preserve">
+    <value>SOFTWARE\\Wow6432Node\\Microsoft\\BusinessRules\\3.0</value>
+  </data>
+  <data name="ExceptionNoConnectionParameters" xml:space="preserve">
+    <value>Cannot find the parameters in the registry to connect to the business rule store</value>
+  </data>
+  <data name="ExceptionRsNotInStore" xml:space="preserve">
+    <value>The ruleset '{0}' version {1}.{2} specified is not in the rule store.</value>
+  </data>
+</root>

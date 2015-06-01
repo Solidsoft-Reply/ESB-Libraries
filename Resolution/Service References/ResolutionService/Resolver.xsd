@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://solidsoftreply.com/schemas/webservices/esbresolutionservice/2015/05" elementFormDefault="qualified" targetNamespace="http://solidsoftreply.com/schemas/webservices/esbresolutionservice/2015/05" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Resolve">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="ProviderName" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="ServiceName" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="BindingAccessPoint" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="BindingUrlType" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="MessageType" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="OperationName" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="MessageRole" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="Parameters" type="tns:ParametersDictionaryType" />
+        <xs:element minOccurs="1" maxOccurs="1" name="MessageDirection" type="tns:MessageDirectionTypes" />
+        <xs:element minOccurs="0" maxOccurs="1" name="PolicyName" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="Version" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="MessageDirectionTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NotSpecified" />
+      <xs:enumeration value="MsgIn" />
+      <xs:enumeration value="MsgOut" />
+      <xs:enumeration value="Both" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ParametersDictionaryType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Item" type="tns:ParametersDictionaryItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ParametersDictionaryItem">
+    <xs:sequence>
+      <xs:element name="Key">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element form="unqualified" name="string" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Value">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:any namespace="##any" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ParametersDictionary" type="tns:ParametersDictionaryType">
+    <xs:annotation>
+      <xs:appinfo>
+        <recordInfo rootTypeName="ParametersDictionary" xmlns="http://schemas.microsoft.com/BizTalk/2003" />
+      </xs:appinfo>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ResolveResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="Interchange" nillable="true" type="tns:Interchange" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="Interchange">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="ProviderName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ServiceName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BindingAccessPoint" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BindingUrlType" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MessageType" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="OperationName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MessageRole" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="MessageDirection" type="tns:MessageDirectionTypes" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Parameters" type="tns:ParametersDictionaryType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Directives" type="tns:DirectivesDictionaryType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DirectivesDictionaryType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Item" type="tns:DirectivesDictionaryItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DirectivesDictionaryItem">
+    <xs:sequence>
+      <xs:element name="Key">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element form="unqualified" name="string" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Value">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Directive">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="KeyName" type="xs:string" />
+                  <xs:element name="DirectiveCategories" type="xs:string" />
+                  <xs:element minOccurs="0" name="EndPoint" type="xs:string" />
+                  <xs:element minOccurs="0" name="TransportType" type="xs:string" />
+                  <xs:element minOccurs="0" name="EndPointConfiguration" type="xs:string" />
+                  <xs:element minOccurs="0" name="SoapAction" type="xs:string" />
+                  <xs:element minOccurs="0" name="MapToApply" type="xs:string" />
+                  <xs:element minOccurs="0" name="BamActivity" type="xs:string" />
+                  <xs:element minOccurs="0" name="BamStepName" type="xs:string" />
+                  <xs:element minOccurs="0" name="BamAfterMapStepName" type="xs:string" />
+                  <xs:element minOccurs="0" name="BamConnectionString" type="xs:string" />
+                  <xs:element minOccurs="0" name="BamIsBuffered" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="BamFlushThreshold" type="xs:int" />
+                  <xs:element minOccurs="0" name="BamTrackpointPolicyName" type="xs:string" />
+                  <xs:element minOccurs="0" name="BamTrackpointPolicyVersion" type="xs:string" />
+                  <xs:element minOccurs="0" name="RetryCount" type="xs:int" />
+                  <xs:element minOccurs="0" name="RetryInterval" type="xs:int" />
+                  <xs:element minOccurs="0" name="RetryLevel" type="xs:int" />
+                  <xs:element minOccurs="0" name="ServiceWindowStartTime" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="ServiceWindowStopTime" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="ValidationPolicyName" type="xs:string" />
+                  <xs:element minOccurs="0" name="ValidationPolicyVersion" type="xs:string" />
+                  <xs:element minOccurs="0" name="ErrorOnInvalid" type="xs:boolean" />
+                  <xs:element name="BtsPropertyValues">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element maxOccurs="unbounded" name="Item">
+                          <xs:complexType>
+                            <xs:sequence>
+                              <xs:element name="Key">
+                                <xs:complexType>
+                                  <xs:sequence>
+                                    <xs:element ref="tns:string" />
+                                  </xs:sequence>
+                                </xs:complexType>
+                              </xs:element>
+                              <xs:element name="Value">
+                                <xs:complexType>
+                                  <xs:sequence>
+                                    <xs:element ref="tns:BtsPropertyValue" />
+                                  </xs:sequence>
+                                </xs:complexType>
+                              </xs:element>
+                            </xs:sequence>
+                          </xs:complexType>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="PropertyValues">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element maxOccurs="unbounded" name="Item">
+                          <xs:complexType>
+                            <xs:sequence>
+                              <xs:element name="Key">
+                                <xs:complexType>
+                                  <xs:sequence>
+                                    <xs:element ref="tns:string" />
+                                  </xs:sequence>
+                                </xs:complexType>
+                              </xs:element>
+                              <xs:element name="Value">
+                                <xs:complexType>
+                                  <xs:sequence>
+                                    <xs:element ref="tns:GeneralPropertyValue" />
+                                  </xs:sequence>
+                                </xs:complexType>
+                              </xs:element>
+                            </xs:sequence>
+                          </xs:complexType>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="string" type="xs:string" />
+  <xs:element name="DirectivesDictionary" type="tns:DirectivesDictionaryType">
+    <xs:annotation>
+      <xs:appinfo>
+        <b:recordInfo rootTypeName="DirectivesDictionary" xmlns:b="http://schemas.microsoft.com/BizTalk/2003" />
+      </xs:appinfo>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="BtsPropertyValue" type="tns:BtsPropertyValueType" />
+  <xs:complexType name="BtsPropertyValueType">
+    <xs:sequence>
+      <xs:element name="PropertyName" type="xs:string" />
+      <xs:element name="PropertyValue" type="xs:string" />
+      <xs:element name="PropertyNamespace" type="xs:string" />
+      <xs:element name="Promoted" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GeneralPropertyValue" type="tns:GeneralPropertyValueType" />
+  <xs:complexType name="GeneralPropertyValueType">
+    <xs:sequence>
+      <xs:element name="PropertyName" type="xs:string" />
+      <xs:element name="PropertyValue" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetInterceptionPolicy">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="activityName" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="stepName" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="policyName" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="version" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetInterceptionPolicyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="GetInterceptionPolicyResult" type="tns:BamActivityStep" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BamActivityStep">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ActivityInterceptorConfiguration">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="ActivityName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="StepName" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ActivityInterceptorConfiguration">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TrackPoint" type="tns:TrackPoint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TrackPoint">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Location" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ExtractionInfo" />
+    </xs:sequence>
+    <xs:attribute name="Type" type="tns:TrackPointType" use="required" />
+    <xs:attribute name="ItemName" type="xs:string" />
+    <xs:attribute name="ReferenceType" type="xs:string" />
+  </xs:complexType>
+  <xs:simpleType name="TrackPointType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Start" />
+      <xs:enumeration value="End" />
+      <xs:enumeration value="Data" />
+      <xs:enumeration value="Relationship" />
+      <xs:enumeration value="Reference" />
+      <xs:enumeration value="Continue" />
+      <xs:enumeration value="EnableContinuation" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
