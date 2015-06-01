@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resolution", "Resolution\Resolution.csproj", "{0226B63B-D8DF-4A64-B2B2-289434AAA3A0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uddi.Test", "Tests\Uddi.Test\Uddi.Test.csproj", "{D8ED419E-354B-40E0-B067-3F72A76FF632}"
@@ -41,6 +43,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizTalk.Orchestration", "BizTalk.Orchestration\BizTalk.Orchestration.csproj", "{B60F84C7-0CAE-490A-99B1-B58B2C0F5528}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{282BD350-4FB0-437C-9006-47804BC00CFE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D976620D-3835-4FAD-8102-DB861F3B2E48}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
