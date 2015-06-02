@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<brl xmlns="http://schemas.microsoft.com/businessruleslanguage/2002">
+<!--
+    Copyright 2015 Solidsoft Reply Limited.
+  
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+  
+        http://www.apache.org/licenses/LICENSE-2.0
+  
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+  <brl xmlns="http://schemas.microsoft.com/businessruleslanguage/2002">
   <vocabulary id="88b38591-1b61-4b42-a5c0-b19816d55776" name="ESB BAM Policy" uri="" description="">
     <version major="1" minor="0" description="" modifiedby="SOLIDSOFTREPLY\Author" date="2015-05-10T00:00:00.0000000+00:00" />
     <vocabularydefinition id="50a993c3-f881-46bc-b340-0c3c07be483b" name="Define Reference" description="">
