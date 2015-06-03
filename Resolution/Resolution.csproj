@@ -98,6 +98,7 @@
     <Compile Include="Dictionaries\ParametersDictionary.cs" />
     <Compile Include="Dictionaries\XmlSerializableDictionary.cs" />
     <Compile Include="Dictionaries\XmlSerializableDictionaryException.cs" />
+    <Compile Include="Directive.cs" />
     <Compile Include="DirectiveEventStream.cs" />
     <Compile Include="ExtensionHelpers.cs" />
     <Compile Include="MessageDirectionTypes.cs" />
@@ -117,7 +118,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Resolver.cs" />
-    <Compile Include="Directive.cs" />
     <Compile Include="Directives.cs" />
     <Compile Include="SerializableDictionary.cs" />
     <Compile Include="SerializableXmlDocument.cs" />
