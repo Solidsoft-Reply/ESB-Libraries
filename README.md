@@ -1,2 +1,10 @@
-# ESB-Libraries
-Libraries for dynamic service mediation.  The libraries depend on the Microsft BizTalk Server rules engine.
+# ESB Libraries
+The Solidsoft Reply ESB Libraries handle dynamic service mediation in .NET-based service bus environments.  The libraries depend on the Microsoft BizTalk Server rules engine and support additional BizTalk Server features such as dynamic maps and Business Activity Monitoring.  However, they are designed to handle service mediation requirements beyond BizTalk Server.
+
+The ESB Libraries can be used as an alternative to the resolution framework included as part of the BizTalk Server ESB Toolkit.  As well as service endpoint (URL) resolution, the libraries handle additional policy-driven mediation including dynamic transformation (using BizTalk Server maps), dynamic BAM interception, arbitrarily complex retry and service window policies and validation policies.  The libraries are extensible and can be used, unchanged, to handle any addition policy-driven resolution approach.
+
+In order to support service bus implementations that extend beyond BizTalk Server, the libraries implement a service that serves resolution policies on demand, together with local policy caching as part of a .NET API.  To use the libraries, you must implement the provided SOAP Resolution service on a BizTalk Server box.  This is required because of the dependency on the Microsoft Business Rules Framework which can only legally run on a licenced BizTalk Server box.  Each process that runs services on the bus can then be configured to use the Resolution service, even if the process runs on a non-BizTalk Server box.  Note, however, that this version of the libraries supports .NET only.
+
+As well as an API and local cache, the libraries provide pre-built BizTalk Server pipeline components, allowing a configuration-only approach to service mediation in BizTalk Server.  There is also a UDDI library that supports policy based approaches using data stored in one or more UDDI directories accessed via rules executed by the Microsoft BRE (Business Rules Engine).
+
+Service mediation policies are constructed using the Microsoft Business Rules Composer.  The libraries provide pre-defined vocabularies to aid the representation of mediation policies using natural language terms.  The current version supports English vocabularies, only.
