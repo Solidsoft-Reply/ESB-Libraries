@@ -16,7 +16,7 @@
 -->
 <brl xmlns="http://schemas.microsoft.com/businessruleslanguage/2002">
   <vocabulary id="c93df0d0-19c9-4917-aad5-be006e1a88c3" name="ESB Validation Actions" uri="" description="">
-    <version major="1" minor="0" description="" modifiedby="WIN-8L35R8E7JJS\Administrator" date="2015-05-10TT00:00:00.0000000+00:00" />
+    <version major="1" minor="0" description="" modifiedby="WIN-8L35R8E7JJS\Administrator" date="2015-05-10T00:00:00.0000000+00:00" />
     <vocabularydefinition id="73a6699f-77e5-4a95-a309-cba0f6347d6c" name="Log a validation warning - Description, code and type" description="Logs a validation warning with a description, code and type.">
       <bindingdefinition>
         <classmemberbindingdefinition member="LogWarning" type="void">

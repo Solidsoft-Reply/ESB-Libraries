@@ -16,7 +16,7 @@
 -->
 <brl xmlns="http://schemas.microsoft.com/businessruleslanguage/2002">
   <vocabulary id="5307b377-4da8-4aa5-94f4-4b22fe859fad" name="ESB Resolution Actions" uri="" description="">
-    <version major="1" minor="0" description="" modifiedby="SOLIDSOFTREPLY\Author" date="2015-05-10TT00:00:00.0000000+00:00" />
+    <version major="1" minor="0" description="" modifiedby="SOLIDSOFTREPLY\Author" date="2015-05-10T00:00:00.0000000+00:00" />
     <vocabularydefinition id="4632dd85-a232-41f4-8374-327f40b0b5f8" name="Time: End of Day" description="End of day.">
       <bindingdefinition>
         <classmemberbindingdefinition member="MaxValue" type="datetime">
