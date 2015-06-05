@@ -181,16 +181,16 @@
     <value>The map has an invalid strong name.  Full name is {0}</value>
   </data>
   <data name="ExceptionNoActivity" xml:space="preserve">
-    <value>Resolver directive {0} indicates that BAM interception is required, but no activity has been specified.</value>
+    <value>ESB Resolver directive {0} indicates that BAM interception is required, but no activity has been specified.</value>
   </data>
   <data name="ExceptionNoActivityStep" xml:space="preserve">
-    <value>Resolver directive {0} indicates that BAM interception is required, but no activity step has been specified.</value>
+    <value>ESB Resolver directive {0} indicates that BAM interception is required, but no activity step has been specified.</value>
   </data>
   <data name="ExceptionNoBamActivity" xml:space="preserve">
     <value>Failed to get the Bam Activity object</value>
   </data>
   <data name="ExceptionNoPolicyDefined" xml:space="preserve">
-    <value>No policy defined.</value>
+    <value>No ESB policy defined.</value>
   </data>
   <data name="ExceptionNoTrackpoints" xml:space="preserve">
     <value>No TrackPoints from the BRE</value>
@@ -282,5 +282,8 @@
   </data>
   <data name="AppSettingsEsbBreTraceFileLocation" xml:space="preserve">
     <value>ESB.BRE.TraceFileLocation</value>
+  </data>
+  <data name="ExceptionInvalidDirective" xml:space="preserve">
+    <value>An ESB Resolver directive is invalid or does not exist.  Check that the directive name exists in the policy.</value>
   </data>
 </root>

@@ -1219,7 +1219,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
 
             if (!bodyPartAssigned)
             {
-                // Override the buffering specified in a directive and use the event stream returend by the 
+                // Override the buffering specified in a directive and use the event stream returned by the 
                 // pipeline context (the Messaging Event Stream - MES).  This is a buffered event stream
                 // synchronised with the pipeline.
                 if (this.SynchronizeBam)
@@ -1359,6 +1359,13 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         private IBaseMessage ProcessMessagePerDirective(IPipelineContext pc)
         {
             var inMsg = this.pipelineInMsg.Clone(pc);
+
+            // If there are no directives, then return the current message
+            if (this.current == 0 && this.directives.Count == 0)
+            {
+                this.current++;
+                return inMsg;
+            }
 
             if (this.current >= this.directives.Count)
             {

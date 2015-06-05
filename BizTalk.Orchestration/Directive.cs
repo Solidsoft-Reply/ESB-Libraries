@@ -901,10 +901,49 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         /// <param name="data">
         /// The BAM step data.
         /// </param>
+        public override void OnStep(Resolution.BamStepData data)
+        {
+            if (this.directive == null)
+            {
+                return;
+            }
+
+            this.directive.OnStep(data);
+        }
+
+        /// <summary>
+        /// Retrieves data for a particular step of a BAM activity. Call this method on every
+        ///     step in which some data may be needed for BAM - e.g., at the point a service is called,
+        ///     or at the point of resolution.
+        /// </summary>
+        /// <param name="data">
+        /// The BAM step data.
+        /// </param>
         /// <param name="afterMap">
         /// Indicates if the step is after the application of a map.
         /// </param>
         public void OnStep(BamStepData data, bool afterMap)
+        {
+            if (this.directive == null)
+            {
+                return;
+            }
+
+            this.directive.OnStep(data, afterMap);
+        }
+
+        /// <summary>
+        /// Retrieves data for a particular step of a BAM activity. Call this method on every
+        ///     step in which some data may be needed for BAM - e.g., at the point a service is called,
+        ///     or at the point of resolution.
+        /// </summary>
+        /// <param name="data">
+        /// The BAM step data.
+        /// </param>
+        /// <param name="afterMap">
+        /// Indicates if the step is after the application of a map.
+        /// </param>
+        public override void OnStep(Resolution.BamStepData data, bool afterMap)
         {
             if (this.directive == null)
             {
