@@ -141,8 +141,8 @@
   <data name="DescEnvelopeSpecNames" xml:space="preserve">
     <value>Indicates the schema(s) to be applied to the envelope.</value>
   </data>
-  <data name="DescFFDasmDesription" xml:space="preserve">
-    <value>Flat file disassembler component</value>
+  <data name="DescFFDasmDescription" xml:space="preserve">
+    <value>Flat file disassembler component.</value>
   </data>
   <data name="DescFFDasmName" xml:space="preserve">
     <value>Indicates the name of the component.</value>
@@ -195,8 +195,8 @@
   <data name="DescValidateDocumentStructure" xml:space="preserve">
     <value>Indicates whether to validate the header, the trailer and the document structures of incoming messages.</value>
   </data>
-  <data name="DescXmlDasmDesription" xml:space="preserve">
-    <value>Xml disassembler component with ESB governance.</value>
+  <data name="DescXmlDasmDescription" xml:space="preserve">
+    <value>Xml disassembler component with ESB service mediation.</value>
   </data>
   <data name="DescXmlDasmName" xml:space="preserve">
     <value>Indicates the name of the component.</value>
@@ -204,9 +204,23 @@
   <data name="DescXmlDasmVersion" xml:space="preserve">
     <value>Version description</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="DisassemblerIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DisassemblerIcon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="DescBtfDasmDescription" xml:space="preserve">
+    <value>BTF disassembler component with ESB service mediation.</value>
+  </data>
+  <data name="DescBtfDasmName" xml:space="preserve">
+    <value>Indicates the name of the component.</value>
+  </data>
+  <data name="DescBtfDasmVersion" xml:space="preserve">
+    <value>Version description</value>
+  </data>
+  <data name="DescAs2DasmDescription" xml:space="preserve">
+    <value>AS2 disassembler component with ESB service mediation.</value>
+  </data>
+  <data name="DescAs2DasmName" xml:space="preserve">
+    <value>Indicates the name of the component.</value>
+  </data>
+  <data name="DescAs2DasmVersion" xml:space="preserve">
+    <value>Version description</value>
   </data>
   <data name="ExceptionNoValidMessagePart" xml:space="preserve">
     <value>Cannot find a valid message part.  The XML content of the body part is invalid, or the part does not exist:\r\n\r\n{0}</value>
@@ -214,25 +228,25 @@
   <data name="ExceptionPolicyUndetermined" xml:space="preserve">
     <value>ESB policy cannot be determined.  Add an AppSetting to the config file called '{0}'.</value>
   </data>
-  <data name="FlatFileDasmGovernanceComponentClassId" xml:space="preserve">
+  <data name="EsbServiceMediationFlatFileDasmComponentClassId" xml:space="preserve">
     <value>5EEEF32A-5601-4D8D-B2DA-D939484F08E7</value>
   </data>
-  <data name="FlatFileDasmGovernanceComponentDescription" xml:space="preserve">
-    <value>Applies ESB governance in the context of a Fat File Disassembler within a BizTalk Server pipeline.</value>
+  <data name="EsbServiceMediationFlatFileDasmComponentDescription" xml:space="preserve">
+    <value>Applies ESB service medition in the context of a Fat File disassembler within a BizTalk Server pipeline.</value>
   </data>
-  <data name="FlatFileDasmGovernanceComponentName" xml:space="preserve">
-    <value>Flat file disassembler with ESB Governance</value>
+  <data name="EsbServiceMediationFlatFileDasmComponentName" xml:space="preserve">
+    <value>Flat file disassembler with ESB service medition</value>
   </data>
-  <data name="GovernanceComponentClassId" xml:space="preserve">
+  <data name="EsbServiceMediationComponentClassId" xml:space="preserve">
     <value>59CFD96B-20EE-40ad-BFD0-319B59A0DDBC</value>
   </data>
-  <data name="GovernanceComponentDescription" xml:space="preserve">
-    <value>Applies ESB governance within a BizTalk Server pipeline.</value>
+  <data name="EsbServiceMediationComponentDescription" xml:space="preserve">
+    <value>Applies ESB service medition within a BizTalk Server pipeline.</value>
   </data>
-  <data name="GovernanceComponentName" xml:space="preserve">
-    <value>ESB Governance</value>
+  <data name="EsbServiceMediationComponentName" xml:space="preserve">
+    <value>ESB service mediation</value>
   </data>
-  <data name="PeopFFDasmVersion" xml:space="preserve">
+  <data name="PropFFDasmVersion" xml:space="preserve">
     <value>Version</value>
   </data>
   <data name="PropAllowUnrecognizedMessage" xml:space="preserve">
@@ -256,8 +270,8 @@
   <data name="PropEnvelopeSpecNames" xml:space="preserve">
     <value>Envelope schemas</value>
   </data>
-  <data name="PropFFDasmDesription" xml:space="preserve">
-    <value>Desription</value>
+  <data name="PropFFDasmDescription" xml:space="preserve">
+    <value>Description</value>
   </data>
   <data name="PropFFDasmName" xml:space="preserve">
     <value>Name</value>
@@ -308,7 +322,7 @@
     <value>Validate document structure</value>
   </data>
   <data name="PropXmlDasmDescription" xml:space="preserve">
-    <value>Streaming XML disassembler with ESB governance</value>
+    <value>Streaming XML disassembler with ESB service mediation.</value>
   </data>
   <data name="PropXmlDasmName" xml:space="preserve">
     <value>Name</value>
@@ -316,8 +330,23 @@
   <data name="PropXmlDasmVersion" xml:space="preserve">
     <value>Version</value>
   </data>
-  <data name="String1" xml:space="preserve">
-    <value />
+  <data name="PropAs2DasmDescription" xml:space="preserve">
+    <value>Streaming AS2 disassembler with ESB service mediation.</value>
+  </data>
+  <data name="PropAs2DasmName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="PropAs2DasmVersion" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="PropBtfDasmDescription" xml:space="preserve">
+    <value>Streaming BTF disassembler with ESB service mediation.</value>
+  </data>
+  <data name="PropBtfDasmName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="PropBtfDasmVersion" xml:space="preserve">
+    <value>Version</value>
   </data>
   <data name="UriBtsSystemProperties" xml:space="preserve">
     <value>http://schemas.microsoft.com/BizTalk/2003/system-properties</value>
@@ -334,14 +363,41 @@
   <data name="UriXsd" xml:space="preserve">
     <value>http://www.w3.org/2001/XMLSchema-instance</value>
   </data>
-  <data name="XmlDasmGovernanceComponentClassId" xml:space="preserve">
+  <data name="EsbServiceMediationXmlDasmComponentClassId" xml:space="preserve">
     <value>DA2A8452-88E1-4C96-B5E7-8B04AABBFBF3</value>
   </data>
-  <data name="XmlDasmGovernanceComponentDescription" xml:space="preserve">
-    <value>Applies ESB governance in the context of an XML Disassembler within a BizTalk Server pipeline.</value>
+  <data name="EsbServiceMediationXmlDasmComponentDescription" xml:space="preserve">
+    <value>Applies ESB service medition in the context of an XML disassembler within a BizTalk Server pipeline.</value>
   </data>
-  <data name="XmlDasmGovernanceComponentName" xml:space="preserve">
-    <value>XML disassembler with ESB Governance</value>
+  <data name="EsbServiceMediationXmlDasmComponentName" xml:space="preserve">
+    <value>XML disassembler with ESB service medition</value>
+  </data>
+  <data name="EsbServiceMediationAs2DasmComponentClassId" xml:space="preserve">
+    <value>9E799685-D8CC-4A39-9DED-C51A2EA2A829</value>
+  </data>
+  <data name="EsbServiceMediationAs2DasmComponentDescription" xml:space="preserve">
+    <value>Applies ESB service medition in the context of an AS2 disassembler within a BizTalk Server pipeline.</value>
+  </data>
+  <data name="EsbServiceMediationAs2DasmComponentName" xml:space="preserve">
+    <value>AS2 disassembler with ESB service medition</value>
+  </data>
+  <data name="EsbServiceMediationEdiDasmComponentClassId" xml:space="preserve">
+    <value>5F5C38E0-F9BB-4EC7-BE96-D9E4F671E057</value>
+  </data>
+  <data name="EsbServiceMediationEdiDasmComponentDescription" xml:space="preserve">
+    <value>Applies ESB service medition in the context of an EDI disassembler within a BizTalk Server pipeline.</value>
+  </data>
+  <data name="EsbServiceMediationEdiDasmComponentName" xml:space="preserve">
+    <value>EDI disassembler with ESB service medition</value>
+  </data>
+  <data name="EsbServiceMediationBtfDasmComponentClassId" xml:space="preserve">
+    <value>38B0756D-099E-4E08-B5D9-BA6460DF7C98</value>
+  </data>
+  <data name="EsbServiceMediationBtfDasmComponentDescription" xml:space="preserve">
+    <value>Applies ESB service medition in the context of an BTF disassembler within a BizTalk Server pipeline.</value>
+  </data>
+  <data name="EsbServiceMediationBtfDasmComponentName" xml:space="preserve">
+    <value>BizTalk Framework disassembler with ESB service medition</value>
   </data>
   <data name="AppSettingsEsbBrePolicyTester" xml:space="preserve">
     <value>ESB.BRE.PolicyTester</value>
@@ -372,5 +428,150 @@
   </data>
   <data name="ExceptionRsNotInStore" xml:space="preserve">
     <value>The ruleset '{0}' version {1}.{2} specified is not in the rule store.</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="EsbServiceMediationBtfDisassemblerIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EsbServiceMediationBtfDisassemblerBitmap.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EsbServiceMediationFFDisassemblerIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EsbServiceMediationFFDisassemblerBitmap.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EsbServiceMediationXmlDisassemblerIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EsbServiceMediationXmlDisassemblerBitmap.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EsbServiceMediationBtfDisassemblerBitmap" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EsbServiceMediationBtfDisassemblerBitmap.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EsbServiceMediationFFDisassemblerBitmap" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EsbServiceMediationFFDisassemblerBitmap.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EsbServiceMediationXmlDisassemblerBitmap" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EsbServiceMediationXmlDisassemblerBitmap.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EsbServiceMediationAs2DisassemblerBitmap" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EsbServiceMediationAS2DisassemblerBitmap.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EsbServiceMediationAs2DisassemblerIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EsbServiceMediationAS2DisassemblerIcon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EsbServiceMediationEdiDisassemblerBitmap" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EsbServiceMediationEdiDisassemblerBitmap.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EsbServiceMediationEdiDisassemblerIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EsbServiceMediationEdiDisassemblerIcon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AllowTrailingDelimitersDescription" xml:space="preserve">
+    <value>Applicable only to Fallback Settings.</value>
+  </data>
+  <data name="AllowTrailingDelimitersName" xml:space="preserve">
+    <value>Allow trailing delimiters.</value>
+  </data>
+  <data name="CharacterSetDescription" xml:space="preserve">
+    <value>Char set applicable for processing X12 interchanges only.</value>
+  </data>
+  <data name="CharacterSetName" xml:space="preserve">
+    <value>X12 character set.</value>
+  </data>
+  <data name="ConvertToImpliedDecimalDescription" xml:space="preserve">
+    <value>Applicable only to Global party.</value>
+  </data>
+  <data name="ConvertToImpliedDecimal" xml:space="preserve">
+    <value>Convert to implied decimal.</value>
+  </data>
+  <data name="CreateXmlTagForTrailingSeparatorsDescription" xml:space="preserve">
+    <value>Applicable only to Global party.</value>
+  </data>
+  <data name="CreateXmlTagForTrailingSeparators" xml:space="preserve">
+    <value>Create xml tags for trailing separators.</value>
+  </data>
+  <data name="DescEdiDasmDescription" xml:space="preserve">
+    <value>EDI disassembler component with ESB service mediation.</value>
+  </data>
+  <data name="PropEdiDasmDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="DetectMultipleInterchangesDescription" xml:space="preserve">
+    <value>When set to true, multiple interchanges would be detected. Otherwise, the entire message would be treated as a single interchange.</value>
+  </data>
+  <data name="DetectMultipleInterchangesName" xml:space="preserve">
+    <value>Detect Multiple Interchanges.</value>
+  </data>
+  <data name="EdiDataValidationDescription" xml:space="preserve">
+    <value>Applicable only to Fallback Settings.</value>
+  </data>
+  <data name="EdiDataValidationName" xml:space="preserve">
+    <value>Perform EDI data validation.</value>
+  </data>
+  <data name="EfactDelimitersDescription" xml:space="preserve">
+    <value>Hexadecimal delimiters separated by space and comma. Applicable only to Global party. They should be specified in the same order as defined in UNA segment, component separator, data element separator, decimal notation, release indicator, repetition seperator (anything other than space character), segment terminator.</value>
+  </data>
+  <data name="EfactDelimitersName" xml:space="preserve">
+    <value>Default Edifact delimiters.</value>
+  </data>
+  <data name="MaskSecurityInformationDescription" xml:space="preserve">
+    <value>Applicable only to Global party.</value>
+  </data>
+  <data name="MaskSecurityInformation" xml:space="preserve">
+    <value>Mask security information in envelope.</value>
+  </data>
+  <data name="DescEdiDasmName" xml:space="preserve">
+    <value>Indicates the name of the component.</value>
+  </data>
+  <data name="PropEdiDasmName" xml:space="preserve">
+    <value>Indicates the name of the component.</value>
+  </data>
+  <data name="Override997With999Description" xml:space="preserve">
+    <value>Generates 999 doctype instead of 997. Applicable only to X12.</value>
+  </data>
+  <data name="Override997With999Name" xml:space="preserve">
+    <value>Use 999 Acknowledgement instead of 997.</value>
+  </data>
+  <data name="OverrideFallbackSettingsDescription" xml:space="preserve">
+    <value>Applicable only to Fallback Settings.</value>
+  </data>
+  <data name="OverrideFallbackSettingsName" xml:space="preserve">
+    <value>Override Fallback Settings with the Pipeline Settings.</value>
+  </data>
+  <data name="BiboModeDescription" xml:space="preserve">
+    <value>Applicable only to Fallback Settings.</value>
+  </data>
+  <data name="BiboModeName" xml:space="preserve">
+    <value>Preserve interchange.</value>
+  </data>
+  <data name="RouteAckOn2WayPortDescription" xml:space="preserve">
+    <value>Applicable only to Global party.</value>
+  </data>
+  <data name="RouteAckOn2WayPort" xml:space="preserve">
+    <value>Route ack On 2 way port.</value>
+  </data>
+  <data name="UseDotAsDecimalSeparatorForInternalEDIFACTRepesentationDescription" xml:space="preserve">
+    <value>Controls decimal number separator used by EDIFACT XML when parsing incoming message.</value>
+  </data>
+  <data name="UseDotAsDecimalSeparatorForInternalEDIFACTRepesentationName" xml:space="preserve">
+    <value>Use dot as decimal separator for internal EDIFACT representation.</value>
+  </data>
+  <data name="UseIsa11AsRepetitionSeparatorDescription" xml:space="preserve">
+    <value>Applicable only to Fallback Settings.</value>
+  </data>
+  <data name="UseIsa11AsRepetitionSeparator" xml:space="preserve">
+    <value>Use ISA11 as repetition separator.</value>
+  </data>
+  <data name="DescEdiDasmVersion" xml:space="preserve">
+    <value>Version description.</value>
+  </data>
+  <data name="PropEdiDasmVersion" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="XmlSchemaValidationDescription" xml:space="preserve">
+    <value>Applicable only to Fallback Settings.</value>
+  </data>
+  <data name="XmlSchemaValidationName" xml:space="preserve">
+    <value>Perform XSD validation.</value>
+  </data>
+  <data name="EsbServiceMediationDisassemberBitmap" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EsbServiceMediationDisassemberBitmap.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EsbServiceMediationDisassemberIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EsbServiceMediationDisassemberIcon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

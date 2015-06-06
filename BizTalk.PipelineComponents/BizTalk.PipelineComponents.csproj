@@ -42,6 +42,14 @@
   <ItemGroup>
     <Reference Include="Microsoft.BizTalk.Bam.EventObservation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.BizTalk.Component.Utilities, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.BizTalk.Edi.PipelineComponents, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\Microsoft BizTalk Server 2013 R2\Pipeline Components\Microsoft.BizTalk.Edi.PipelineComponents.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.BizTalk.EdiInt.PipelineComponents, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\Microsoft BizTalk Server 2013 R2\Pipeline Components\Microsoft.BizTalk.EdiInt.PipelineComponents.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.BizTalk.GlobalPropertySchemas, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Program Files (x86)\Microsoft BizTalk Server 2013\Microsoft.BizTalk.GlobalPropertySchemas.dll</HintPath>
@@ -78,7 +86,7 @@
     <Compile Include="EsbPipelineComponentException.cs" />
     <Compile Include="ExtensionMethodsGeneral.cs" />
     <Compile Include="ExtensionMethodsIBaseMessagePart.cs" />
-    <Compile Include="FlatFileDisassemblerWithGovernance.cs" />
+    <Compile Include="ServiceMediationFlatFileDisassembler.cs" />
     <Compile Include="ExtensionMethodsGovernance.cs" />
     <Compile Include="ExtensionMethodsIBaseMessage.cs" />
     <Compile Include="MessageProperty.cs" />
@@ -88,12 +96,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Governance.cs" />
+    <Compile Include="ServiceMediation.cs" />
     <Compile Include="ExtensionMethodsStream.cs" />
     <Compile Include="RuleSetNotFoundException.cs" />
     <Compile Include="RuleStoreConnectionParametersException.cs" />
+    <Compile Include="ServiceMediationBtfDisassembler.cs" />
+    <Compile Include="ServiceMediationEdiDisassembler.cs" />
+    <Compile Include="ServiceMediationAS2Disassembler.cs" />
     <Compile Include="ValidationException.cs" />
-    <Compile Include="XmlDisassemblerWithGovernance.cs" />
+    <Compile Include="ServiceMediationXmlDisassembler.cs" />
     <Compile Include="ExtensionMethodsXml.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -107,9 +118,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\DisassemblerIcon.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Facts\Facts.csproj">
       <Project>{2d735d22-6e9f-4584-8d50-03c0e59d1405}</Project>
       <Name>Facts</Name>
@@ -119,7 +127,42 @@
       <Name>Resolution</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\EsbServiceMediationBtfDisassemblerBitmap.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EsbServiceMediationFFDisassemblerBitmap.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EsbServiceMediationXmlDisassemblerBitmap.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EsbServiceMediationBtfDisassemblerBitmap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EsbServiceMediationFFDisassemblerBitmap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EsbServiceMediationXmlDisassemblerBitmap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EsbServiceMediationAS2DisassemblerIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EsbServiceMediationEdiDisassemblerIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EsbServiceMediationAS2DisassemblerBitmap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EsbServiceMediationEdiDisassemblerBitmap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EsbServiceMediationDisassemberIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EsbServiceMediationDisassemberBitmap.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

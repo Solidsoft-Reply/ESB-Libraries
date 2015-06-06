@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="XmlDisassemblerWithGovernance.cs" company="Solidsoft Reply Ltd.">
+// <copyright file="ServiceMediationFlatFileDisassembler.cs" company="Solidsoft Reply Ltd.">
 //   Copyright 2015 Solidsoft Reply Limited.
 // 
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,13 +36,13 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
     using SolidsoftReply.Esb.Libraries.Resolution;
 
     /// <summary>
-    /// Implements ESB governance in the context of the XML Disassembler pipeline component.
+    /// Implements ESB service mediation in the context of the Flat File Disassembler pipeline component.
     /// </summary>
     [ComponentCategory(CategoryTypes.CATID_PipelineComponent)]
     [ComponentCategory(CategoryTypes.CATID_DisassemblingParser)]
     [ComponentCategory(CategoryTypes.CATID_Streamer)]
-    [Guid("DA2A8452-88E1-4C96-B5E7-8B04AABBFBF3")]
-    public class XmlDisassemblerWithGovernance : BaseCustomTypeDescriptor, IBaseComponent, IPersistPropertyBag, IComponentUI, IDisassemblerComponent
+    [Guid("5EEEF32A-5601-4D8D-B2DA-D939484F08E7")]
+    public class ServiceMediationFlatFileDisassembler : BaseCustomTypeDescriptor, IBaseComponent, IPersistPropertyBag, IComponentUI, IDisassemblerComponent, IProbeMessage, IDisposable
     {
         /// <summary>
         /// The resource manager.
@@ -50,37 +50,48 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         private static readonly ResourceManager ResourceManager;
 
         /// <summary>
-        /// The XML disassember component.
+        /// The Flat File disassembler component.
         /// </summary>
         [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-        private readonly XmlDasmComp xmlDasmComp;
+        private readonly FFDasmComp flatFileDasmComp;
 
         /// <summary>
-        /// Instance of XML Disassembler
+        /// Instance of Service Mediation Disassembler
         /// </summary>
-        private Governance governanceDasm;
+        private ServiceMediation serviceMediationDasm;
 
         /// <summary>
-        /// The current XML message.
+        /// The current flat file message.
         /// </summary>
-        private IBaseMessage currentXmlMessage;
+        private IBaseMessage currentFlatFileMessage;
 
         /// <summary>
-        /// Initializes static members of the <see cref="XmlDisassemblerWithGovernance"/> class.
+        /// Initializes static members of the <see cref="ServiceMediationFlatFileDisassembler"/> class.
         /// </summary>
-        static XmlDisassemblerWithGovernance()
+        static ServiceMediationFlatFileDisassembler()
         {
-            ResourceManager = new ResourceManager("SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.Properties.Resources", typeof(XmlDisassemblerWithGovernance).Assembly);
+            ResourceManager = new ResourceManager("SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.Properties.Resources", typeof(ServiceMediationFlatFileDisassembler).Assembly);
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="XmlDisassemblerWithGovernance"/> class.
+        /// Initializes a new instance of the <see cref="ServiceMediationFlatFileDisassembler"/> class.
         /// </summary>
-        public XmlDisassemblerWithGovernance()
+        public ServiceMediationFlatFileDisassembler()
             : base(ResourceManager)
         {
-            this.governanceDasm = new Governance();
-            this.xmlDasmComp = new XmlDasmComp();
+            this.serviceMediationDasm = new ServiceMediation();
+            this.flatFileDasmComp = new FFDasmComp();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ServiceMediationFlatFileDisassembler"/> class.
+        /// </summary>
+        /// <param name="dataReaderFunction">The data reader function.</param>
+        public ServiceMediationFlatFileDisassembler(FFDasmComp.DataReaderFunction dataReaderFunction)
+            : base(ResourceManager)
+        {
+            this.serviceMediationDasm = new ServiceMediation();
+            this.flatFileDasmComp = new FFDasmComp(dataReaderFunction);
         }
 
         /// <summary>
@@ -96,12 +107,12 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         {
             get
             {
-                return this.governanceDasm.BindingAccessPoint;
+                return this.serviceMediationDasm.BindingAccessPoint;
             }
 
             set
             {
-                this.governanceDasm.BindingAccessPoint = value;
+                this.serviceMediationDasm.BindingAccessPoint = value;
             }
         }
 
@@ -116,12 +127,12 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         {
             get
             {
-                return this.governanceDasm.BindingUrlType;
+                return this.serviceMediationDasm.BindingUrlType;
             }
 
             set
             {
-                this.governanceDasm.BindingUrlType = value;
+                this.serviceMediationDasm.BindingUrlType = value;
             }
         }
 
@@ -138,12 +149,12 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         {
             get
             {
-                return this.governanceDasm.BodyContainerXPath;
+                return this.serviceMediationDasm.BodyContainerXPath;
             }
 
             set
             {
-                this.governanceDasm.BodyContainerXPath = value;
+                this.serviceMediationDasm.BodyContainerXPath = value;
             }
         }
 
@@ -151,13 +162,13 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         /// Gets the description of the component.
         /// </summary>
         [Browsable(false)]
-        [BtsDescription("DescXmlDasmDesription")]
-        [BtsPropertyName("PropXmlDasmDescription")]
+        [BtsDescription("DescFFDasmDescription")]
+        [BtsPropertyName("PropFFDasmDescription")]
         public string Description
         {
             get
             {
-                return Resources.XmlDasmGovernanceComponentDescription;
+                return Resources.EsbServiceMediationFlatFileDasmComponentDescription;
             }
         }
 
@@ -169,7 +180,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         {
             get
             {
-                return Resources.DisassemblerIcon.Handle;
+                return Resources.EsbServiceMediationFFDisassemblerIcon.Handle;
             }
         }
 
@@ -183,12 +194,12 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         {
             get
             {
-                return this.governanceDasm.MessageDirection;
+                return this.serviceMediationDasm.MessageDirection;
             }
 
             set
             {
-                this.governanceDasm.MessageDirection = value;
+                this.serviceMediationDasm.MessageDirection = value;
             }
         }
 
@@ -205,12 +216,12 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         {
             get
             {
-                return this.governanceDasm.MessageRole;
+                return this.serviceMediationDasm.MessageRole;
             }
 
             set
             {
-                this.governanceDasm.MessageRole = value;
+                this.serviceMediationDasm.MessageRole = value;
             }
         }
 
@@ -225,12 +236,12 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         {
             get
             {
-                return this.governanceDasm.MessageType;
+                return this.serviceMediationDasm.MessageType;
             }
 
             set
             {
-                this.governanceDasm.MessageType = value;
+                this.serviceMediationDasm.MessageType = value;
             }
         }
 
@@ -238,13 +249,13 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         /// Gets the name of the component.
         /// </summary>
         [Browsable(false)]
-        [BtsDescription("DescXmlDasmName")]
-        [BtsPropertyName("PropXmlDasmName")]
+        [BtsDescription("DescFFDasmName")]
+        [BtsPropertyName("PropFFDasmName")]
         public string Name
         {
             get
             {
-                return Resources.XmlDasmGovernanceComponentName;
+                return Resources.EsbServiceMediationFlatFileDasmComponentName;
             }
         }
 
@@ -258,12 +269,12 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         {
             get
             {
-                return this.governanceDasm.OperationName;
+                return this.serviceMediationDasm.OperationName;
             }
 
             set
             {
-                this.governanceDasm.OperationName = value;
+                this.serviceMediationDasm.OperationName = value;
             }
         }
 
@@ -277,12 +288,12 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         {
             get
             {
-                return this.governanceDasm.Policy;
+                return this.serviceMediationDasm.Policy;
             }
 
             set
             {
-                this.governanceDasm.Policy = value;
+                this.serviceMediationDasm.Policy = value;
             }
         }
 
@@ -297,12 +308,12 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         {
             get
             {
-                return this.governanceDasm.PolicyVersion;
+                return this.serviceMediationDasm.PolicyVersion;
             }
 
             set
             {
-                this.governanceDasm.PolicyVersion = value;
+                this.serviceMediationDasm.PolicyVersion = value;
             }
         }
 
@@ -318,12 +329,12 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         {
             get
             {
-                return this.governanceDasm.ProviderName;
+                return this.serviceMediationDasm.ProviderName;
             }
 
             set
             {
-                this.governanceDasm.ProviderName = value;
+                this.serviceMediationDasm.ProviderName = value;
             }
         }
 
@@ -339,12 +350,12 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         {
             get
             {
-                return this.governanceDasm.ServiceName;
+                return this.serviceMediationDasm.ServiceName;
             }
 
             set
             {
-                this.governanceDasm.ServiceName = value;
+                this.serviceMediationDasm.ServiceName = value;
             }
         }
 
@@ -359,12 +370,12 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         {
             get
             {
-                return this.governanceDasm.SynchronizeBam;
+                return this.serviceMediationDasm.SynchronizeBam;
             }
 
             set
             {
-                this.governanceDasm.SynchronizeBam = value;
+                this.serviceMediationDasm.SynchronizeBam = value;
             }
         }
 
@@ -372,8 +383,8 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         /// Gets the version of the component.
         /// </summary>
         [Browsable(false)]
-        [BtsDescription("DescXmlDasmVersion")]
-        [BtsPropertyName("PropXmlDasmVersion")]
+        [BtsDescription("DescFFDasmVersion")]
+        [BtsPropertyName("PropFFDasmVersion")]
         public string Version
         {
             get
@@ -383,76 +394,93 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether to allow messages that do not have 
-        /// a recognized schema to be passed through the disassembler.
+        /// Gets or sets the schema to be applied to the document.
         /// </summary>
-        [BtsDescription("DescAllowUnrecognizedMessage")]
-        [BtsPropertyName("PropAllowUnrecognizedMessage")]
-        public bool AllowUnrecognizedMessage
+        [BtsDescription("DescDocumentSpecName")]
+        [BtsPropertyName("PropDocumentSpecName")]
+        public SchemaWithNone DocumentSpecName
         {
             get
             {
-                return this.xmlDasmComp.AllowUnrecognizedMessage;
+                return this.flatFileDasmComp.DocumentSpecName;
             }
 
             set
             {
-                this.xmlDasmComp.AllowUnrecognizedMessage = value;
+                this.flatFileDasmComp.DocumentSpecName = value;
             }
         }
 
         /// <summary>
-        /// Gets or sets the schema(s) to be applied to the document.
+        /// Gets or sets the header schema name that the flat file disassembler uses for parsing document headers. 
         /// </summary>
-        [BtsDescription("DescDocumentSpecNames")]
-        [BtsPropertyName("PropDocumentSpecNames")]
-        public SchemaList DocumentSpecNames
+        [BtsDescription("DescHeaderSpecName")]
+        [BtsPropertyName("PropHeaderSpecName")]
+        public SchemaWithNone HeaderSpecName
         {
             get
             {
-                return this.xmlDasmComp.DocumentSpecNames;
+                return this.flatFileDasmComp.HeaderSpecName;
             }
 
             set
             {
-                this.xmlDasmComp.DocumentSpecNames = value;
+                this.flatFileDasmComp.HeaderSpecName = value;
             }
         }
 
         /// <summary>
-        /// Gets or sets the the schema(s) to be applied to the envelope.
+        /// Gets or sets a value indicating whether to preserve the headers 
+        /// of the documents on the message context.
         /// </summary>
-        [BtsDescription("DescEnvelopeSpecNames")]
-        [BtsPropertyName("PropEnvelopeSpecNames")]
-        public SchemaList EnvelopeSpecNames
+        [BtsDescription("DescPreserveHeader")]
+        [BtsPropertyName("PropPreserveHeader")]
+        public bool PreserveHeader
         {
             get
             {
-                return this.xmlDasmComp.EnvelopeSpecNames;
+                return this.flatFileDasmComp.PreserveHeader;
             }
 
             set
             {
-                this.xmlDasmComp.EnvelopeSpecNames = value;
+                this.flatFileDasmComp.PreserveHeader = value;
             }
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether to validate the envelope and 
-        /// document structures of incoming messages.
+        /// Gets or sets the trailer schema name that the flat file disassembler uses for parsing document trailers.
         /// </summary>
-        [BtsDescription("DescValidate")]
-        [BtsPropertyName("PropValidate")]
-        public bool ValidateDocument
+        [BtsDescription("DescTrailerSpecName")]
+        [BtsPropertyName("PropTrailerSpecName")]
+        public SchemaWithNone TrailerSpecName
         {
             get
             {
-                return this.xmlDasmComp.ValidateDocument;
+                return this.flatFileDasmComp.TrailerSpecName;
             }
 
             set
             {
-                this.xmlDasmComp.ValidateDocument = value;
+                this.flatFileDasmComp.TrailerSpecName = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to validate the structure of the parsed document.
+        /// </summary>
+        [BtsDescription("DescValidateDocumentStructure")]
+        [BtsPropertyName("PropValidateDocumentStructure")]
+        public bool ValidateDocumentStructure
+        {
+            get
+            {
+                return this.flatFileDasmComp.ValidateDocumentStructure;
+            }
+
+            set
+            {
+                this.flatFileDasmComp.ValidateDocumentStructure = value;
             }
         }
 
@@ -466,12 +494,12 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         {
             get
             {
-                return this.xmlDasmComp.RecoverableInterchangeProcessing;
+                return this.flatFileDasmComp.RecoverableInterchangeProcessing;
             }
 
             set
             {
-                this.xmlDasmComp.RecoverableInterchangeProcessing = value;
+                this.flatFileDasmComp.RecoverableInterchangeProcessing = value;
             }
         }
 
@@ -484,7 +512,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         // ReSharper disable once InconsistentNaming
         public void GetClassID(out Guid classid)
         {
-            classid = new Guid(Resources.XmlDasmGovernanceComponentClassId);
+            classid = new Guid(Resources.EsbServiceMediationFlatFileDasmComponentClassId);
         }
 
         /// <summary>
@@ -498,8 +526,8 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         /// </param>
         public void Disassemble(IPipelineContext pipelineContext, IBaseMessage inMsg)
         {
-            ////this.currentXmlMessage = inMsg;
-            this.xmlDasmComp.Disassemble(pipelineContext, inMsg);
+            ////this.currentFlatFileMessage = inMsg;
+            this.flatFileDasmComp.Disassemble(pipelineContext, inMsg);
         }
 
         /// <summary>
@@ -515,27 +543,27 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         {
             while (true)
             {
-                if (this.currentXmlMessage == null)
+                if (this.currentFlatFileMessage == null)
                 {
-                    this.currentXmlMessage = this.xmlDasmComp.GetNext(pipelineContext);
+                    this.currentFlatFileMessage = this.flatFileDasmComp.GetNext(pipelineContext);
 
-                    if (this.currentXmlMessage == null)
+                    if (this.currentFlatFileMessage == null)
                     {
                         break;
                     }
 
-                    this.InitialiseGovernance();
-                    this.governanceDasm.Disassemble(pipelineContext, this.currentXmlMessage);
+                    this.InitialiseServiceMediation();
+                    this.serviceMediationDasm.Disassemble(pipelineContext, this.currentFlatFileMessage);
                 }
 
-                var nextMsg = this.governanceDasm.GetNext(pipelineContext);
+                var nextMsg = this.serviceMediationDasm.GetNext(pipelineContext);
 
                 if (nextMsg != null)
                 {
                     return nextMsg;
                 }
 
-                this.currentXmlMessage = null;
+                this.currentFlatFileMessage = null;
             }
 
             return null;
@@ -552,11 +580,22 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         /// </param>
         public void Load(IPropertyBag pb, int errlog)
         {
-            // Let the Governance disassembler read its properties from the property bag.
-            this.governanceDasm.Load(pb, errlog);
+            // Let the Service Mediation disassembler read its properties from the property bag.
+            this.serviceMediationDasm.Load(pb, errlog);
 
-            // Let the XML disassembler read its properties from the property bag.
-            this.xmlDasmComp.Load(pb, errlog);
+            // Let the Flat File disassembler read its properties from the property bag.
+            this.flatFileDasmComp.Load(pb, errlog);
+        }
+
+        /// <summary>
+        /// Probes the flat file message to determine if the structure of the document conforms to the document schema.
+        /// </summary>
+        /// <param name="pc">The IPipelineContext for the current pipeline.</param>
+        /// <param name="inMsg">The BizTalk message.</param>
+        /// <returns>true if the structure of the document conforms to the document schema; otherwise, false.</returns>
+        public bool Probe(IPipelineContext pc, IBaseMessage inMsg)
+        {
+            return this.flatFileDasmComp.Probe(pc, inMsg);
         }
 
         /// <summary>
@@ -573,23 +612,23 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         /// </param>
         public void Save(IPropertyBag pb, bool clearDirty, bool saveAllProperties)
         {
-            // Let the Governance disassembler write its properties to the property bag.
-            this.governanceDasm.Save(pb, clearDirty, saveAllProperties);
+            // Let the Service Mediation disassembler write its properties to the property bag.
+            this.serviceMediationDasm.Save(pb, clearDirty, saveAllProperties);
 
-            // Let the XML disassembler write its properties to the property bag.
-            this.xmlDasmComp.Save(pb, clearDirty, saveAllProperties);
+            // Let the Flat File disassembler write its properties to the property bag.
+            this.flatFileDasmComp.Save(pb, clearDirty, saveAllProperties);
         }
 
         /// <summary>
-        ///     Not implemented.
+        /// Initialize the disassembler component.
         /// </summary>
         public void InitNew()
         {
-            // Let the Governance diassembler initialise.
-            this.governanceDasm.InitNew();
+            // Let the Service Mediation diassembler initialise.
+            this.serviceMediationDasm.InitNew();
 
-            // Let the XML diassembler initialise.
-            this.xmlDasmComp.InitNew();
+            // Let the Flat File diassembler initialise.
+            this.flatFileDasmComp.InitNew();
         }
 
         /// <summary>
@@ -605,44 +644,44 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         /// </returns>
         public IEnumerator Validate(object obj)
         {
-            // Let the Governance diassembler initialise.
-            var listEnumGovernance = this.governanceDasm.Validate(obj);
+            // Let the Service Mediation diassembler initialise.
+            var listEnumServiceMediation = this.serviceMediationDasm.Validate(obj);
 
-            // Let the XML diassembler initialise.
-            var listEnumXml = this.xmlDasmComp.Validate(obj);
+            // Let the Flat File diassembler initialise.
+            var listEnumFlatFile = this.flatFileDasmComp.Validate(obj);
 
             var listOut = new ArrayList();
 
             // An enumerator for a concatenation of the validation message lists.
             Func<IEnumerator> enumeratorForConcatenatedLists = () =>
+            {
+                while (listEnumServiceMediation.MoveNext())
                 {
-                    while (listEnumGovernance.MoveNext())
-                    {
-                        listOut.Add(listEnumGovernance.Current);
-                    }
+                    listOut.Add(listEnumServiceMediation.Current);
+                }
 
-                    while (listEnumXml.MoveNext())
-                    {
-                        listOut.Add(listEnumXml.Current);
-                    }
+                while (listEnumFlatFile.MoveNext())
+                {
+                    listOut.Add(listEnumFlatFile.Current);
+                }
 
-                    listEnumGovernance.Reset();
-                    listEnumXml.Reset();
+                listEnumServiceMediation.Reset();
+                listEnumFlatFile.Reset();
 
-                    return listOut.GetEnumerator();
-                };
+                return listOut.GetEnumerator();
+            };
 
-            return listEnumGovernance == null
-                       ? listEnumXml
-                       : listEnumXml == null ? listEnumGovernance : enumeratorForConcatenatedLists();
+            return listEnumServiceMediation == null
+                       ? listEnumFlatFile
+                       : listEnumFlatFile == null ? listEnumServiceMediation : enumeratorForConcatenatedLists();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Governance component.
+        /// Initializes a new instance of the Service Mediation component.
         /// </summary>
-        private void InitialiseGovernance()
+        private void InitialiseServiceMediation()
         {
-            this.governanceDasm = new Governance
+            this.serviceMediationDasm = new ServiceMediation
             {
                 BindingAccessPoint = this.BindingAccessPoint,
                 BindingUrlType = this.BindingUrlType,
@@ -656,6 +695,14 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
                 ProviderName = this.ProviderName,
                 ServiceName = this.ServiceName
             };
+        }
+
+        /// <summary>
+        /// Releases the resources used by ServiceMediationFlatFileDisassembler object.
+        /// </summary>
+        public void Dispose()
+        {
+            this.flatFileDasmComp.Dispose();
         }
     }
 }

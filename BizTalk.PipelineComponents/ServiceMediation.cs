@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Governance.cs" company="Solidsoft Reply Ltd.">
+// <copyright file="ServiceMediation.cs" company="Solidsoft Reply Ltd.">
 //   Copyright 2015 Solidsoft Reply Limited.
 // 
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -50,18 +50,19 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
     using Version = System.Version;
 
     /// <summary>
-    ///     Implements custom pipeline component to append and/or prepend data to a stream.
+    ///     Implements ESB service mediation in the context of a pipeline component.
     /// </summary>
     /// <remarks>
-    ///     This class implements pipeline component that can be used in receive and
-    ///     send BizTalk pipelines. The pipeline component gets a data stream, appends
-    ///     and/or prepends user specified data to it and outputs modified stream.
+    ///     This class implements a pipeline component that can be used in receive and
+    ///     send BizTalk pipelines. The pipeline component gets a data stream, enforces
+    ///     service mediation policy and outputs modified streams.  It can be used as
+    ///     a disassembler or normal pipeline component.
     /// </remarks>
     [ComponentCategory(CategoryTypes.CATID_PipelineComponent)]
     [ComponentCategory(CategoryTypes.CATID_DisassemblingParser)]
     [ComponentCategory(CategoryTypes.CATID_Any)]
     [Guid("59CFD96B-20EE-40ad-BFD0-319B59A0DDBC")]
-    public class Governance : BaseCustomTypeDescriptor, IBaseComponent, IComponent, IPersistPropertyBag, IComponentUI, IDisassemblerComponent
+    public class ServiceMediation : BaseCustomTypeDescriptor, IBaseComponent, IComponent, IPersistPropertyBag, IComponentUI, IDisassemblerComponent
     {
         #region Static Fields
 
@@ -133,18 +134,18 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         #endregion
 
         /// <summary>
-        /// Initializes static members of the <see cref="Governance"/> class.
+        /// Initializes static members of the <see cref="ServiceMediation"/> class.
         /// </summary>
-        static Governance()
+        static ServiceMediation()
         {
-            ResourceManager = new ResourceManager("SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.Properties.Resources", typeof(Governance).Assembly);
+            ResourceManager = new ResourceManager("SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.Properties.Resources", typeof(ServiceMediation).Assembly);
             ConfigValues = ConfigurationManager.GetSection("Microsoft.RuleEngine") as IDictionary;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Governance"/> class.
+        /// Initializes a new instance of the <see cref="ServiceMediation"/> class.
         /// </summary>
-        public Governance()
+        public ServiceMediation()
             : base(ResourceManager)
         {
         }
@@ -190,7 +191,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         {
             get
             {
-                return Resources.GovernanceComponentDescription;
+                return Resources.EsbServiceMediationComponentDescription;
             }
         }
 
@@ -202,7 +203,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         {
             get
             {
-                return Resources.DisassemblerIcon.Handle;
+                return Resources.EsbServiceMediationDisassemberIcon.Handle;
             }
         }
 
@@ -242,7 +243,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         {
             get
             {
-                return Resources.GovernanceComponentName;
+                return Resources.EsbServiceMediationComponentName;
             }
         }
 
@@ -406,7 +407,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         /// </param>
         public void GetClassID(out Guid classid)
         {
-            classid = new Guid(Resources.GovernanceComponentClassId);
+            classid = new Guid(Resources.EsbServiceMediationComponentClassId);
         }
 
         /// <summary>
