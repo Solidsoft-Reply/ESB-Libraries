@@ -21,8 +21,8 @@
       <bindingdefinition>
         <classmemberbindingdefinition member="RegisterReference" type="void">
           <classinfo class="BamActivityStep" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
           </classinfo>
           <argument position="0">
@@ -66,8 +66,8 @@
       <bindingdefinition>
         <classmemberbindingdefinition member="RegisterDataExtraction" type="void">
           <classinfo class="BamActivityStep" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
           </classinfo>
           <argument position="0">
@@ -101,8 +101,8 @@
       <bindingdefinition>
         <classmemberbindingdefinition member="RegisterContinueEx" type="void">
           <classinfo class="BamActivityStep" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
           </classinfo>
           <argument position="0">
@@ -126,8 +126,8 @@
       <bindingdefinition>
         <classmemberbindingdefinition member="RegisterRelationship" type="void">
           <classinfo class="BamActivityStep" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
           </classinfo>
           <argument position="0">
@@ -161,8 +161,8 @@
       <bindingdefinition>
         <classmemberbindingdefinition member="RegisterDataExtraction" type="void">
           <classinfo class="BamActivityStep" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
           </classinfo>
           <argument position="0">
@@ -200,8 +200,8 @@
       <bindingdefinition>
         <classmemberbindingdefinition member="RegisterContinueEx" type="void">
           <classinfo class="BamActivityStep" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
           </classinfo>
           <argument position="0">
@@ -235,8 +235,8 @@
       <bindingdefinition>
         <classmemberbindingdefinition member="RegisterEnableContinuation" type="void">
           <classinfo class="BamActivityStep" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
           </classinfo>
           <argument position="0">
@@ -270,8 +270,8 @@
       <bindingdefinition>
         <classmemberbindingdefinition member="get_ActivityName" type="string">
           <classinfo class="BamActivityStep" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
           </classinfo>
         </classmemberbindingdefinition>
@@ -282,8 +282,8 @@
       <bindingdefinition>
         <classmemberbindingdefinition member="RegisterStartNewEx" type="void">
           <classinfo class="BamActivityStep" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
           </classinfo>
           <argument position="0">
@@ -307,8 +307,8 @@
       <bindingdefinition>
         <classmemberbindingdefinition member="get_StepName" type="string">
           <classinfo class="BamActivityStep" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
           </classinfo>
         </classmemberbindingdefinition>
@@ -319,8 +319,8 @@
       <bindingdefinition>
         <classmemberbindingdefinition member="RegisterEnableContinuation" type="void">
           <classinfo class="BamActivityStep" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
           </classinfo>
           <argument position="0">

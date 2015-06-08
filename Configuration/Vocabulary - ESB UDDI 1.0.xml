@@ -21,8 +21,8 @@
       <bindingdefinition>
         <classmemberbindingdefinition member="FindAccessPointForBinding" type="string">
           <classinfo class="InquiryServices" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Uddi\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Uddi.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Uddi\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Uddi.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Uddi</namespace>
           </classinfo>
           <argument position="0">
@@ -44,30 +44,30 @@
       <bindingdefinition>
         <classmemberbindingdefinition member="FindAccessPointForService" type="string">
           <classinfo class="InquiryServices" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Uddi\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Uddi.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Uddi\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Uddi.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Uddi</namespace>
           </classinfo>
           <argument position="0">
-            <valuedefinitionliteral type="SolidsoftReply.Esb.Libraries.Uddi.ProviderIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62" />
+            <valuedefinitionliteral type="SolidsoftReply.Esb.Libraries.Uddi.ProviderIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1" />
           </argument>
           <argument position="1">
-            <valuedefinitionliteral type="SolidsoftReply.Esb.Libraries.Uddi.ServiceIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62" />
+            <valuedefinitionliteral type="SolidsoftReply.Esb.Libraries.Uddi.ServiceIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1" />
           </argument>
           <argument position="2">
-            <valuedefinitionliteral type="SolidsoftReply.Esb.Libraries.Uddi.AccessPointUseType, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62" />
+            <valuedefinitionliteral type="SolidsoftReply.Esb.Libraries.Uddi.AccessPointUseType, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1" />
           </argument>
         </classmemberbindingdefinition>
       </bindingdefinition>
       <formatstring language="en-US" string="a UDDI-registered access point of type {2} for provider {0} and service {1}" delimiter="{[0-9]+}">
         <argument position="0">
-          <valuedefinitionliteral type="SolidsoftReply.Esb.Libraries.Uddi.ProviderIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62" />
+          <valuedefinitionliteral type="SolidsoftReply.Esb.Libraries.Uddi.ProviderIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1" />
         </argument>
         <argument position="1">
-          <valuedefinitionliteral type="SolidsoftReply.Esb.Libraries.Uddi.ServiceIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62" />
+          <valuedefinitionliteral type="SolidsoftReply.Esb.Libraries.Uddi.ServiceIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1" />
         </argument>
         <argument position="2">
-          <valuedefinitionliteral type="SolidsoftReply.Esb.Libraries.Uddi.AccessPointUseType, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62" />
+          <valuedefinitionliteral type="SolidsoftReply.Esb.Libraries.Uddi.AccessPointUseType, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1" />
         </argument>
       </formatstring>
     </vocabularydefinition>
@@ -75,27 +75,27 @@
       <bindingdefinition>
         <classmemberbindingdefinition member="FindAccessPointForService" type="string">
           <classinfo class="InquiryServices" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Uddi\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Uddi.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Uddi\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Uddi.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Uddi</namespace>
           </classinfo>
           <argument position="0">
-            <valuedefinitionliteral type="SolidsoftReply.Esb.Libraries.Uddi.ServiceIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62" />
+            <valuedefinitionliteral type="SolidsoftReply.Esb.Libraries.Uddi.ServiceIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1" />
           </argument>
         </classmemberbindingdefinition>
       </bindingdefinition>
       <formatstring language="en-US" string="a UDDI-registered access point for service {0}" delimiter="{[0-9]+}">
         <argument position="0">
-          <valuedefinitionliteral type="SolidsoftReply.Esb.Libraries.Uddi.ServiceIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62" />
+          <valuedefinitionliteral type="SolidsoftReply.Esb.Libraries.Uddi.ServiceIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1" />
         </argument>
       </formatstring>
     </vocabularydefinition>
     <vocabularydefinition id="e1765dfb-3a3d-45c2-98d0-3a823c858b42" name="A named service" description="A service identified by name">
       <bindingdefinition>
-        <classmemberbindingdefinition member="NewServiceName" type="SolidsoftReply.Esb.Libraries.Uddi.ServiceIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62">
+        <classmemberbindingdefinition member="NewServiceName" type="SolidsoftReply.Esb.Libraries.Uddi.ServiceIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1">
           <classinfo class="InquiryServices" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Uddi\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Uddi.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Uddi\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Uddi.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Uddi</namespace>
           </classinfo>
           <argument position="0">
@@ -117,33 +117,33 @@
       <bindingdefinition>
         <classmemberbindingdefinition member="FindAccessPointForService" type="string">
           <classinfo class="InquiryServices" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Uddi\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Uddi.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Uddi\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Uddi.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Uddi</namespace>
           </classinfo>
           <argument position="0">
-            <valuedefinitionliteral type="SolidsoftReply.Esb.Libraries.Uddi.ProviderIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62" />
+            <valuedefinitionliteral type="SolidsoftReply.Esb.Libraries.Uddi.ProviderIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1" />
           </argument>
           <argument position="1">
-            <valuedefinitionliteral type="SolidsoftReply.Esb.Libraries.Uddi.ServiceIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62" />
+            <valuedefinitionliteral type="SolidsoftReply.Esb.Libraries.Uddi.ServiceIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1" />
           </argument>
         </classmemberbindingdefinition>
       </bindingdefinition>
       <formatstring language="en-US" string="a UDDI-registered access point for provider {0} and service {1}" delimiter="{[0-9]+}">
         <argument position="0">
-          <valuedefinitionliteral type="SolidsoftReply.Esb.Libraries.Uddi.ProviderIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62" />
+          <valuedefinitionliteral type="SolidsoftReply.Esb.Libraries.Uddi.ProviderIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1" />
         </argument>
         <argument position="1">
-          <valuedefinitionliteral type="SolidsoftReply.Esb.Libraries.Uddi.ServiceIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62" />
+          <valuedefinitionliteral type="SolidsoftReply.Esb.Libraries.Uddi.ServiceIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1" />
         </argument>
       </formatstring>
     </vocabularydefinition>
     <vocabularydefinition id="22c7ad43-980d-4242-83fc-3d0fc67f7b31" name="A provider key" description="A provider identified by a key value">
       <bindingdefinition>
-        <classmemberbindingdefinition member="NewProviderKey" type="SolidsoftReply.Esb.Libraries.Uddi.ProviderIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62">
+        <classmemberbindingdefinition member="NewProviderKey" type="SolidsoftReply.Esb.Libraries.Uddi.ProviderIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1">
           <classinfo class="InquiryServices" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Uddi\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Uddi.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Uddi\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Uddi.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Uddi</namespace>
           </classinfo>
           <argument position="0">
@@ -163,10 +163,10 @@
     </vocabularydefinition>
     <vocabularydefinition id="85530176-cbdf-4018-ad13-e953f5d71869" name="A service key" description="A service identified by a key value">
       <bindingdefinition>
-        <classmemberbindingdefinition member="NewServiceKey" type="SolidsoftReply.Esb.Libraries.Uddi.ServiceIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62">
+        <classmemberbindingdefinition member="NewServiceKey" type="SolidsoftReply.Esb.Libraries.Uddi.ServiceIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1">
           <classinfo class="InquiryServices" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Uddi\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Uddi.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Uddi\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Uddi.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Uddi</namespace>
           </classinfo>
           <argument position="0">
@@ -186,10 +186,10 @@
     </vocabularydefinition>
     <vocabularydefinition id="d5ef4b8d-8bf8-47bf-bb94-dcc3c82efffe" name="A named provider" description="A provider identified by name">
       <bindingdefinition>
-        <classmemberbindingdefinition member="NewProviderName" type="SolidsoftReply.Esb.Libraries.Uddi.ProviderIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62">
+        <classmemberbindingdefinition member="NewProviderName" type="SolidsoftReply.Esb.Libraries.Uddi.ProviderIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1">
           <classinfo class="InquiryServices" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Uddi\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Uddi.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Uddi\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Uddi.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Uddi</namespace>
           </classinfo>
           <argument position="0">
@@ -211,24 +211,24 @@
       <bindingdefinition>
         <classmemberbindingdefinition member="FindAccessPointForService" type="string">
           <classinfo class="InquiryServices" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Uddi\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Uddi.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Uddi\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Uddi.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Uddi</namespace>
           </classinfo>
           <argument position="0">
-            <valuedefinitionliteral type="SolidsoftReply.Esb.Libraries.Uddi.ServiceIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62" />
+            <valuedefinitionliteral type="SolidsoftReply.Esb.Libraries.Uddi.ServiceIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1" />
           </argument>
           <argument position="1">
-            <valuedefinitionliteral type="SolidsoftReply.Esb.Libraries.Uddi.AccessPointUseType, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62" />
+            <valuedefinitionliteral type="SolidsoftReply.Esb.Libraries.Uddi.AccessPointUseType, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1" />
           </argument>
         </classmemberbindingdefinition>
       </bindingdefinition>
       <formatstring language="en-US" string="a UDDI-registered access point of type {1} for provider {0}" delimiter="{[0-9]+}">
         <argument position="0">
-          <valuedefinitionliteral type="SolidsoftReply.Esb.Libraries.Uddi.ServiceIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62" />
+          <valuedefinitionliteral type="SolidsoftReply.Esb.Libraries.Uddi.ServiceIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1" />
         </argument>
         <argument position="1">
-          <valuedefinitionliteral type="SolidsoftReply.Esb.Libraries.Uddi.AccessPointUseType, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62" />
+          <valuedefinitionliteral type="SolidsoftReply.Esb.Libraries.Uddi.AccessPointUseType, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1" />
         </argument>
       </formatstring>
     </vocabularydefinition>
@@ -236,8 +236,8 @@
       <bindingdefinition>
         <classmemberbindingdefinition member="SetBaseUrl" type="string">
           <classinfo class="InquiryServices" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Uddi\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Uddi.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Uddi\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Uddi.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Uddi</namespace>
           </classinfo>
           <argument position="0">
