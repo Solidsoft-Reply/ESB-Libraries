@@ -133,6 +133,15 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &amp;Cancel.
+        /// </summary>
+        internal static string CancleButtonText {
+            get {
+                return ResourceManager.GetString("CancleButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Char set applicable for processing X12 interchanges only..
         /// </summary>
         internal static string CharacterSetDescription {
@@ -453,6 +462,24 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.Properties {
         internal static string DescRecoverableInterchangeProcessing {
             get {
                 return ResourceManager.GetString("DescRecoverableInterchangeProcessing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Controls the facts which are asserted to the resolver.
+        /// </summary>
+        internal static string DescResolutionDataName {
+            get {
+                return ResourceManager.GetString("DescResolutionDataName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The properties passed to the resolver as facts.  If blank, all properties are passed, depending on the Resolution Data property value..
+        /// </summary>
+        internal static string DescResolutionDataPropertiesName {
+            get {
+                return ResourceManager.GetString("DescResolutionDataPropertiesName", resourceCulture);
             }
         }
         
@@ -883,6 +910,24 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The pipeline component property bag is null..
+        /// </summary>
+        internal static string ExceptionNullPropertyBag {
+            get {
+                return ResourceManager.GetString("ExceptionNullPropertyBag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to determine directives for policy {0}..
+        /// </summary>
+        internal static string ExceptionPolicyFailedGettingDirectives {
+            get {
+                return ResourceManager.GetString("ExceptionPolicyFailedGettingDirectives", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ESB policy cannot be determined.  Add an AppSetting to the config file called &apos;{0}&apos;..
         /// </summary>
         internal static string ExceptionPolicyUndetermined {
@@ -901,6 +946,15 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Resolution Data Properties.
+        /// </summary>
+        internal static string FormText {
+            get {
+                return ResourceManager.GetString("FormText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mask security information in envelope..
         /// </summary>
         internal static string MaskSecurityInformation {
@@ -915,6 +969,15 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.Properties {
         internal static string MaskSecurityInformationDescription {
             get {
                 return ResourceManager.GetString("MaskSecurityInformationDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;OK.
+        /// </summary>
+        internal static string OkButtonText {
+            get {
+                return ResourceManager.GetString("OkButtonText", resourceCulture);
             }
         }
         
@@ -1216,6 +1279,24 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Resolution data.
+        /// </summary>
+        internal static string PropResolutionDataName {
+            get {
+                return ResourceManager.GetString("PropResolutionDataName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resolution data properties.
+        /// </summary>
+        internal static string PropResolutionDataPropertiesName {
+            get {
+                return ResourceManager.GetString("PropResolutionDataPropertiesName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Service name.
         /// </summary>
         internal static string PropServiceName {
@@ -1320,6 +1401,15 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.Properties {
         internal static string RegKeyWow6432 {
             get {
                 return ResourceManager.GetString("RegKeyWow6432", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resolution Data Properties.
+        /// </summary>
+        internal static string ResolutionDataPropertyEditorCaption {
+            get {
+                return ResourceManager.GetString("ResolutionDataPropertyEditorCaption", resourceCulture);
             }
         }
         

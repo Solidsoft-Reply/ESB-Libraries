@@ -339,6 +339,44 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         }
 
         /// <summary>
+        ///     Gets or sets the resolution data setting.  This controls the facts that are
+        ///     asserted to the resolver.
+        /// </summary>
+        [Browsable(true)]
+        [BtsDescription("DescResolutionDataName")]
+        [BtsPropertyName("PropResolutionDataName")]
+        public ResolutionData ResolutionData
+        {
+            get
+            {
+                return this.serviceMediationDasm.ResolutionData;
+            }
+
+            set
+            {
+                this.serviceMediationDasm.ResolutionData = value;
+            }
+        }
+
+        /// <summary>
+        ///     Gets or sets a list of properties used as resolution facts.
+        /// </summary>
+        [BtsDescription("DescResolutionDataPropertiesName")]
+        [BtsPropertyName("PropResolutionDataPropertiesName")]
+        public ResolutionDataPropertyList ResolutionDataProperties
+        {
+            get
+            {
+                return this.serviceMediationDasm.ResolutionDataProperties;
+            }
+
+            set
+            {
+                this.serviceMediationDasm.ResolutionDataProperties = value;
+            }
+        }
+
+        /// <summary>
         /// Gets or sets the human-friendly name for target service.   This is equivalent to
         /// the business service name in UDDI.
         /// </summary>
@@ -693,6 +731,8 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
                 Policy = this.Policy,
                 PolicyVersion = this.PolicyVersion,
                 ProviderName = this.ProviderName,
+                ResolutionData = this.ResolutionData,
+                ResolutionDataProperties = this.ResolutionDataProperties,
                 ServiceName = this.ServiceName
             };
         }

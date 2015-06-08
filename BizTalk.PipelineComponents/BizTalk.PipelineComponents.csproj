@@ -77,15 +77,24 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BamStepData.cs" />
+    <Compile Include="DesignTypeNames.cs" />
     <Compile Include="EsbPipelineComponentException.cs" />
     <Compile Include="ExtensionMethodsGeneral.cs" />
     <Compile Include="ExtensionMethodsIBaseMessagePart.cs" />
+    <Compile Include="NamespacePropertyInputDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResolutionDataPropertyList.cs" />
+    <Compile Include="ResolutionData.cs" />
+    <Compile Include="ResolutionDataPropertyEditor.cs" />
     <Compile Include="ServiceMediationFlatFileDisassembler.cs" />
     <Compile Include="ExtensionMethodsGovernance.cs" />
     <Compile Include="ExtensionMethodsIBaseMessage.cs" />

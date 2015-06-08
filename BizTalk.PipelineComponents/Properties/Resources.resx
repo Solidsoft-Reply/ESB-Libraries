@@ -574,4 +574,34 @@
   <data name="EsbServiceMediationDisassemberIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\EsbServiceMediationDisassemberIcon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="DescResolutionDataName" xml:space="preserve">
+    <value>Controls the facts which are asserted to the resolver</value>
+  </data>
+  <data name="DescResolutionDataPropertiesName" xml:space="preserve">
+    <value>The properties passed to the resolver as facts.  If blank, all properties are passed, depending on the Resolution Data property value.</value>
+  </data>
+  <data name="PropResolutionDataName" xml:space="preserve">
+    <value>Resolution data</value>
+  </data>
+  <data name="PropResolutionDataPropertiesName" xml:space="preserve">
+    <value>Resolution data properties</value>
+  </data>
+  <data name="OkButtonText" xml:space="preserve">
+    <value>&amp;OK</value>
+  </data>
+  <data name="FormText" xml:space="preserve">
+    <value>Resolution Data Properties</value>
+  </data>
+  <data name="CancleButtonText" xml:space="preserve">
+    <value>&amp;Cancel</value>
+  </data>
+  <data name="ExceptionNullPropertyBag" xml:space="preserve">
+    <value>The pipeline component property bag is null.</value>
+  </data>
+  <data name="ResolutionDataPropertyEditorCaption" xml:space="preserve">
+    <value>Resolution Data Properties</value>
+  </data>
+  <data name="ExceptionPolicyFailedGettingDirectives" xml:space="preserve">
+    <value>Failed to determine directives for policy {0}.</value>
+  </data>
 </root>

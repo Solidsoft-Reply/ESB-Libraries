@@ -31,6 +31,8 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
     using System.Runtime.InteropServices;
     using System.Xml;
 
+    using BTS;
+
     using Microsoft.BizTalk.Component;
     using Microsoft.BizTalk.Component.Interop;
     using Microsoft.BizTalk.Message.Interop;
@@ -45,9 +47,6 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
 
     using Directive = SolidsoftReply.Esb.Libraries.Resolution.Directive;
     using IComponent = Microsoft.BizTalk.Component.Interop.IComponent;
-    using MessageType = BTS.MessageType;
-    using Resolver = SolidsoftReply.Esb.Libraries.Resolution.Resolver;
-    using Version = System.Version;
 
     /// <summary>
     ///     Implements ESB service mediation in the context of a pipeline component.
@@ -98,7 +97,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         /// <summary>
         /// The schema strong name property.
         /// </summary>
-        private static readonly PropertyBase SchemaStrongNameProperty = new BTS.SchemaStrongName();
+        private static readonly PropertyBase SchemaStrongNameProperty = new SchemaStrongName();
 
         /// <summary>
         ///     Index value for current resolver directive being processed.
@@ -324,6 +323,22 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         public string ProviderName { get; set; }
 
         /// <summary>
+        ///     Gets or sets the resolution data setting.  This controls the facts that are
+        ///     asserted to the resolver.
+        /// </summary>
+        [Browsable(true)]
+        [BtsDescription("DescResolutionDataName")]
+        [BtsPropertyName("PropResolutionDataName")]
+        public ResolutionData ResolutionData { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a list of properties used as resolution facts.
+        /// </summary>
+        [BtsDescription("DescResolutionDataPropertiesName")]
+        [BtsPropertyName("PropResolutionDataPropertiesName")]
+        public ResolutionDataPropertyList ResolutionDataProperties { get; set; }
+        
+        /// <summary>
         ///     Gets or sets the human-friendly name for target service.   This is equivalent to
         ///     the business service name in UDDI.
         /// </summary>
@@ -456,92 +471,121 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         /// </param>
         public void Load(IPropertyBag pb, int errlog)
         {
-            var val = ReadPropertyBag(pb, "providerName");
-
-            if (val != null)
+            if (pb == null)
             {
-                this.ProviderName = (string)val;
+                throw new ArgumentNullException(Resources.ExceptionNullPropertyBag);
             }
-
-            val = ReadPropertyBag(pb, "serviceName");
-
-            if (val != null)
+            using (new DisposableObjectWrapper((object)pb))
             {
-                this.ServiceName = (string)val;
+                var val = ReadPropertyBag(pb, "providerName");
+
+                if (val != null)
+                {
+                    this.ProviderName = (string)val;
+                }
+
+                val = ReadPropertyBag(pb, "serviceName");
+
+                if (val != null)
+                {
+                    this.ServiceName = (string)val;
+                }
+
+                val = ReadPropertyBag(pb, "bindingAccessPoint");
+
+                if (val != null)
+                {
+                    this.BindingAccessPoint = (string)val;
+                }
+
+                val = ReadPropertyBag(pb, "bindingUrlType");
+
+                if (val != null)
+                {
+                    this.BindingUrlType = (string)val;
+                }
+
+                val = ReadPropertyBag(pb, "bodyContainerXPath");
+
+                if (val != null)
+                {
+                    this.BodyContainerXPath = (string)val;
+                }
+
+                val = ReadPropertyBag(pb, "operationName");
+
+                if (val != null)
+                {
+                    this.OperationName = (string)val;
+                }
+
+                val = ReadPropertyBag(pb, "messageType");
+
+                if (val != null)
+                {
+                    this.MessageType = (string)val;
+                }
+
+                val = ReadPropertyBag(pb, "messageDirection");
+
+                if (val != null)
+                {
+                    var enumValue = (string)val;
+                    this.MessageDirection =
+                        (MessageDirectionTypes)Enum.Parse(typeof(MessageDirectionTypes), enumValue, true);
+                }
+
+                val = ReadPropertyBag(pb, "messageRole");
+
+                if (val != null)
+                {
+                    this.MessageRole = (string)val;
+                }
+
+                val = ReadPropertyBag(pb, "rulePolicy");
+
+                if (val != null)
+                {
+                    this.Policy = (string)val;
+                }
+
+                val = ReadPropertyBag(pb, "rulePolicyVersion");
+
+                if (string.IsNullOrWhiteSpace((string)val))
+                {
+                    this.PolicyVersion = null;
+                }
+                else
+                {
+                    this.PolicyVersion = (string)val;
+                }
+
+                val = ReadPropertyBag(pb, "resolutionData");
+
+                if (string.IsNullOrWhiteSpace((string)val))
+                {
+                    this.ResolutionData = ResolutionData.ValuesOnly;
+                }
+                else
+                {
+                    this.ResolutionData = (ResolutionData)Enum.Parse(typeof(ResolutionData), (string)val);
+                }
+
+                val = ReadPropertyBag(pb, "resolutionDataProperties");
+
+                if (string.IsNullOrWhiteSpace((string)val))
+                {
+                    this.ResolutionDataProperties = new ResolutionDataPropertyList();
+                }
+                else
+                {
+                    this.ResolutionDataProperties = new ResolutionDataPropertyList(((string)val).Split('¦').ToList());
+                }
+
+                val = ReadPropertyBag(pb, "version");
+
+                this.version = val == null ? null : new Version((string)val);
             }
-
-            val = ReadPropertyBag(pb, "bindingAccessPoint");
-
-            if (val != null)
-            {
-                this.BindingAccessPoint = (string)val;
-            }
-
-            val = ReadPropertyBag(pb, "bindingUrlType");
-
-            if (val != null)
-            {
-                this.BindingUrlType = (string)val;
-            }
-
-            val = ReadPropertyBag(pb, "bodyContainerXPath");
-
-            if (val != null)
-            {
-                this.BodyContainerXPath = (string)val;
-            }
-
-            val = ReadPropertyBag(pb, "operationName");
-
-            if (val != null)
-            {
-                this.OperationName = (string)val;
-            }
-
-            val = ReadPropertyBag(pb, "messageType");
-
-            if (val != null)
-            {
-                this.MessageType = (string)val;
-            }
-
-            val = ReadPropertyBag(pb, "messageDirection");
-
-            if (val != null)
-            {
-                var enumValue = (string)val;
-                this.MessageDirection =
-                    (MessageDirectionTypes)Enum.Parse(typeof(MessageDirectionTypes), enumValue, true);
-            }
-
-            val = ReadPropertyBag(pb, "messageRole");
-
-            if (val != null)
-            {
-                this.MessageRole = (string)val;
-            }
-
-            val = ReadPropertyBag(pb, "rulePolicy");
-
-            if (val != null)
-            {
-                this.Policy = (string)val;
-            }
-
-            val = ReadPropertyBag(pb, "rulePolicyVersion");
-
-            if (string.IsNullOrWhiteSpace((string)val))
-            {
-                this.PolicyVersion = null;
-            }
-            else
-            {
-                this.PolicyVersion = (string)val;
-            }
-
-            val = ReadPropertyBag(pb, "version");
-
-            this.version = val == null ? null : new Version((string)val);
         }
 
         /// <summary>
@@ -569,6 +613,8 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
             WritePropertyBag(pb, "messageRole", this.MessageRole);
             WritePropertyBag(pb, "rulePolicy", this.Policy);
             WritePropertyBag(pb, "rulePolicyVersion",  string.IsNullOrWhiteSpace(this.PolicyVersion) ? null : this.PolicyVersion);
+            WritePropertyBag(pb, "resolutionData", this.ResolutionData.ToString());
+            WritePropertyBag(pb, "resolutionDataProperties", this.ResolutionDataProperties.Count > 0 ? this.ResolutionDataProperties.Aggregate((p1, p2) => string.Format("{0}¦{1}", p1, p2)) : string.Empty);
             WritePropertyBag(pb, "version", (this.version == null) ? null : this.version.ToString(2));
         }
 
@@ -1277,7 +1323,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         /// <returns>The processed message.</returns>
         private IBaseMessage ProcessMessage(IPipelineContext pc, IBaseMessage inMsg, bool outMsgPerDirective)
         {
-            // If no policy is defined, throw an exception.
+            // If no policy is defined, log a warning.
             if (string.IsNullOrWhiteSpace(this.Policy))
             {
                 // TODO: Log a warning
@@ -1313,10 +1359,38 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
 
             var parameters = new ParametersDictionary();
 
-            foreach (var property in inMsg.Properties().Where(p => p.IsPromoted))
+            switch (this.ResolutionData)
             {
-                // Set the key based on the namespace and name of the property
-                parameters.Add(property.NameSpace + "." + property.Name, property.Value);
+                case ResolutionData.ValuesWithAllListedProperties:
+                    foreach (var property in inMsg.Properties().Where(
+                        p => this.ResolutionDataProperties.Contains(string.Format("{0}|{1}", p.NameSpace, p.Name))))
+                    {
+                        // Set the key based on the namespace and name of the property
+                        parameters.Add(property.NameSpace + "." + property.Name, property.Value);
+                    }
+                    break;
+                case ResolutionData.ValuesWithListedPromotedProperties:
+                    foreach (var property in inMsg.Properties().Where(
+                        p => this.ResolutionDataProperties.Contains(string.Format("{0}|{1}", p.NameSpace, p.Name)) && p.IsPromoted))
+                    {
+                        // Set the key based on the namespace and name of the property
+                        parameters.Add(property.NameSpace + "." + property.Name, property.Value);
+                    }
+                    break;
+                case ResolutionData.ValuesWithAllProperties:
+                    foreach (var property in inMsg.Properties())
+                    {
+                        // Set the key based on the namespace and name of the property
+                        parameters.Add(property.NameSpace + "." + property.Name, property.Value);
+                    }
+                    break;
+                case ResolutionData.ValuesWithAllPromotedProperties:
+                    foreach (var property in inMsg.Properties().Where(p => p.IsPromoted))
+                    {
+                        // Set the key based on the namespace and name of the property
+                        parameters.Add(property.NameSpace + "." + property.Name, property.Value);
+                    }
+                    break;
             }
 
             // Call the resolver
@@ -1332,7 +1406,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
                 msgPartContentAsXml(),
                 this.policy,
                 this.policyVersion,
-                parameters);
+                parameters.Count == 0 ? null : parameters);
 
             // [var] The out message.
             IBaseMessage outMsg = null;
@@ -1361,14 +1435,20 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         {
             var inMsg = this.pipelineInMsg.Clone(pc);
 
+            if (this.directives == null && !string.IsNullOrWhiteSpace(this.policy))
+            {
+                throw new EsbPipelineComponentException(
+                    string.Format(Resources.ExceptionPolicyFailedGettingDirectives, this.policy));
+            }
+
             // If there are no directives, then return the current message
-            if (this.current == 0 && this.directives.Count == 0)
+            if (this.current == 0 && (this.directives == null || this.directives.Count == 0))
             {
                 this.current++;
                 return inMsg;
             }
 
-            if (this.current >= this.directives.Count)
+            if (this.directives == null || this.current >= this.directives.Count)
             {
                 return null;
             }
