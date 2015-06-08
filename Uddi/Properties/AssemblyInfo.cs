@@ -36,8 +36,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
 // Make internals visible to test assembly
-[assembly: InternalsVisibleTo("SolidsoftReply.Esb.Libraries.Uddi.Test, PublicKey=0024000004800000940000000602000000240000" +
-                              "525341310004000001000100eb39170649f6176f4e1907db81f9db194e95c7b7e35ff4" +
-                              "0a953ced1ff6cbdeadb8094c26fd59ad00ec2c3aa887845c7cd7b2b2937592d485cb90" +
-                              "48ab9fb03d879ced808bfed6071d611e281336823576a33663670e8b2b47e39d17bd5e" +
-                              "b3e072f87a4a6168bb7067a9a56ad62d2bd193ca5a6a644552edd0dd477330f87a63a1")]
+[assembly: InternalsVisibleTo("SolidsoftReply.Esb.Libraries.Uddi.Test, PublicKey=" +
+"0024000004800000940000000602000000240000525341310004000001000100c14a04c58ca77c" +
+"acbf79b5df5ee83383e492e82369774568c76f254ac5d19d56c754affd0f1414caa3eedbfe2cc4" +
+"d88c6506724657cb26c3c106fe7231e4f9114b7bb9b8ce1659ac62b5ee0daa3dea017a31838215" +
+"0bd172dca99a3b9b974f39d807680eddd8f48a253d362c27a5cf671b9dff9e5f967e229a9160b7" +
+"394307aa")]

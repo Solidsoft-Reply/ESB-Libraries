@@ -37,7 +37,7 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>Esb.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>ESB.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.BizTalk.Bam.EventObservation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -86,7 +86,7 @@
     <Compile Include="Resolver.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Esb.pfx" />
+    <None Include="ESB.snk" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Facts\Facts.csproj">
