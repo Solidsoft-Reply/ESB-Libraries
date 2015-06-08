@@ -1304,7 +1304,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
             }
 
             // Write and/or promote any BTS properties set by the policy, together with dynamic
-            // port properties for routing, the SOAP action property and retyr properties.
+            // port properties for routing, the SOAP action property and retry properties.
             outMsg.PromotePropertiesBySchema(pc)
                 .WriteAndPromoteBtsProperties(directive)
                 .SetDynamicPortProperties(directive)
