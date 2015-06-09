@@ -153,4 +153,10 @@
   <data name="RegKeyWow6432" xml:space="preserve">
     <value>SOFTWARE\\Wow6432Node\\Microsoft\\BusinessRules\\3.0</value>
   </data>
+  <data name="UddiAssembly" xml:space="preserve">
+    <value>SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</value>
+  </data>
+  <data name="UddiInquiryService" xml:space="preserve">
+    <value>SolidsoftReply.Esb.Libraries.Uddi.InquiryServices</value>
+  </data>
 </root>

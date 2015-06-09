@@ -140,10 +140,24 @@ namespace SolidsoftReply.Esb.Libraries.ResolutionService
                 MessageDirection = messageDirection
             };
 
+            Func<object> createUddiFactObject = () =>
+                {
+                    try
+                    {
+                        var uddiObjHandle = Activator.CreateInstance(Properties.Resources.UddiAssembly, Properties.Resources.UddiInquiryService);
+
+                        return uddiObjHandle != null ? uddiObjHandle.Unwrap() : new object();
+                    }
+                    catch
+                    {
+                        return new object();
+                    }
+                };
+
             // Determine if static support is being used by rule engine and only assert InquiryServices if not.
             var shortTermFacts = IsStaticSupport() 
                 ? new object[] { interchange }
-                : new object[] { interchange, Activator.CreateInstance("SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1", "SolidsoftReply.Esb.Libraries.Uddi.InquiryServices").Unwrap()};
+                : new[] { interchange, createUddiFactObject()};
 
             if (Convert.ToBoolean(ConfigurationManager.AppSettings[Properties.Resources.AppSettingsEsbBrePolicyTester]))
             {
