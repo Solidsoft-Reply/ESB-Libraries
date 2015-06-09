@@ -303,7 +303,7 @@ namespace SolidsoftReply.Esb.Libraries.Uddi.Test
             Action<ArgumentException> errorHandler =
                 argumentException =>
                     Assert.AreEqual(
-                        "Precondition failed: !string.IsNullOrWhiteSpace(bindingKey)",
+                        "Binding key is invalid or missing.\r\nParameter name: bindingKey",
                         argumentException.Message);
 
             RunTest(
@@ -2557,6 +2557,7 @@ namespace SolidsoftReply.Esb.Libraries.Uddi.Test
                         throw;
                     }
 
+                    System.Diagnostics.Debug.WriteLine("Error Message: " + ex.Message);
                     exceptionHandler(ex);
                 }
             }

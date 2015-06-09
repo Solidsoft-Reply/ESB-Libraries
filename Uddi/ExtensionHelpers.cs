@@ -21,7 +21,6 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
     using System;
     using System.Collections.Generic;
     using System.Configuration;
-    using System.Diagnostics.Contracts;
     using System.Linq;
     using System.Runtime.Caching;
     using System.Text;
@@ -105,8 +104,14 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
         /// <returns>An empty string or a given URI return string.</returns>
         public static string LogWarningForInvalidUri(this string invalidUri, string returnUri = "")
         {
-            // Define pre-condition.
-            Contract.Assume(UddiEventLog.DefaultLog != null);
+            // Precondition
+            if (UddiEventLog.DefaultLog == null)
+            {
+                throw new Exception("The UDDI default event log is not initialised.");
+            }
+
+            ////// Define pre-condition.
+            ////Contract.Assume(UddiEventLog.DefaultLog != null);
 
             // Write warning to event log.
             UddiEventLog.DefaultLog.WriteInvalidUriWarning(invalidUri);
@@ -127,8 +132,14 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
         /// <param name="invalidSites">The collection of invalid sites.</param>
         public static void LogWarningsForInvalidUddiSites(this IEnumerable<UddiSiteLocation> invalidSites)
         {
-            // Define pre-condition.
-            Contract.Requires(invalidSites != null);
+            // Precondition
+            if (invalidSites == null)
+            {
+                throw new ArgumentException("The UDDI default event log is not initialised.", "invalidSites");
+            }
+
+            ////////// Define pre-condition.
+            ////////Contract.Requires(invalidSites != null);
 
             // Textual list of invalid site error reports
             Func<string> invalidSiteList = () =>
@@ -157,8 +168,14 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
         /// </param>
         public static void LogWarningForUnexpectedRemovalOfCacheControlEntry(this CacheEntryRemovedReason reason)
         {
-            // Define pre-condition.
-            Contract.Assume(UddiEventLog.DefaultLog != null);
+            // Precondition
+            if (UddiEventLog.DefaultLog == null)
+            {
+                throw new Exception("The UDDI default event log is not initialised.");
+            }
+
+            //////// Define pre-condition.
+            //////Contract.Assume(UddiEventLog.DefaultLog != null);
 
             UddiEventLog.DefaultLog.WriteUddiSiteUnexpectedlyRemovedFromCacheWarning(reason.ToString());
         }
@@ -559,8 +576,14 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
         /// </param>
         private static void HandleSafeInvokeException(Exception ex, string requestType, UddiSiteLocation siteLocation, string[] loggingData)
         {
-            // Define pre-condition.
-            Contract.Assume(UddiEventLog.DefaultLog != null);
+            // Precondition
+            if (UddiEventLog.DefaultLog == null)
+            {
+                throw new Exception("The UDDI default event log is not initialised.");
+            }
+
+            ////////// Define pre-condition.
+            ////////Contract.Assume(UddiEventLog.DefaultLog != null);
 
             if (ex as ArgumentNullException != null)
             {

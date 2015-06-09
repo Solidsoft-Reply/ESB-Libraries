@@ -19,7 +19,6 @@
 namespace SolidsoftReply.Esb.Libraries.Uddi
 {
     using System;
-    using System.Diagnostics.Contracts;
     using System.Linq;
 
     using Microsoft.Uddi3;
@@ -65,8 +64,14 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
         /// <returns>A Provider Identifier.</returns>
         public static ProviderIdentifier CreateProviderKey(string key)
         {
-            // Define pre-condition.
-            Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(key));
+            // Precondition
+            if (string.IsNullOrWhiteSpace(key))
+            {
+                throw new ArgumentException("Provider key is invalid or missing.", "key");
+            }
+
+            ////////// Define pre-condition.
+            ////////Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(key));
 
             // Return a new service provider identifier for the given key.
             return new ProviderIdentifier(key, true);
@@ -79,8 +84,14 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
         /// <returns>A Provider Identifier.</returns>
         public static ProviderIdentifier CreateProviderName(string name)
         {
-            // Define pre-condition.
-            Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(name));
+            // Precondition
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentException("Provider name is invalid or missing.", "name");
+            }
+
+            ////////// Define pre-condition.
+            ////////Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(name));
 
             // Return a new service provider identifier for the given name.
             return new ProviderIdentifier(name, false);
@@ -93,8 +104,14 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
         /// <returns>A Service Identifier.</returns>
         public static ServiceIdentifier CreateServiceKey(string key)
         {
-            // Define pre-condition.
-            Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(key));
+            // Precondition
+            if (string.IsNullOrWhiteSpace(key))
+            {
+                throw new ArgumentException("Service key is invalid or missing.", "key");
+            }
+
+            //////// Define pre-condition.
+            //////Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(key));
 
             // Return a new service identifier for the given key.
             return new ServiceIdentifier(key, true);
@@ -107,8 +124,14 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
         /// <returns>A Service Identifier.</returns>
         public static ServiceIdentifier CreateServiceName(string name)
         {
-            // Define pre-condition.
-            Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(name));
+            // Precondition
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentException("Service name is invalid or missing.", "name");
+            }
+
+            //////// Define pre-condition.
+            //////Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(name));
 
             // Return a new service identifier for the given name.
             return new ServiceIdentifier(name, false);
@@ -121,8 +144,14 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
         /// <returns>As access point.</returns>
         public static string FindAccessPointForBinding(string bindingKey)
         {
-            // Define pre-condition.
-            Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(bindingKey));
+            // Precondition
+            if (string.IsNullOrWhiteSpace(bindingKey))
+            {
+                throw new ArgumentException("Binding key is invalid or missing.", "bindingKey");
+            }
+
+            //////////// Define pre-condition.
+            //////////Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(bindingKey));
 
             // The binding template for the given binding key.
             var bindingTemplate = GetBindingTemplate(bindingKey);
@@ -143,8 +172,14 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
         /// <returns>As access point.</returns>
         public static string FindAccessPointForService(ServiceIdentifier service)
         {
-            // Define pre-condition.
-            Contract.Requires<ArgumentNullException>(service != null);
+            // Precondition.
+            if (service == null);
+            {
+                throw new ArgumentNullException("service", "Service identifier is invalid or missing.");
+            }
+
+            ////////// Define pre-condition.
+            ////////Contract.Requires<ArgumentNullException>(service != null);
 
             // Return the access point value for the given service.
             return FindAccessPointForService(service, AccessPointUseType.EndPoint);
@@ -158,9 +193,21 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
         /// <returns>As access point.</returns>
         public static string FindAccessPointForService(ServiceIdentifier service, AccessPointUseType useType)
         {
-            // Define pre-conditions.
-            Contract.Requires<ArgumentNullException>(service != null);
-            Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(service.Value));
+            // Precondition.
+            if (service == null) ;
+            {
+                throw new ArgumentNullException("service", "Service identifier is invalid or missing.");
+            }
+
+            // Precondition.
+            if (string.IsNullOrWhiteSpace(service.Value)) ;
+            {
+                throw new ArgumentException("Service identifier value is invalid or missing.", "service");
+            }
+
+            ////////// Define pre-conditions.
+            ////////Contract.Requires<ArgumentNullException>(service != null);
+            ////////Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(service.Value));
 
             // The business service for the given service key or name. 
             var businessService = GetBusinessService(service);
@@ -197,9 +244,21 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
         /// <returns>As access point.</returns>
         public static string FindAccessPointForService(ProviderIdentifier provider, ServiceIdentifier service)
         {
-            // Define pre-conditions.
-            Contract.Requires<ArgumentNullException>(provider != null);
-            Contract.Requires<ArgumentNullException>(service != null);
+            // Precondition.
+            if (provider == null) ;
+            {
+                throw new ArgumentNullException("provider", "Provider identifier is invalid or missing.");
+            }
+
+            // Precondition.
+            if (service == null) ;
+            {
+                throw new ArgumentNullException("service", "Service identifier is invalid or missing.");
+            }
+
+            ////////// Define pre-conditions.
+            ////////Contract.Requires<ArgumentNullException>(provider != null);
+            ////////Contract.Requires<ArgumentNullException>(service != null);
 
             // Return the endpoint access point value for the given service provided by a given business entity.
             return FindAccessPointForService(provider, service, AccessPointUseType.EndPoint);
@@ -214,11 +273,35 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
         /// <returns>As access point.</returns>
         public static string FindAccessPointForService(ProviderIdentifier provider, ServiceIdentifier service, AccessPointUseType useType)
         {
-            // Define pre-conditions
-            Contract.Requires<ArgumentNullException>(provider != null);
-            Contract.Requires<ArgumentNullException>(service != null);
-            Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(provider.Value));
-            Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(service.Value));
+            // Precondition.
+            if (provider == null) ;
+            {
+                throw new ArgumentNullException("provider", "Provider identifier is invalid or missing.");
+            }
+
+            // Precondition.
+            if (service == null) ;
+            {
+                throw new ArgumentNullException("service", "Service identifier is invalid or missing.");
+            }
+
+            // Precondition.
+            if (string.IsNullOrWhiteSpace(provider.Value)) ;
+            {
+                throw new ArgumentException("Provider identifier value is invalid or missing.", "provider");
+            }
+
+            // Precondition.
+            if (string.IsNullOrWhiteSpace(service.Value)) ;
+            {
+                throw new ArgumentException("Service identifier value is invalid or missing.", "service");
+            }
+            
+            ////////// Define pre-conditions
+            ////////Contract.Requires<ArgumentNullException>(provider != null);
+            ////////Contract.Requires<ArgumentNullException>(service != null);
+            ////////Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(provider.Value));
+            ////////Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(service.Value));
 
             // The business entity for the given provider key or name. 
             var businessEntity = GetBusinessEntity(provider);
@@ -284,8 +367,14 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
         /// <returns>A business entity.  Returns null if no entity is found.</returns>
         private static BusinessEntity GetBusinessEntity(IIdentifier provider)
         {
-            // Define pre-condition.
-            Contract.Requires(provider != null);
+            // Precondition.
+            if (provider == null) ;
+            {
+                throw new ArgumentNullException("provider", "Provider identifier is invalid or missing.");
+            }
+
+            //////// Define pre-condition.
+            //////Contract.Requires(provider != null);
 
             // The default UDDI inquiry service entry in the configuration file.
             var defaultDirectoryEntry = Cache.SingleOrDefault(entry => entry.Key == DefaultUddiInquiryService);
@@ -341,8 +430,14 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
         /// <returns>A business service.  Returns null if no service is found.</returns>
         private static BusinessService GetBusinessService(IIdentifier service)
         {
-            // Define pre-condition.
-            Contract.Requires(service != null);
+            // Precondition.
+            if (service == null) ;
+            {
+                throw new ArgumentNullException("service", "Service identifier is invalid or missing.");
+            }
+
+            //////// Define pre-condition.
+            //////Contract.Requires(service != null);
 
             // The default UDDI inquiry service entry in the configuration file.
             var defaultDirectoryEntry = Cache.SingleOrDefault(entry => entry.Key == DefaultUddiInquiryService);
