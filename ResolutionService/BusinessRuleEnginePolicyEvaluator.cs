@@ -140,33 +140,30 @@ namespace SolidsoftReply.Esb.Libraries.ResolutionService
                 MessageDirection = messageDirection
             };
 
-            // Safely create a UDDI Inquiry Service object using a dynamic reference.  UDDI use is optional,
-            // and the UDDI library may not be installed.
-            Func<object> createUddiFactObject = () =>
+            // Creates a fact array with an optional UDDI fact. Safely create a UDDI Inquiry Service 
+            // object using a dynamic reference.  UDDI use is optional,and the UDDI library may not 
+            // be installed.
+            Func<object[]> createFactsWithOptionalUddi = () =>
                 {
                     try
                     {
-                        return Activator.CreateInstance(Properties.Resources.UddiAssembly, Properties.Resources.UddiInquiryService).Unwrap();
+                        return new[]
+                                   {
+                                       interchange, 
+                                       Activator.CreateInstance(Properties.Resources.UddiAssembly, Properties.Resources.UddiInquiryService).Unwrap()
+                                   };
                     }
                     catch
                     {
                         // TODO: Log error as warning
-                        return new object();
+                        return new object[] { interchange };
                     }
-                };
-
-            // Creates a fact array with an optional UDDI fact.
-            Func<Facts.Interchange, object[]> createFactsWithOptionalUddi = ich =>
-                {
-                    var uddiFact = createUddiFactObject();
-
-                    return uddiFact == null ? new object[] { interchange } : new[] { interchange, uddiFact };
                 };
 
             // Determine if static support is being used by rule engine and only assert InquiryServices if not.
             var shortTermFacts = IsStaticSupport() 
                 ? new object[] { interchange }
-                : createFactsWithOptionalUddi(interchange);
+                : createFactsWithOptionalUddi();
 
             if (Convert.ToBoolean(ConfigurationManager.AppSettings[Properties.Resources.AppSettingsEsbBrePolicyTester]))
             {
