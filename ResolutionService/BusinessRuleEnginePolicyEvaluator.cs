@@ -142,8 +142,8 @@ namespace SolidsoftReply.Esb.Libraries.ResolutionService
 
             // Determine if static support is being used by rule engine and only assert InquiryServices if not.
             var shortTermFacts = IsStaticSupport() 
-                ? new object[] { interchange } 
-                : new object[] { interchange, new Uddi.InquiryServices() };
+                ? new object[] { interchange }
+                : new object[] { interchange, Activator.CreateInstance("SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1", "SolidsoftReply.Esb.Libraries.Uddi.InquiryServices").Unwrap()};
 
             if (Convert.ToBoolean(ConfigurationManager.AppSettings[Properties.Resources.AppSettingsEsbBrePolicyTester]))
             {

@@ -140,10 +140,6 @@
       <Project>{2d735d22-6e9f-4584-8d50-03c0e59d1405}</Project>
       <Name>Facts</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Uddi\Uddi.csproj">
-      <Project>{be5ebcd7-cb78-4242-8874-cba50e165425}</Project>
-      <Name>Uddi</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
