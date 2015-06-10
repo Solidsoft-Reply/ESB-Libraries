@@ -138,11 +138,11 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
             {
                 var message = string.Format(
                     CultureInfo.CurrentCulture,
-                    Properties.Resources.ExceptionSchemaSetIsNull,
+                    Resolution.Properties.Resources.ExceptionSchemaSetIsNull,
                     "GetDictionarySchema");
                 var innerException = new ArgumentNullException(
                     "schemaSet",
-                    Properties.Resources.ExceptionValueIsNull);
+                    Resolution.Properties.Resources.ExceptionValueIsNull);
 
                 throw new EsbResolutionException(message, innerException);
             }
@@ -152,7 +152,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
 
             if (stream == null)
             {
-                throw new EsbResolutionException(Properties.Resources.ExceptionSchemaResourceNotFound);
+                throw new EsbResolutionException(Resolution.Properties.Resources.ExceptionSchemaResourceNotFound);
             }
 
             var xsdReader = new XmlTextReader(stream);
@@ -176,7 +176,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
                 throw new EsbResolutionException(
                     string.Format(
                         CultureInfo.CurrentCulture,
-                        Properties.Resources.ExceptionDeserializationInvalidKeyElement,
+                        Resolution.Properties.Resources.ExceptionDeserializationInvalidKeyElement,
                         dictionaryType));
             }
 
@@ -206,7 +206,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
                 throw new EsbResolutionException(
                     string.Format(
                         CultureInfo.CurrentCulture,
-                        Properties.Resources.ExceptionSerialization,
+                        Resolution.Properties.Resources.ExceptionSerialization,
                         dictionaryType),
                     ex);
             }

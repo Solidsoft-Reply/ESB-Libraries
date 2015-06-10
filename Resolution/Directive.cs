@@ -70,12 +70,12 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// <summary>
         /// The dictionary of BTS property values.
         /// </summary>
-        private BtsPropertyValueDictionary btsPropertyValues;
+        private BtsProperties btsProperties;
 
         /// <summary>
         /// The dictionary of property values.
         /// </summary>
-        private GeneralPropertyValueDictionary generalPropertyValues;
+        private Dictionaries.Properties properties;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Resolution.Directive"/> class. 
@@ -716,90 +716,90 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// <summary>
         /// Gets or sets the BizTalk Server property values.
         /// </summary>
-        public virtual BtsPropertyValueDictionary BtsPropertyValues
+        public virtual BtsProperties BtsProperties
         {
             get
             {
-                if (this.btsPropertyValues != null)
+                if (this.btsProperties != null)
                 {
-                    return this.btsPropertyValues;
+                    return this.btsProperties;
                 }
 
-                if (this.directive == null || this.directive.BtsPropertyValues == null)
+                if (this.directive == null || this.directive.BtsProperties == null)
                 {
                     return null;
                 }
 
-                this.btsPropertyValues = new BtsPropertyValueDictionary();
+                this.btsProperties = new BtsProperties();
 
-                foreach (var btsPropertyValue in this.directive.BtsPropertyValues)
+                foreach (var btsProperty in this.directive.BtsProperties)
                 {
-                    var newBtsPropertyValue = new BtsPropertyValue
+                    var newBtsProperty = new BtsProperty
                                                   {
                                                       Promoted =
-                                                          btsPropertyValue.Value.BtsPropertyValue
+                                                          btsProperty.Value.BtsProperty
                                                           .Promoted,
-                                                      PropertyName =
-                                                          btsPropertyValue.Value.BtsPropertyValue
-                                                          .PropertyName,
-                                                      PropertyNamespace =
-                                                          btsPropertyValue.Value.BtsPropertyValue
-                                                          .PropertyNamespace,
-                                                      PropertyValue =
-                                                          btsPropertyValue.Value.BtsPropertyValue
-                                                          .PropertyValue
+                                                      Name =
+                                                          btsProperty.Value.BtsProperty
+                                                          .Name,
+                                                      Namespace =
+                                                          btsProperty.Value.BtsProperty
+                                                          .Namespace,
+                                                      Value =
+                                                          btsProperty.Value.BtsProperty
+                                                          .Value
                                                   };
 
-                    this.btsPropertyValues.Add(btsPropertyValue.Key.@string, newBtsPropertyValue);
+                    this.btsProperties.Add(btsProperty.Key.@string, newBtsProperty);
                 }
 
-                return this.btsPropertyValues;
+                return this.btsProperties;
             }
 
             set
             {
-                var newBtsPropertyValues = new DirectivesDictionaryItemValueDirectiveItem[value.Count];
+                var btsProperties = new DirectivesDictionaryItemValueDirectiveItem1[value.Count];
                 var index = 0;
 
-                foreach (var btsPropertyValueItem in value)
+                foreach (var btsProperty in value)
                 {
-                    newBtsPropertyValues[index++] = new DirectivesDictionaryItemValueDirectiveItem
+                    btsProperties[index++] = new DirectivesDictionaryItemValueDirectiveItem1
                                                      {
                                                          Key =
-                                                             new DirectivesDictionaryItemValueDirectiveItemKey
+                                                             new DirectivesDictionaryItemValueDirectiveItemKey1
                                                                  {
                                                                      @string
                                                                          =
-                                                                         btsPropertyValueItem
+                                                                         btsProperty
                                                                          .Key
                                                                  },
                                                          Value =
-                                                             new DirectivesDictionaryItemValueDirectiveItemValue
+                                                             new DirectivesDictionaryItemValueDirectiveItemValue1
                                                                  {
-                                                                     BtsPropertyValue
+                                                                     BtsProperty
                                                                          =
-                                                                         new BtsPropertyValueType
+                                                                         new BtsPropertyType
                                                                              {
                                                                                  Promoted
                                                                                      =
-                                                                                     btsPropertyValueItem
+                                                                                     btsProperty
                                                                                      .Value
                                                                                      .Promoted,
-                                                                                 PropertyName
+                                                                                 Name
                                                                                      =
-                                                                                     btsPropertyValueItem
+                                                                                     btsProperty
                                                                                      .Value
-                                                                                     .PropertyName,
-                                                                                 PropertyNamespace
+                                                                                     .Name,
+                                                                                 Namespace
                                                                                      =
-                                                                                     btsPropertyValueItem
+                                                                                     btsProperty
                                                                                      .Value
-                                                                                     .PropertyNamespace,
-                                                                                 PropertyValue
+                                                                                     .Namespace,
+                                                                                 Value
                                                                                      =
-                                                                                     btsPropertyValueItem
+                                                                                     btsProperty
                                                                                      .Value
-                                                                                     .PropertyValue
+                                                                                     .Value
                                                                              }
                                                                  }
                                                      };
@@ -810,70 +810,70 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// <summary>
         /// Gets or sets the BizTalk Server property values.
         /// </summary>
-        public virtual GeneralPropertyValueDictionary PropertyValues
+        public virtual Dictionaries.Properties Properties
         {
             get
             {
-                if (this.generalPropertyValues != null)
+                if (this.properties != null)
                 {
-                    return this.generalPropertyValues;
+                    return this.properties;
                 }
 
-                if (this.directive == null || this.directive.PropertyValues == null)
+                if (this.directive == null || this.directive.Properties == null)
                 {
                     return null;
                 }
 
-                this.generalPropertyValues = new GeneralPropertyValueDictionary();
+                this.properties = new Dictionaries.Properties();
 
-                foreach (var propertyValue in this.directive.PropertyValues)
+                foreach (var property in this.directive.Properties)
                 {
-                    var newPropertyValue = new GeneralPropertyValue
+                    var newProperty = new Property
                                                   { 
-                                                      PropertyName = propertyValue.Value.GeneralPropertyValue.PropertyName,
-                                                      PropertyValue = propertyValue.Value.GeneralPropertyValue.PropertyValue
+                                                      Name = property.Value.Property.Name,
+                                                      Value = property.Value.Property.Value
                                                   };
 
-                    this.generalPropertyValues.Add(propertyValue.Key.@string, newPropertyValue);
+                    this.properties.Add(property.Key.@string, newProperty);
                 }
 
-                return this.generalPropertyValues;
+                return this.properties;
             }
 
             set
             {
-                var newPropertyValues = new DirectivesDictionaryItemValueDirectiveItem1[value.Count];
+                var newProperties = new DirectivesDictionaryItemValueDirectiveItem[value.Count];
                 var index = 0;
 
-                foreach (var propertyValueItem in value)
+                foreach (var property in value)
                 {
-                    newPropertyValues[index++] = new DirectivesDictionaryItemValueDirectiveItem1
+                    newProperties[index++] = new DirectivesDictionaryItemValueDirectiveItem
                     {
                         Key =
-                            new DirectivesDictionaryItemValueDirectiveItemKey1
+                            new DirectivesDictionaryItemValueDirectiveItemKey
                             {
                                 @string
                                     =
-                                    propertyValueItem
+                                    property
                                     .Key
                             },
                         Value =
-                            new DirectivesDictionaryItemValueDirectiveItemValue1
+                            new DirectivesDictionaryItemValueDirectiveItemValue
                             {
-                                GeneralPropertyValue
+                                Property
                                     =
-                                    new GeneralPropertyValueType
+                                    new PropertyType
                                     {
-                                        PropertyName
+                                        Name
                                             =
-                                            propertyValueItem
+                                            property
                                             .Value
-                                            .PropertyName,
-                                        PropertyValue
+                                            .Name,
+                                        Value
                                             =
-                                            propertyValueItem
+                                            property
                                             .Value
-                                            .PropertyValue
+                                            .Value
                                     }
                             }
                     };
@@ -1078,9 +1078,9 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// </summary>
         /// <param name="name">Name of BTS property (e.g., BTS.MessageType)</param>
         /// <returns>An object that provides a full description of a BTS property</returns>
-        public virtual DirectivesDictionaryItemValueDirectiveItemValue GetBtsProperty(string name)
+        public virtual DirectivesDictionaryItemValueDirectiveItemValue1 GetBtsProperty(string name)
         {
-            return this.directive == null ? null : (from item in this.directive.BtsPropertyValues where item.Key.@string == name select item.Value).FirstOrDefault();
+            return this.directive == null ? null : (from item in this.directive.BtsProperties where item.Key.@string == name select item.Value).FirstOrDefault();
         }
 
         /// <summary>
@@ -1095,9 +1095,9 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 return string.Empty;
             }
 
-            foreach (var item in this.directive.BtsPropertyValues.Where(item => item.Key.@string == name))
+            foreach (var item in this.directive.BtsProperties.Where(item => item.Key.@string == name))
             {
-                return item.Value.BtsPropertyValue.PropertyValue;
+                return item.Value.BtsProperty.Value;
             }
 
             return string.Empty;
@@ -1115,9 +1115,9 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 return string.Empty;
             }
 
-            foreach (var item in this.directive.BtsPropertyValues.Where(item => item.Key.@string == name))
+            foreach (var item in this.directive.BtsProperties.Where(item => item.Key.@string == name))
             {
-                return item.Value.BtsPropertyValue.PropertyName;
+                return item.Value.BtsProperty.Name;
             }
 
             return string.Empty;
@@ -1135,9 +1135,9 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 return string.Empty;
             }
 
-            foreach (var item in this.directive.BtsPropertyValues.Where(item => item.Key.@string == name))
+            foreach (var item in this.directive.BtsProperties.Where(item => item.Key.@string == name))
             {
-                return item.Value.BtsPropertyValue.PropertyNamespace;
+                return item.Value.BtsProperty.Namespace;
             }
 
             return string.Empty;
@@ -1148,9 +1148,9 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// </summary>
         /// <param name="name">Name of BTS property (e.g., BTS.MessageType)</param>
         /// <returns>True, if marked as promoted</returns>
-        public virtual bool IsPromotedBtsPropertyValue(string name)
+        public virtual bool IsPromotedBtsProperty(string name)
         {
-            return this.directive != null && (from item in this.directive.BtsPropertyValues where item.Key.@string == name select item.Value.BtsPropertyValue.Promoted).FirstOrDefault();
+            return this.directive != null && (from item in this.directive.BtsProperties where item.Key.@string == name select item.Value.BtsProperty.Promoted).FirstOrDefault();
         }
 
         /// <summary>
@@ -1158,9 +1158,9 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// </summary>
         /// <param name="name">Name of the property</param>
         /// <returns>An object that provides full details of the property.</returns>
-        public virtual DirectivesDictionaryItemValueDirectiveItemValue1 GetProperty(string name)
+        public virtual DirectivesDictionaryItemValueDirectiveItemValue GetProperty(string name)
         {
-            return this.directive == null ? null : (from item1 in this.directive.PropertyValues where item1.Key.@string == name select item1.Value).FirstOrDefault();
+            return this.directive == null ? null : (from item1 in this.directive.Properties where item1.Key.@string == name select item1.Value).FirstOrDefault();
         }
 
         /// <summary>
@@ -1175,15 +1175,15 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 return string.Empty;
             }
 
-            foreach (var item1 in this.directive.PropertyValues)
+            foreach (var item1 in this.directive.Properties)
             {
                 Debug.WriteLine("Processing property " + item1.Key.@string);
-                Debug.WriteLine("Property name " + item1.Value.@GeneralPropertyValue.PropertyName);
-                Debug.WriteLine("Property value " + item1.Value.@GeneralPropertyValue.PropertyValue);
+                Debug.WriteLine("Property name " + item1.Value.Property.Name);
+                Debug.WriteLine("Property value " + item1.Value.Property.Value);
 
                 if (item1.Key.@string == name)
                 {
-                    return item1.Value.GeneralPropertyValue.PropertyValue;
+                    return item1.Value.Property.Value;
                 }
             }
 
@@ -1285,10 +1285,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// or at the point of resolution.
         /// </summary>
         /// <param name="xmlMsg">The message containing data.</param>
-        /// <param name="properties">A dictionary of message properties.</param>
+        /// <param name="msgProperties">A dictionary of message msgProperties.</param>
         /// <param name="values">A positional array of additional values that can be recorded by BAM.</param>
         /// <param name="afterMap">Indicates if the step is after the application of a map.</param>
-        private void DoOnStep(XmlNode xmlMsg, IDictionary properties, IList values, bool afterMap)
+        private void DoOnStep(XmlNode xmlMsg, IDictionary msgProperties, IList values, bool afterMap)
         {
             if (this.directive == null || !this.directive.DirectiveCategories.Contains("BamInterception"))
             {
@@ -1338,7 +1338,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
 
             if (bamInterceptor != null)
             {
-                var xpathDataExtractorWithMacros = new TrackpointDirectiveEventStream.XPathDataExtractorWithMacros(properties, values);
+                var xpathDataExtractorWithMacros = new TrackpointDirectiveEventStream.XPathDataExtractorWithMacros(msgProperties, values);
                 bamInterceptor.OnStep(xpathDataExtractorWithMacros, bamStepName, xmlMsg, currentEventStream);
             }
             else
@@ -1378,46 +1378,46 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// Structure representing a BTS property name-value pair with namespace.
         /// </summary>
         [Serializable]
-        public struct BtsPropertyValue
+        public struct BtsProperty
         {
             /// <summary>
-            /// Initializes a new instance of the <see cref="SolidsoftReply.Esb.Libraries.Resolution.Directive.BtsPropertyValue"/> struct. 
+            /// Initializes a new instance of the <see cref="BtsProperty"/> struct. 
             /// </summary>
-            /// <param name="propertyName">
+            /// <param name="name">
             /// BTS name of property.
             /// </param>
-            /// <param name="propertyValue">
+            /// <param name="value">
             /// Value of property.
             /// </param>
-            /// <param name="propertyNamespace">
+            /// <param name="namespace">
             /// XML namespace of property.
             /// </param>
             /// <param name="promoted">
             /// Flag indicating if property should be promoted.
             /// </param>
-            public BtsPropertyValue(string propertyName, string propertyValue, string propertyNamespace, bool promoted)
+            public BtsProperty(string name, string value, string @namespace, bool promoted)
                 : this()
             {
-                this.PropertyName = propertyName;
-                this.PropertyValue = propertyValue;
-                this.PropertyNamespace = propertyNamespace;
+                this.Name = name;
+                this.Value = value;
+                this.Namespace = @namespace;
                 this.Promoted = promoted;
             }
 
             /// <summary>
             /// Gets or sets the name of BTS property.
             /// </summary>
-            public string PropertyName { get; set; }
+            public string Name { get; set; }
 
             /// <summary>
             /// Gets or sets the value of BTS property.
             /// </summary>
-            public string PropertyValue { get; set; }
+            public string Value { get; set; }
 
             /// <summary>
             /// Gets or sets the XML namespace of BTS property.
             /// </summary>
-            public string PropertyNamespace { get; set; }
+            public string Namespace { get; set; }
 
             /// <summary>
             /// Gets or sets a value indicating whether the property should be marked as promoted on BizTalk messages.
@@ -1429,33 +1429,33 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// Structure representing a general purpose property name-value pair.
         /// </summary>
         [Serializable]
-        public struct GeneralPropertyValue
+        public struct Property
         {
             /// <summary>
-            /// Initializes a new instance of the <see cref="SolidsoftReply.Esb.Libraries.Resolution.Directive.GeneralPropertyValue"/> struct. 
+            /// Initializes a new instance of the <see cref="Property"/> struct. 
             /// </summary>
-            /// <param name="propertyName">
+            /// <param name="name">
             /// Name of property.
             /// </param>
-            /// <param name="propertyValue">
+            /// <param name="value">
             /// Value of property.
             /// </param>
-            public GeneralPropertyValue(string propertyName, string propertyValue)
+            public Property(string name, string value)
                 : this()
             {
-                this.PropertyName = propertyName;
-                this.PropertyValue = propertyValue;
+                this.Name = name;
+                this.Value = value;
             }
 
             /// <summary>
             /// Gets or sets the name of property.
             /// </summary>
-            public string PropertyName { get; set; }
+            public string Name { get; set; }
 
             /// <summary>
             /// Gets or sets the value of property.
             /// </summary>
-            public string PropertyValue { get; set; }
+            public string Value { get; set; }
         }
     }
 }

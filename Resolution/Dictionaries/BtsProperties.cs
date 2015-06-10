@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="GeneralPropertyValueDictionary.cs" company="Solidsoft Reply Ltd.">
+// <copyright file="BtsProperties.cs" company="Solidsoft Reply Ltd.">
 //   Copyright 2015 Solidsoft Reply Limited.
 // 
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,46 +27,46 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Xml Serialisable dictionary for directives.   Inherits from the serialisable
+    /// Xml Serialisable dictionary for BizTalk Server property values.   Inherits from the serialisable
     /// generic dictionary.
     /// </summary>
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here."),]
     [XmlSchemaProvider("GetDictionarySchema")]
-    [XmlRoot("GeneralPropertyValueDictionary", Namespace = "http://solidsoftreply.com/schemas/webservices/esbresolutionservice/2015/05", IsNullable = true)]
+    [XmlRoot("BtsProperties", Namespace = "http://solidsoftreply.com/schemas/webservices/esbresolutionservice/2015/05", IsNullable = true)]
     [Serializable]
-    public class GeneralPropertyValueDictionary : DictionaryBase<Directive.GeneralPropertyValue>
+    public class BtsProperties : DictionaryBase<Directive.BtsProperty>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GeneralPropertyValueDictionary"/> class.
+        /// Initializes a new instance of the <see cref="BtsProperties"/> class.
         /// </summary>
-        public GeneralPropertyValueDictionary()
+        public BtsProperties()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GeneralPropertyValueDictionary"/> class.
+        /// Initializes a new instance of the <see cref="BtsProperties"/> class.
         /// </summary>
         /// <param name="capacity">
         /// The capacity.
         /// </param>
-        public GeneralPropertyValueDictionary(int capacity)
+        public BtsProperties(int capacity)
             : base(capacity)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GeneralPropertyValueDictionary"/> class.
+        /// Initializes a new instance of the <see cref="BtsProperties"/> class.
         /// </summary>
         /// <param name="comparer">
         /// The comparer.
         /// </param>
-        public GeneralPropertyValueDictionary(IEqualityComparer<string> comparer)
+        public BtsProperties(IEqualityComparer<string> comparer)
             : base(comparer)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GeneralPropertyValueDictionary"/> class.
+        /// Initializes a new instance of the <see cref="BtsProperties"/> class.
         /// </summary>
         /// <param name="capacity">
         /// The capacity.
@@ -74,24 +74,24 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
         /// <param name="comparer">
         /// The comparer.
         /// </param>
-        public GeneralPropertyValueDictionary(int capacity, IEqualityComparer<string> comparer)
+        public BtsProperties(int capacity, IEqualityComparer<string> comparer)
             : base(capacity, comparer)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GeneralPropertyValueDictionary"/> class.
+        /// Initializes a new instance of the <see cref="BtsProperties"/> class.
         /// </summary>
         /// <param name="dictionary">
         /// The dictionary.
         /// </param>
-        public GeneralPropertyValueDictionary(IDictionary<string, Directive.GeneralPropertyValue> dictionary)
+        public BtsProperties(IDictionary<string, Directive.BtsProperty> dictionary)
             : base(dictionary)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GeneralPropertyValueDictionary"/> class.
+        /// Initializes a new instance of the <see cref="BtsProperties"/> class.
         /// </summary>
         /// <param name="dictionary">
         /// The dictionary.
@@ -99,13 +99,13 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
         /// <param name="comparer">
         /// The comparer.
         /// </param>
-        public GeneralPropertyValueDictionary(IDictionary<string, Directive.GeneralPropertyValue> dictionary, IEqualityComparer<string> comparer)
+        public BtsProperties(IDictionary<string, Directive.BtsProperty> dictionary, IEqualityComparer<string> comparer)
             : base(dictionary, comparer)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GeneralPropertyValueDictionary"/> class.
+        /// Initializes a new instance of the <see cref="BtsProperties"/> class.
         /// </summary>
         /// <param name="info">
         /// The info.
@@ -113,24 +113,24 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
         /// <param name="context">
         /// The context.
         /// </param>
-        protected GeneralPropertyValueDictionary(SerializationInfo info, StreamingContext context)
+        protected BtsProperties(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
         }
 
         /// <summary>
-        /// Returns an XSD schema for the serialisable facts dictionary.  This is referenced by the XmlSchemaProvider
+        /// Returns an XSD schema for the serialisable BizTalk Server property values dictionary.  This is referenced by the XmlSchemaProvider
         /// attribute on this class in order control the XML format. 
         /// </summary>
         /// <param name="schemaSet">A cache of XSD schemas.</param>
-        /// <returns>The qualified XML name of of the FactsDictionary type.</returns>
+        /// <returns>The qualified XML name of of the BtsProperties type.</returns>
         public static new XmlQualifiedName GetDictionarySchema(XmlSchemaSet schemaSet)
         {
             return GetDictionarySchema(
                 schemaSet,
-                "GeneralPropertyValueDictionaryType",
-                Properties.Resources.DictionaryNamespace,
-                Properties.Resources.XsdGeneralPropertyValuesSchemaFile);
+                "BtsPropertiesType",
+                Resolution.Properties.Resources.DictionaryNamespace,
+                Resolution.Properties.Resources.XsdBtsPropertiesSchemaFile);
         }
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
         /// <returns>A string key value.</returns>
         protected override string ReadKey(XmlReader reader)
         {
-            return this.ReadKey(reader, "GeneralPropertyValueDictionary");
+            return this.ReadKey(reader, "BtsProperties");
         }
 
         /// <summary>
@@ -150,7 +150,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
         /// <param name="key">The key value to be serialized.</param>
         protected override void WriteKey(XmlWriter writer, string key)
         {
-            this.WriteKey(writer, key, "GeneralPropertyValueDictionary", Properties.Resources.DictionaryNamespace);
+            this.WriteKey(writer, key, "BtsProperties", Resolution.Properties.Resources.DictionaryNamespace);
         }
     }
 }

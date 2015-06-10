@@ -115,6 +115,15 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to AS2 Disassembly.
+        /// </summary>
+        internal static string AS2Disassembly {
+            get {
+                return ResourceManager.GetString("AS2Disassembly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Applicable only to Fallback Settings..
         /// </summary>
         internal static string BiboModeDescription {
@@ -129,6 +138,15 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.Properties {
         internal static string BiboModeName {
             get {
                 return ResourceManager.GetString("BiboModeName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BizTalk Framework Disassembly.
+        /// </summary>
+        internal static string BTFDisassembly {
+            get {
+                return ResourceManager.GetString("BTFDisassembly", resourceCulture);
             }
         }
         
@@ -295,6 +313,15 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ESB service mediation component..
+        /// </summary>
+        internal static string DescDescription {
+            get {
+                return ResourceManager.GetString("DescDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Indicates the schema to be applied to the document..
         /// </summary>
         internal static string DescDocumentSpecName {
@@ -408,6 +435,15 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.Properties {
         internal static string DescMessageType {
             get {
                 return ResourceManager.GetString("DescMessageType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Indicates the name of the component..
+        /// </summary>
+        internal static string DescName {
+            get {
+                return ResourceManager.GetString("DescName", resourceCulture);
             }
         }
         
@@ -529,6 +565,15 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Version description..
+        /// </summary>
+        internal static string DescVersion {
+            get {
+                return ResourceManager.GetString("DescVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Xml disassembler component with ESB service mediation..
         /// </summary>
         internal static string DescXmlDasmDescription {
@@ -592,6 +637,15 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to EDI Disassembly.
+        /// </summary>
+        internal static string EDIDisassembly {
+            get {
+                return ResourceManager.GetString("EDIDisassembly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hexadecimal delimiters separated by space and comma. Applicable only to Global party. They should be specified in the same order as defined in UNA segment, component separator, data element separator, decimal notation, release indicator, repetition seperator (anything other than space character), segment terminator..
         /// </summary>
         internal static string EfactDelimitersDescription {
@@ -606,6 +660,24 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.Properties {
         internal static string EfactDelimitersName {
             get {
                 return ResourceManager.GetString("EfactDelimitersName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ESB Resolution Values.
+        /// </summary>
+        internal static string ESBResolutionValues {
+            get {
+                return ResourceManager.GetString("ESBResolutionValues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ESB Service Mediation.
+        /// </summary>
+        internal static string ESBServiceMediation {
+            get {
+                return ResourceManager.GetString("ESBServiceMediation", resourceCulture);
             }
         }
         
@@ -946,6 +1018,15 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Flat File Disassembly.
+        /// </summary>
+        internal static string FFDisassembly {
+            get {
+                return ResourceManager.GetString("FFDisassembly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Resolution Data Properties.
         /// </summary>
         internal static string FormText {
@@ -1108,6 +1189,15 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        internal static string PropDescription {
+            get {
+                return ResourceManager.GetString("PropDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Document schema.
         /// </summary>
         internal static string PropDocumentSpecName {
@@ -1225,6 +1315,15 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string PropName {
+            get {
+                return ResourceManager.GetString("PropName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Operation name.
         /// </summary>
         internal static string PropOperationName {
@@ -1338,6 +1437,15 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.Properties {
         internal static string PropValidateDocumentStructure {
             get {
                 return ResourceManager.GetString("PropValidateDocumentStructure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Version.
+        /// </summary>
+        internal static string PropVersion {
+            get {
+                return ResourceManager.GetString("PropVersion", resourceCulture);
             }
         }
         
@@ -1509,6 +1617,15 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.Properties {
         internal static string UseIsa11AsRepetitionSeparatorDescription {
             get {
                 return ResourceManager.GetString("UseIsa11AsRepetitionSeparatorDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to XML Disassembly.
+        /// </summary>
+        internal static string XMLDisassembly {
+            get {
+                return ResourceManager.GetString("XMLDisassembly", resourceCulture);
             }
         }
         

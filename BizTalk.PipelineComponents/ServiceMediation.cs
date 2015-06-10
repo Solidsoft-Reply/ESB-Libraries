@@ -61,6 +61,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
     [ComponentCategory(CategoryTypes.CATID_DisassemblingParser)]
     [ComponentCategory(CategoryTypes.CATID_Any)]
     [Guid("59CFD96B-20EE-40ad-BFD0-319B59A0DDBC")]
+    [DefaultProperty("Policy")]
     public class ServiceMediation : BaseCustomTypeDescriptor, IBaseComponent, IComponent, IPersistPropertyBag, IComponentUI, IDisassemblerComponent
     {
         #region Static Fields
@@ -160,6 +161,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescBindingAccessPoint")]
         [BtsPropertyName("PropBindingAccessPoint")]
+        [BtsCategory("ESBResolutionValues")]
         public string BindingAccessPoint { get; set; }
 
         /// <summary>
@@ -169,6 +171,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescBindingUrlType")]
         [BtsPropertyName("PropBindingUrlType")]
+        [BtsCategory("ESBResolutionValues")]
         public string BindingUrlType { get; set; }
 
         /// <summary>
@@ -180,12 +183,15 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescBodyContainerXPath")]
         [BtsPropertyName("PropBodyContainerXPath")]
+        [BtsCategory("ESBServiceMediation")]
         public string BodyContainerXPath { get; set; }
 
         /// <summary>
         ///     Gets the description of the component.
         /// </summary>
         [Browsable(false)]
+        [BtsDescription("DescDescription")]
+        [BtsPropertyName("PropDescription")]
         public string Description
         {
             get
@@ -212,6 +218,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescMessageDirection")]
         [BtsPropertyName("PropMessageDirection")]
+        [BtsCategory("ESBResolutionValues")]
         public MessageDirectionTypes MessageDirection { get; set; }
 
         /// <summary>
@@ -223,6 +230,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescMessageRole")]
         [BtsPropertyName("PropMessageRole")]
+        [BtsCategory("ESBResolutionValues")]
         public string MessageRole { get; set; }
 
         /// <summary>
@@ -232,12 +240,15 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescMessageType")]
         [BtsPropertyName("PropMessageType")]
+        [BtsCategory("ESBResolutionValues")]
         public string MessageType { get; set; }
 
         /// <summary>
         ///     Gets the name of the component.
         /// </summary>
         [Browsable(false)]
+        [BtsDescription("DescName")]
+        [BtsPropertyName("PropName")]
         public string Name
         {
             get
@@ -252,6 +263,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescOperationName")]
         [BtsPropertyName("PropOperationName")]
+        [BtsCategory("ESBResolutionValues")]
         public string OperationName { get; set; }
 
         /// <summary>
@@ -260,6 +272,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescPolicy")]
         [BtsPropertyName("PropPolicy")]
+        [BtsCategory("ESBServiceMediation")]
         public string Policy
         {
             get
@@ -295,6 +308,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescPolicyVersion")]
         [BtsPropertyName("PropPolicyVersion")]
+        [BtsCategory("ESBServiceMediation")]
         public string PolicyVersion
         {
             get
@@ -320,6 +334,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescProviderName")]
         [BtsPropertyName("PropProviderName")]
+        [BtsCategory("ESBResolutionValues")]
         public string ProviderName { get; set; }
 
         /// <summary>
@@ -329,6 +344,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescResolutionDataName")]
         [BtsPropertyName("PropResolutionDataName")]
+        [BtsCategory("ESBResolutionValues")]
         public ResolutionData ResolutionData { get; set; }
 
         /// <summary>
@@ -336,6 +352,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         /// </summary>
         [BtsDescription("DescResolutionDataPropertiesName")]
         [BtsPropertyName("PropResolutionDataPropertiesName")]
+        [BtsCategory("ESBResolutionValues")]
         public ResolutionDataPropertyList ResolutionDataProperties { get; set; }
         
         /// <summary>
@@ -345,6 +362,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescServiceName")]
         [BtsPropertyName("PropServiceName")]
+        [BtsCategory("ESBResolutionValues")]
         public string ServiceName { get; set; }
 
         /// <summary>
@@ -354,12 +372,15 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescSynchronizeBam")]
         [BtsPropertyName("PropSynchronizeBam")]
+        [BtsCategory("ESBServiceMediation")]
         public bool SynchronizeBam { get; set; }
 
         /// <summary>
         ///     Gets the version of the component.
         /// </summary>
         [Browsable(false)]
+        [BtsDescription("DescVersion")]
+        [BtsPropertyName("PropVersion")]
         public string Version
         {
             get
@@ -795,7 +816,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         {
             outMsg.Context = PipelineUtil.CloneMessageContext(inMsg.Context);
 
-            // Set the BTS.MessageType property.  This may be overridden by BtsPropertyValues below.
+            // Set the BTS.MessageType property.  This may be overridden by BtsProperties below.
             outMsg.Context.Promote("MessageID", Resources.UriBtsSystemProperties, outMsg.MessageID.ToString());
 
             //////// Set all other properties
@@ -1284,10 +1305,10 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
                         // Set the message type for the transformed document
                         this.MessageType = transformedDoc.TypeSpecifier();
 
-                        // Set the BTS.MessageType property.  This may be overridden by BtsPropertyValues below.
+                        // Set the BTS.MessageType property.  This may be overridden by BtsProperties below.
                         outMsg.Context.Promote("MessageType", Resources.UriBtsSystemProperties, this.MessageType);
 
-                        // Set the schema strong name property.  This may be overridden by BtsPropertyValues below.
+                        // Set the schema strong name property.  This may be overridden by BtsProperties below.
                         if (directive.MapTargetSchemaStrongNames != null)
                         {
                             outMsg.Context.Promote(
@@ -1357,7 +1378,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
                 inMsg.Context.Promote(MessageTypeProp.Name.Name, MessageTypeProp.Name.Namespace, this.MessageType);
             }
 
-            var parameters = new ParametersDictionary();
+            var parameters = new Parameters();
 
             switch (this.ResolutionData)
             {
@@ -1366,7 +1387,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
                         p => this.ResolutionDataProperties.Contains(string.Format("{0}|{1}", p.NameSpace, p.Name))))
                     {
                         // Set the key based on the namespace and name of the property
-                        parameters.Add(property.NameSpace + "." + property.Name, property.Value);
+                        parameters.Add(property.NameSpace + "#" + property.Name, property.Value);
                     }
                     break;
                 case ResolutionData.ValuesWithListedPromotedProperties:
@@ -1374,21 +1395,21 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
                         p => this.ResolutionDataProperties.Contains(string.Format("{0}|{1}", p.NameSpace, p.Name)) && p.IsPromoted))
                     {
                         // Set the key based on the namespace and name of the property
-                        parameters.Add(property.NameSpace + "." + property.Name, property.Value);
+                        parameters.Add(property.NameSpace + "#" + property.Name, property.Value);
                     }
                     break;
                 case ResolutionData.ValuesWithAllProperties:
                     foreach (var property in inMsg.Properties())
                     {
                         // Set the key based on the namespace and name of the property
-                        parameters.Add(property.NameSpace + "." + property.Name, property.Value);
+                        parameters.Add(property.NameSpace + "#" + property.Name, property.Value);
                     }
                     break;
                 case ResolutionData.ValuesWithAllPromotedProperties:
                     foreach (var property in inMsg.Properties().Where(p => p.IsPromoted))
                     {
                         // Set the key based on the namespace and name of the property
-                        parameters.Add(property.NameSpace + "." + property.Name, property.Value);
+                        parameters.Add(property.NameSpace + "#" + property.Name, property.Value);
                     }
                     break;
             }

@@ -28,6 +28,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Dictionaries
     using System.Xml.Schema;
     using System.Xml.Serialization;
 
+    using AssemblyProperties = SolidsoftReply.Esb.Libraries.Facts.Properties;
+
     /// <summary>
     /// Xml Serialisable dictionary base class.   Inherits from the serialisable
     /// generic dictionary.
@@ -138,11 +140,11 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Dictionaries
             {
                 var message = string.Format(
                     CultureInfo.CurrentCulture,
-                    Properties.Resources.ExceptionSchemaSetIsNull,
+                    AssemblyProperties.Resources.ExceptionSchemaSetIsNull,
                     "GetDictionarySchema");
                 var innerException = new ArgumentNullException(
                     "schemaSet",
-                    Properties.Resources.ExceptionValueIsNull);
+                    AssemblyProperties.Resources.ExceptionValueIsNull);
 
                 throw new EsbFactsException(message, innerException);
             }
@@ -152,7 +154,7 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Dictionaries
 
             if (stream == null)
             {
-                throw new EsbFactsException(Properties.Resources.ExceptionSchemaResourceNotFound);
+                throw new EsbFactsException(AssemblyProperties.Resources.ExceptionSchemaResourceNotFound);
             }
 
             var xsdReader = new XmlTextReader(stream);
@@ -176,7 +178,7 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Dictionaries
                 throw new EsbFactsException(
                     string.Format(
                         CultureInfo.CurrentCulture,
-                        Properties.Resources.ExceptionDeserializationInvalidKeyElement,
+                        AssemblyProperties.Resources.ExceptionDeserializationInvalidKeyElement,
                         dictionaryType));
             }
 
@@ -206,7 +208,7 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Dictionaries
                 throw new EsbFactsException(
                     string.Format(
                         CultureInfo.CurrentCulture,
-                        Properties.Resources.ExceptionSerialization,
+                        AssemblyProperties.Resources.ExceptionSerialization,
                         dictionaryType),
                     ex);
             }

@@ -96,7 +96,7 @@ namespace SolidsoftReply.Esb.Libraries.ResolutionService
             string messageType,
             string operationName,
             string messageRole,
-            Facts.Dictionaries.ParametersDictionary parameters,
+            Facts.Dictionaries.Parameters parameters,
             Facts.Interchange.MessageDirectionTypes messageDirection)
         {
             var trace = Convert.ToBoolean(ConfigurationManager.AppSettings[Properties.Resources.AppSettingsEsbBreTrace]);

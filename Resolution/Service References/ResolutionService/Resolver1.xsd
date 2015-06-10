@@ -10,7 +10,7 @@
         <xs:element minOccurs="0" maxOccurs="1" name="MessageType" type="xs:string" />
         <xs:element minOccurs="0" maxOccurs="1" name="OperationName" type="xs:string" />
         <xs:element minOccurs="0" maxOccurs="1" name="MessageRole" type="xs:string" />
-        <xs:element minOccurs="0" maxOccurs="1" name="Parameters" type="tns:ParametersDictionaryType" />
+        <xs:element minOccurs="0" maxOccurs="1" name="Parameters" type="tns:ParametersType" />
         <xs:element minOccurs="1" maxOccurs="1" name="MessageDirection" type="tns:MessageDirectionTypes" />
         <xs:element minOccurs="0" maxOccurs="1" name="PolicyName" type="xs:string" />
         <xs:element minOccurs="0" maxOccurs="1" name="Version" type="xs:string" />
@@ -25,12 +25,29 @@
       <xs:enumeration value="Both" />
     </xs:restriction>
   </xs:simpleType>
-  <xs:complexType name="ParametersDictionaryType">
+  <xs:annotation>
+    <xs:documentation>
+      Copyright 2015 Solidsoft Reply Limited.
+  
+      Licensed under the Apache License, Version 2.0 (the "License");
+      you may not use this file except in compliance with the License.
+      You may obtain a copy of the License at
+  
+          http://www.apache.org/licenses/LICENSE-2.0
+  
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexType name="ParametersType">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Item" type="tns:ParametersDictionaryItem" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Item" type="tns:Parameters" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="ParametersDictionaryItem">
+  <xs:complexType name="Parameters">
     <xs:sequence>
       <xs:element name="Key">
         <xs:complexType>
@@ -48,10 +65,10 @@
       </xs:element>
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ParametersDictionary" type="tns:ParametersDictionaryType">
+  <xs:element name="Parameters" type="tns:ParametersType">
     <xs:annotation>
       <xs:appinfo>
-        <recordInfo rootTypeName="ParametersDictionary" xmlns="http://schemas.microsoft.com/BizTalk/2003" />
+        <recordInfo rootTypeName="ParametersType" xmlns="http://schemas.microsoft.com/BizTalk/2003" />
       </xs:appinfo>
     </xs:annotation>
   </xs:element>
@@ -72,10 +89,27 @@
       <xs:element minOccurs="0" maxOccurs="1" name="OperationName" type="xs:string" />
       <xs:element minOccurs="0" maxOccurs="1" name="MessageRole" type="xs:string" />
       <xs:element minOccurs="1" maxOccurs="1" name="MessageDirection" type="tns:MessageDirectionTypes" />
-      <xs:element minOccurs="0" maxOccurs="1" name="Parameters" type="tns:ParametersDictionaryType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Parameters" type="tns:ParametersType" />
       <xs:element minOccurs="0" maxOccurs="1" name="Directives" type="tns:DirectivesDictionaryType" />
     </xs:sequence>
   </xs:complexType>
+  <xs:annotation>
+    <xs:documentation>
+      Copyright 2015 Solidsoft Reply Limited.
+
+      Licensed under the Apache License, Version 2.0 (the "License");
+      you may not use this file except in compliance with the License.
+      You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
+    </xs:documentation>
+  </xs:annotation>
   <xs:complexType name="DirectivesDictionaryType">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Item" type="tns:DirectivesDictionaryItem" />
@@ -119,7 +153,7 @@
                   <xs:element minOccurs="0" name="ValidationPolicyName" type="xs:string" />
                   <xs:element minOccurs="0" name="ValidationPolicyVersion" type="xs:string" />
                   <xs:element minOccurs="0" name="ErrorOnInvalid" type="xs:boolean" />
-                  <xs:element name="BtsPropertyValues">
+                  <xs:element minOccurs="0" name="Properties">
                     <xs:complexType>
                       <xs:sequence>
                         <xs:element maxOccurs="unbounded" name="Item">
@@ -135,7 +169,7 @@
                               <xs:element name="Value">
                                 <xs:complexType>
                                   <xs:sequence>
-                                    <xs:element ref="tns:BtsPropertyValue" />
+                                    <xs:element ref="tns:Property" />
                                   </xs:sequence>
                                 </xs:complexType>
                               </xs:element>
@@ -145,7 +179,7 @@
                       </xs:sequence>
                     </xs:complexType>
                   </xs:element>
-                  <xs:element name="PropertyValues">
+                  <xs:element minOccurs="0" name="BtsProperties">
                     <xs:complexType>
                       <xs:sequence>
                         <xs:element maxOccurs="unbounded" name="Item">
@@ -161,7 +195,7 @@
                               <xs:element name="Value">
                                 <xs:complexType>
                                   <xs:sequence>
-                                    <xs:element ref="tns:GeneralPropertyValue" />
+                                    <xs:element ref="tns:BtsProperty" />
                                   </xs:sequence>
                                 </xs:complexType>
                               </xs:element>
@@ -187,20 +221,20 @@
       </xs:appinfo>
     </xs:annotation>
   </xs:element>
-  <xs:element name="BtsPropertyValue" type="tns:BtsPropertyValueType" />
-  <xs:complexType name="BtsPropertyValueType">
+  <xs:element name="BtsProperty" type="tns:BtsPropertyType" />
+  <xs:complexType name="BtsPropertyType">
     <xs:sequence>
-      <xs:element name="PropertyName" type="xs:string" />
-      <xs:element name="PropertyValue" type="xs:string" />
-      <xs:element name="PropertyNamespace" type="xs:string" />
+      <xs:element name="Name" type="xs:string" />
+      <xs:element name="Value" type="xs:string" />
+      <xs:element name="Namespace" type="xs:string" />
       <xs:element name="Promoted" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="GeneralPropertyValue" type="tns:GeneralPropertyValueType" />
-  <xs:complexType name="GeneralPropertyValueType">
+  <xs:element name="Property" type="tns:PropertyType" />
+  <xs:complexType name="PropertyType">
     <xs:sequence>
-      <xs:element name="PropertyName" type="xs:string" />
-      <xs:element name="PropertyValue" type="xs:string" />
+      <xs:element name="Name" type="xs:string" />
+      <xs:element name="Value" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="GetInterceptionPolicy">

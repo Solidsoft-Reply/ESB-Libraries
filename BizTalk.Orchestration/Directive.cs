@@ -271,11 +271,11 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         /// <summary>
         ///     Gets or sets the BizTalk Server property values.
         /// </summary>
-        public override BtsPropertyValueDictionary BtsPropertyValues
+        public override BtsProperties BtsProperties
         {
             get
             {
-                return this.directive.BtsPropertyValues;
+                return this.directive.BtsProperties;
             }
 
             set
@@ -285,7 +285,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
                     return;
                 }
 
-                this.directive.BtsPropertyValues = value;
+                this.directive.BtsProperties = value;
             }
         }
 
@@ -444,11 +444,11 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         /// <summary>
         ///     Gets or sets the BizTalk Server property values.
         /// </summary>
-        public override GeneralPropertyValueDictionary PropertyValues
+        public override Resolution.Dictionaries.Properties Properties
         {
             get
             {
-                return this.directive.PropertyValues;
+                return this.directive.Properties;
             }
 
             set
@@ -458,7 +458,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
                     return;
                 }
 
-                this.directive.PropertyValues = value;
+                this.directive.Properties = value;
             }
         }
 
@@ -786,7 +786,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         /// <returns>
         /// An object that provides a full description of a BTS property
         /// </returns>
-        public override DirectivesDictionaryItemValueDirectiveItemValue GetBtsProperty(string name)
+        public override DirectivesDictionaryItemValueDirectiveItemValue1 GetBtsProperty(string name)
         {
             return this.directive == null ? null : this.directive.GetBtsProperty(name);
         }
@@ -842,7 +842,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         /// <returns>
         /// An object that provides full details of the property.
         /// </returns>
-        public override DirectivesDictionaryItemValueDirectiveItemValue1 GetProperty(string name)
+        public override DirectivesDictionaryItemValueDirectiveItemValue GetProperty(string name)
         {
             return this.directive == null ? null : this.directive.GetProperty(name);
         }
@@ -870,9 +870,9 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         /// <returns>
         /// True, if marked as promoted
         /// </returns>
-        public override bool IsPromotedBtsPropertyValue(string name)
+        public override bool IsPromotedBtsProperty(string name)
         {
-            return this.directive != null && this.directive.IsPromotedBtsPropertyValue(name);
+            return this.directive != null && this.directive.IsPromotedBtsProperty(name);
         }
 
         /// <summary>

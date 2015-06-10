@@ -511,11 +511,11 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SolidsoftReply.Esb.Libraries.Resolution.Dictionaries.Resources.BtsPropertyValuesSchema.xsd.
+        ///   Looks up a localized string similar to SolidsoftReply.Esb.Libraries.Resolution.Dictionaries.Resources.BtsPropertiesSchema.xsd.
         /// </summary>
-        internal static string XsdBtsPropertyValuesSchemaFile {
+        internal static string XsdBtsPropertiesSchemaFile {
             get {
-                return ResourceManager.GetString("XsdBtsPropertyValuesSchemaFile", resourceCulture);
+                return ResourceManager.GetString("XsdBtsPropertiesSchemaFile", resourceCulture);
             }
         }
         
@@ -547,20 +547,20 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SolidsoftReply.Esb.Libraries.Resolution.Dictionaries.Resources.GeneralPropertyValuesSchema.xsd.
-        /// </summary>
-        internal static string XsdGeneralPropertyValuesSchemaFile {
-            get {
-                return ResourceManager.GetString("XsdGeneralPropertyValuesSchemaFile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to SolidsoftReply.Esb.Libraries.Resolution.Dictionaries.Resources.ParametersSchema.xsd.
         /// </summary>
         internal static string XsdParameterSchemaFile {
             get {
                 return ResourceManager.GetString("XsdParameterSchemaFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SolidsoftReply.Esb.Libraries.Resolution.Dictionaries.Resources.PropertiesSchema.xsd.
+        /// </summary>
+        internal static string XsdPropertiesSchemaFile {
+            get {
+                return ResourceManager.GetString("XsdPropertiesSchemaFile", resourceCulture);
             }
         }
     }

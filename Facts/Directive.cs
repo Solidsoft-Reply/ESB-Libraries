@@ -166,13 +166,13 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// Collection of BTS property name-value pairs (with namespaces).
         /// </summary>
         [NonSerialized]
-        private Dictionaries.BtsPropertyValueDictionary btsPropertyValues;
+        private Dictionaries.BtsProperties btsProperties;
 
         /// <summary>
         /// Collection of general purpose property name-value pairs.
         /// </summary>
         [NonSerialized]
-        private Dictionaries.GeneralPropertyValueDictionary propertyValues;
+        private Dictionaries.Properties properties;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Directive"/> class. 
@@ -183,8 +183,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         public Directive(string keyName)
         {
             this.KeyName = keyName;
-            this.btsPropertyValues = new Dictionaries.BtsPropertyValueDictionary();
-            this.propertyValues = new Dictionaries.GeneralPropertyValueDictionary();
+            this.btsProperties = new Dictionaries.BtsProperties();
+            this.properties = new Dictionaries.Properties();
             this.directiveValidator = new DirectiveValidator(this);
         }
 
@@ -199,12 +199,12 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// <summary>
         /// Gets or sets the collection of general purpose property name-value pairs.
         /// </summary>
-        [DataMember(Name = "PropertyValues", Order = 23)]
-        [XmlElement("PropertyValues", Order = 23)]
-        public Dictionaries.GeneralPropertyValueDictionary PropertyValues
+        [DataMember(Name = "Properties", Order = 23)]
+        [XmlElement("Properties", Order = 23)]
+        public Dictionaries.Properties Properties
         {
-            get { return this.propertyValues; }
-            set { this.propertyValues = value; }
+            get { return this.properties; }
+            set { this.properties = value; }
         }
 
         /// <summary>
@@ -406,7 +406,7 @@ namespace SolidsoftReply.Esb.Libraries.Facts
 
                 try
                 {
-                    this.bamConnectionString = this.BamIsBuffered ? ConfigurationManager.AppSettings[Properties.Resources.AppSettingEsbBamBufferedConnectionString].Trim() : ConfigurationManager.AppSettings[Properties.Resources.AppSettingEsbBamDirectConnectionString].Trim();
+                    this.bamConnectionString = this.BamIsBuffered ? ConfigurationManager.AppSettings[Facts.Properties.Resources.AppSettingEsbBamBufferedConnectionString].Trim() : ConfigurationManager.AppSettings[Facts.Properties.Resources.AppSettingEsbBamDirectConnectionString].Trim();
                 }
                 catch
                 {
@@ -453,7 +453,7 @@ namespace SolidsoftReply.Esb.Libraries.Facts
 
                 try
                 {
-                    bamIsBufferedString = ConfigurationManager.AppSettings[Properties.Resources.AppSettingEsbBamIsBuffered].Trim().ToLower();
+                    bamIsBufferedString = ConfigurationManager.AppSettings[Facts.Properties.Resources.AppSettingEsbBamIsBuffered].Trim().ToLower();
                 }
                 catch
                 {
@@ -499,7 +499,7 @@ namespace SolidsoftReply.Esb.Libraries.Facts
 
                 try
                 {
-                    var bamFlushThresholdString = ConfigurationManager.AppSettings[Properties.Resources.AppSettingEsbBamFlushThreshold].Trim();
+                    var bamFlushThresholdString = ConfigurationManager.AppSettings[Facts.Properties.Resources.AppSettingEsbBamFlushThreshold].Trim();
                     this.bamFlushThreshold = Convert.ToInt32(bamFlushThresholdString);
                 }
                 catch
@@ -535,7 +535,7 @@ namespace SolidsoftReply.Esb.Libraries.Facts
 
                 try
                 {
-                    this.bamTrackpointPolicyName = ConfigurationManager.AppSettings[Properties.Resources.AppSettingEsbBamDefaultTrackpointPolicyName].Trim();
+                    this.bamTrackpointPolicyName = ConfigurationManager.AppSettings[Facts.Properties.Resources.AppSettingEsbBamDefaultTrackpointPolicyName].Trim();
                 }
                 catch
                 {
@@ -575,7 +575,7 @@ namespace SolidsoftReply.Esb.Libraries.Facts
 
                 try
                 {
-                    this.bamTrackpointPolicyVersion = ConfigurationManager.AppSettings[Properties.Resources.AppSettingEsbBamDefaultTrackpointPolicyVersion].Trim();
+                    this.bamTrackpointPolicyVersion = ConfigurationManager.AppSettings[Facts.Properties.Resources.AppSettingEsbBamDefaultTrackpointPolicyVersion].Trim();
                 }
                 catch
                 {
@@ -744,7 +744,7 @@ namespace SolidsoftReply.Esb.Libraries.Facts
 
                 try
                 {
-                    this.validationPolicyName = ConfigurationManager.AppSettings[Properties.Resources.AppSettingEsbValidationPolicyName].Trim();
+                    this.validationPolicyName = ConfigurationManager.AppSettings[Facts.Properties.Resources.AppSettingEsbValidationPolicyName].Trim();
                 }
                 catch
                 {
@@ -783,7 +783,7 @@ namespace SolidsoftReply.Esb.Libraries.Facts
 
                 try
                 {
-                    this.validationPolicyVersion = ConfigurationManager.AppSettings[Properties.Resources.AppSettingEsbValidationPolicyVersion].Trim();
+                    this.validationPolicyVersion = ConfigurationManager.AppSettings[Facts.Properties.Resources.AppSettingEsbValidationPolicyVersion].Trim();
                 }
                 catch
                 {
@@ -835,7 +835,7 @@ namespace SolidsoftReply.Esb.Libraries.Facts
 
                 try
                 {
-                    errorOnInvalidString = ConfigurationManager.AppSettings[Properties.Resources.AppSettingEsbErrorOnInvalid].Trim().ToLower();
+                    errorOnInvalidString = ConfigurationManager.AppSettings[Facts.Properties.Resources.AppSettingEsbErrorOnInvalid].Trim().ToLower();
                 }
                 catch
                 {
@@ -860,12 +860,12 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// <summary>
         /// Gets or sets the collection of BTS property name-value pairs (with namespaces).
         /// </summary>
-        [DataMember(Name = "BtsPropertyValues", Order = 24)]
-        [XmlElement("BtsPropertyValues", Order = 24)]
-        public Dictionaries.BtsPropertyValueDictionary BtsPropertyValues
+        [DataMember(Name = "BtsProperties", Order = 24)]
+        [XmlElement("BtsProperties", Order = 24)]
+        public Dictionaries.BtsProperties BtsProperties
         {
-            get { return this.btsPropertyValues; }
-            set { this.btsPropertyValues = value; }
+            get { return this.btsProperties; }
+            set { this.btsProperties = value; }
         }
 
         /// <summary>
@@ -932,50 +932,60 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// Structure representing a BTS property name-value pair with namespace.
         /// </summary>
         [Serializable]
-        public struct BtsPropertyValue
+        [DataContract(Name = "BtsProperty", Namespace = "http://solidsoftreply.com/schemas/webservices/esbresolutionservice/2015/05")]
+        [XmlRoot("BtsProperty", Namespace = "http://solidsoftreply.com/schemas/webservices/esbresolutionservice/2015/05")]
+        public struct BtsProperty
         {
             /// <summary>
-            /// Initializes a new instance of the <see cref="BtsPropertyValue"/> struct. 
+            /// Initializes a new instance of the <see cref="BtsProperty"/> struct. 
             /// </summary>
-            /// <param name="propertyName">
+            /// <param name="name">
             /// BTS name of property.
             /// </param>
-            /// <param name="propertyValue">
+            /// <param name="value">
             /// Value of property.
             /// </param>
-            /// <param name="propertyNamespace">
+            /// <param name="namespace">
             /// XML namespace of property.
             /// </param>
             /// <param name="promoted">
             /// Flag indicating if property should be promoted.
             /// </param>
-            public BtsPropertyValue(string propertyName, string propertyValue, string propertyNamespace, bool promoted)
+            public BtsProperty(string name, string value, string @namespace, bool promoted)
                 : this()
             {
-                this.PropertyName = propertyName;
-                this.PropertyValue = propertyValue;
-                this.PropertyNamespace = propertyNamespace;
+                this.Name = name;
+                this.Value = value;
+                this.Namespace = @namespace;
                 this.Promoted = promoted;
             }
 
             /// <summary>
             /// Gets or sets the name of BTS property.
             /// </summary>
-            public string PropertyName { get; set; }
+            [DataMember(Name = "Name", Order = 0)]
+            [XmlElement("Name", Order = 0)]
+            public string Name { get; set; }
 
             /// <summary>
             /// Gets or sets the value of BTS property.
             /// </summary>
-            public string PropertyValue { get; set; }
+            [DataMember(Name = "Value", Order = 1)]
+            [XmlElement("Value", Order = 1)]
+            public string Value { get; set; }
 
             /// <summary>
             /// Gets or sets the XML namespace of BTS property.
             /// </summary>
-            public string PropertyNamespace { get; set; }
+            [DataMember(Name = "Namespace", Order = 2)]
+            [XmlElement("Namespace", Order = 2)]
+            public string Namespace { get; set; }
 
             /// <summary>
             /// Gets or sets a value indicating whether the property should be marked as promoted on BizTalk messages.
             /// </summary>
+            [DataMember(Name = "Promoted", Order = 3)]
+            [XmlElement("Promoted", Order = 3)]
             public bool Promoted { get; set; }
         }
 
@@ -985,33 +995,39 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// Structure representing a general purpose property name-value pair.
         /// </summary>
         [Serializable]
-        public struct GeneralPropertyValue
+        [DataContract(Name = "Property", Namespace = "http://solidsoftreply.com/schemas/webservices/esbresolutionservice/2015/05")]
+        [XmlRoot("Property", Namespace = "http://solidsoftreply.com/schemas/webservices/esbresolutionservice/2015/05")]
+        public struct Property
         {
             /// <summary>
-            /// Initializes a new instance of the <see cref="GeneralPropertyValue"/> struct. 
+            /// Initializes a new instance of the <see cref="Property"/> struct. 
             /// </summary>
-            /// <param name="propertyName">
+            /// <param name="name">
             /// Name of property.
             /// </param>
-            /// <param name="propertyValue">
+            /// <param name="value">
             /// Value of property.
             /// </param>
-            public GeneralPropertyValue(string propertyName, string propertyValue)
+            public Property(string name, string value)
                 : this()
             {
-                this.PropertyName = propertyName;
-                this.PropertyValue = propertyValue;
+                this.Name = name;
+                this.Value = value;
             }
 
             /// <summary>
             /// Gets or sets the name of property.
             /// </summary>
-            public string PropertyName { get; set; }
+            [DataMember(Name = "Name", Order = 0)]
+            [XmlElement("Name", Order = 0)]
+            public string Name { get; set; }
 
             /// <summary>
             /// Gets or sets the value of property.
             /// </summary>
-            public string PropertyValue { get; set; }
+            [DataMember(Name = "Value", Order = 1)]
+            [XmlElement("Value", Order = 1)]
+            public string Value { get; set; }
         }
     }
 }

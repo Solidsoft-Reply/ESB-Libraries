@@ -86,7 +86,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         /// </summary>
         /// <param name="parameters">Parameter items</param>
         /// <returns>Return a Directive object with the result</returns>
-        public static Directives Resolve(ParametersDictionary parameters)
+        public static Directives Resolve(Parameters parameters)
         {
             return new Directives(Resolution.Resolver.Resolve(
                 null,
@@ -109,7 +109,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         /// <param name="policyName">Policy name</param>
         /// <param name="parameters">Parameter items</param>
         /// <returns>Return a Directive object with the result</returns>
-        public static Directives Resolve(string policyName, ParametersDictionary parameters)
+        public static Directives Resolve(string policyName, Parameters parameters)
         {
             return new Directives(Resolution.Resolver.Resolve(
                 null,
@@ -134,7 +134,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         /// <param name="parameters">Parameter items</param>
         /// <returns>Return a Directive object with the result</returns>
         public static Directives Resolve(
-            string policyName, Version version, ParametersDictionary parameters)
+            string policyName, Version version, Parameters parameters)
         {
             return new Directives(Resolution.Resolver.Resolve(
                 null,
@@ -339,7 +339,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
             string operationName,
             string messageRole,
             MessageDirectionTypes messageDirection,
-            ParametersDictionary parameters)
+            Parameters parameters)
         {
             return new Directives(Resolution.Resolver.Resolve(
                 providerName,
@@ -380,7 +380,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
             string messageRole,
             MessageDirectionTypes messageDirection,
             string policyName,
-            ParametersDictionary parameters)
+            Parameters parameters)
         {
             return new Directives(Resolution.Resolver.Resolve(
                 providerName,
@@ -423,7 +423,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
             MessageDirectionTypes messageDirection,
             string policyName,
             Version version,
-            ParametersDictionary parameters)
+            Parameters parameters)
         {
             return new Directives(Resolution.Resolver.Resolve(
                 providerName,
@@ -464,7 +464,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
             string messageRole,
             MessageDirectionTypes messageDirection,
             XLANGMessage messageIn,
-            ParametersDictionary parameters)
+            Parameters parameters)
         {
             return new Directives(Resolution.Resolver.Resolve(
                 providerName,
@@ -507,7 +507,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
             MessageDirectionTypes messageDirection,
             XLANGMessage messageIn,
             string policyName,
-            ParametersDictionary parameters)
+            Parameters parameters)
         {
             return new Directives(Resolution.Resolver.Resolve(
                 providerName,
@@ -552,7 +552,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
             XLANGMessage messageIn,
             string policyName,
             Version version,
-            ParametersDictionary parameters)
+            Parameters parameters)
         {
             return new Directives(Resolution.Resolver.Resolve(
                 providerName,

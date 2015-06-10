@@ -256,8 +256,8 @@
   <data name="ExceptionWriterIsNull" xml:space="preserve">
     <value>The XML writer passed to the {0} method is null.</value>
   </data>
-  <data name="XsdBtsPropertyValuesSchemaFile" xml:space="preserve">
-    <value>SolidsoftReply.Esb.Libraries.Resolution.Dictionaries.Resources.BtsPropertyValuesSchema.xsd</value>
+  <data name="XsdBtsPropertiesSchemaFile" xml:space="preserve">
+    <value>SolidsoftReply.Esb.Libraries.Resolution.Dictionaries.Resources.BtsPropertiesSchema.xsd</value>
   </data>
   <data name="XsdDictionarySchemaFile" xml:space="preserve">
     <value>SolidsoftReply.Esb.Libraries.Resolution.Dictionaries.Resources..DictionarySchema.xsd</value>
@@ -268,8 +268,8 @@
   <data name="XsdDirectiveSchemaPropertiesFile" xml:space="preserve">
     <value>SolidsoftReply.Esb.Libraries.Resolution.Dictionaries.Resources.DirectivesSchemaProperties.xsd</value>
   </data>
-  <data name="XsdGeneralPropertyValuesSchemaFile" xml:space="preserve">
-    <value>SolidsoftReply.Esb.Libraries.Resolution.Dictionaries.Resources.GeneralPropertyValuesSchema.xsd</value>
+  <data name="XsdPropertiesSchemaFile" xml:space="preserve">
+    <value>SolidsoftReply.Esb.Libraries.Resolution.Dictionaries.Resources.PropertiesSchema.xsd</value>
   </data>
   <data name="XsdParameterSchemaFile" xml:space="preserve">
     <value>SolidsoftReply.Esb.Libraries.Resolution.Dictionaries.Resources.ParametersSchema.xsd</value>

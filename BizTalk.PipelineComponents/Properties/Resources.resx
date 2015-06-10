@@ -604,4 +604,43 @@
   <data name="ExceptionPolicyFailedGettingDirectives" xml:space="preserve">
     <value>Failed to determine directives for policy {0}.</value>
   </data>
+  <data name="AS2Disassembly" xml:space="preserve">
+    <value>AS2 Disassembly</value>
+  </data>
+  <data name="BTFDisassembly" xml:space="preserve">
+    <value>BizTalk Framework Disassembly</value>
+  </data>
+  <data name="DescDescription" xml:space="preserve">
+    <value>ESB service mediation component.</value>
+  </data>
+  <data name="DescName" xml:space="preserve">
+    <value>Indicates the name of the component.</value>
+  </data>
+  <data name="DescVersion" xml:space="preserve">
+    <value>Version description.</value>
+  </data>
+  <data name="EDIDisassembly" xml:space="preserve">
+    <value>EDI Disassembly</value>
+  </data>
+  <data name="ESBResolutionValues" xml:space="preserve">
+    <value>ESB Resolution Values</value>
+  </data>
+  <data name="ESBServiceMediation" xml:space="preserve">
+    <value>ESB Service Mediation</value>
+  </data>
+  <data name="FFDisassembly" xml:space="preserve">
+    <value>Flat File Disassembly</value>
+  </data>
+  <data name="PropDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="PropName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="PropVersion" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="XMLDisassembly" xml:space="preserve">
+    <value>XML Disassembly</value>
+  </data>
 </root>

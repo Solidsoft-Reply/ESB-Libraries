@@ -93,7 +93,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// </summary>
         /// <param name="parameters">Parameter items</param>
         /// <returns>Return a Directive object with the result</returns>
-        public static Directives Resolve(ParametersDictionary parameters)
+        public static Directives Resolve(Dictionaries.Parameters parameters)
         {
             return Resolve(
                 null,
@@ -116,7 +116,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// <param name="policyName">Policy name</param>
         /// <param name="parameters">Parameter items</param>
         /// <returns>Return a Directive object with the result</returns>
-        public static Directives Resolve(string policyName, ParametersDictionary parameters)
+        public static Directives Resolve(string policyName, Dictionaries.Parameters parameters)
         {
             return Resolve(
                 null,
@@ -141,7 +141,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// <param name="parameters">Parameter items</param>
         /// <returns>Return a Directive object with the result</returns>
         public static Directives Resolve(
-            string policyName, Version version, ParametersDictionary parameters)
+            string policyName, Version version, Dictionaries.Parameters parameters)
         {
             return Resolve(
                 null,
@@ -346,7 +346,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             string operationName,
             string messageRole,
             MessageDirectionTypes messageDirection,
-            ParametersDictionary parameters)
+            Dictionaries.Parameters parameters)
         {
             return Resolve(
                 providerName,
@@ -386,8 +386,8 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             string operationName,
             string messageRole,
             MessageDirectionTypes messageDirection,
-            string policyName, 
-            ParametersDictionary parameters)
+            string policyName,
+            Dictionaries.Parameters parameters)
         {
             return Resolve(
                 providerName,
@@ -430,7 +430,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             MessageDirectionTypes messageDirection,
             string policyName,
             Version version,
-            ParametersDictionary parameters)
+            Dictionaries.Parameters parameters)
         {
             return Resolve(
                 providerName,
@@ -471,7 +471,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             string messageRole,
             MessageDirectionTypes messageDirection,
             XmlDocument messageIn,
-            ParametersDictionary parameters)
+            Dictionaries.Parameters parameters)
         {
             return Resolve(
                 providerName,
@@ -514,7 +514,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             MessageDirectionTypes messageDirection,
             XmlDocument messageIn,
             string policyName,
-            ParametersDictionary parameters)
+            Dictionaries.Parameters parameters)
         {
             return Resolve(
                 providerName,
@@ -559,7 +559,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             XmlDocument messageIn,
             string policyName,
             Version version,
-            ParametersDictionary parameters)
+            Dictionaries.Parameters parameters)
         {
             // TraceHelper.TraceMessage("Resolver.Resolve - In");
 

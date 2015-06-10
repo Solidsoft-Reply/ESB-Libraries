@@ -79,7 +79,7 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// <summary>
         /// Collection of general purpose parameters.
         /// </summary>
-        private ParametersDictionary parameters;
+        private Parameters parameters;
 
         /// <summary>
         /// Timestamp value.
@@ -96,9 +96,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// </summary>
         public Interchange()
         {
-            ////_directives = new SerializableDictionary<string, Directive>();
-            this.directives = new DirectivesDictionary();   // SerializableDictionary<string, Directive>();
-            this.parameters = new ParametersDictionary();   // SerializableDictionary<string, object>();
+            this.directives = new DirectivesDictionary();
+            this.parameters = new Parameters(); 
         }
 
         /// <summary>
@@ -257,7 +256,7 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// <summary>
         /// Gets or sets the collection of general purpose parameters.
         /// </summary>
-        public ParametersDictionary Parameters
+        public Parameters Parameters
         {
             get { return this.parameters; }
             set { this.parameters = value; }
@@ -625,11 +624,11 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// Microsoft.BizTalk.GlobalPropertySchemas.
         /// </summary>
         /// <param name="directiveKey">Key name that identifies a directive.</param>
-        /// <param name="propertyName">BTS property name.</param>
-        /// <param name="propertyValue">Value to assign to the property.</param>
-        public void SetBtsGlobalProperty(string directiveKey, string propertyName, string propertyValue)
+        /// <param name="name">BTS property name.</param>
+        /// <param name="value">Value to assign to the property.</param>
+        public void SetBtsGlobalProperty(string directiveKey, string name, string value)
         {
-            this.SetBtsGlobalProperty(directiveKey, propertyName, propertyValue, true);
+            this.SetBtsGlobalProperty(directiveKey, name, value, true);
         }
 
         /// <summary>
@@ -639,16 +638,16 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// Microsoft.BizTalk.GlobalPropertySchemas.
         /// </summary>
         /// <param name="directiveKey">Key name that identifies a directive.</param>
-        /// <param name="propertyName">BTS property name.</param>
-        /// <param name="propertyValue">Value to assign to the property.</param>
+        /// <param name="name">BTS property name.</param>
+        /// <param name="value">Value to assign to the property.</param>
         /// <param name="promoted">Flag indicates if property should be promoted.</param>
-        public void SetBtsGlobalProperty(string directiveKey, string propertyName, string propertyValue, bool promoted)
+        public void SetBtsGlobalProperty(string directiveKey, string name, string value, bool promoted)
         {
-            var propOjectHandle = Activator.CreateInstance(Properties.Resources.AssemblyQNameMicrosoftBizTalkGlobalPropertySchemas, propertyName);
+            var propOjectHandle = Activator.CreateInstance(Properties.Resources.AssemblyQNameMicrosoftBizTalkGlobalPropertySchemas, name);
 
             if (propOjectHandle == null)
             {
-                throw new EsbFactsException(string.Format(Properties.Resources.ExceptionInvalidProperty, propertyName));
+                throw new EsbFactsException(string.Format(Properties.Resources.ExceptionInvalidProperty, name));
             }
 
             var prop = propOjectHandle.Unwrap() as PropertyBase;
@@ -658,7 +657,7 @@ namespace SolidsoftReply.Esb.Libraries.Facts
                 throw new EsbFactsException(string.Format(Properties.Resources.ExceptionInvalidProperty, "ARG0"));
             }
 
-            this.SetBtsProperty(directiveKey, prop.Name.Name, propertyValue, prop.Name.Namespace, promoted);
+            this.SetBtsProperty(directiveKey, prop.Name.Name, value, prop.Name.Namespace, promoted);
         }
 
         /// <summary>
@@ -666,12 +665,12 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// be generally created in message context.
         /// </summary>
         /// <param name="directiveKey">Key name that identifies a directive.</param>
-        /// <param name="propertyName">BTS property name.</param>
-        /// <param name="propertyValue">Value to assign to the property.</param>
-        /// <param name="propertyNamespace">XML namespace of the property</param>
-        public void SetBtsProperty(string directiveKey, string propertyName, string propertyValue, string propertyNamespace)
+        /// <param name="name">BTS property name.</param>
+        /// <param name="value">Value to assign to the property.</param>
+        /// <param name="namespace">XML namespace of the property</param>
+        public void SetBtsProperty(string directiveKey, string name, string value, string @namespace)
         {
-            this.SetBtsProperty(directiveKey, propertyName, propertyValue, propertyNamespace, true);
+            this.SetBtsProperty(directiveKey, name, value, @namespace, true);
         }
 
         /// <summary>
@@ -679,11 +678,11 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// be generally created in message context.
         /// </summary>
         /// <param name="directiveKey">Key name that identifies a directive.</param>
-        /// <param name="propertyName">BTS property name.</param>
-        /// <param name="propertyValue">Value to assign to the property.</param>
-        /// <param name="propertyNamespace">XML namespace of the property</param>
+        /// <param name="name">BTS property name.</param>
+        /// <param name="value">Value to assign to the property.</param>
+        /// <param name="namespace">XML namespace of the property</param>
         /// <param name="promoted">Flag indicates if property should be promoted.</param>
-        public void SetBtsProperty(string directiveKey, string propertyName, string propertyValue, string propertyNamespace, bool promoted)
+        public void SetBtsProperty(string directiveKey, string name, string value, string @namespace, bool promoted)
         {
             if (string.IsNullOrWhiteSpace(directiveKey))
             {
@@ -691,20 +690,20 @@ namespace SolidsoftReply.Esb.Libraries.Facts
                     string.Format(
                         Properties.Resources.ExceptionInvalidDirective,
                         "BizTalk property", 
-                        propertyName ?? "<null>"));
+                        name ?? "<null>"));
             }
 
-            if (string.IsNullOrWhiteSpace(propertyName))
+            if (string.IsNullOrWhiteSpace(name))
             {
                 throw new EsbFactsException(string.Format(Properties.Resources.ExceptionInvalidBizTalkPropertyName, directiveKey));
             }
 
-            if (string.IsNullOrWhiteSpace(propertyValue))
+            if (string.IsNullOrWhiteSpace(value))
             {
                 throw new EsbFactsException(string.Format(Properties.Resources.ExceptionInvalidBizTalkPropertyValue, directiveKey));
             }
 
-            if (string.IsNullOrWhiteSpace(propertyNamespace))
+            if (string.IsNullOrWhiteSpace(@namespace))
             {
                 throw new EsbFactsException(string.Format(Properties.Resources.ExceptionInvalidBizTalkPropertyNamespace, directiveKey));
             }
@@ -712,26 +711,26 @@ namespace SolidsoftReply.Esb.Libraries.Facts
             var directive = this.GetDirective(directiveKey);
             directive.KeyName = directiveKey;
 
-            Directive.BtsPropertyValue origPropertyDef;
-            var propertyDef = new Directive.BtsPropertyValue(propertyName, propertyValue, propertyNamespace, promoted);
+            Directive.BtsProperty origPropertyDef;
+            var propertyDef = new Directive.BtsProperty(name, value, @namespace, promoted);
 
             // Remove any existing property definition for this property
             // SolidsoftReply.ESB.Libraries.BizTalk.Facts.Interchange.KeyValue 
-            if (directive.BtsPropertyValues.TryGetValue(propertyName, out origPropertyDef))
+            if (directive.BtsProperties.TryGetValue(name, out origPropertyDef))
             {
-                directive.BtsPropertyValues.Remove(propertyName);
+                directive.BtsProperties.Remove(name);
             }
 
-            directive.BtsPropertyValues.Add(propertyName, propertyDef);
+            directive.BtsProperties.Add(name, propertyDef);
         }
 
         /// <summary>
         /// Set a general-purpose property name-value pair for a directive.
         /// </summary>
         /// <param name="directiveKey">Key name that identifies a directive.</param>
-        /// <param name="propertyName">Property name.</param>
-        /// <param name="propertyValue">Value to assign to the property.</param>
-        public void SetProperty(string directiveKey, string propertyName, string propertyValue)
+        /// <param name="name">Property name.</param>
+        /// <param name="value">Value to assign to the property.</param>
+        public void SetProperty(string directiveKey, string name, string value)
         {
             if (string.IsNullOrWhiteSpace(directiveKey))
             {
@@ -739,15 +738,15 @@ namespace SolidsoftReply.Esb.Libraries.Facts
                     string.Format(
                         Properties.Resources.ExceptionInvalidDirective,
                         "property", 
-                        propertyName ?? "<null>"));
+                        name ?? "<null>"));
             }
 
-            if (string.IsNullOrWhiteSpace(propertyName))
+            if (string.IsNullOrWhiteSpace(name))
             {
                 throw new EsbFactsException(string.Format(Properties.Resources.ExceptionInvalidPropertyName, directiveKey));
             }
 
-            if (string.IsNullOrWhiteSpace(propertyValue))
+            if (string.IsNullOrWhiteSpace(value))
             {
                 throw new EsbFactsException(string.Format(Properties.Resources.ExceptionInvalidPropertyValue, directiveKey));
             }
@@ -755,16 +754,16 @@ namespace SolidsoftReply.Esb.Libraries.Facts
             var directive = this.GetDirective(directiveKey);
             directive.KeyName = directiveKey;
 
-            Directive.GeneralPropertyValue origPropertyDef;
-            var propertyDef = new Directive.GeneralPropertyValue(propertyName, propertyValue);
+            Directive.Property origPropertyDef;
+            var propertyDef = new Directive.Property(name, value);
 
             // Remove any existing property definition for this property
-            if (directive.PropertyValues.TryGetValue(propertyName, out origPropertyDef))
+            if (directive.Properties.TryGetValue(name, out origPropertyDef))
             {
-                directive.PropertyValues.Remove(propertyName);
+                directive.Properties.Remove(name);
             }
 
-            directive.PropertyValues.Add(propertyName, propertyDef);
+            directive.Properties.Add(name, propertyDef);
         }
 
         /// <summary>

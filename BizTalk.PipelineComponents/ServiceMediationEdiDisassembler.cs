@@ -100,6 +100,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescBindingAccessPoint")]
         [BtsPropertyName("PropBindingAccessPoint")]
+        [BtsCategory("ESBResolutionValues")]
         public string BindingAccessPoint
         {
             get
@@ -120,6 +121,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescBindingUrlType")]
         [BtsPropertyName("PropBindingUrlType")]
+        [BtsCategory("ESBResolutionValues")]
         public string BindingUrlType
         {
             get
@@ -142,6 +144,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescBodyContainerXPath")]
         [BtsPropertyName("PropBodyContainerXPath")]
+        [BtsCategory("ESBServiceMediation")]
         public string BodyContainerXPath
         {
             get
@@ -156,80 +159,6 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether the disassembler allows trailing delimiters.
-        /// </summary>
-        [Browsable(true)]
-        [BtsDescription("AllowTrailingDelimitersDescription")]
-        [BtsPropertyName("AllowTrailingDelimitersName")]
-        public bool AllowTrailingDelimiters
-        {
-            get
-            {
-                return this.ediDasmComp.AllowTrailingDelimiters;
-            }
-
-            set
-            {
-                this.ediDasmComp.AllowTrailingDelimiters = value;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the character set used by the disassembler for processing the interchange.
-        /// </summary>
-        [Browsable(true)]
-        [BtsDescription("CharacterSetDescription")]
-        [BtsPropertyName("CharacterSetName")]
-        public CharacterSetOptionList CharacterSet
-        {
-            get
-            {
-                return this.ediDasmComp.CharacterSet;
-            }
-
-            set
-            {
-                this.ediDasmComp.CharacterSet = value;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets whether to convert implied decimal format Nn to base 10 numeric value.
-        /// </summary>
-        [Browsable(true)]
-        [BtsDescription("ConvertToImpliedDecimalDescription")]
-        [BtsPropertyName("ConvertToImpliedDecimal")]
-        public bool ConvertToImpliedDecimal
-        {
-            get
-            {
-                return this.ediDasmComp.ConvertToImpliedDecimal;
-            }
-            set
-            {
-                this.ediDasmComp.ConvertToImpliedDecimal = value;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets a value that indicates whether XML tag is created for trailing separators.
-        /// </summary>
-        [Browsable(true)]
-        [BtsDescription("CreateXmlTagForTrailingSeparatorsDescription")]
-        [BtsPropertyName("CreateXmlTagForTrailingSeparators")]
-        public bool CreateXmlTagForTrailingSeparators
-        {
-            get
-            {
-                return this.ediDasmComp.CreateXmlTagForTrailingSeparators;
-            }
-            set
-            {
-                this.ediDasmComp.CreateXmlTagForTrailingSeparators = value;
-            }
-        }
-
-        /// <summary>
         /// Gets the description of the component.
         /// </summary>
         [Browsable(false)]
@@ -240,60 +169,6 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
             get
             {
                 return Resources.EsbServiceMediationEdiDasmComponentDescription;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets a value that indicates whether the disassembler detects multiple interchanges.
-        /// </summary>
-        [Browsable(true)]
-        [BtsDescription("DetectMultipleInterchangesDescription")]
-        [BtsPropertyName("DetectMultipleInterchangesName")]
-        public bool DetectMultipleInterchanges
-        {
-            get
-            {
-                return this.ediDasmComp.DetectMultipleInterchanges;
-            }
-            set
-            {
-                this.ediDasmComp.DetectMultipleInterchanges = value;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets whether the EDI data is validated.
-        /// </summary>
-        [Browsable(true)]
-        [BtsDescription("EdiDataValidationDescription")]
-        [BtsPropertyName("EdiDataValidationName")]
-        public bool EdiDataValidation
-        {
-            get
-            {
-                return this.ediDasmComp.EdiDataValidation;
-            }
-            set
-            {
-                this.ediDasmComp.EdiDataValidation = value;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the delimiters for EDIFACT-encoded messages.
-        /// </summary>
-        [Browsable(true)]
-        [BtsDescription("EfactDelimitersDescription")]
-        [BtsPropertyName("EfactDelimitersName")]
-        public string EfactDelimiters
-        {
-            get
-            {
-                return this.ediDasmComp.EfactDelimiters;
-            }
-            set
-            {
-                this.ediDasmComp.EfactDelimiters = value;
             }
         }
 
@@ -315,6 +190,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescMessageDirection")]
         [BtsPropertyName("PropMessageDirection")]
+        [BtsCategory("ESBResolutionValues")]
         public MessageDirectionTypes MessageDirection
         {
             get
@@ -337,6 +213,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescMessageRole")]
         [BtsPropertyName("PropMessageRole")]
+        [BtsCategory("ESBResolutionValues")]
         public string MessageRole
         {
             get
@@ -357,6 +234,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescMessageType")]
         [BtsPropertyName("PropMessageType")]
+        [BtsCategory("ESBResolutionValues")]
         public string MessageType
         {
             get
@@ -367,24 +245,6 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
             set
             {
                 this.serviceMediationDasm.MessageType = value;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets a value that indicates whether security information is masked to protect sensitive information.
-        /// </summary>
-        [Browsable(true)]
-        [BtsDescription("MaskSecurityInformationDescription")]
-        [BtsPropertyName("MaskSecurityInformation")]
-        public bool MaskSecurityInformation
-        {
-            get
-            {
-                return this.ediDasmComp.MaskSecurityInformation;
-            }
-            set
-            {
-                this.ediDasmComp.MaskSecurityInformation = value;
             }
         }
 
@@ -408,6 +268,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescOperationName")]
         [BtsPropertyName("PropOperationName")]
+        [BtsCategory("ESBResolutionValues")]
         public string OperationName
         {
             get
@@ -427,6 +288,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescPolicy")]
         [BtsPropertyName("PropPolicy")]
+        [BtsCategory("ESBServiceMediation")]
         public string Policy
         {
             get
@@ -447,6 +309,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescPolicyVersion")]
         [BtsPropertyName("PropPolicyVersion")]
+        [BtsCategory("ESBServiceMediation")]
         public string PolicyVersion
         {
             get
@@ -468,6 +331,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
             "Human-friendly name of service provider.   This is equivalent to the business entity name in UDDI.")]
         [BtsDescription("DescProviderName")]
         [BtsPropertyName("PropProviderName")]
+        [BtsCategory("ESBResolutionValues")]
         public string ProviderName
         {
             get
@@ -488,6 +352,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescResolutionDataName")]
         [BtsPropertyName("PropResolutionDataName")]
+        [BtsCategory("ESBResolutionValues")]
         public ResolutionData ResolutionData
         {
             get
@@ -506,6 +371,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         /// </summary>
         [BtsDescription("DescResolutionDataPropertiesName")]
         [BtsPropertyName("PropResolutionDataPropertiesName")]
+        [BtsCategory("ESBResolutionValues")]
         public ResolutionDataPropertyList ResolutionDataProperties
         {
             get
@@ -527,6 +393,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
             "Human-friendly name for target service.   This is equivalent to the business service name in UDDI.")]
         [BtsDescription("DescServiceName")]
         [BtsPropertyName("PropServiceName")]
+        [BtsCategory("ESBResolutionValues")]
         public string ServiceName
         {
             get
@@ -547,6 +414,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescSynchronizeBam")]
         [BtsPropertyName("PropSynchronizeBam")]
+        [BtsCategory("ESBServiceMediation")]
         public bool SynchronizeBam
         {
             get
@@ -561,11 +429,180 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         }
 
         /// <summary>
+        /// Gets the version of the component.
+        /// </summary>
+        [Browsable(false)]
+        [BtsDescription("DescEdiDasmVersion")]
+        [BtsPropertyName("PropEdiDasmVersion")]
+        public string Version
+        {
+            get
+            {
+                return "1.0";
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the disassembler allows trailing delimiters.
+        /// </summary>
+        [Browsable(true)]
+        [BtsDescription("AllowTrailingDelimitersDescription")]
+        [BtsPropertyName("AllowTrailingDelimitersName")]
+        [BtsCategory("EDIDisassembly")]
+        public bool AllowTrailingDelimiters
+        {
+            get
+            {
+                return this.ediDasmComp.AllowTrailingDelimiters;
+            }
+
+            set
+            {
+                this.ediDasmComp.AllowTrailingDelimiters = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the character set used by the disassembler for processing the interchange.
+        /// </summary>
+        [Browsable(true)]
+        [BtsDescription("CharacterSetDescription")]
+        [BtsPropertyName("CharacterSetName")]
+        [BtsCategory("EDIDisassembly")]
+        public CharacterSetOptionList CharacterSet
+        {
+            get
+            {
+                return this.ediDasmComp.CharacterSet;
+            }
+
+            set
+            {
+                this.ediDasmComp.CharacterSet = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets whether to convert implied decimal format Nn to base 10 numeric value.
+        /// </summary>
+        [Browsable(true)]
+        [BtsDescription("ConvertToImpliedDecimalDescription")]
+        [BtsPropertyName("ConvertToImpliedDecimal")]
+        [BtsCategory("EDIDisassembly")]
+        public bool ConvertToImpliedDecimal
+        {
+            get
+            {
+                return this.ediDasmComp.ConvertToImpliedDecimal;
+            }
+            set
+            {
+                this.ediDasmComp.ConvertToImpliedDecimal = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value that indicates whether XML tag is created for trailing separators.
+        /// </summary>
+        [Browsable(true)]
+        [BtsDescription("CreateXmlTagForTrailingSeparatorsDescription")]
+        [BtsPropertyName("CreateXmlTagForTrailingSeparators")]
+        [BtsCategory("EDIDisassembly")]
+        public bool CreateXmlTagForTrailingSeparators
+        {
+            get
+            {
+                return this.ediDasmComp.CreateXmlTagForTrailingSeparators;
+            }
+            set
+            {
+                this.ediDasmComp.CreateXmlTagForTrailingSeparators = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value that indicates whether the disassembler detects multiple interchanges.
+        /// </summary>
+        [Browsable(true)]
+        [BtsDescription("DetectMultipleInterchangesDescription")]
+        [BtsPropertyName("DetectMultipleInterchangesName")]
+        [BtsCategory("EDIDisassembly")]
+        public bool DetectMultipleInterchanges
+        {
+            get
+            {
+                return this.ediDasmComp.DetectMultipleInterchanges;
+            }
+            set
+            {
+                this.ediDasmComp.DetectMultipleInterchanges = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets whether the EDI data is validated.
+        /// </summary>
+        [Browsable(true)]
+        [BtsDescription("EdiDataValidationDescription")]
+        [BtsPropertyName("EdiDataValidationName")]
+        [BtsCategory("EDIDisassembly")]
+        public bool EdiDataValidation
+        {
+            get
+            {
+                return this.ediDasmComp.EdiDataValidation;
+            }
+            set
+            {
+                this.ediDasmComp.EdiDataValidation = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the delimiters for EDIFACT-encoded messages.
+        /// </summary>
+        [Browsable(true)]
+        [BtsDescription("EfactDelimitersDescription")]
+        [BtsPropertyName("EfactDelimitersName")]
+        [BtsCategory("EDIDisassembly")]
+        public string EfactDelimiters
+        {
+            get
+            {
+                return this.ediDasmComp.EfactDelimiters;
+            }
+            set
+            {
+                this.ediDasmComp.EfactDelimiters = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value that indicates whether security information is masked to protect sensitive information.
+        /// </summary>
+        [Browsable(true)]
+        [BtsDescription("MaskSecurityInformationDescription")]
+        [BtsPropertyName("MaskSecurityInformation")]
+        [BtsCategory("EDIDisassembly")]
+        public bool MaskSecurityInformation
+        {
+            get
+            {
+                return this.ediDasmComp.MaskSecurityInformation;
+            }
+            set
+            {
+                this.ediDasmComp.MaskSecurityInformation = value;
+            }
+        }
+
+        /// <summary>
         /// Gets or sets a value that indicates whether transaction set 997 is overridden by transaction set 999.
         /// </summary>
         [Browsable(true)]
         [BtsDescription("Override997With999Description")]
         [BtsPropertyName("Override997With999Name")]
+        [BtsCategory("EDIDisassembly")]
         public bool Override997With999
         {
             get
@@ -584,6 +621,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("OverrideFallbackSettingsDescription")]
         [BtsPropertyName("OverrideFallbackSettingsName")]
+        [BtsCategory("EDIDisassembly")]
         public bool OverrideFallbackSettings
         {
             get
@@ -602,6 +640,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("BiboModeDescription")]
         [BtsPropertyName("BiboModeName")]
+        [BtsCategory("EDIDisassembly")]
         public bool PreserveInterchange
         {
             get
@@ -620,6 +659,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("RouteAckOn2WayPortDescription")]
         [BtsPropertyName("RouteAckOn2WayPort")]
+        [BtsCategory("EDIDisassembly")]
         public bool RouteAckOn2WayPort
         {
             get
@@ -638,6 +678,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("UseDotAsDecimalSeparatorForInternalEDIFACTRepesentationDescription")]
         [BtsPropertyName("UseDotAsDecimalSeparatorForInternalEDIFACTRepesentationName")]
+        [BtsCategory("EDIDisassembly")]
         // ReSharper disable once InconsistentNaming
         public bool UseDotAsDecimalSeparatorForInternalEDIFACTRepesentation
         {
@@ -657,6 +698,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("UseIsa11AsRepetitionSeparatorDescription")]
         [BtsPropertyName("UseIsa11AsRepetitionSeparator")]
+        [BtsCategory("EDIDisassembly")]
         public bool UseIsa11AsRepetitionSeparator
         {
             get
@@ -670,25 +712,12 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         }
 
         /// <summary>
-        /// Gets the version of the component.
-        /// </summary>
-        [Browsable(false)]
-        [BtsDescription("DescEdiDasmVersion")]
-        [BtsPropertyName("PropEdiDasmVersion")]
-        public string Version
-        {
-            get
-            {
-                return "1.0";
-            }
-        }
-
-        /// <summary>
         /// Gets or set whether XML schema is validated.
         /// </summary>
         [Browsable(true)]
         [BtsDescription("XmlSchemaValidationDescription")]
         [BtsPropertyName("XmlSchemaValidationName")]
+        [BtsCategory("EDIDisassembly")]
         public bool XmlSchemaValidation
         {
             get

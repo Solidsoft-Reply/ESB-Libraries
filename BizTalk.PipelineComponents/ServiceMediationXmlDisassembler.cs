@@ -92,6 +92,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescBindingAccessPoint")]
         [BtsPropertyName("PropBindingAccessPoint")]
+        [BtsCategory("ESBResolutionValues")]
         public string BindingAccessPoint
         {
             get
@@ -112,6 +113,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescBindingUrlType")]
         [BtsPropertyName("PropBindingUrlType")]
+        [BtsCategory("ESBResolutionValues")]
         public string BindingUrlType
         {
             get
@@ -134,6 +136,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescBodyContainerXPath")]
         [BtsPropertyName("PropBodyContainerXPath")]
+        [BtsCategory("ESBServiceMediation")]
         public string BodyContainerXPath
         {
             get
@@ -179,6 +182,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescMessageDirection")]
         [BtsPropertyName("PropMessageDirection")]
+        [BtsCategory("ESBResolutionValues")]
         public MessageDirectionTypes MessageDirection
         {
             get
@@ -201,6 +205,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescMessageRole")]
         [BtsPropertyName("PropMessageRole")]
+        [BtsCategory("ESBResolutionValues")]
         public string MessageRole
         {
             get
@@ -221,6 +226,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescMessageType")]
         [BtsPropertyName("PropMessageType")]
+        [BtsCategory("ESBResolutionValues")]
         public string MessageType
         {
             get
@@ -254,6 +260,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescOperationName")]
         [BtsPropertyName("PropOperationName")]
+        [BtsCategory("ESBResolutionValues")]
         public string OperationName
         {
             get
@@ -273,6 +280,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescPolicy")]
         [BtsPropertyName("PropPolicy")]
+        [BtsCategory("ESBServiceMediation")]
         public string Policy
         {
             get
@@ -293,6 +301,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescPolicyVersion")]
         [BtsPropertyName("PropPolicyVersion")]
+        [BtsCategory("ESBServiceMediation")]
         public string PolicyVersion
         {
             get
@@ -314,6 +323,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
             "Human-friendly name of service provider.   This is equivalent to the business entity name in UDDI.")]
         [BtsDescription("DescProviderName")]
         [BtsPropertyName("PropProviderName")]
+        [BtsCategory("ESBResolutionValues")]
         public string ProviderName
         {
             get
@@ -334,6 +344,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescResolutionDataName")]
         [BtsPropertyName("PropResolutionDataName")]
+        [BtsCategory("ESBResolutionValues")]
         public ResolutionData ResolutionData
         {
             get
@@ -352,6 +363,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         /// </summary>
         [BtsDescription("DescResolutionDataPropertiesName")]
         [BtsPropertyName("PropResolutionDataPropertiesName")]
+        [BtsCategory("ESBResolutionValues")]
         public ResolutionDataPropertyList ResolutionDataProperties
         {
             get
@@ -373,6 +385,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
             "Human-friendly name for target service.   This is equivalent to the business service name in UDDI.")]
         [BtsDescription("DescServiceName")]
         [BtsPropertyName("PropServiceName")]
+        [BtsCategory("ESBResolutionValues")]
         public string ServiceName
         {
             get
@@ -393,6 +406,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         [Browsable(true)]
         [BtsDescription("DescSynchronizeBam")]
         [BtsPropertyName("PropSynchronizeBam")]
+        [BtsCategory("ESBServiceMediation")]
         public bool SynchronizeBam
         {
             get
@@ -426,6 +440,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         /// </summary>
         [BtsDescription("DescAllowUnrecognizedMessage")]
         [BtsPropertyName("PropAllowUnrecognizedMessage")]
+        [BtsCategory("XMLDisassembly")]
         public bool AllowUnrecognizedMessage
         {
             get
@@ -444,6 +459,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         /// </summary>
         [BtsDescription("DescDocumentSpecNames")]
         [BtsPropertyName("PropDocumentSpecNames")]
+        [BtsCategory("XMLDisassembly")]
         public SchemaList DocumentSpecNames
         {
             get
@@ -462,6 +478,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         /// </summary>
         [BtsDescription("DescEnvelopeSpecNames")]
         [BtsPropertyName("PropEnvelopeSpecNames")]
+        [BtsCategory("XMLDisassembly")]
         public SchemaList EnvelopeSpecNames
         {
             get
@@ -481,6 +498,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         /// </summary>
         [BtsDescription("DescValidate")]
         [BtsPropertyName("PropValidate")]
+        [BtsCategory("XMLDisassembly")]
         public bool ValidateDocument
         {
             get
@@ -500,6 +518,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         /// </summary>
         [BtsDescription("DescRecoverableInterchangeProcessing")]
         [BtsPropertyName("PropRecoverableInterchangeProcessing")]
+        [BtsCategory("XMLDisassembly")]
         public bool RecoverableInterchangeProcessing
         {
             get
