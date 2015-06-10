@@ -17,20 +17,20 @@
       limitations under the License.
     </xs:documentation>
   </xs:annotation>  <xs:element name="string" type="xs:string" />
-  <xs:element name="BtsPropertyValue" type="BtsPropertyValueType" />
-  <xs:complexType name="BtsPropertyValueType">
+  <xs:element name="BtsProperty" type="BtsPropertyType" />
+  <xs:complexType name="BtsPropertyType">
     <xs:sequence>
-      <xs:element name="PropertyName" type="xs:string" />
-      <xs:element name="PropertyValue" type="xs:string" />
-      <xs:element name="PropertyNamespace" type="xs:string" />
+      <xs:element name="Name" type="xs:string" />
+      <xs:element name="Value" type="xs:string" />
+      <xs:element name="Namespace" type="xs:string" />
       <xs:element name="Promoted" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="GeneralPropertyValue" type="GeneralPropertyValueType" />
-  <xs:complexType name="GeneralPropertyValueType">
+  <xs:element name="Property" type="PropertyType" />
+  <xs:complexType name="PropertyType">
     <xs:sequence>
-      <xs:element name="PropertyName" type="xs:string" />
-      <xs:element name="PropertyValue" type="xs:string" />
+      <xs:element name="Name" type="xs:string" />
+      <xs:element name="Value" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
 </xs:schema>

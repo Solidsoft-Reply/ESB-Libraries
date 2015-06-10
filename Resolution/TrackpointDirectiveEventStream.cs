@@ -628,9 +628,17 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                               ? null
                               : new Version(this.Directive.BamTrackpointPolicyVersion);
 
+            // Throw an exception if the directive is blank.
+            Func<string> directiveInvalid = () =>
+                {
+                    throw new EsbResolutionException(Resources.ExceptionInvalidDirective);
+                };
+
             var bamActivityStep = BamStepResolver.GetStep(
                 this.Directive.BamActivity,
-                stepName,
+                string.IsNullOrWhiteSpace(stepName)
+                ? directiveInvalid()
+                : stepName,
                 this.Directive.BamTrackpointPolicyName,
                 version);
 

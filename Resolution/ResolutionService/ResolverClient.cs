@@ -50,37 +50,37 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.ResolutionService
             string messageType, 
             string operationName, 
             string messageRole,
-            Dictionaries.ParametersDictionary parameters,
+            Dictionaries.Parameters parameters,
             Resolution.MessageDirectionTypes messageDirection, 
             string policyName, 
             string version)
         {
-            ParametersDictionaryItem[] parametersDictionaryItems = null;
+            Parameters[] parametersItems = null;
 
             if (parameters != null)
             {
-                parametersDictionaryItems = new ParametersDictionaryItem[parameters.Count];
+                parametersItems = new Parameters[parameters.Count];
                 var index = 0;
 
-                foreach (var parametersDictionaryItem in parameters)
+                foreach (var parametersItem in parameters)
                 {
                     var valueSerializer = new NetDataContractSerializer();
 
                     using (var ms = new MemoryStream())
                     {
-                        valueSerializer.Serialize(ms, parametersDictionaryItem.Value);
+                        valueSerializer.Serialize(ms, parametersItem.Value);
                         ms.Position = 0;
                         var xmlDoc = new XmlDocument();
                         xmlDoc.Load(ms);
 
-                        parametersDictionaryItems.SetValue(
-                            new ParametersDictionaryItem
+                        parametersItems.SetValue(
+                            new Parameters
                                 {
                                     Key =
-                                        new ParametersDictionaryItemKey
+                                        new ParametersKey
                                             {
                                                 @string =
-                                                    parametersDictionaryItem
+                                                    parametersItem
                                                     .Key
                                             },
                                     Value = xmlDoc.DocumentElement
@@ -116,7 +116,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.ResolutionService
                 messageType,
                 operationName,
                 messageRole,
-                parametersDictionaryItems,
+                parametersItems,
                 interchangeMessageDirectionType,
                 policyName,
                 version);

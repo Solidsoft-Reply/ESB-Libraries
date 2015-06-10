@@ -84,7 +84,7 @@ namespace SolidsoftReply.Esb.Libraries.ResolutionService
             string messageType,
             string operationName,
             string messageRole,
-            Facts.Dictionaries.ParametersDictionary parameters,
+            Facts.Dictionaries.Parameters parameters,
             Facts.Interchange.MessageDirectionTypes messageDirection,
             string policyName,
             string version)
@@ -156,7 +156,7 @@ namespace SolidsoftReply.Esb.Libraries.ResolutionService
         /// </summary>
         [MessageBodyMember(Namespace = "http://solidsoftreply.com/schemas/webservices/esbresolutionservice/2015/05",
             Order = 7)]
-        public Facts.Dictionaries.ParametersDictionary Parameters { get; set; }
+        public Facts.Dictionaries.Parameters Parameters { get; set; }
 
         /// <summary>
         /// Gets or sets the message direction.

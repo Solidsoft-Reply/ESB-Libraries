@@ -96,7 +96,7 @@ namespace SolidsoftReply.Esb.Libraries.ResolutionService
             string messageType,
             string operationName,
             string messageRole,
-            Facts.Dictionaries.ParametersDictionary parameters,
+            Facts.Dictionaries.Parameters parameters,
             Facts.Interchange.MessageDirectionTypes messageDirection)
         {
             var trace = Convert.ToBoolean(ConfigurationManager.AppSettings[Properties.Resources.AppSettingsEsbBreTrace]);
@@ -140,10 +140,30 @@ namespace SolidsoftReply.Esb.Libraries.ResolutionService
                 MessageDirection = messageDirection
             };
 
+            // Creates a fact array with an optional UDDI fact. Safely create a UDDI Inquiry Service 
+            // object using a dynamic reference.  UDDI use is optional,and the UDDI library may not 
+            // be installed.
+            Func<object[]> createFactsWithOptionalUddi = () =>
+                {
+                    try
+                    {
+                        return new[]
+                                   {
+                                       interchange, 
+                                       Activator.CreateInstance(Properties.Resources.UddiAssembly, Properties.Resources.UddiInquiryService).Unwrap()
+                                   };
+                    }
+                    catch
+                    {
+                        // TODO: Log error as warning
+                        return new object[] { interchange };
+                    }
+                };
+
             // Determine if static support is being used by rule engine and only assert InquiryServices if not.
             var shortTermFacts = IsStaticSupport() 
-                ? new object[] { interchange } 
-                : new object[] { interchange, new Uddi.InquiryServices() };
+                ? new object[] { interchange }
+                : createFactsWithOptionalUddi();
 
             if (Convert.ToBoolean(ConfigurationManager.AppSettings[Properties.Resources.AppSettingsEsbBrePolicyTester]))
             {

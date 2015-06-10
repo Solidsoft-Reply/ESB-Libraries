@@ -120,11 +120,11 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
             {
                 var message = string.Format(
                     CultureInfo.CurrentCulture,
-                    Properties.Resources.ExceptionSchemaSetIsNull,
+                    Resolution.Properties.Resources.ExceptionSchemaSetIsNull,
                     "GetDictionarySchema");
                 var innerException = new ArgumentNullException(
                     "schemaSet",
-                    Properties.Resources.ExceptionValueIsNull);
+                    Resolution.Properties.Resources.ExceptionValueIsNull);
 
                 throw new XmlSerializableDictionaryException(message, innerException);
             }
@@ -133,13 +133,13 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
 
             if (xs == null)
             {
-                return new XmlQualifiedName("DictionaryType", Properties.Resources.DictionaryNamespace);
+                return new XmlQualifiedName("DictionaryType", Resolution.Properties.Resources.DictionaryNamespace);
             }
 
             schemaSet.XmlResolver = new XmlUrlResolver();
             schemaSet.Add(xs);
 
-            return new XmlQualifiedName("DictionaryType", Properties.Resources.DictionaryNamespace);
+            return new XmlQualifiedName("DictionaryType", Resolution.Properties.Resources.DictionaryNamespace);
         }
 
         /// <summary>
@@ -198,7 +198,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
                             throw new XmlSerializableDictionaryException(
                                 string.Format(
                                     CultureInfo.CurrentCulture,
-                                    Properties.Resources.ExceptionDeserializationNoElement,
+                                    Resolution.Properties.Resources.ExceptionDeserializationNoElement,
                                     this.GetType().Name,
                                     "Key"));
                         }
@@ -221,7 +221,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
                             throw new XmlSerializableDictionaryException(
                                 string.Format(
                                     CultureInfo.CurrentCulture,
-                                    Properties.Resources.ExceptionDeserializationNoElement,
+                                    Resolution.Properties.Resources.ExceptionDeserializationNoElement,
                                     this.GetType().Name,
                                     "Value"));
                         }
@@ -254,7 +254,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
                 throw new XmlSerializableDictionaryException(
                    string.Format(
                        CultureInfo.CurrentCulture,
-                       Properties.Resources.ExceptionUnexpectedError,
+                       Resolution.Properties.Resources.ExceptionUnexpectedError,
                        "ReadXml"),
                    ex);
             }
@@ -274,7 +274,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
             {
                 foreach (var key in this.Keys)
                 {
-                    writer.WriteStartElement("Item", Properties.Resources.DictionaryNamespace);
+                    writer.WriteStartElement("Item", Resolution.Properties.Resources.DictionaryNamespace);
 
                     using (var ms = new MemoryStream())
                     {
@@ -327,7 +327,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
                 throw new XmlSerializableDictionaryException(
                    string.Format(
                        CultureInfo.CurrentCulture,
-                       Properties.Resources.ExceptionUnexpectedError,
+                       Resolution.Properties.Resources.ExceptionUnexpectedError,
                        "WriteXml"),
                    ex);
             }
@@ -344,11 +344,11 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
             {
                 var message = string.Format(
                     CultureInfo.CurrentCulture,
-                    Properties.Resources.ExceptionReaderIsNull,
+                    Resolution.Properties.Resources.ExceptionReaderIsNull,
                     "ReadKey");
                 var innerException = new ArgumentNullException(
                     "reader",
-                    Properties.Resources.ExceptionValueIsNull);
+                    Resolution.Properties.Resources.ExceptionValueIsNull);
 
                 throw new XmlSerializableDictionaryException(message, innerException);
             }
@@ -380,11 +380,11 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
             {
                 var message = string.Format(
                     CultureInfo.CurrentCulture,
-                    Properties.Resources.ExceptionReaderIsNull,
+                    Resolution.Properties.Resources.ExceptionReaderIsNull,
                     "ReadValue");
                 var innerException = new ArgumentNullException(
                     "reader",
-                    Properties.Resources.ExceptionValueIsNull);
+                    Resolution.Properties.Resources.ExceptionValueIsNull);
 
                 throw new XmlSerializableDictionaryException(message, innerException);
             }
@@ -416,11 +416,11 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
             {
                 var message = string.Format(
                     CultureInfo.CurrentCulture,
-                    Properties.Resources.ExceptionWriterIsNull,
+                    Resolution.Properties.Resources.ExceptionWriterIsNull,
                     "WriteKey");
                 var innerException = new ArgumentNullException(
                     "writer",
-                    Properties.Resources.ExceptionValueIsNull);
+                    Resolution.Properties.Resources.ExceptionValueIsNull);
 
                 throw new XmlSerializableDictionaryException(message, innerException);
             }
@@ -447,11 +447,11 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
             {
                 var message = string.Format(
                     CultureInfo.CurrentCulture,
-                    Properties.Resources.ExceptionWriterIsNull,
+                    Resolution.Properties.Resources.ExceptionWriterIsNull,
                     "WriteValue");
                 var innerException = new ArgumentNullException(
                     "writer",
-                    Properties.Resources.ExceptionValueIsNull);
+                    Resolution.Properties.Resources.ExceptionValueIsNull);
 
                 throw new XmlSerializableDictionaryException(message, innerException);
             }
@@ -475,7 +475,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
         private static XmlSchema DoGetSchema()
         {
             var assembly = Assembly.GetExecutingAssembly();
-            var stream = assembly.GetManifestResourceStream(Properties.Resources.XsdDictionarySchemaFile);
+            var stream = assembly.GetManifestResourceStream(Resolution.Properties.Resources.XsdDictionarySchemaFile);
 
             if (stream == null)
             {

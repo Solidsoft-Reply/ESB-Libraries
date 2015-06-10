@@ -23,8 +23,6 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.ResolutionService
     using System.Xml;
     using System.Xml.Serialization;
 
-    using SolidsoftReply.Esb.Libraries.Resolution.Dictionaries;
-
     /// <summary>
     /// Represents an interchange of directives.  Provides a convenient approach to accessing
     /// parameters as a dictionary.
@@ -35,7 +33,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.ResolutionService
         /// Gets or sets the collection of general purpose parameters.
         /// </summary>
         [XmlIgnore]
-        public ParametersDictionary ParametersDictionary
+        public Dictionaries.Parameters ParametersDictionary
         {
             get
             {
@@ -44,58 +42,58 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.ResolutionService
                     return null;
                 }
 
-                var parametersDictionary = new ParametersDictionary();
+                var parameters = new Dictionaries.Parameters();
 
-                foreach (var parametersDictionaryItem in this.parametersField)
+                foreach (var parametersItem in this.parametersField)
                 {
                     var valueSerializer = new NetDataContractSerializer();
                     using (var ms = new MemoryStream())
                     {
                         var sw = new StreamWriter(ms);
-                        sw.Write(parametersDictionaryItem.Value.OuterXml);
+                        sw.Write(parametersItem.Value.OuterXml);
                         sw.Flush();
                         ms.Seek(0, SeekOrigin.Begin);
 
-                        parametersDictionary.Add(parametersDictionaryItem.Key.@string, valueSerializer.Deserialize(ms));
+                        parameters.Add(parametersItem.Key.@string, valueSerializer.Deserialize(ms));
                     }
                 }
 
-                return parametersDictionary;
+                return parameters;
             }
 
             set
             {
-                foreach (var parametersDictionaryItem in value)
+                foreach (var parametersItem in value)
                 {
-                    var item = new ParametersDictionaryItem();
+                    var item = new Parameters();
                     var valueSerializer = new NetDataContractSerializer();
 
-                    item.Key.@string = parametersDictionaryItem.Key;
+                    item.Key.@string = parametersItem.Key;
 
                     using (var ms = new MemoryStream())
                     {
-                        valueSerializer.Serialize(ms, parametersDictionaryItem.Value);
+                        valueSerializer.Serialize(ms, parametersItem.Value);
                         ms.Position = 0;
                         var xmlDoc = new XmlDocument();
                         xmlDoc.Load(ms);
 
-                        var newItemsArray = new ParametersDictionaryItem[parametersField.Length + 1];
-                        parametersField.CopyTo(newItemsArray, 0);
-                        newItemsArray[parametersField.Length] = new ParametersDictionaryItem
+                        var newItemsArray = new Parameters[this.parametersField.Length + 1];
+                        this.parametersField.CopyTo(newItemsArray, 0);
+                        newItemsArray[this.parametersField.Length] = new Parameters
                                                                {
                                                                    Key =
-                                                                       new ParametersDictionaryItemKey
+                                                                       new ParametersKey()
                                                                            {
                                                                                @string
                                                                                    =
-                                                                                   parametersDictionaryItem
+                                                                                   parametersItem
                                                                                    .Key
                                                                            },
                                                                    Value =
                                                                        xmlDoc.DocumentElement
                                                                };
 
-                        parametersField = newItemsArray;
+                        this.parametersField = newItemsArray;
                     }
                 }
             }

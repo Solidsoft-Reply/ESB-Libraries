@@ -22,7 +22,6 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
     using System.Collections;
     using System.Collections.Generic;
     using System.Collections.Specialized;
-    using System.Diagnostics.Contracts;
     using System.Linq;
     using System.Runtime.Caching;
 
@@ -49,8 +48,14 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
         /// </summary>
         static SiteLocationCache()
         {
-            // Define pre-condition.
-            Contract.Assume(UddiEventLog.DefaultLog != null);
+            // Precondition
+            if (UddiEventLog.DefaultLog == null)
+            {
+                throw new Exception("The UDDI default event log is not initialised.");
+            }
+
+            ////////// Define pre-condition.
+            ////////Contract.Assume(UddiEventLog.DefaultLog != null);
 
             // Write an information record to the event log for start of initialisation of the inquiry services.
             UddiEventLog.DefaultLog.WriteInquiryStartupInfo();

@@ -97,19 +97,12 @@ namespace SolidsoftReply.Esb.Libraries.Facts
                 this.errorStrings.AppendLine(string.Format(Properties.Resources.ExceptionEndPoint, this.directive.KeyName));
             }
 
-            if (string.IsNullOrWhiteSpace(this.directive.EndPoint))
-            {
-                isValid = false;
-                this.errorStrings.AppendLine(string.Format(Properties.Resources.ExceptionInvalidEndpoint, this.directive.KeyName));
-            }
-
-            // Test to ensure the SOAP action is a URI
-            if (Uri.IsWellFormedUriString(this.directive.EndPoint, UriKind.RelativeOrAbsolute))
+            if (!string.IsNullOrWhiteSpace(this.directive.EndPoint))
             {
                 return isValid;
             }
 
-            this.errorStrings.AppendLine(string.Format(Properties.Resources.ExceptionEndPointInvalidUri, this.directive.KeyName));
+            this.errorStrings.AppendLine(string.Format(Properties.Resources.ExceptionInvalidEndpoint, this.directive.KeyName));
             return false;
         }
 
@@ -187,7 +180,7 @@ namespace SolidsoftReply.Esb.Libraries.Facts
                 this.errorStrings.AppendLine(string.Format(Properties.Resources.ExceptionInvalidSoapAction, this.directive.KeyName));
             }
 
-            // test to ensure the SOAP action is a URI
+            // Test to ensure the SOAP action is a URI
             if (Uri.IsWellFormedUriString(this.directive.SoapAction, UriKind.RelativeOrAbsolute))
             {
                 return isValid;

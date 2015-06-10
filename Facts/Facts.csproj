@@ -37,7 +37,7 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>Esb.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>ESB.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.BizTalk.Bam.EventObservation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -56,8 +56,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BamActivityStep.cs" />
-    <Compile Include="Dictionaries\BtsPropertyValueDictionary.cs" />
-    <Compile Include="Dictionaries\GeneralPropertyValueDictionary.cs" />
+    <Compile Include="Dictionaries\BtsProperties.cs" />
+    <Compile Include="Dictionaries\Properties.cs" />
     <Compile Include="Dictionaries\DictionaryBase.cs" />
     <Compile Include="Dictionaries\XmlSerializableDictionary.cs" />
     <Compile Include="Dictionaries\XmlSerializableDictionaryException.cs" />
@@ -67,7 +67,7 @@
     <Compile Include="EsbFactsException.cs" />
     <Compile Include="ExtensionMethodsString.cs" />
     <Compile Include="Interchange.cs" />
-    <Compile Include="Dictionaries\ParametersDictionary.cs" />
+    <Compile Include="Dictionaries\Parameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -82,16 +82,16 @@
     <EmbeddedResource Include="Dictionaries\Resources\DirectivesSchema.xsd" />
     <EmbeddedResource Include="Dictionaries\Resources\DirectivesSchemaProperties.xsd" />
     <EmbeddedResource Include="Dictionaries\Resources\ParametersSchema.xsd" />
-    <EmbeddedResource Include="Dictionaries\Resources\BtsPropertyValuesSchema.xsd">
+    <EmbeddedResource Include="Dictionaries\Resources\BtsPropertiesSchema.xsd">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dictionaries\Resources\GeneralPropertyValuesSchema.xsd">
+    <EmbeddedResource Include="Dictionaries\Resources\PropertiesSchema.xsd">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Dictionaries\Resources\DictionarySchema.xsd">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <None Include="Esb.pfx" />
+    <None Include="ESB.snk" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

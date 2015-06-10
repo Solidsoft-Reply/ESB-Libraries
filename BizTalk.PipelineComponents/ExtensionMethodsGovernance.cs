@@ -87,30 +87,30 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         public static IBaseMessage WriteAndPromoteBtsProperties(this IBaseMessage message, Directive directive)
         {
             // [fvar] Sets properties on the message.
-            Func<BtsPropertyValueDictionary, IBaseMessage> setProperties = properties =>
+            Func<BtsProperties, IBaseMessage> setProperties = properties =>
                 {
                     foreach (var btsProperty in properties)
                     {
                         if (btsProperty.Value.Promoted)
                         {
                             message.SetPromotedProperty(
-                                btsProperty.Value.PropertyName,
-                                btsProperty.Value.PropertyNamespace,
-                                btsProperty.Value.PropertyValue);
+                                btsProperty.Value.Name,
+                                btsProperty.Value.Namespace,
+                                btsProperty.Value.Value);
                         }
                         else
                         {
                             message.SetProperty(
-                                btsProperty.Value.PropertyName,
-                                btsProperty.Value.PropertyNamespace,
-                                btsProperty.Value.PropertyValue);
+                                btsProperty.Value.Name,
+                                btsProperty.Value.Namespace,
+                                btsProperty.Value.Value);
                         }
                     }
 
                     return message;
                 };
 
-            return directive.BtsPropertyValues == null ? message : setProperties(directive.BtsPropertyValues);
+            return directive.BtsProperties == null ? message : setProperties(directive.BtsProperties);
         }
 
         /// <summary>

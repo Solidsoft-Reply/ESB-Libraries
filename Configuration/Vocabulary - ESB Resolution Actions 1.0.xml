@@ -16,7 +16,7 @@
 -->
 <brl xmlns="http://schemas.microsoft.com/businessruleslanguage/2002">
   <vocabulary id="5307b377-4da8-4aa5-94f4-4b22fe859fad" name="ESB Resolution Actions" uri="" description="">
-    <version major="1" minor="0" description="" modifiedby="SOLIDSOFTREPLY\Author" date="2015-05-10TT00:00:00.0000000+00:00" />
+    <version major="1" minor="0" description="" modifiedby="SOLIDSOFTREPLY\Author" date="2015-05-10T00:00:00.0000000+00:00" />
     <vocabularydefinition id="4632dd85-a232-41f4-8374-327f40b0b5f8" name="Time: End of Day" description="End of day.">
       <bindingdefinition>
         <classmemberbindingdefinition member="MaxValue" type="datetime">
@@ -33,8 +33,8 @@
       <bindingdefinition>
         <classmemberbindingdefinition member="SetBamInterception" type="void">
           <classinfo class="Interchange" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
           </classinfo>
           <argument position="0">
@@ -76,8 +76,8 @@
       <bindingdefinition>
         <classmemberbindingdefinition member="SetRetryPolicy" type="void">
           <classinfo class="Interchange" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
           </classinfo>
           <argument position="0">
@@ -164,8 +164,8 @@
       <bindingdefinition>
         <classmemberbindingdefinition member="SetEndpoint" type="void">
           <classinfo class="Interchange" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
           </classinfo>
           <argument position="0">
@@ -217,8 +217,8 @@
       <bindingdefinition>
         <classmemberbindingdefinition member="SetBtsGlobalProperty" type="void">
           <classinfo class="Interchange" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
           </classinfo>
           <argument position="0">
@@ -270,8 +270,8 @@
       <bindingdefinition>
         <classmemberbindingdefinition member="SetEndpoint" type="void">
           <classinfo class="Interchange" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
           </classinfo>
           <argument position="0">
@@ -303,8 +303,8 @@
       <bindingdefinition>
         <classmemberbindingdefinition member="SetBtsGlobalProperty" type="void">
           <classinfo class="Interchange" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
           </classinfo>
           <argument position="0">
@@ -346,8 +346,8 @@
       <bindingdefinition>
         <classmemberbindingdefinition member="SetRetryPolicy" type="void">
           <classinfo class="Interchange" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
           </classinfo>
           <argument position="0">
@@ -389,8 +389,8 @@
       <bindingdefinition>
         <classmemberbindingdefinition member="SetBamInterceptionAfterMap" type="void">
           <classinfo class="Interchange" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
           </classinfo>
           <argument position="0">
@@ -428,12 +428,12 @@
         </argument>
       </formatstring>
     </vocabularydefinition>
-    <vocabularydefinition id="d72c2145-66e8-4bc9-80d7-1d55b0d32cf1" name="Set the SOAP Action header" description="Set the SOAPAction header on  a SOAP interchange">
+    <vocabularydefinition id="d72c2145-66e8-4bc9-80d7-1d55b0d32cf1" name="Set the SOAP Action header" description="Set the SOAPAction header on a SOAP interchange.">
       <bindingdefinition>
         <classmemberbindingdefinition member="SetSoapAction" type="void">
           <classinfo class="Interchange" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
           </classinfo>
           <argument position="0">
@@ -465,8 +465,8 @@
       <bindingdefinition>
         <classmemberbindingdefinition member="SetBtsProperty" type="void">
           <classinfo class="Interchange" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
           </classinfo>
           <argument position="0">
@@ -518,8 +518,8 @@
       <bindingdefinition>
         <classmemberbindingdefinition member="SetServiceWindow" type="void">
           <classinfo class="Interchange" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
           </classinfo>
           <argument position="0">
@@ -561,8 +561,8 @@
       <bindingdefinition>
         <classmemberbindingdefinition member="SetBamConfiguration" type="void">
           <classinfo class="Interchange" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
           </classinfo>
           <argument position="0">
@@ -614,8 +614,8 @@
       <bindingdefinition>
         <classmemberbindingdefinition member="SetBtsProperty" type="void">
           <classinfo class="Interchange" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
           </classinfo>
           <argument position="0">
@@ -677,8 +677,8 @@
       <bindingdefinition>
         <classmemberbindingdefinition member="SetProperty" type="void">
           <classinfo class="Interchange" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
           </classinfo>
           <argument position="0">
@@ -720,8 +720,8 @@
       <bindingdefinition>
         <classmemberbindingdefinition member="SetTransformation" type="void">
           <classinfo class="Interchange" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
           </classinfo>
           <argument position="0">
@@ -749,12 +749,12 @@
         </argument>
       </formatstring>
     </vocabularydefinition>
-    <vocabularydefinition id="bb1b9694-64a3-46e3-bc17-e0688ffb4708" name="Send to an endpoint with a specified transport" description="Set endpoint attributes on a directive.   Specify a transport">
+    <vocabularydefinition id="bb1b9694-64a3-46e3-bc17-e0688ffb4708" name="Send to an endpoint with a specified transport" description="Set endpoint attributes on a directive.   Specify a transport.">
       <bindingdefinition>
         <classmemberbindingdefinition member="SetEndpoint" type="void">
           <classinfo class="Interchange" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
           </classinfo>
           <argument position="0">
@@ -792,12 +792,12 @@
         </argument>
       </formatstring>
     </vocabularydefinition>
-    <vocabularydefinition id="a1b0ebc0-c493-4a45-80fb-4e989964b282" name="Specify the BAM trackpoint policy" description="Specifies the trackpoint policy to be used for a BAM step">
+    <vocabularydefinition id="a1b0ebc0-c493-4a45-80fb-4e989964b282" name="Specify a BAM trackpoint policy" description="Specifies a trackpoint policy to be used for a BAM step.">
       <bindingdefinition>
         <classmemberbindingdefinition member="SetBamTrackpointPolicy" type="void">
           <classinfo class="Interchange" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
           </classinfo>
           <argument position="0">
@@ -825,12 +825,12 @@
         </argument>
       </formatstring>
     </vocabularydefinition>
-    <vocabularydefinition id="955be2d5-ab3e-46b2-b167-641a59ce175e" name="Specify the BAM trackpoint policy and version" description="Specifies the trackpoint policy and version to be used for a BAM step">
+    <vocabularydefinition id="955be2d5-ab3e-46b2-b167-641a59ce175e" name="Specify a BAM trackpoint policy and version" description="Specifies a trackpoint policy and version to be used for a BAM step.">
       <bindingdefinition>
         <classmemberbindingdefinition member="SetBamTrackpointPolicy" type="void">
           <classinfo class="Interchange" instance="0">
-            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62</assembly>
-            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__cb2a1e0509631d62\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
             <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
           </classinfo>
           <argument position="0">
@@ -864,6 +864,178 @@
         <argument position="2">
           <valuedefinitionliteral type="string">
             <string />
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="b0995b87-6a7b-4ea6-afb5-d3a79a2198d3" name="Specify a validation policy and version" description="Specifies a validation policy and version to be used to validate data or messages.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="SetValidationPolicy" type="void">
+          <classinfo class="Interchange" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="2">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[ Directive {0} ]  Use version {2} of {1} policy for data or message validation" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="2">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="33cf62bb-2902-4fa6-9fe1-f43190a44b75" name="Specify a validation policy and version with exceptions" description="Specifies a validation policy and version to be used to validate data or messages and throw an exception for any logged errors.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="SetValidationPolicy" type="void">
+          <classinfo class="Interchange" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="2">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="3">
+            <valuedefinitionliteral type="boolean">
+              <boolean>true</boolean>
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[ Directive {0} ]  Use version {2} of {1} policy for data or message validation. Throw an exception for any logged errors? {3}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="2">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="3">
+          <valuedefinitionliteral type="boolean">
+            <boolean>true</boolean>
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="5069f767-df9d-4a29-9f98-537957e9cc1e" name="Specify a validation policy" description="Specifies a validation policy to be used to validate data or messages.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="SetValidationPolicy" type="void">
+          <classinfo class="Interchange" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[ Directive {0} ]  Use policy {1} for data or message validation" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="6e31a1bd-9f79-4790-add5-7ab2b606388f" name="Specify a validation policy with exceptions" description="Specifies a validation policy to be used to validate data or messages and throw an exception for any logged errors.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="SetValidationPolicy" type="void">
+          <classinfo class="Interchange" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="2">
+            <valuedefinitionliteral type="boolean">
+              <boolean>true</boolean>
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[ Directive {0} ]  Use policy {1} for data or message validation. Throw an exception for any logged errors? {2}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="2">
+          <valuedefinitionliteral type="boolean">
+            <boolean>true</boolean>
           </valuedefinitionliteral>
         </argument>
       </formatstring>

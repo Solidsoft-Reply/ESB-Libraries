@@ -19,12 +19,12 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:8080/Resolver.svc?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost/EsbResolution2/Resolver.svc?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Resolver.xsd" MetadataType="Schema" ID="a2429835-ea0f-49d3-adc7-257becba2e30" SourceId="1" SourceUrl="http://localhost:8080/Resolver.svc?xsd=xsd0" />
-    <MetadataFile FileName="Resolver.wsdl" MetadataType="Wsdl" ID="a035d56f-e025-440c-8d93-02679e22ff92" SourceId="1" SourceUrl="http://localhost:8080/Resolver.svc?wsdl=wsdl0" />
-    <MetadataFile FileName="Resolver1.wsdl" MetadataType="Wsdl" ID="82631eae-53da-41e6-9af6-ac274aebb71b" SourceId="1" SourceUrl="http://localhost:8080/Resolver.svc?wsdl" />
+    <MetadataFile FileName="Resolver2.wsdl" MetadataType="Wsdl" ID="cd03acea-1afb-46c6-99f3-da0720fd6606" SourceId="1" SourceUrl="http://localhost/EsbResolution2/Resolver.svc?wsdl" />
+    <MetadataFile FileName="Resolver21.wsdl" MetadataType="Wsdl" ID="9bcf6a4f-08c2-4b02-87f0-6b7b871d7e2a" SourceId="1" SourceUrl="http://localhost/EsbResolution2/Resolver.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="Resolver1.xsd" MetadataType="Schema" ID="624671ff-fbc0-411d-b0a4-bef989f1bf88" SourceId="1" SourceUrl="http://localhost/EsbResolution2/Resolver.svc?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

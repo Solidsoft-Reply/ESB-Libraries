@@ -27,6 +27,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Dictionaries
     using System.Xml.Schema;
     using System.Xml.Serialization;
 
+    using AssemblyProperties = SolidsoftReply.Esb.Libraries.Facts.Properties;
+
     /// <summary>
     /// Xml Serialisable dictionary for directives.   Inherits from the serialisable
     /// generic dictionary.
@@ -130,8 +132,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Dictionaries
             return GetDictionarySchema(
                 schemaSet,
                 "DirectivesDictionaryType",
-                Properties.Resources.DictionaryNamespace,
-                Properties.Resources.XsdDirectiveSchemaFile);
+                AssemblyProperties.Resources.DictionaryNamespace,
+                AssemblyProperties.Resources.XsdDirectiveSchemaFile);
         }
 
         /// <summary>
@@ -151,7 +153,7 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Dictionaries
         /// <param name="key">The key value to be serialized.</param>
         protected override void WriteKey(XmlWriter writer, string key)
         {
-            this.WriteKey(writer, key, "DirectivesDictionary", Properties.Resources.DictionaryNamespace);
+            this.WriteKey(writer, key, "DirectivesDictionary", AssemblyProperties.Resources.DictionaryNamespace);
         }
 
         /// <summary>
