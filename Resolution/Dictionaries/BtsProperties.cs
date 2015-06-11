@@ -26,6 +26,8 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
     using System.Xml.Schema;
     using System.Xml.Serialization;
 
+    using AssemblyProperties = SolidsoftReply.Esb.Libraries.Resolution.Properties;
+
     /// <summary>
     /// Xml Serialisable dictionary for BizTalk Server property values.   Inherits from the serialisable
     /// generic dictionary.
@@ -36,6 +38,11 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
     [Serializable]
     public class BtsProperties : DictionaryBase<Directive.BtsProperty>
     {
+        /// <summary>
+        /// The XML schema for the dictionary.
+        /// </summary>
+        private XmlSchema schema;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="BtsProperties"/> class.
         /// </summary>
@@ -129,8 +136,17 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
             return GetDictionarySchema(
                 schemaSet,
                 "BtsPropertiesType",
-                Resolution.Properties.Resources.DictionaryNamespace,
-                Resolution.Properties.Resources.XsdBtsPropertiesSchemaFile);
+                AssemblyProperties.Resources.DictionaryNamespace,
+                AssemblyProperties.Resources.XsdBtsPropertiesSchemaFile);
+        }
+
+        /// <summary>
+        /// Returns the schema for the current dictionary.
+        /// </summary>
+        /// <returns>The XSD schema for the current dictionary.</returns>
+        public override XmlSchema GetSchema()
+        {
+            return this.schema ?? (this.schema = GetSchema(AssemblyProperties.Resources.XsdBtsPropertiesSchemaFile));
         }
 
         /// <summary>
@@ -150,7 +166,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
         /// <param name="key">The key value to be serialized.</param>
         protected override void WriteKey(XmlWriter writer, string key)
         {
-            this.WriteKey(writer, key, "BtsProperties", Resolution.Properties.Resources.DictionaryNamespace);
+            this.WriteKey(writer, key, "BtsProperties", AssemblyProperties.Resources.DictionaryNamespace);
         }
     }
 }

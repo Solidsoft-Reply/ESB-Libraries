@@ -21,7 +21,6 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Dictionaries
     using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
-    using System.Reflection;
     using System.Runtime.Serialization;
     using System.Xml;
     using System.Xml.Schema;
@@ -39,6 +38,11 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Dictionaries
     [Serializable]
     public class DirectivesDictionary : DictionaryBase<Directive>
     {
+        /// <summary>
+        /// The XML schema for the dictionary.
+        /// </summary>
+        private XmlSchema schema;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="DirectivesDictionary"/> class.
         /// </summary>
@@ -137,6 +141,15 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Dictionaries
         }
 
         /// <summary>
+        /// Returns the schema for the current dictionary.
+        /// </summary>
+        /// <returns>The XSD schema for the current dictionary.</returns>
+        public override XmlSchema GetSchema()
+        {
+            return this.schema ?? (this.schema = GetSchema(AssemblyProperties.Resources.XsdDirectiveSchemaFile));
+        }
+        
+        /// <summary>
         /// Reads a key value as a string.
         /// </summary>
         /// <param name="reader">An XML reader containing the serialized key.</param>
@@ -154,30 +167,6 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Dictionaries
         protected override void WriteKey(XmlWriter writer, string key)
         {
             this.WriteKey(writer, key, "DirectivesDictionary", AssemblyProperties.Resources.DictionaryNamespace);
-        }
-
-        /// <summary>
-        /// Returns an XSD schema for the serializable dictionary.  This is referenced by the XmlSchemaProvider
-        /// attribute on this class in order control the XML format. 
-        /// </summary>
-        /// <param name="manifestResourceName">
-        /// The Manifest resource name for the schema.
-        /// </param>
-        /// <returns>
-        /// The XML schema of the Dictionary type.
-        /// </returns>
-        private static XmlSchema DoGetSchema(string manifestResourceName)
-        {
-            var assembly = Assembly.GetExecutingAssembly();
-            var stream = assembly.GetManifestResourceStream(manifestResourceName);
-
-            if (stream == null)
-            {
-                return null;
-            }
-
-            var xsdReader = new XmlTextReader(stream);
-            return XmlSchema.Read(xsdReader, null);
         }
     }
 }

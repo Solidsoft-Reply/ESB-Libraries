@@ -29,6 +29,8 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
     using System.Xml.Schema;
     using System.Xml.Serialization;
 
+    using AssemblyProperties = SolidsoftReply.Esb.Libraries.Resolution.Properties;
+
     /// <summary>
     /// Xml-serializable generic dictionary.   Inherits from the generic dictionary provided by .NET.
     /// </summary>
@@ -42,7 +44,8 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
         /// <summary>
         /// The XML schema for the dictionary.
         /// </summary>
-        private XmlSchema schema;
+        // ReSharper disable once StaticMemberInGenericType
+        private static XmlSchema schema;
 
         /// <summary>
         /// Initializes a new instance of the XmlSerializableDictionary class.
@@ -120,35 +123,36 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
             {
                 var message = string.Format(
                     CultureInfo.CurrentCulture,
-                    Resolution.Properties.Resources.ExceptionSchemaSetIsNull,
+                    AssemblyProperties.Resources.ExceptionSchemaSetIsNull,
                     "GetDictionarySchema");
                 var innerException = new ArgumentNullException(
                     "schemaSet",
-                    Resolution.Properties.Resources.ExceptionValueIsNull);
+                    AssemblyProperties.Resources.ExceptionValueIsNull);
 
                 throw new XmlSerializableDictionaryException(message, innerException);
             }
 
-            var xs = DoGetSchema();
+            var xs = schema ?? (schema = (GetSchema(AssemblyProperties.Resources.XsdDictionarySchemaFile) ?? new XmlSchema()));
+
 
             if (xs == null)
             {
-                return new XmlQualifiedName("DictionaryType", Resolution.Properties.Resources.DictionaryNamespace);
+                return new XmlQualifiedName("DictionaryType", AssemblyProperties.Resources.DictionaryNamespace);
             }
 
             schemaSet.XmlResolver = new XmlUrlResolver();
             schemaSet.Add(xs);
 
-            return new XmlQualifiedName("DictionaryType", Resolution.Properties.Resources.DictionaryNamespace);
+            return new XmlQualifiedName("DictionaryType", AssemblyProperties.Resources.DictionaryNamespace);
         }
 
         /// <summary>
-        /// Not supported.
+        /// Returns the schema for the current dictionary.
         /// </summary>
-        /// <returns>Always returns null.</returns>
-        public XmlSchema GetSchema()
+        /// <returns>The XSD schema for the current dictionary.</returns>
+        public virtual XmlSchema GetSchema()
         {
-            return this.schema ?? (this.schema = DoGetSchema());
+            return schema ?? (schema = (GetSchema(AssemblyProperties.Resources.XsdDictionarySchemaFile) ?? new XmlSchema()));
         }
 
         /// <summary>
@@ -159,6 +163,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
         {
             // Grab the content
             var xmlContent = reader.ReadOuterXml();
+
+            // ReSharper disable once PossibleNullReferenceException
+            var targetNamespace = this.GetSchema() == null ? string.Empty : this.GetSchema().TargetNamespace;
+
             var contentReader = new StringReader(xmlContent);
             var nodeReader = new XmlTextReader(contentReader);
 
@@ -183,61 +191,75 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
                 {
                     if (nodeReader.LocalName != "Item")
                     {
-                        if (!nodeReader.ReadToFollowing("Item"))
+                        if (!nodeReader.ReadToFollowing("Item", targetNamespace))
                         {
                             break;
                         }
                     }
 
-                    nodeReader.ReadStartElement("Item");
+                    nodeReader.ReadStartElement("Item", targetNamespace);
 
                     if (nodeReader.LocalName != "Key")
                     {
-                        if (!nodeReader.ReadToFollowing("Key"))
+                        if (!nodeReader.ReadToFollowing("Key", targetNamespace))
                         {
                             throw new XmlSerializableDictionaryException(
                                 string.Format(
                                     CultureInfo.CurrentCulture,
-                                    Resolution.Properties.Resources.ExceptionDeserializationNoElement,
+                                    AssemblyProperties.Resources.ExceptionDeserializationNoElement,
                                     this.GetType().Name,
                                     "Key"));
                         }
                     }
 
-                    nodeReader.ReadStartElement("Key");
-                    TKey key;
+                    var key = default(TKey);
+                    var keyInitialised = false;
+                    var innerKeyXml = nodeReader.ReadInnerXml().Trim();
 
-                    // Copy the key content to another XmlReader to protect main reader.
-                    using (var sr = new StringReader(nodeReader.ReadOuterXml()))
+                    if (!string.IsNullOrWhiteSpace(innerKeyXml))
                     {
-                        var keyReader = XmlReader.Create(sr);
-                        key = this.ReadKey(keyReader);
+                        // Copy the key content to another XmlReader to protect main reader.
+                        using (var sr = new StringReader(innerKeyXml))
+                        {
+                            var keyReader = XmlReader.Create(sr);
+                            key = this.ReadKey(keyReader);
+                            keyInitialised = true;
+                        }
                     }
 
                     if (nodeReader.LocalName != "Value")
                     {
-                        if (!nodeReader.ReadToFollowing("Value"))
+                        if (!nodeReader.ReadToFollowing("Value", targetNamespace))
                         {
                             throw new XmlSerializableDictionaryException(
                                 string.Format(
                                     CultureInfo.CurrentCulture,
-                                    Resolution.Properties.Resources.ExceptionDeserializationNoElement,
+                                    AssemblyProperties.Resources.ExceptionDeserializationNoElement,
                                     this.GetType().Name,
                                     "Value"));
                         }
                     }
 
-                    nodeReader.ReadStartElement("Value");
-                    TValue value;
+                    var value = default(TValue);
+                    var innerValueXml = nodeReader.ReadInnerXml().Trim();
 
-                    // Copy the key content to another XmlReader to protect main reader.
-                    using (var sr = new StringReader(nodeReader.ReadOuterXml()))
+                    Func<TKey> throwExceptionForInvalidKey = () =>
+                    { throw new EsbResolutionException("The key value is invalid."); };
+
+                    Action<TValue> addEntry = v =>
+                        this.Add(keyInitialised ? key : throwExceptionForInvalidKey(), v);
+
+                    if (!string.IsNullOrWhiteSpace(innerValueXml))
                     {
-                        var valueReader = XmlReader.Create(sr);
-                        value = this.ReadValue(valueReader);
+                        // Copy the key content to another XmlReader to protect main reader.
+                        using (var sr = new StringReader(innerValueXml))
+                        {
+                            var valueReader = XmlReader.Create(sr);
+                            value = this.ReadValue(valueReader);
+                        }
                     }
 
-                    this.Add(key, value);
+                    addEntry(value);
 
                     if (nodeReader.LocalName == "Item")
                     {
@@ -254,7 +276,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
                 throw new XmlSerializableDictionaryException(
                    string.Format(
                        CultureInfo.CurrentCulture,
-                       Resolution.Properties.Resources.ExceptionUnexpectedError,
+                       AssemblyProperties.Resources.ExceptionUnexpectedError,
                        "ReadXml"),
                    ex);
             }
@@ -274,7 +296,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
             {
                 foreach (var key in this.Keys)
                 {
-                    writer.WriteStartElement("Item", Resolution.Properties.Resources.DictionaryNamespace);
+                    writer.WriteStartElement("Item", AssemblyProperties.Resources.DictionaryNamespace);
 
                     using (var ms = new MemoryStream())
                     {
@@ -327,7 +349,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
                 throw new XmlSerializableDictionaryException(
                    string.Format(
                        CultureInfo.CurrentCulture,
-                       Resolution.Properties.Resources.ExceptionUnexpectedError,
+                       AssemblyProperties.Resources.ExceptionUnexpectedError,
                        "WriteXml"),
                    ex);
             }
@@ -344,11 +366,11 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
             {
                 var message = string.Format(
                     CultureInfo.CurrentCulture,
-                    Resolution.Properties.Resources.ExceptionReaderIsNull,
+                    AssemblyProperties.Resources.ExceptionReaderIsNull,
                     "ReadKey");
                 var innerException = new ArgumentNullException(
                     "reader",
-                    Resolution.Properties.Resources.ExceptionValueIsNull);
+                    AssemblyProperties.Resources.ExceptionValueIsNull);
 
                 throw new XmlSerializableDictionaryException(message, innerException);
             }
@@ -356,7 +378,11 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
             // The NetDataContractSerializer class is an XML serializer that adds/reads 
             // additional type information, allowing arbitrary types to be serialised.
             var keySerializer = new NetDataContractSerializer();
-            reader.Read();
+
+            while (reader.LocalName == string.Empty)
+            {
+                reader.Read();
+            }
 
             using (var ms = new MemoryStream())
             {
@@ -380,11 +406,11 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
             {
                 var message = string.Format(
                     CultureInfo.CurrentCulture,
-                    Resolution.Properties.Resources.ExceptionReaderIsNull,
+                    AssemblyProperties.Resources.ExceptionReaderIsNull,
                     "ReadValue");
                 var innerException = new ArgumentNullException(
                     "reader",
-                    Resolution.Properties.Resources.ExceptionValueIsNull);
+                    AssemblyProperties.Resources.ExceptionValueIsNull);
 
                 throw new XmlSerializableDictionaryException(message, innerException);
             }
@@ -392,7 +418,11 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
             // The NetDataContractSerializer class is an XML serializer that adds/reads 
             // additional type information, allowing arbitrary types to be serialised.
             var valueSerializer = new NetDataContractSerializer();
-            reader.Read();
+
+            while (reader.LocalName == string.Empty)
+            {
+                reader.Read();
+            }
 
             using (var ms = new MemoryStream())
             {
@@ -416,11 +446,11 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
             {
                 var message = string.Format(
                     CultureInfo.CurrentCulture,
-                    Resolution.Properties.Resources.ExceptionWriterIsNull,
+                    AssemblyProperties.Resources.ExceptionWriterIsNull,
                     "WriteKey");
                 var innerException = new ArgumentNullException(
                     "writer",
-                    Resolution.Properties.Resources.ExceptionValueIsNull);
+                    AssemblyProperties.Resources.ExceptionValueIsNull);
 
                 throw new XmlSerializableDictionaryException(message, innerException);
             }
@@ -447,11 +477,11 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
             {
                 var message = string.Format(
                     CultureInfo.CurrentCulture,
-                    Resolution.Properties.Resources.ExceptionWriterIsNull,
+                    AssemblyProperties.Resources.ExceptionWriterIsNull,
                     "WriteValue");
                 var innerException = new ArgumentNullException(
                     "writer",
-                    Resolution.Properties.Resources.ExceptionValueIsNull);
+                    AssemblyProperties.Resources.ExceptionValueIsNull);
 
                 throw new XmlSerializableDictionaryException(message, innerException);
             }
@@ -471,11 +501,12 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
         /// Returns an XSD schema for the serializable dictionary.  This is referenced by the XmlSchemaProvider
         /// attribute on this class in order control the XML format. 
         /// </summary>
+        /// <param name="xsdSchemaFile">XSD schema file resource string</param>
         /// <returns>The XML schema of the Dictionary type.</returns>
-        private static XmlSchema DoGetSchema()
+        internal static XmlSchema GetSchema(string xsdSchemaFile)
         {
             var assembly = Assembly.GetExecutingAssembly();
-            var stream = assembly.GetManifestResourceStream(Resolution.Properties.Resources.XsdDictionarySchemaFile);
+            var stream = assembly.GetManifestResourceStream(xsdSchemaFile);
 
             if (stream == null)
             {

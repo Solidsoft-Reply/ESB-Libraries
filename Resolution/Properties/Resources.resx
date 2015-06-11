@@ -230,7 +230,7 @@
     <value>http://solidsoftreply.com/schemas/webservices/esbresolutionservice/2015/05</value>
   </data>
   <data name="ExceptionDeserializationInvalidKeyElement" xml:space="preserve">
-    <value>The {0} cannot be de-serialized.   The &lt;Key&gt; element has invalid content.</value>
+    <value>The {0} cannot be de-serialized.   The &lt;Key&gt; element is invalid.  It must contain &lt;string&gt;keyValue&lt;/string&gt;</value>
   </data>
   <data name="ExceptionDeserializationNoElement" xml:space="preserve">
     <value>The {0} cannot be de-serialised.   No &lt;{1}&gt; element was found.</value>

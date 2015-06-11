@@ -39,6 +39,11 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Dictionaries
     public class Parameters : DictionaryBase<object>
     {
         /// <summary>
+        /// The XML schema for the dictionary.
+        /// </summary>
+        private XmlSchema schema;
+        
+        /// <summary>
         /// Initializes a new instance of the <see cref="Parameters"/> class.
         /// </summary>
         public Parameters()
@@ -121,6 +126,15 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Dictionaries
         }
 
         /// <summary>
+        /// Returns the schema for the current dictionary.
+        /// </summary>
+        /// <returns>The XSD schema for the current dictionary.</returns>
+        public override XmlSchema GetSchema()
+        {
+            return this.schema ?? (this.schema = GetSchema(AssemblyProperties.Resources.XsdParameterSchemaFile));
+        }
+
+        /// <summary>
         /// Returns an XSD schema for the serialisable facts dictionary.  This is referenced by the XmlSchemaProvider
         /// attribute on this class in order control the XML format. 
         /// </summary>
@@ -134,7 +148,7 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Dictionaries
                 AssemblyProperties.Resources.DictionaryNamespace,
                 AssemblyProperties.Resources.XsdParameterSchemaFile);
         }
-
+       
         /// <summary>
         /// Reads a key value as a string.
         /// </summary>

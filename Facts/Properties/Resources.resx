@@ -178,7 +178,7 @@
     <value>The {0} cannot be de-serialised.   No &lt;{1}&gt; element was found.</value>
   </data>
   <data name="ExceptionDeserializationInvalidKeyElement" xml:space="preserve">
-    <value>The {0} cannot be de-serialized.   The &lt;Key&gt; element has invalid content.</value>
+    <value>The {0} cannot be de-serialized.   The &lt;Key&gt; element is invalid.  It must contain &lt;string&gt;keyValue&lt;/string&gt;</value>
   </data>
   <data name="ExceptionEndPoint" xml:space="preserve">
     <value>The {0} directive can encode a single endpoint URL only.   Use multiple directives for multiple endpoints.</value>
@@ -322,7 +322,7 @@
     <value>File</value>
   </data>
   <data name="XsdDictionarySchemaFile" xml:space="preserve">
-    <value>SolidsoftReply.Esb.Libraries.Facts.Dictionaries.Resources..DictionarySchema.xsd</value>
+    <value>SolidsoftReply.Esb.Libraries.Facts.Dictionaries.Resources.DictionarySchema.xsd</value>
   </data>
   <data name="AppSettingEsbValidationPolicyName" xml:space="preserve">
     <value>ESB.ValidationPolicyName</value>

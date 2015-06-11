@@ -19,6 +19,7 @@
 namespace SolidsoftReply.Esb.Libraries.ResolutionService
 {
     using System;
+    using System.ServiceModel;
 
     /// <summary>
     /// The resolver service
@@ -36,6 +37,9 @@ namespace SolidsoftReply.Esb.Libraries.ResolutionService
         /// </returns>
         public ResolveResponse Resolve(ResolveRequest request)
         {
+            var soap = OperationContext.Current.RequestContext.RequestMessage.ToString();
+            System.Diagnostics.Trace.WriteLine(soap);
+
             try
             {
                 System.Diagnostics.Debug.Write("[ResolutionService] Resolve called");

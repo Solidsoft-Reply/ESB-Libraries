@@ -496,6 +496,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
             {
                 throw new ArgumentNullException(Resources.ExceptionNullPropertyBag);
             }
+
             using (new DisposableObjectWrapper((object)pb))
             {
                 var val = ReadPropertyBag(pb, "providerName");

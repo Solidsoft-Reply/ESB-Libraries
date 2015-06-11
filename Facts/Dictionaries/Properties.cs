@@ -39,6 +39,11 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Dictionaries
     public class Properties : DictionaryBase<Directive.Property>
     {
         /// <summary>
+        /// The XML schema for the dictionary.
+        /// </summary>
+        private XmlSchema schema;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="Properties"/> class.
         /// </summary>
         public Properties()
@@ -133,6 +138,15 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Dictionaries
                 "PropertiesType",
                 AssemblyProperties.Resources.DictionaryNamespace,
                 AssemblyProperties.Resources.XsdPropertiesSchemaFile);
+        }
+
+        /// <summary>
+        /// Returns the schema for the current dictionary.
+        /// </summary>
+        /// <returns>The XSD schema for the current dictionary.</returns>
+        public override XmlSchema GetSchema()
+        {
+            return this.schema ?? (this.schema = GetSchema(AssemblyProperties.Resources.XsdPropertiesSchemaFile));
         }
 
         /// <summary>

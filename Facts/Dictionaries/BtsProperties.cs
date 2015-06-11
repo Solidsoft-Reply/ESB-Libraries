@@ -39,6 +39,11 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Dictionaries
     public class BtsProperties : DictionaryBase<Directive.BtsProperty>
     {
         /// <summary>
+        /// The XML schema for the dictionary.
+        /// </summary>
+        private XmlSchema schema;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="BtsProperties"/> class.
         /// </summary>
         public BtsProperties()
@@ -133,6 +138,15 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Dictionaries
                 "BtsPropertiesType",
                 AssemblyProperties.Resources.DictionaryNamespace,
                 AssemblyProperties.Resources.XsdBtsPropertiesSchemaFile);
+        }
+
+        /// <summary>
+        /// Returns the schema for the current dictionary.
+        /// </summary>
+        /// <returns>The XSD schema for the current dictionary.</returns>
+        public override XmlSchema GetSchema()
+        {
+            return this.schema ?? (this.schema = GetSchema(AssemblyProperties.Resources.XsdBtsPropertiesSchemaFile));
         }
 
         /// <summary>
