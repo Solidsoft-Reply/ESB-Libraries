@@ -61,6 +61,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
     [ComponentCategory(CategoryTypes.CATID_DisassemblingParser)]
     [ComponentCategory(CategoryTypes.CATID_Any)]
     [Guid("59CFD96B-20EE-40ad-BFD0-319B59A0DDBC")]
+    [ComVisible(false)]
     [DefaultProperty("Policy")]
     public class ServiceMediation : BaseCustomTypeDescriptor, IBaseComponent, IComponent, IPersistPropertyBag, IComponentUI, IDisassemblerComponent
     {
@@ -492,12 +493,103 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         /// </param>
         public void Load(IPropertyBag pb, int errlog)
         {
+            this.Load(pb, errlog, false);
+        }
+
+        /// <summary>
+        /// Safely loads configuration property for a wrapped component.
+        /// </summary>
+        /// <param name="pb">
+        /// Configuration property bag.
+        /// </param>
+        /// <param name="errlog">
+        /// Error status (not used in this code).
+        /// </param>
+        public void SafeLoadWhenWrapped(IPropertyBag pb, int errlog)
+        {
+            this.Load(pb, errlog, true);
+        }
+
+        /// <summary>
+        /// Saves the current component configuration into the property bag.
+        /// </summary>
+        /// <param name="pb">
+        /// Configuration property bag.
+        /// </param>
+        /// <param name="clearDirty">
+        /// The parameter is not used.
+        /// </param>
+        /// <param name="saveAllProperties">
+        /// The parameter is not used.
+        /// </param>
+        public void Save(IPropertyBag pb, bool clearDirty, bool saveAllProperties)
+        {
+            WritePropertyBag(pb, "providerName", this.ProviderName);
+            WritePropertyBag(pb, "serviceName", this.ServiceName);
+            WritePropertyBag(pb, "bindingAccessPoint", this.BindingAccessPoint);
+            WritePropertyBag(pb, "bindingUrlType", this.BindingUrlType);
+            WritePropertyBag(pb, "bodyContainerXPath", this.BodyContainerXPath);
+            WritePropertyBag(pb, "operationName", this.OperationName);
+            WritePropertyBag(pb, "messageType", this.MessageType);
+            WritePropertyBag(pb, "messageDirection", this.MessageDirection.ToString());
+            WritePropertyBag(pb, "messageRole", this.MessageRole);
+            WritePropertyBag(pb, "rulePolicy", this.Policy);
+            WritePropertyBag(pb, "rulePolicyVersion",  string.IsNullOrWhiteSpace(this.PolicyVersion) ? null : this.PolicyVersion);
+            WritePropertyBag(pb, "resolutionData", this.ResolutionData.ToString());
+            WritePropertyBag(pb, "resolutionDataProperties", this.ResolutionDataProperties.Count > 0 ? this.ResolutionDataProperties.Aggregate((p1, p2) => string.Format("{0}¦{1}", p1, p2)) : string.Empty);
+            WritePropertyBag(pb, "version", (this.version == null) ? null : this.version.ToString(2));
+        }
+
+        /// <summary>
+        /// The Validate method is called by the BizTalk Editor during the build
+        ///     of a BizTalk project.
+        /// </summary>
+        /// <param name="obj">
+        /// Project system.
+        /// </param>
+        /// <returns>
+        /// A list of error and/or warning messages encounter during validation
+        ///     of this component.
+        /// </returns>
+        public IEnumerator Validate(object obj)
+        {
+            return null;
+        }
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Loads configuration property for component.
+        /// </summary>
+        /// <param name="pb">
+        /// Configuration property bag.
+        /// </param>
+        /// <param name="errlog">
+        /// Error status (not used in this code).
+        /// </param>
+        /// <param name="wrapped">
+        /// Flag indicates if the service mediation pipeine component is wrapped with
+        /// other pipeline components.  This is a workaround for Microsoft's code that
+        /// disposes property bags  The service mediation component supports this
+        /// same pattern, but the pattern fails when the component iswrapped with
+        /// another component that also disposes the property bag.  If set to true, the
+        /// code does not dispose the property bag.  NB., the service mediation
+        /// coponent's Load() property should be called before calling Load on any
+        /// other component that disposes the property bag.  See the Load method of the
+        /// ESB service mediation disassemblers for an example.
+        /// </param>
+        private void Load(IPropertyBag pb, int errlog, bool wrapped)
+        {
             if (pb == null)
             {
                 throw new ArgumentNullException(Resources.ExceptionNullPropertyBag);
             }
 
-            using (new DisposableObjectWrapper((object)pb))
+            var disposableObj = wrapped ? new object() : pb;
+
+            using (new DisposableObjectWrapper(disposableObj))
             {
                 var val = ReadPropertyBag(pb, "providerName");
 
@@ -595,6 +687,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
 
                 val = ReadPropertyBag(pb, "resolutionDataProperties");
 
+                // ReSharper disable once ConvertIfStatementToConditionalTernaryExpression
                 if (string.IsNullOrWhiteSpace((string)val))
                 {
                     this.ResolutionDataProperties = new ResolutionDataPropertyList();
@@ -609,57 +702,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
                 this.version = val == null ? null : new Version((string)val);
             }
         }
-
-        /// <summary>
-        /// Saves the current component configuration into the property bag.
-        /// </summary>
-        /// <param name="pb">
-        /// Configuration property bag.
-        /// </param>
-        /// <param name="clearDirty">
-        /// The parameter is not used.
-        /// </param>
-        /// <param name="saveAllProperties">
-        /// The parameter is not used.
-        /// </param>
-        public void Save(IPropertyBag pb, bool clearDirty, bool saveAllProperties)
-        {
-            WritePropertyBag(pb, "providerName", this.ProviderName);
-            WritePropertyBag(pb, "serviceName", this.ServiceName);
-            WritePropertyBag(pb, "bindingAccessPoint", this.BindingAccessPoint);
-            WritePropertyBag(pb, "bindingUrlType", this.BindingUrlType);
-            WritePropertyBag(pb, "bodyContainerXPath", this.BodyContainerXPath);
-            WritePropertyBag(pb, "operationName", this.OperationName);
-            WritePropertyBag(pb, "messageType", this.MessageType);
-            WritePropertyBag(pb, "messageDirection", this.MessageDirection.ToString());
-            WritePropertyBag(pb, "messageRole", this.MessageRole);
-            WritePropertyBag(pb, "rulePolicy", this.Policy);
-            WritePropertyBag(pb, "rulePolicyVersion",  string.IsNullOrWhiteSpace(this.PolicyVersion) ? null : this.PolicyVersion);
-            WritePropertyBag(pb, "resolutionData", this.ResolutionData.ToString());
-            WritePropertyBag(pb, "resolutionDataProperties", this.ResolutionDataProperties.Count > 0 ? this.ResolutionDataProperties.Aggregate((p1, p2) => string.Format("{0}¦{1}", p1, p2)) : string.Empty);
-            WritePropertyBag(pb, "version", (this.version == null) ? null : this.version.ToString(2));
-        }
-
-        /// <summary>
-        /// The Validate method is called by the BizTalk Editor during the build
-        ///     of a BizTalk project.
-        /// </summary>
-        /// <param name="obj">
-        /// Project system.
-        /// </param>
-        /// <returns>
-        /// A list of error and/or warning messages encounter during validation
-        ///     of this component.
-        /// </returns>
-        public IEnumerator Validate(object obj)
-        {
-            return null;
-        }
-
-        #endregion
-
-        #region Methods
-
+        
         /// <summary>
         /// Adds additional parts from the original message.
         /// </summary>
@@ -772,7 +815,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
             {
                 pb.Read(propName, out val, 0);
             }
-            catch (ArgumentException)
+            catch (ArgumentException exArg)
             {
                 return val;
             }
@@ -798,14 +841,17 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         /// </param>
         private static void WritePropertyBag(IPropertyBag pb, string propName, object val)
         {
+            Debug.WriteLine("WritePropertyBag");
             try
             {
                 pb.Write(propName, ref val);
             }
             catch (Exception ex)
             {
+                Debug.WriteLine("WritePropertyBag error: " + ex.Message);
                 throw new EsbPipelineComponentException(ex.Message);
             }
+            Debug.WriteLine("Leaving WritePropertyBag");
         }
 
         /// <summary>

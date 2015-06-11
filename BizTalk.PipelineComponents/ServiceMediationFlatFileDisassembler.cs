@@ -639,7 +639,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         public void Load(IPropertyBag pb, int errlog)
         {
             // Let the Service Mediation disassembler read its properties from the property bag.
-            this.serviceMediationDasm.Load(pb, errlog);
+            this.serviceMediationDasm.SafeLoadWhenWrapped(pb, errlog);
 
             // Let the Flat File disassembler read its properties from the property bag.
             this.flatFileDasmComp.Load(pb, errlog);
