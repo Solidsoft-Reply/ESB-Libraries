@@ -37,13 +37,12 @@ namespace SolidsoftReply.Esb.Libraries.ResolutionService
         /// </returns>
         public ResolveResponse Resolve(ResolveRequest request)
         {
-            var soap = OperationContext.Current.RequestContext.RequestMessage.ToString();
-            System.Diagnostics.Trace.WriteLine(soap);
+                System.Diagnostics.Debug.Write("[ResolutionService] Resolve called");
+                // ReSharper disable once AssignNullToNotNullAttribute
+                System.Diagnostics.Debug.WriteLine(OperationContext.Current.RequestContext.RequestMessage.ToString());
 
             try
             {
-                System.Diagnostics.Debug.Write("[ResolutionService] Resolve called");
-
                 // Check parameters
                 if (string.IsNullOrEmpty(request.PolicyName))
                 {
