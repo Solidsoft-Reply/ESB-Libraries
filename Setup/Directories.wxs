@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="GAC" Name="GAC" />
+      </Directory>
+      <!--TODO Support multiple BizTalk editions-->
+      <Directory Id="BIZTALKSERVER2013R2" Name="Microsoft BizTalk Server 2013 R2" >
+        <Directory Id="PIPELINECOMPONENTS" Name="Pipeline Components" />
+      </Directory>
+      <Directory Id ="INSTALLFOLDER" Name="SolidsoftReply.Esb.Libraries">
+        <Directory Id ="ReferenceAssemblies" Name ="ReferenceAssemblies" />
+        <Directory Id ="ResolutionService" Name ="ResolutionService">
+          <Directory Id ="ResolutionServiceBin" Name ="Bin" />
+        </Directory>
+      </Directory>
+    </Directory>
+  </Fragment>
+</Wix>

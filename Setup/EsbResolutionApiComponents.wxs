@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <ComponentGroup Id="EsbResolutionApiComponents">
+      <Component Id="EsbResolutionApi" Guid="854B7327-4C5E-47C8-9EB5-B9301F15E077"  Permanent="no" Directory="GAC">
+        <File Id="EsbResolutionApiFile" Source="$(var.Resolution.TargetDir)" ProcessorArchitecture="msil" Name="SolidsoftReply.Esb.Libraries.Resolution.dll" Assembly=".net" KeyPath="yes" />
+      </Component>
+      <Component Id="EsbResolutionApiReference" Guid="3758CF62-212B-41B1-8D3C-076DCF033288" Permanent="no" Directory="ReferenceAssemblies">
+        <!--Cannot use CopyFile because EsbResolutionApiFile is placed in actual GAC and not in the dummy GAC folder-->
+        <File Id="EsbResolutionApiFileReference" Source="$(var.Resolution.TargetPath)" Name="SolidsoftReply.Esb.Libraries.Resolution.dll"/>
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>

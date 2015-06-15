@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <!-- Customised version of WixUI_Mondo UI -->
+    <UI Id="ResolutionServiceUI">
+
+      <DialogRef Id="IisSetupDlg" />
+      <DialogRef Id="PoolSettingsDlg" />
+      <!-- Injection of custom UI event handlers -->
+      <!-- ===================================== -->
+      <!-- Handle flow from SetupTypeDlg to next dialog -->
+      <Publish Dialog="SetupTypeDlg" Control="TypicalButton" 
+            Event="NewDialog" Value="IisSetupDlg" 
+            Order="1">1</Publish>
+      <Publish Dialog="SetupTypeDlg" Control="CompleteButton" 
+            Event="NewDialog" Value="IisSetupDlg" 
+            Order="1">1</Publish>
+      <!-- Handle flow from CustomizeDlg to next dialog -->
+      <Publish Dialog="CustomizeDlg" Control="Next"
+            Event="NewDialog" Value="IisSetupDlg"
+            Order="1"><![CDATA[((LicenseAccepted = "1" AND NOT (WixUI_InstallMode = "Change")) OR (WixUI_InstallMode = "Change" AND !EsbRS<=2)) AND &EsbRS>=3]]></Publish>
+      <Publish Dialog="CustomizeDlg" Control="Next"
+            Event="NewDialog" Value="VerifyReadyDlg"
+            Order="2"><![CDATA[((LicenseAccepted = "1" AND NOT (WixUI_InstallMode = "Change")) AND &EsbRS<=2) OR (WixUI_InstallMode = "Change" AND ((!EsbRS<=2 AND &EsbRS<=2) OR (!EsbRS>=3 AND &EsbRS>=3)))]]></Publish>
+      <!-- Handle flow from VerifyReadyDlg to previous dialog -->
+      <Publish Dialog="VerifyReadyDlg" Control="Back"
+            Event="NewDialog" Value="PoolSettingsDlg"
+            Order="5"><![CDATA[(WixUI_InstallMode << "Install" OR (WixUI_InstallMode = "Change" AND !EsbRS<=2)) AND &EsbRS>=3]]></Publish>
+      <Publish Dialog="VerifyReadyDlg" Control="Back"
+            Event="NewDialog" Value="CustomizeDlg"
+            Order="6"><![CDATA[((WixUI_InstallMode << "Install" AND &EsbRS<=2) OR (WixUI_InstallMode = "Change" AND ((!EsbRS<=2 AND &EsbRS<=2) OR (!EsbRS>=3 AND &EsbRS>=3))))]]></Publish>
+    </UI>
+  </Fragment>
+</Wix>

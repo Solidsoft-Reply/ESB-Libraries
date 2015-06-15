@@ -9,7 +9,8 @@
 				<!-- Back button -->
 				<Control Id="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Text="&amp;Back">
 					<!--<Publish Event="NewDialog" Value="LicenseAgreementDlg">1</Publish>-->
-          <Publish Event="NewDialog" Value="CustomizeDlg">1</Publish>
+          <Publish Event="NewDialog" Value="CustomizeDlg" Order="1">WixUI_InstallMode = "InstallCustom"</Publish>
+          <Publish Event="NewDialog" Value="SetupTypeDlg" Order="2">NOT (WixUI_InstallMode = "InstallCustom")</Publish>
         </Control>
 				<Control Id="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Default="yes" Text="&amp;Next">
 					<Publish Event="NewDialog" Value="PoolSettingsDlg">
@@ -68,8 +69,8 @@
 				<Control Id="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" />
 			</Dialog>
       
-      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="PoolSettingsDlg" Order="2">WixUI_InstallMode = "InstallTypical" OR WixUI_InstallMode = "InstallComplete"</Publish>
-      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="PoolSettingsDlg" Order="3">WixUI_InstallMode = "Change"</Publish>
+      <!--<Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="PoolSettingsDlg" Order="2">WixUI_InstallMode = "InstallTypical" OR WixUI_InstallMode = "InstallComplete"</Publish>
+      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="PoolSettingsDlg" Order="3">WixUI_InstallMode = "Change"</Publish>-->
       <!--<Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="MaintenanceTypeDlg" Order="4">WixUI_InstallMode = "Repair" OR WixUI_InstallMode = "Remove"</Publish>
       <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2">WixUI_InstallMode = "Update"</Publish>-->
 

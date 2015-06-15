@@ -815,7 +815,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
             {
                 pb.Read(propName, out val, 0);
             }
-            catch (ArgumentException exArg)
+            catch (ArgumentException)
             {
                 return val;
             }

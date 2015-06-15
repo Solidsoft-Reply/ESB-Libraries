@@ -173,7 +173,7 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
         public static string FindAccessPointForService(ServiceIdentifier service)
         {
             // Precondition.
-            if (service == null);
+            if (service == null)
             {
                 throw new ArgumentNullException("service", "Service identifier is invalid or missing.");
             }
@@ -194,13 +194,13 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
         public static string FindAccessPointForService(ServiceIdentifier service, AccessPointUseType useType)
         {
             // Precondition.
-            if (service == null) ;
+            if (service == null)
             {
                 throw new ArgumentNullException("service", "Service identifier is invalid or missing.");
             }
 
             // Precondition.
-            if (string.IsNullOrWhiteSpace(service.Value)) ;
+            if (string.IsNullOrWhiteSpace(service.Value))
             {
                 throw new ArgumentException("Service identifier value is invalid or missing.", "service");
             }
@@ -245,13 +245,13 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
         public static string FindAccessPointForService(ProviderIdentifier provider, ServiceIdentifier service)
         {
             // Precondition.
-            if (provider == null) ;
+            if (provider == null)
             {
                 throw new ArgumentNullException("provider", "Provider identifier is invalid or missing.");
             }
 
             // Precondition.
-            if (service == null) ;
+            if (service == null)
             {
                 throw new ArgumentNullException("service", "Service identifier is invalid or missing.");
             }
@@ -274,25 +274,25 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
         public static string FindAccessPointForService(ProviderIdentifier provider, ServiceIdentifier service, AccessPointUseType useType)
         {
             // Precondition.
-            if (provider == null) ;
+            if (provider == null)
             {
                 throw new ArgumentNullException("provider", "Provider identifier is invalid or missing.");
             }
 
             // Precondition.
-            if (service == null) ;
+            if (service == null)
             {
                 throw new ArgumentNullException("service", "Service identifier is invalid or missing.");
             }
 
             // Precondition.
-            if (string.IsNullOrWhiteSpace(provider.Value)) ;
+            if (string.IsNullOrWhiteSpace(provider.Value))
             {
                 throw new ArgumentException("Provider identifier value is invalid or missing.", "provider");
             }
 
             // Precondition.
-            if (string.IsNullOrWhiteSpace(service.Value)) ;
+            if (string.IsNullOrWhiteSpace(service.Value))
             {
                 throw new ArgumentException("Service identifier value is invalid or missing.", "service");
             }
@@ -368,7 +368,7 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
         private static BusinessEntity GetBusinessEntity(IIdentifier provider)
         {
             // Precondition.
-            if (provider == null) ;
+            if (provider == null) 
             {
                 throw new ArgumentNullException("provider", "Provider identifier is invalid or missing.");
             }
@@ -431,7 +431,7 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
         private static BusinessService GetBusinessService(IIdentifier service)
         {
             // Precondition.
-            if (service == null) ;
+            if (service == null)
             {
                 throw new ArgumentNullException("service", "Service identifier is invalid or missing.");
             }

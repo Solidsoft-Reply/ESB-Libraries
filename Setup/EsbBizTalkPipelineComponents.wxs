@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <ComponentGroup Id="EsbBizTalkPipelineComponents">
+      <Component Id="EsbPipelineComponents" Guid="258FEC9E-3A9A-4376-A680-672655E8CE6D"  Permanent="no" Directory="GAC">
+        <File Id="EsbPipelineComponentsFile" Source="$(var.BizTalk.PipelineComponents.TargetPath)" ProcessorArchitecture="msil" Name="SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.dll" Assembly=".net" KeyPath="yes" />
+      </Component>
+      <Component Id="EsbPipelineComponentsReference" Guid="0836F30E-4631-4FB1-8872-940FF46B8C48" Permanent="no" Directory="ReferenceAssemblies">
+        <!--Cannot use CopyFile because EsbPipelineComponentsFile is placed in actual GAC and not in the dummy GAC folder-->
+        <File Id="EsbPipelineComponentsFileReference" Source="$(var.BizTalk.PipelineComponents.TargetPath)" Name="SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.dll"/>
+      </Component>
+      <Component Id="RegisteredEsbPipelineComponents" Guid="75CBFEA9-59DE-456E-BA79-B39C0930C408" KeyPath="yes"  Permanent="no" Directory="PIPELINECOMPONENTS" >
+        <File Id="EsbPipelineComponents" Name="SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.dll" Source="$(var.BizTalk.PipelineComponents.TargetPath)"/>
+        <RemoveFile Id="EsbPipelineComponents" Name="SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.dll" On="uninstall"/>
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>

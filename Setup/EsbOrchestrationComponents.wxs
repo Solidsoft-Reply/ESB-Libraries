@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <ComponentGroup Id="EsbOrchestrationComponents">
+      <Component Id="EsbOrchestration" Guid="E81717FF-89A1-49F2-80D1-D5562BC44196" Permanent="no" Directory="GAC">
+        <File Id="EsbOrchestrationFile" Source="$(var.BizTalk.Orchestration.TargetPath)" ProcessorArchitecture="msil" Name="SolidsoftReply.Esb.Libraries.BizTalk.Orchestration.dll" Assembly=".net" KeyPath="yes"/>
+      </Component>
+      <Component Id="EsbOrchestrationReference" Guid="BCF27791-E41A-4ADB-917D-0CD49589ABB6" Permanent="no" Directory="ReferenceAssemblies">
+        <!--Cannot use CopyFile because EsbOrchestrationFile is placed in actual GAC and not in the dummy GAC folder-->
+        <File Id="EsbOrchestrationFileReference" Source="$(var.BizTalk.Orchestration.TargetPath)" Name="SolidsoftReply.Esb.Libraries.BizTalk.Orchestration.dll"/>
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>

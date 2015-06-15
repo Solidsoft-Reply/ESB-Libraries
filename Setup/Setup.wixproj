@@ -21,8 +21,16 @@
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Directories.wxs" />
+    <Compile Include="EsbBizTalkPipelineComponents.wxs" />
+    <Compile Include="EsbOrchestrationComponents.wxs" />
+    <Compile Include="EsbResolutionApiComponents.wxs" />
+    <Compile Include="EsbResolutionServiceComponents.wxs" />
+    <Compile Include="EsbUddiHelperComponents.wxs" />
     <Compile Include="Product.wxs" />
+    <Compile Include="ResolutionServiceUI.wxs" />
     <Compile Include="UiDialogs.wxs" />
+    <Compile Include="WindowsEventSource.wxs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BizTalk.Orchestration\BizTalk.Orchestration.csproj">
