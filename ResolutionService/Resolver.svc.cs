@@ -19,7 +19,11 @@
 namespace SolidsoftReply.Esb.Libraries.ResolutionService
 {
     using System;
+    using System.Diagnostics;
     using System.ServiceModel;
+
+    using SolidsoftReply.Esb.Libraries.Facts;
+    using SolidsoftReply.Esb.Libraries.ResolutionService.Properties;
 
     /// <summary>
     /// The resolver service
@@ -37,16 +41,16 @@ namespace SolidsoftReply.Esb.Libraries.ResolutionService
         /// </returns>
         public ResolveResponse Resolve(ResolveRequest request)
         {
-                System.Diagnostics.Debug.Write("[ResolutionService] Resolve called");
+                Debug.Write("[ResolutionService] Resolve called");
                 // ReSharper disable once AssignNullToNotNullAttribute
-                System.Diagnostics.Debug.WriteLine(OperationContext.Current.RequestContext.RequestMessage.ToString());
+                Debug.WriteLine(OperationContext.Current.RequestContext.RequestMessage.ToString());
 
             try
             {
                 // Check parameters
                 if (string.IsNullOrEmpty(request.PolicyName))
                 {
-                    throw new EsbResolutionServiceException(Properties.Resources.ExceptionPolicyNameInvalid);
+                    throw new EsbResolutionServiceException(Resources.ExceptionPolicyNameInvalid);
                 }
 
                 // Is not in the cache we need to excecute the policy on BRE and then put on the cache
@@ -70,21 +74,13 @@ namespace SolidsoftReply.Esb.Libraries.ResolutionService
                     request.Parameters,
                     request.MessageDirection);
 
-                System.Diagnostics.Debug.Write("[ResolutionService] Resolve - Returned # directives from BRE: '" + policyResultFacts.Directives.Count + "'");
+                Debug.Write("[ResolutionService] Resolve - Returned # directives from BRE: '" + policyResultFacts.Directives.Count + "'");
 
                 return new ResolveResponse { Interchange = policyResultFacts };
             }
             catch (Exception ex)
             {
-                try
-                {
-                    System.Diagnostics.EventLog.WriteEntry("Application", ex.ToString(), System.Diagnostics.EventLogEntryType.Error, 1);
-                }
-                // ReSharper disable once EmptyGeneralCatchClause
-                catch
-                {
-                }
-
+                EventLog.WriteEntry("ESBResolutionService", ex.ToString(), EventLogEntryType.Error, 1);
                 throw;
             }
         }
@@ -107,16 +103,16 @@ namespace SolidsoftReply.Esb.Libraries.ResolutionService
         /// <returns>
         /// A sub-classed activity interceptor configuration object containing the configuration for tracking points.
         /// </returns>
-        public Facts.BamActivityStep GetInterceptionPolicy(string activityName, string stepName, string policyName, string version)
+        public BamActivityStep GetInterceptionPolicy(string activityName, string stepName, string policyName, string version)
         {
             try
             {
-                System.Diagnostics.Debug.Write("[ResolutionService] Called GetInterceptionPolicy");
+                Debug.Write("[ResolutionService] Called GetInterceptionPolicy");
 
                 // Check parameters
                 if (string.IsNullOrWhiteSpace(activityName))
                 {
-                    throw new EsbResolutionServiceException(Properties.Resources.ExceptionBamActivityParameter);
+                    throw new EsbResolutionServiceException(Resources.ExceptionBamActivityParameter);
                 }
 
                 // Is not in the cache we need to excecute the policy on BRE and then put on the cache
@@ -130,21 +126,13 @@ namespace SolidsoftReply.Esb.Libraries.ResolutionService
                 // Execute the policy
                 var policyResultFact = BusinessRuleEnginePolicyEvaluator.GetBamActivityPolicy(policyName, ver, activityName, stepName);
 
-                System.Diagnostics.Debug.Write("[ResolutionService] - Returned a BAM interception policy from BRE.");
+                Debug.Write("[ResolutionService] - Returned a BAM interception policy from BRE.");
 
                 return policyResultFact;
             }
             catch (Exception ex)
             {
-                try
-                {
-                    System.Diagnostics.EventLog.WriteEntry("Application", ex.ToString(), System.Diagnostics.EventLogEntryType.Error, 2);
-                }
-                // ReSharper disable once EmptyGeneralCatchClause
-                catch
-                {
-                }
-
+                EventLog.WriteEntry("ESBResolutionService", ex.ToString(), EventLogEntryType.Error, 2);
                 throw;
             }
         }

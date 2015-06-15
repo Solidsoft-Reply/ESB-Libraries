@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"  
+     xmlns:iis="http://schemas.microsoft.com/wix/IIsExtension"
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension"
+     xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
+ 	<Product Id="*" Name="Solidsoft Reply ESB Libraries" Language="1033" Version="1.0.0.0" Manufacturer="Solidsoft Reply Ltd." UpgradeCode="6599097e-899b-4ba5-b081-fdb1291555cb">
+    <?include Config.wxi ?>
+    <Package Id='*' Description="Solidsoft Reply ESB Libraries 1.0 Installer"
+      Comments='Service mediation libraries.' Manufacturer='Solidsoft Reply Ltd.'
+      InstallerVersion='200' Languages='1033' Compressed='yes' SummaryCodepage='1252' InstallScope="perMachine"/>
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <Media Id="1" Cabinet="cab1.cab" EmbedCab="yes" />
+
+    <UIRef Id="ResolutionServiceUI" />
+    <UIRef Id="WixUI_Mondo" />
+    <UIRef Id="WixUI_ErrorProgressText" />
+    
+    <WixVariable Id="WixUILicenseRtf" Value="$(var.SourceDir)\LICENSE.rtf" />
+    <WixVariable Id="WixUIBannerBmp" Value="$(var.SourceDir)\Setup\Images\EsbLibrariesBanner.bmp" />
+    <WixVariable Id="WixUIDialogBmp" Value="$(var.SourceDir)\Setup\Images\EsbLibrariesDialog.bmp" />
+    
+    <!--<Property Id="WWWROOT">
+        <RegistrySearch Id='REG_WWWROOT' Type='directory' Root='HKLM' Key='SOFTWARE\Microsoft\InetStp' Name='PathWWWRoot' />
+    </Property>-->
+    
+    <Feature Id="WindowsEventSources" Display="hidden" Level="1">
+      <ComponentGroupRef Id="EsbEventSources"/>
+    </Feature>
+
+ 		<Feature Id="ResolutionApi" Title="Resolution API" Level="1" 
+             Description="Provides policy-driven resolution via an API.  This component can be installed on any machine that can connect to the Resolution Service.">
+			<ComponentGroupRef Id="EsbResolutionApiComponents" />
+		</Feature>
+    
+    <Feature Id="BizTalkServer" Title="BizTalk Server Components" Display="expand" Level="1" 
+             Description="These components are installed on BizTalk Server boxes.">
+      
+      <Feature Id="EsbResolutionServiceComponents" Title="Resolution Service" Level="1"
+               Description="The Resolution web service runs under IIS.">
+			  <ComponentGroupRef Id="EsbResolutionServiceComponents" />
+        <!-- Perform changes in the web.config file. -->
+        <!--<ComponentRef Id="WebConfigCmp" />-->
+		  </Feature>
+      
+      <Feature Id="EsbBizTalkPipelineComponents" Title="Pipeline Components" Level="1"
+               Description="The BizTalk Pipeline components apply the Resolution API to messages.">
+			  <ComponentGroupRef Id="EsbBizTalkPipelineComponents" />
+		  </Feature>
+      
+      <Feature Id="EsbOrchestration" Title="Orchestration Components" Level="1"
+               Description="The BizTalk Orchestraion components support the Resolution API in orchestration code.">
+			  <ComponentGroupRef Id="EsbOrchestrationComponents" />
+		  </Feature>
+      
+      <Feature Id="EsbUDDIHelper" Title="UDDI Rule Helper" Level="1000"
+               Description="The UDDI rule helper extends the Resolution serivice to support UDDI service directories.">
+			  <ComponentGroupRef Id="EsbUddiHelperComponents" />
+		  </Feature>
+    
+    </Feature>
+  
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="GAC" Name="GAC" />
+			</Directory>
+      <!--TODO Support multiple BizTalk editions-->
+			<Directory Id="BIZTALKSERVER2013R2" Name="Microsoft BizTalk Server 2013 R2" >
+				<Directory Id="PIPELINECOMPONENTS" Name="Pipeline Components" />
+	  	</Directory>
+      <Directory Id ="INSTALLFOLDER" Name="SolidsoftReply.Esb.Libraries">
+        <Directory Id ="ResolutionService" Name ="ResolutionService">
+          <Directory Id ="ResolutionServiceBin" Name ="Bin" />
+        </Directory>
+        <Directory Id ="ReferenceAssemblies" Name ="ReferenceAssemblies" />
+      </Directory>
+		</Directory>
+  </Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="EsbResolutionApiComponents">
+      <Component Id="EsbResolutionApi" Guid="854B7327-4C5E-47C8-9EB5-B9301F15E077"  Permanent="no" Directory="GAC">
+        <File Id="EsbResolutionApiFile" Source="$(var.Resolution.TargetDir)" ProcessorArchitecture="msil" Name="SolidsoftReply.Esb.Libraries.Resolution.dll" Assembly=".net" KeyPath="yes" />
+      </Component>
+		  <Component Id="EsbResolutionApiReference" Guid="3758CF62-212B-41B1-8D3C-076DCF033288" Permanent="no" Directory="ReferenceAssemblies">
+        <!--Cannot use CopyFile because EsbResolutionApiFile is placed in actual GAC and not in the dummy GAC folder-->
+        <File Id="EsbResolutionApiFileReference" Source="$(var.Resolution.TargetPath)" Name="SolidsoftReply.Esb.Libraries.Resolution.dll"/>
+		  </Component>
+		</ComponentGroup>
+	</Fragment>
+
+	<Fragment>
+    <?include IisConfig.wxi ?>
+		<ComponentGroup Id="EsbResolutionServiceComponents">
+      <Component Id="EsbResolutionWebsiteAppPool" Guid="19229225-F920-423E-AF92-4CF1B357E950" KeyPath="yes"  Permanent="no" Directory="INSTALLFOLDER">
+        <util:User Id="AppPoolIdentity"
+						   CreateUser="no"
+						   Name="[WEB_APP_POOL_IDENTITY_NAME]"
+						   Password="[WEB_APP_POOL_IDENTITY_PWD]"
+						   Domain="[WEB_APP_POOL_IDENTITY_DOMAIN]" />
+        <iis:WebAppPool Id="EsbResolution"
+                          Name="[WEB_APP_NAME]"
+                          Identity="other"
+								          User="AppPoolIdentity"
+                          ManagedPipelineMode="Integrated" 
+                          ManagedRuntimeVersion="v4.0" />
+          <!--TODO Add to BizTalk groups-->
+        </Component>
+      <Component Id="SolidsoftReplyEsbWebSite" Guid="F194EB3A-25FF-4288-AAB7-CA831C05E667" KeyPath="yes" Permanent="no" Directory="INSTALLFOLDER">
+        <iis:WebSite Id="EsbResolution" Description='[WEB_SITE_NAME]' AutoStart='yes' StartOnInstall='yes' Directory="INSTALLFOLDER">
+          <iis:WebAddress Id="AllUnassigned" Port="8080" />
+        </iis:WebSite>
+      </Component>
+      <Component Id="ResolutionServiceVirtualDir" Guid="D1C44711-0A8D-4369-BB4B-2C27E7B9632D" KeyPath="yes" Directory="ResolutionService">
+        <iis:WebVirtualDir Id="ResolutionServiceVirtualDir" Alias="[VIRTUAL_DIR_NAME]" Directory="ResolutionService" WebSite="EsbResolution">
+          <iis:WebDirProperties Id="ResolutionServiceVirtualDirProperties" AnonymousAccess="no" BasicAuthentication="no" WindowsAuthentication="yes" />
+          <iis:WebApplication Id="ResolutionServicebApplication" Name="[VIRTUAL_DIR_NAME]"  WebAppPool="EsbResolution"/>
+        </iis:WebVirtualDir>
+      </Component>
+      <Component Id="ResolutionServiceBin" Guid="9071A449-909E-457A-8C5C-258C8CA2AEE1" KeyPath="yes" Permanent="no" Directory="ResolutionServiceBin">
+        <File Id="ResolutionServiceAssembly" Source="$(var.ResolutionService.TargetPath)" Name="SolidsoftReply.Esb.Libraries.ResolutionService.dll"/>
+      </Component>
+      <Component Id="ResolutionService" Guid="4C391AAA-A131-4092-9F99-8E302ACF827E" KeyPath="yes"  Permanent="no" Directory="ResolutionService">
+        <File Id="ResolutionService" Source="$(var.ResolutionService.ProjectDir)" Name="Resolver.svc"/>
+        <File Id="ResolutionServiceConfig" Source="$(var.ResolutionService.ProjectDir)" Name="Web.config"/>
+      </Component>
+			<Component Id="Facts" Guid="70C3CDEC-625E-4E87-BC55-EAC8C7CC3A88"  Permanent="no" Directory="GAC">
+        <File Id="FactsFile" Source="$(var.Facts.TargetPath)" ProcessorArchitecture="msil" Name="SolidsoftReply.Esb.Libraries.Facts.dll" Assembly=".net" KeyPath="yes" />
+			</Component>
+		  <Component Id="FactsReference" Guid="1838967C-20D7-4C4E-9651-056CF30987CA" Permanent="no" Directory="ReferenceAssemblies">
+        <!--Cannot use CopyFile because FactsFile is placed in actual GAC and not in the dummy GAC folder-->
+        <File Id="FactsFileReference" Source="$(var.Facts.TargetPath)" Name="SolidsoftReply.Esb.Libraries.Facts.dll"/>
+		  </Component>
+		</ComponentGroup>
+	</Fragment>
+
+  <Fragment>
+    <!-- MyWeb UI -->
+    <UI Id="ResolutionServiceUI">
+
+      <!--<UIRef Id="WixUI_FeatureTree" />
+      <UIRef Id="WixUI_ErrorProgressText" />-->
+
+      <DialogRef Id="IisSetupDlg" />
+      <DialogRef Id="PoolSettingsDlg" />
+      <!-- Injection of custom UI. -->
+      <Publish Dialog="CustomizeDlg" Control="Next"
+           Event="NewDialog" Value="IisSetupDlg"
+           Order="3">LicenseAccepted = "1"</Publish>
+      <Publish Dialog="VerifyReadyDlg" Control="Back"
+           Event="NewDialog" Value="PoolSettingsDlg">1</Publish>
+    </UI>
+  </Fragment>
+  
+	<Fragment>
+		<ComponentGroup Id="EsbBizTalkPipelineComponents">
+			<Component Id="EsbPipelineComponents" Guid="258FEC9E-3A9A-4376-A680-672655E8CE6D"  Permanent="no" Directory="GAC">
+        <File Id="EsbPipelineComponentsFile" Source="$(var.BizTalk.PipelineComponents.TargetPath)" ProcessorArchitecture="msil" Name="SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.dll" Assembly=".net" KeyPath="yes" />
+			</Component>
+		  <Component Id="EsbPipelineComponentsReference" Guid="0836F30E-4631-4FB1-8872-940FF46B8C48" Permanent="no" Directory="ReferenceAssemblies">
+        <!--Cannot use CopyFile because EsbPipelineComponentsFile is placed in actual GAC and not in the dummy GAC folder-->
+        <File Id="EsbPipelineComponentsFileReference" Source="$(var.BizTalk.PipelineComponents.TargetPath)" Name="SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.dll"/>
+		  </Component>
+      <Component Id="RegisteredEsbPipelineComponents" Guid="75CBFEA9-59DE-456E-BA79-B39C0930C408" KeyPath="yes"  Permanent="no" Directory="PIPELINECOMPONENTS" >
+        <File Id="EsbPipelineComponents" Name="SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.dll" Source="$(var.BizTalk.PipelineComponents.TargetPath)"/>
+        <RemoveFile Id="EsbPipelineComponents" Name="SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.dll" On="uninstall"/>
+      </Component>
+		</ComponentGroup>
+	</Fragment>
+
+  <Fragment>
+		<ComponentGroup Id="EsbOrchestrationComponents">
+      <Component Id="EsbOrchestration" Guid="E81717FF-89A1-49F2-80D1-D5562BC44196" Permanent="no" Directory="GAC">
+        <File Id="EsbOrchestrationFile" Source="$(var.BizTalk.Orchestration.TargetPath)" ProcessorArchitecture="msil" Name="SolidsoftReply.Esb.Libraries.BizTalk.Orchestration.dll" Assembly=".net" KeyPath="yes"/>
+      </Component>
+		  <Component Id="EsbOrchestrationReference" Guid="BCF27791-E41A-4ADB-917D-0CD49589ABB6" Permanent="no" Directory="ReferenceAssemblies">
+        <!--Cannot use CopyFile because EsbOrchestrationFile is placed in actual GAC and not in the dummy GAC folder-->
+        <File Id="EsbOrchestrationFileReference" Source="$(var.BizTalk.Orchestration.TargetPath)" Name="SolidsoftReply.Esb.Libraries.BizTalk.Orchestration.dll"/>
+		  </Component>
+		</ComponentGroup>
+	</Fragment>
+
+  <Fragment>
+		<ComponentGroup Id="EsbUddiHelperComponents">
+		  <Component Id="EsbUddiHelper" Guid="EE779FBF-E813-4A86-8A5B-8ECE85BB539A" Permanent="no" Directory="GAC">
+        <File Id="EsbUddiHelperFile" Source="$(var.Uddi.TargetPath)" ProcessorArchitecture="msil" Name="SolidsoftReply.Esb.Libraries.Uddi.dll" Assembly=".net" KeyPath="yes"/>
+		  </Component>
+		  <Component Id="EsbUddiHelperReference" Guid="EBF52FB3-13C8-4672-8B03-CFFFCB7029CC" Permanent="no" Directory="ReferenceAssemblies">
+        <!--Cannot use CopyFile because EsbUddiHelperFile is placed in actual GAC and not in the dummy GAC folder-->
+        <File Id="EsbUddiHelperFileReference" Source="$(var.Uddi.TargetPath)" Name="SolidsoftReply.Esb.Libraries.Uddi.dll"/>
+		  </Component>
+		</ComponentGroup>
+	</Fragment>
+  
+  <Fragment>
+    <PropertyRef Id="NETFRAMEWORK40FULLINSTALLROOTDIR"/>
+    <PropertyRef Id="NETFRAMEWORK40FULLINSTALLROOTDIR64"/>
+    <PropertyRef Id="NETFRAMEWORK40CLIENTINSTALLROOTDIR"/>
+    <PropertyRef Id="NETFRAMEWORK40CLIENTINSTALLROOTDIR64"/>
+		<ComponentGroup Id="EsbEventSources" Directory="INSTALLFOLDER">
+      <Component Id="EsbResolverServiceEventSource32Full" Guid="4E980BE6-BF92-4C90-BACD-9D67D08EF7CD" Permanent="yes">
+        <Condition><![CDATA[NETFRAMEWORK40FULLINSTALLROOTDIR AND NOT VersionNT64]]></Condition>
+        <CreateFolder/>
+        <util:EventSource
+         xmlns:Util="http://schemas.microsoft.com/wix/UtilExtension"
+         Name="ESBResolutionService"
+         Log="SolidsoftReplyESBLibraries"
+         EventMessageFile="[NETFRAMEWORK40FULLINSTALLROOTDIR]EventLogMessages.dll"
+        />
+		  </Component>
+		  <Component Id="EsbLibrariesEventSource32Full" Guid="409C0A90-7082-4A27-B206-BFB5FB34298A" Permanent="yes">
+        <Condition><![CDATA[NETFRAMEWORK40FULLINSTALLROOTDIR AND NOT VersionNT64]]></Condition>
+        <CreateFolder/>
+        <util:EventSource
+         xmlns:Util="http://schemas.microsoft.com/wix/UtilExtension"
+         Name="ESBLibraries"
+         Log="SolidsoftReplyESBLibraries"
+         EventMessageFile="[NETFRAMEWORK40FULLINSTALLROOTDIR]EventLogMessages.dll"
+        />
+		  </Component>
+      <Component Id="EsbResolverServiceEventSource32Client" Guid="6D8066C3-4D6D-4766-A33E-38D523E10152" Permanent="yes">
+        <Condition><![CDATA[NETFRAMEWORK40CLIENTINSTALLROOTDIR AND NOT VersionNT64]]></Condition>
+        <CreateFolder/>
+        <util:EventSource
+         xmlns:Util="http://schemas.microsoft.com/wix/UtilExtension"
+         Name="ESBResolutionService"
+         Log="SolidsoftReplyESBLibraries"
+         EventMessageFile="[NETFRAMEWORK40CLIENTINSTALLROOTDIR]EventLogMessages.dll"
+        />
+		  </Component>
+      <Component Id="EsbLibrariesEventSource32Client" Guid="4BD0ED7A-4D4E-45A0-BA0F-E47201787098" Permanent="yes">
+        <Condition><![CDATA[NETFRAMEWORK40FULLINSTALLROOTDIR AND NOT VersionNT64]]></Condition>
+        <CreateFolder/>
+        <util:EventSource
+         xmlns:Util="http://schemas.microsoft.com/wix/UtilExtension"
+         Name="ESBLibraries"
+         Log="SolidsoftReplyESBLibraries"
+         EventMessageFile="[NETFRAMEWORK40CLIENTINSTALLROOTDIR]EventLogMessages.dll"
+        />
+		  </Component>
+      <Component Id="EsbResolverServiceEventSource64Full" Guid="3BF95BEE-4B90-40A1-BCD6-3E317E7BE7D9" Permanent="yes">
+        <Condition><![CDATA[NETFRAMEWORK40FULLINSTALLROOTDIR64 AND VersionNT64]]></Condition>
+        <CreateFolder/>
+        <util:EventSource
+         xmlns:Util="http://schemas.microsoft.com/wix/UtilExtension"
+         Name="ESBResolutionService"
+         Log="SolidsoftReplyESBLibraries"
+         EventMessageFile="[NETFRAMEWORK40FULLINSTALLROOTDIR64]EventLogMessages.dll"
+        />
+		  </Component>
+      <Component Id="EsbLibrariesEventSource64Full" Guid="C2DFDFB4-2773-4E6E-9237-9C5701C9D35E" Permanent="yes">
+        <Condition><![CDATA[NETFRAMEWORK40FULLINSTALLROOTDIR64 AND VersionNT64]]></Condition>
+        <CreateFolder/>
+        <util:EventSource
+         xmlns:Util="http://schemas.microsoft.com/wix/UtilExtension"
+         Name="ESBLibraries"
+         Log="SolidsoftReplyESBLibraries"
+         EventMessageFile="[NETFRAMEWORK40FULLINSTALLROOTDIR64]EventLogMessages.dll"
+        />
+		  </Component>
+      <Component Id="EsbResolverServiceEventSource64Client" Guid="24DBF334-F65C-48D4-965F-63BEC6A281C3" Permanent="yes">
+        <Condition><![CDATA[NETFRAMEWORK40CLIENTINSTALLROOTDIR64 AND VersionNT64]]></Condition>
+        <CreateFolder/>
+        <util:EventSource
+         xmlns:Util="http://schemas.microsoft.com/wix/UtilExtension"
+         Name="ESBResolutionService"
+         Log="SolidsoftReplyESBLibraries"
+         EventMessageFile="[NETFRAMEWORK40CLIENTINSTALLROOTDIR64]EventLogMessages.dll"
+        />
+		  </Component>
+		  <Component Id="EsbLibrariesEventSource64Client" Guid="D0563677-3B6A-4F7F-9B9D-373BA6362BEB" Permanent="yes">
+        <Condition><![CDATA[NETFRAMEWORK40CLIENTINSTALLROOTDIR64 AND VersionNT64]]></Condition>
+        <CreateFolder/>
+        <util:EventSource
+         xmlns:Util="http://schemas.microsoft.com/wix/UtilExtension"
+         Name="ESBLibraries"
+         Log="SolidsoftReplyESBLibraries"
+         EventMessageFile="[NETFRAMEWORK40CLIENTINSTALLROOTDIR64]EventLogMessages.dll"
+        />
+		  </Component>
+		</ComponentGroup>
+  </Fragment>
+
+</Wix>

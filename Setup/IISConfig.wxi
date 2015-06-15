@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <!-- Initialize virtual directory name -->
+  <Property Id="VIRTUAL_DIR_NAME" Value="ResolutionService" />
+  
+  <Property Id="WEB_SITE_NAME" Value="Solidsoft Reply ESB Web Site" />
+
+  <!-- Initialize web app name -->
+  <Property Id="WEB_APP_NAME" Value="EsbResolution" />
+
+  <!-- Initialize app pool identity -->
+  <Property Id="WEB_APP_POOL_IDENTITY_DOMAIN" Value="DOMAIN" />
+  <Property Id="WEB_APP_POOL_IDENTITY_NAME" Value="account name" />
+  <Property Id="WEB_APP_POOL_IDENTITY_PWD" Hidden="yes" />
+</Include>

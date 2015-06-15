@@ -32,11 +32,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{F92BC279
 		NuGet\tools\Init.ps1 = NuGet\tools\Init.ps1
 	EndProjectSection
 EndProject
-Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Setup", "Setup\Setup.wixproj", "{3D5F6ACB-D911-41C6-917D-04649BECEDFA}"
-	ProjectSection(ProjectDependencies) = postProject
-		{D8ED419E-354B-40E0-B067-3F72A76FF632} = {D8ED419E-354B-40E0-B067-3F72A76FF632}
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Setup", "Setup", "{D3863613-C1F7-4AC6-AB2A-043D146E1BA1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facts.Test", "Tests\Facts.Test\Facts.Test.csproj", "{DA7B8324-94F1-447A-9BCD-E2C4F4797CFC}"
@@ -57,6 +52,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Signing", "Signing", "{1A23
 		Facts\ESB.publickey = Facts\ESB.publickey
 		Facts\ESB.snk = Facts\ESB.snk
 	EndProjectSection
+EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Setup", "Setup\Setup.wixproj", "{FFAA37C5-155E-4DE8-B4BA-D05F0B4C4A29}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -128,16 +125,6 @@ Global
 		{08E975CF-7BEB-4968-8CC5-0832F670815D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{08E975CF-7BEB-4968-8CC5-0832F670815D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{08E975CF-7BEB-4968-8CC5-0832F670815D}.Release|x86.ActiveCfg = Release|Any CPU
-		{3D5F6ACB-D911-41C6-917D-04649BECEDFA}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{3D5F6ACB-D911-41C6-917D-04649BECEDFA}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{3D5F6ACB-D911-41C6-917D-04649BECEDFA}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{3D5F6ACB-D911-41C6-917D-04649BECEDFA}.Debug|x86.ActiveCfg = Debug|x86
-		{3D5F6ACB-D911-41C6-917D-04649BECEDFA}.Debug|x86.Build.0 = Debug|x86
-		{3D5F6ACB-D911-41C6-917D-04649BECEDFA}.Release|Any CPU.ActiveCfg = Release|x86
-		{3D5F6ACB-D911-41C6-917D-04649BECEDFA}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{3D5F6ACB-D911-41C6-917D-04649BECEDFA}.Release|Mixed Platforms.Build.0 = Release|x86
-		{3D5F6ACB-D911-41C6-917D-04649BECEDFA}.Release|x86.ActiveCfg = Release|x86
-		{3D5F6ACB-D911-41C6-917D-04649BECEDFA}.Release|x86.Build.0 = Release|x86
 		{DA7B8324-94F1-447A-9BCD-E2C4F4797CFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DA7B8324-94F1-447A-9BCD-E2C4F4797CFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA7B8324-94F1-447A-9BCD-E2C4F4797CFC}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -168,6 +155,16 @@ Global
 		{B60F84C7-0CAE-490A-99B1-B58B2C0F5528}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{B60F84C7-0CAE-490A-99B1-B58B2C0F5528}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{B60F84C7-0CAE-490A-99B1-B58B2C0F5528}.Release|x86.ActiveCfg = Release|Any CPU
+		{FFAA37C5-155E-4DE8-B4BA-D05F0B4C4A29}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{FFAA37C5-155E-4DE8-B4BA-D05F0B4C4A29}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{FFAA37C5-155E-4DE8-B4BA-D05F0B4C4A29}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{FFAA37C5-155E-4DE8-B4BA-D05F0B4C4A29}.Debug|x86.ActiveCfg = Debug|x86
+		{FFAA37C5-155E-4DE8-B4BA-D05F0B4C4A29}.Debug|x86.Build.0 = Debug|x86
+		{FFAA37C5-155E-4DE8-B4BA-D05F0B4C4A29}.Release|Any CPU.ActiveCfg = Release|x86
+		{FFAA37C5-155E-4DE8-B4BA-D05F0B4C4A29}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{FFAA37C5-155E-4DE8-B4BA-D05F0B4C4A29}.Release|Mixed Platforms.Build.0 = Release|x86
+		{FFAA37C5-155E-4DE8-B4BA-D05F0B4C4A29}.Release|x86.ActiveCfg = Release|x86
+		{FFAA37C5-155E-4DE8-B4BA-D05F0B4C4A29}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -175,8 +172,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{D8ED419E-354B-40E0-B067-3F72A76FF632} = {282BD350-4FB0-437C-9006-47804BC00CFE}
 		{F92BC279-C06D-458C-AECA-1E3D00984A7F} = {EA44A2D3-E268-4834-A7B7-1114243D3A89}
-		{3D5F6ACB-D911-41C6-917D-04649BECEDFA} = {D3863613-C1F7-4AC6-AB2A-043D146E1BA1}
 		{DA7B8324-94F1-447A-9BCD-E2C4F4797CFC} = {282BD350-4FB0-437C-9006-47804BC00CFE}
 		{EEC08640-C904-4037-AF75-448FED068D61} = {282BD350-4FB0-437C-9006-47804BC00CFE}
+		{FFAA37C5-155E-4DE8-B4BA-D05F0B4C4A29} = {D3863613-C1F7-4AC6-AB2A-043D146E1BA1}
 	EndGlobalSection
 EndGlobal

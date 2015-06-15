@@ -381,7 +381,16 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Dictionaries
 
             while (reader.LocalName == string.Empty)
             {
-                reader.Read();
+                try
+                {
+                    reader.Read();
+                }
+                catch (XmlException)
+                {
+                    // If we never find an element with a local name, this indicates that there is no content,
+                    // so catch and consume the error and return a default key.
+                    return default(TKey);
+                }
             }
 
             using (var ms = new MemoryStream())
@@ -421,7 +430,16 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Dictionaries
 
             while (reader.LocalName == string.Empty)
             {
-                reader.Read();
+                try
+                {
+                    reader.Read();
+                }
+                catch (XmlException)
+                {
+                    // If we never find an element with a local name, this indicates that there is no content,
+                    // so catch and consume the error and return a default value.
+                    return default(TValue);
+                }
             }
 
             using (var ms = new MemoryStream())
