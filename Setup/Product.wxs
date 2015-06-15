@@ -12,8 +12,9 @@
 		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <Media Id="1" Cabinet="cab1.cab" EmbedCab="yes" />
 
-    <UIRef Id="ResolutionServiceUI" />
     <UIRef Id="WixUI_Mondo" />
+    <!-- ResolutionServiceUI must be placed after WixUI_Mondo in order to overwrite event handlers -->
+    <UIRef Id="ResolutionServiceUI" />
     <UIRef Id="WixUI_ErrorProgressText" />
     
     <WixVariable Id="WixUILicenseRtf" Value="$(var.SourceDir)\LICENSE.rtf" />
@@ -149,9 +150,14 @@
       <!-- Injection of custom UI. -->
       <Publish Dialog="CustomizeDlg" Control="Next"
            Event="NewDialog" Value="IisSetupDlg"
-           Order="3">LicenseAccepted = "1"</Publish>
+           Order="3"><![CDATA[LicenseAccepted = "1" AND &EsbResolutionServiceComponents>=1]]></Publish>
+      <Publish Dialog="CustomizeDlg" Control="Next"
+           Event="NewDialog" Value="VerifyReadyDlg"
+           Order="3"><![CDATA[LicenseAccepted = "1" AND &EsbResolutionServiceComponents=0]]></Publish>
       <Publish Dialog="VerifyReadyDlg" Control="Back"
-           Event="NewDialog" Value="PoolSettingsDlg">1</Publish>
+           Event="NewDialog" Value="PoolSettingsDlg"><![CDATA[&EsbResolutionServiceComponents>=1]]></Publish>
+      <Publish Dialog="VerifyReadyDlg" Control="Back"
+           Event="NewDialog" Value="CustomizeDlg"><![CDATA[&EsbResolutionServiceComponents=0]]></Publish>
     </UI>
   </Fragment>
   
