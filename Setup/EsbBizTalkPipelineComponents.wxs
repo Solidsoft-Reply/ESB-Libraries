@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright 2015 Solidsoft Reply Limited.
+
+      Licensed under the Apache License, Version 2.0 (the "License");
+      you may not use this file except in compliance with the License.
+      You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
+      -->
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Fragment>
     <ComponentGroup Id="EsbBizTalkPipelineComponents">
@@ -9,7 +23,7 @@
         <!--Cannot use CopyFile because EsbPipelineComponentsFile is placed in actual GAC and not in the dummy GAC folder-->
         <File Id="EsbPipelineComponentsFileReference" Source="$(var.BizTalk.PipelineComponents.TargetPath)" Name="SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.dll"/>
       </Component>
-      <Component Id="RegisteredEsbPipelineComponents" Guid="75CBFEA9-59DE-456E-BA79-B39C0930C408" KeyPath="yes"  Permanent="no" Directory="PIPELINECOMPONENTS" >
+      <Component Id="RegisteredEsbPipelineComponents" Guid="75CBFEA9-59DE-456E-BA79-B39C0930C408" KeyPath="yes" Permanent="no" Directory="PipelineComponents" >
         <File Id="EsbPipelineComponents" Name="SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.dll" Source="$(var.BizTalk.PipelineComponents.TargetPath)"/>
         <RemoveFile Id="EsbPipelineComponents" Name="SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.dll" On="uninstall"/>
       </Component>
