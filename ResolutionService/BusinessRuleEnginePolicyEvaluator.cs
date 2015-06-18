@@ -204,6 +204,7 @@ namespace SolidsoftReply.Esb.Libraries.ResolutionService
                         // Execute the policy with trace
                         policyTester.Execute(shortTermFacts, dti);
 
+                        // This is deliberately using Trace, rather than Debug
                         Trace.Write("[BusinessRuleEnginePolicyEvaluator] Eval Trace: " + dti.GetTraceOutput());
                     }
                     else
@@ -211,6 +212,11 @@ namespace SolidsoftReply.Esb.Libraries.ResolutionService
                         // Execute the policy
                         policyTester.Execute(shortTermFacts);
                     }
+                }
+                catch(Exception ex)
+                {
+                    EventLog.WriteEntry("ESBResolutionService", GetFullMessage(ex));
+                    throw;
                 }
                 finally
                 {
@@ -234,6 +240,7 @@ namespace SolidsoftReply.Esb.Libraries.ResolutionService
                         // Execute the policy with trace
                         policy.Execute(shortTermFacts, dti);
 
+                        // This is deliberately using Trace, rather than Debug
                         Trace.Write("[BusinessRuleEnginePolicyEvaluator] Eval Trace: " + dti.GetTraceOutput());
                     }
                     else
@@ -241,6 +248,11 @@ namespace SolidsoftReply.Esb.Libraries.ResolutionService
                         // Execute the policy
                         policy.Execute(shortTermFacts);
                     }
+                }
+                catch (Exception ex)
+                {
+                    EventLog.WriteEntry("ESBResolutionService", GetFullMessage(ex));
+                    throw;
                 }
                 finally
                 {
@@ -347,6 +359,7 @@ namespace SolidsoftReply.Esb.Libraries.ResolutionService
                         // Execute the policy with trace
                         policyTester.Execute(shortTermFacts, dti);
 
+                        // This is deliberately using Trace, rather than Debug
                         Trace.Write("[BusinessRuleEnginePolicyEvaluator] GetBamActivityPolicy Trace: " + dti.GetTraceOutput());
                     }
                     else
@@ -354,6 +367,11 @@ namespace SolidsoftReply.Esb.Libraries.ResolutionService
                         // Execute the policy
                         policyTester.Execute(shortTermFacts);
                     }
+                }
+                catch (Exception ex)
+                {
+                    EventLog.WriteEntry("ESBResolutionService", GetFullMessage(ex));
+                    throw;
                 }
                 finally
                 {
@@ -379,6 +397,7 @@ namespace SolidsoftReply.Esb.Libraries.ResolutionService
                         // Execute the policy with trace
                         policy.Execute(shortTermFacts, dti);
 
+                        // This is deliberately using Trace, rather than Debug
                         Trace.Write("[BusinessRuleEnginePolicyEvaluator] GetBamActivityPolicy Trace: " + dti.GetTraceOutput());
                     }
                     else
@@ -386,6 +405,11 @@ namespace SolidsoftReply.Esb.Libraries.ResolutionService
                         // Execute the policy
                         policy.Execute(shortTermFacts);
                     }
+                }
+                catch (Exception ex)
+                {
+                    EventLog.WriteEntry("ESBResolutionService", GetFullMessage(ex));
+                    throw;
                 }
                 finally
                 {
@@ -396,6 +420,17 @@ namespace SolidsoftReply.Esb.Libraries.ResolutionService
             Debug.Write("[BusinessRuleEnginePolicyEvaluator] GetBamActivityPolicy - Returned a BAM policy.");
 
             return bamActivityStep;
+        }
+
+        /// <summary>
+        /// Recurcive function that returns a string composed of all exception messages including inner 
+        /// exceptions.
+        /// </summary>
+        /// <param name="ex">The current eception</param>
+        /// <returns>A string composed of all exception messages including inner exceptions.</returns>
+        private static string GetFullMessage(Exception ex)
+        {
+            return ex.Message + ex.InnerException == null ? string.Empty : "\r\n" + GetFullMessage(ex.InnerException);
         }
 
         /// <summary>

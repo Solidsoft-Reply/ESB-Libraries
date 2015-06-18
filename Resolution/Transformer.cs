@@ -19,6 +19,7 @@
 namespace SolidsoftReply.Esb.Libraries.Resolution
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.Reflection;
@@ -29,6 +30,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
     /// <summary>
     /// Transform helper class
     /// </summary>
+    [Serializable]
     public class Transformer
     {
         /// <summary>
@@ -205,7 +207,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 // Return the msg out                
                 msgOut.LoadXml(writer.ToString());
 
-                transformResults = new TransformResults(messageIn, msgOut, xslDoc, xslArgList, sourceSchemas, targetSchemas, from schemaName in targetSchemas select SchemaStrongNameCache.GetSchemaStrongName(map.GetType(), schemaName));
+                transformResults = new TransformResults(messageIn, msgOut, xslDoc, xslArgList, sourceSchemas, targetSchemas, (from schemaName in targetSchemas select SchemaStrongNameCache.GetSchemaStrongName(map.GetType(), schemaName)).ToList<string>());
             }
             finally
             {

@@ -312,18 +312,18 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// <summary>
         /// Inserts or updates milestones and data items for the current activity instance, as specified in the track points for the current step..
         /// </summary>
-        public void UpdateActivities()
+        public void UpdateActivityAll()
         {
-            this.DoUpdateActivities(string.Empty, false, null);
+            this.DoUpdateActivity(string.Empty, false, null);
         }
 
         /// <summary>
         /// Inserts or updates milestones and data items for the current activity instance, as specified in the track points for the current step..
         /// </summary>
         /// <param name="afterMap">Defines if the after-map step should be used.</param>
-        public void UpdateActivities(bool afterMap)
+        public void UpdateActivityAll(bool afterMap)
         {
-            this.DoUpdateActivities(string.Empty, afterMap, null);
+            this.DoUpdateActivity(string.Empty, afterMap, null);
         }
 
         /// <summary>
@@ -331,9 +331,9 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// </summary>
         /// <param name="afterMap">Defines if the after-map step should be used.</param>
         /// <param name="activityInstance">Optional trace instance identifier.</param>
-        public void UpdateActivities(bool afterMap, string activityInstance)
+        public void UpdateActivityAll(bool afterMap, string activityInstance)
         {
-            this.DoUpdateActivities(string.Empty, afterMap, activityInstance);
+            this.DoUpdateActivity(string.Empty, afterMap, activityInstance);
         }
 
         /// <summary>
@@ -342,7 +342,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// <param name="itemName">The name of the data item.</param>
         public void UpdateActivity(string itemName)
         {
-            this.DoUpdateActivities(itemName, false, null);
+            this.DoUpdateActivity(itemName, false, null);
         }
 
         /// <summary>
@@ -352,7 +352,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// <param name="afterMap">Defines if the after-map step should be used.</param>
         public void UpdateActivity(string itemName, bool afterMap)
         {
-            this.DoUpdateActivities(itemName, afterMap, null);
+            this.DoUpdateActivity(itemName, afterMap, null);
         }
 
         /// <summary>
@@ -363,7 +363,24 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// <param name="activityInstance">Optional trace instance identifier.</param>
         public void UpdateActivity(string itemName, bool afterMap, string activityInstance)
         {
-            this.DoUpdateActivities(itemName, afterMap, activityInstance);
+            this.DoUpdateActivity(itemName, afterMap, activityInstance);
+        }
+
+        /// <summary>
+        /// Gets a registered activity instance.
+        /// </summary>
+        /// <param name="activityInstanceKey">The activity instance key.</param>
+        /// <returns>An activity instance entry.</returns>
+        private string GetActivityInstance(string activityInstanceKey)
+        {
+            try
+            {
+                return this.activityInstances[activityInstanceKey];
+            }
+            catch (KeyNotFoundException ex)
+            {
+                throw new EsbResolutionException(string.Format(Resources.ExceptionActivityNotRegistered, this.Directive.BamActivity, this.Directive.BamStepName));
+            }
         }
 
         /// <summary>
@@ -404,7 +421,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
 
                 this.InnerEventStream.AddReference(
                     this.Directive.BamActivity,
-                    this.activityInstances[activityInstanceKey],
+                    this.GetActivityInstance(activityInstanceKey),
                     referenceTrackPoint.ReferenceType,
                     referenceTrackPoint.ItemName,
                     referenceData.ToString(),
@@ -445,7 +462,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
 
                 this.InnerEventStream.AddRelatedActivity(
                     this.Directive.BamActivity,
-                    this.activityInstances[activityInstanceKey],
+                    this.GetActivityInstance(activityInstanceKey),
                     relationshipTrackPoint.ItemName,
                     relatedTraceId.ToString());
             }
@@ -473,7 +490,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             var activityInstanceKey = string.Format("{0}#{1}#{2}", this.Directive.BamActivity, this.Directive.BamStepName, activityInstance ?? this.currentActivityInstanceToken);
             var extractor = new XPathDataExtractorWithMacros(this.BamStepData.Properties, this.BamStepData.ValueList);
             this.activityInstances.Add(activityInstanceKey, Convert.ToString(extractor.GetValue(startTrackPoint.ExtractionInfo, startTrackPoint.Location, this.BamStepData.XmlDocument) ?? string.Empty));
-            this.InnerEventStream.BeginActivity(this.Directive.BamActivity, this.activityInstances[activityInstanceKey]);
+            this.InnerEventStream.BeginActivity(this.Directive.BamActivity, this.GetActivityInstance(activityInstanceKey));
         }
 
         /// <summary>
@@ -502,7 +519,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             {
                 this.InnerEventStream.EnableContinuation(
                     this.Directive.BamActivity,
-                    this.activityInstances[activityInstanceKey],
+                    this.GetActivityInstance(activityInstanceKey),
                     continuationToken.ToString());
             }
         }
@@ -551,7 +568,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             }
 
             var activityInstanceKey = string.Format("{0}#{1}#{2}", this.Directive.BamActivity, this.Directive.BamStepName, activityInstance ?? this.currentActivityInstanceToken);
-            this.InnerEventStream.EndActivity(this.Directive.BamActivity, this.activityInstances[activityInstanceKey]);
+            this.InnerEventStream.EndActivity(this.Directive.BamActivity, this.GetActivityInstance(activityInstanceKey));
             this.activityInstances.Clear();
         }
 
@@ -561,7 +578,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// <param name="itemName">The name of the data item.</param>
         /// <param name="afterMap">Defines if the after-map step should be used.</param>
         /// <param name="activityInstance">Optional trace instance identifier.</param>
-        private void DoUpdateActivities(string itemName, bool afterMap, string activityInstance)
+        private void DoUpdateActivity(string itemName, bool afterMap, string activityInstance)
         {
             if (this.Directive == null || this.activityInstances == null)
             {
@@ -601,7 +618,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 }
             }
 
-            this.InnerEventStream.UpdateActivity(this.Directive.BamActivity, this.activityInstances[activityInstanceKey], nameValuePairs.ToArray());
+            this.InnerEventStream.UpdateActivity(this.Directive.BamActivity, this.GetActivityInstance(activityInstanceKey), nameValuePairs.ToArray());
         }
 
         /// <summary>
@@ -644,9 +661,9 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
 
             // Because of a logic error in Microsoft's code, a separate ActivityInterceptorConfiguration must be used 
             // for each location.  The following code extracts only those track points for a given step name (location).
-            return from ResolutionService.TrackPoint tp in bamActivityStep.TrackPoints
+            return (from ResolutionService.TrackPoint tp in bamActivityStep.TrackPoints
                    where tp.Type == type && (string)tp.Location == stepName
-                   select tp;
+                   select tp).ToList();
         }
 
         /// <summary>

@@ -100,6 +100,9 @@
     <Compile Include="Dictionaries\XmlSerializableDictionaryException.cs" />
     <Compile Include="Directive.cs" />
     <Compile Include="DirectiveEventStream.cs" />
+    <Compile Include="EventLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ExtensionHelpers.cs" />
     <Compile Include="MessageDirectionTypes.cs" />
     <Compile Include="SchemaStrongNameCache.cs" />
@@ -111,11 +114,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Resolver.cs" />
     <Compile Include="Directives.cs" />
@@ -152,10 +150,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dictionaries\Resources\ParametersSchema.xsd" />
     <None Include="ESB.snk" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
     <None Include="Service References\ResolutionService\Resolution.ResolutionService.BamActivityStep.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -183,7 +177,9 @@
     <WCFMetadataStorage Include="Service References\ResolutionService\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ResolutionService\configuration91.svcinfo" />
+    <None Include="Service References\ResolutionService\configuration91.svcinfo">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ResolutionService\configuration.svcinfo" />

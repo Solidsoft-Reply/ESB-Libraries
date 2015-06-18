@@ -21,7 +21,7 @@
 namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
 {
     using System;
-    using System.Diagnostics;
+    ////using System.Diagnostics;
 
     using BTS;
 
@@ -226,7 +226,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
             {
                 try
                 {
-                    EventLog.WriteEntry("Application", ex.ToString(), EventLogEntryType.Error, 3);
+                    EventLog.WriteEntry("Application", ex.ToString(), System.Diagnostics.EventLogEntryType.Error, 3);
                 }
                 // ReSharper disable once EmptyGeneralCatchClause
                 catch
