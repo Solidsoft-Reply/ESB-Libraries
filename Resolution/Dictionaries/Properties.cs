@@ -26,16 +26,25 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
     using System.Xml.Schema;
     using System.Xml.Serialization;
 
+    using AssemblyProperties = SolidsoftReply.Esb.Libraries.Resolution.Properties;
+
     /// <summary>
     /// Xml Serialisable dictionary for directives.   Inherits from the serialisable
     /// generic dictionary.
     /// </summary>
-    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here."),]
+    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly",
+        Justification = "Reviewed. Suppression is OK here."),]
     [XmlSchemaProvider("GetDictionarySchema")]
-    [XmlRoot("Properties", Namespace = "http://solidsoftreply.com/schemas/webservices/esbresolutionservice/2015/05", IsNullable = true)]
+    [XmlRoot("Properties", Namespace = "http://solidsoftreply.com/schemas/webservices/esbresolutionservice/2015/05",
+        IsNullable = true)]
     [Serializable]
     public class Properties : DictionaryBase<Directive.Property>
     {
+        /// <summary>
+        /// The XML schema for the dictionary.
+        /// </summary>
+        private XmlSchema schema;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Properties"/> class.
         /// </summary>
@@ -129,8 +138,17 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
             return GetDictionarySchema(
                 schemaSet,
                 "PropertiesType",
-                Resolution.Properties.Resources.DictionaryNamespace,
-                Resolution.Properties.Resources.XsdPropertiesSchemaFile);
+                AssemblyProperties.Resources.DictionaryNamespace,
+                AssemblyProperties.Resources.XsdPropertiesSchemaFile);
+        }
+
+        /// <summary>
+        /// Returns the schema for the current dictionary.
+        /// </summary>
+        /// <returns>The XSD schema for the current dictionary.</returns>
+        public override XmlSchema GetSchema()
+        {
+            return this.schema ?? (this.schema = GetSchema(AssemblyProperties.Resources.XsdPropertiesSchemaFile));
         }
 
         /// <summary>
@@ -150,7 +168,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
         /// <param name="key">The key value to be serialized.</param>
         protected override void WriteKey(XmlWriter writer, string key)
         {
-            this.WriteKey(writer, key, "Properties", Resolution.Properties.Resources.DictionaryNamespace);
+            this.WriteKey(writer, key, "Properties", AssemblyProperties.Resources.DictionaryNamespace);
         }
     }
 }

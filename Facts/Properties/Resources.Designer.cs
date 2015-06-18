@@ -277,7 +277,7 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The {0} cannot be de-serialized.   The &lt;Key&gt; element has invalid content..
+        ///   Looks up a localized string similar to The {0} cannot be de-serialized.   The &lt;Key&gt; element is invalid.  It must contain &lt;string&gt;keyValue&lt;/string&gt;.
         /// </summary>
         internal static string ExceptionDeserializationInvalidKeyElement {
             get {
@@ -718,7 +718,7 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SolidsoftReply.Esb.Libraries.Facts.Dictionaries.Resources..DictionarySchema.xsd.
+        ///   Looks up a localized string similar to SolidsoftReply.Esb.Libraries.Facts.Dictionaries.Resources.DictionarySchema.xsd.
         /// </summary>
         internal static string XsdDictionarySchemaFile {
             get {

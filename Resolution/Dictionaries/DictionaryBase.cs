@@ -28,6 +28,8 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
     using System.Xml.Schema;
     using System.Xml.Serialization;
 
+    using AssemblyProperties = SolidsoftReply.Esb.Libraries.Resolution.Properties;
+
     /// <summary>
     /// Xml Serialisable dictionary base class.   Inherits from the serialisable
     /// generic dictionary.
@@ -41,6 +43,11 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
     [Serializable]
     public class DictionaryBase<T> : XmlSerializableDictionary<string, T>
     {
+        /// <summary>
+        /// The XML schema for the dictionary.
+        /// </summary>
+        private XmlSchema schema;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="DictionaryBase{T}"/> class. 
         /// </summary>
@@ -138,11 +145,11 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
             {
                 var message = string.Format(
                     CultureInfo.CurrentCulture,
-                    Resolution.Properties.Resources.ExceptionSchemaSetIsNull,
+                    AssemblyProperties.Resources.ExceptionSchemaSetIsNull,
                     "GetDictionarySchema");
                 var innerException = new ArgumentNullException(
                     "schemaSet",
-                    Resolution.Properties.Resources.ExceptionValueIsNull);
+                    AssemblyProperties.Resources.ExceptionValueIsNull);
 
                 throw new EsbResolutionException(message, innerException);
             }
@@ -152,7 +159,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
 
             if (stream == null)
             {
-                throw new EsbResolutionException(Resolution.Properties.Resources.ExceptionSchemaResourceNotFound);
+                throw new EsbResolutionException(AssemblyProperties.Resources.ExceptionSchemaResourceNotFound);
             }
 
             var xsdReader = new XmlTextReader(stream);
@@ -164,6 +171,15 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
         }
 
         /// <summary>
+        /// Returns the schema for the current dictionary.
+        /// </summary>
+        /// <returns>The XSD schema for the current dictionary.</returns>
+        public override XmlSchema GetSchema()
+        {
+            return this.schema ?? (this.schema = GetSchema(AssemblyProperties.Resources.XsdDictionarySchemaFile));
+        }
+
+        /// <summary>
         /// Reads a key value as a string.
         /// </summary>
         /// <param name="reader">An XML reader containing the serialized key.</param>
@@ -171,12 +187,12 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
         /// <returns>A string key value.</returns>
         protected internal string ReadKey(XmlReader reader, string dictionaryType)
         {
-            if (!reader.ReadToFollowing("string"))
+            if (!reader.ReadToFollowing("string", string.Empty))
             {
                 throw new EsbResolutionException(
                     string.Format(
                         CultureInfo.CurrentCulture,
-                        Resolution.Properties.Resources.ExceptionDeserializationInvalidKeyElement,
+                        AssemblyProperties.Resources.ExceptionDeserializationInvalidKeyElement,
                         dictionaryType));
             }
 
@@ -206,7 +222,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
                 throw new EsbResolutionException(
                     string.Format(
                         CultureInfo.CurrentCulture,
-                        Resolution.Properties.Resources.ExceptionSerialization,
+                        AssemblyProperties.Resources.ExceptionSerialization,
                         dictionaryType),
                     ex);
             }

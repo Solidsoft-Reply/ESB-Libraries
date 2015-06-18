@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright 2015 Solidsoft Reply Limited.
+
+      Licensed under the Apache License, Version 2.0 (the "License");
+      you may not use this file except in compliance with the License.
+      You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
+      -->
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:iis="http://schemas.microsoft.com/wix/IIsExtension"
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+  <Fragment>
+    <?include IisConfig.wxi ?>
+    <ComponentGroup Id="EsbResolutionServiceComponents">
+      <Component Id="EsbResolutionWebsiteAppPool" Guid="19229225-F920-423E-AF92-4CF1B357E950" KeyPath="yes"  Permanent="no" Directory="INSTALLFOLDER">
+        <util:User Id="AppPoolIdentity"
+						   CreateUser="no"
+						   Name="[WEB_APP_POOL_IDENTITY_NAME]"
+						   Password="[WEB_APP_POOL_IDENTITY_PWD]"
+						   Domain="[WEB_APP_POOL_IDENTITY_DOMAIN]" />
+        <iis:WebAppPool Id="EsbResolution"
+                          Name="[WEB_APP_NAME]"
+                          Identity="other"
+								          User="AppPoolIdentity"
+                          ManagedPipelineMode="Integrated"
+                          ManagedRuntimeVersion="v4.0" />
+        <!--TODO Add to BizTalk groups-->
+      </Component>
+      <Component Id="SolidsoftReplyEsbWebSite" Guid="F194EB3A-25FF-4288-AAB7-CA831C05E667" KeyPath="yes" Permanent="no" Directory="ResolutionService">
+        <iis:WebSite Id="EsbResolution" Description='[WEB_SITE_NAME]' AutoStart='yes' StartOnInstall='yes' Directory="INSTALLFOLDER">
+          <iis:WebAddress Id="AllUnassigned" Port="8080" />
+        </iis:WebSite>
+      </Component>
+      <Component Id="ResolutionServiceVirtualDir" Guid="D1C44711-0A8D-4369-BB4B-2C27E7B9632D" KeyPath="yes" Directory="ResolutionService">
+        <iis:WebVirtualDir Id="ResolutionServiceVirtualDir" Alias="[VIRTUAL_DIR_NAME]" Directory="ResolutionService" WebSite="EsbResolution">
+          <iis:WebDirProperties Id="ResolutionServiceVirtualDirProperties" AnonymousAccess="yes" BasicAuthentication="no" WindowsAuthentication="no" />
+          <iis:WebApplication Id="ResolutionServicebApplication" Name="[VIRTUAL_DIR_NAME]"  WebAppPool="EsbResolution"/>
+        </iis:WebVirtualDir>
+      </Component>
+      <Component Id="ResolutionServiceBin" Guid="9071A449-909E-457A-8C5C-258C8CA2AEE1" KeyPath="yes" Permanent="no" Directory="ResolutionServiceBin">
+        <File Id="ResolutionServiceAssembly" Source="$(var.ResolutionService.TargetPath)" Name="SolidsoftReply.Esb.Libraries.ResolutionService.dll"/>
+      </Component>
+      <Component Id="ResolutionService" Guid="4C391AAA-A131-4092-9F99-8E302ACF827E" KeyPath="yes"  Permanent="no" Directory="ResolutionService">
+        <File Id="ResolutionService" Source="$(var.ResolutionService.ProjectDir)" Name="Resolver.svc"/>
+        <File Id="ResolutionServiceConfig" Source="$(var.ResolutionService.ProjectDir)" Name="Web.config"/>
+      </Component>
+      <Component Id="Facts" Guid="70C3CDEC-625E-4E87-BC55-EAC8C7CC3A88"  Permanent="no" Directory="GAC">
+        <File Id="FactsFile" Source="$(var.Facts.TargetPath)" ProcessorArchitecture="msil" Name="SolidsoftReply.Esb.Libraries.Facts.dll" Assembly=".net" KeyPath="yes" />
+      </Component>
+      <Component Id="FactsReference" Guid="1838967C-20D7-4C4E-9651-056CF30987CA" Permanent="no" Directory="ReferenceAssemblies">
+        <!--Cannot use CopyFile because FactsFile is placed in actual GAC and not in the dummy GAC folder-->
+        <File Id="FactsFileReference" Source="$(var.Facts.TargetPath)" Name="SolidsoftReply.Esb.Libraries.Facts.dll"/>
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>
+

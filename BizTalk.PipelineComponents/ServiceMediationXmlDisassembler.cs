@@ -24,9 +24,13 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
     using System;
     using System.Collections;
     using System.ComponentModel;
+    using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
+    using System.IO;
+    using System.Reflection;
     using System.Resources;
     using System.Runtime.InteropServices;
+    using System.Runtime.Serialization.Formatters.Binary;
 
     using Microsoft.BizTalk.Component;
     using Microsoft.BizTalk.Component.Interop;
@@ -598,6 +602,24 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
             return null;
         }
 
+        ////////private object DeepCopy (object obj)
+        ////////{
+        ////////    var type = obj.GetType();
+        ////////    var returnValue = Activator.CreateInstance(type);
+        ////////    var fields = type.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+
+        ////////    foreach (var field in fields)
+        ////////    {
+        ////////        var fieldValue = field.GetValue(obj);
+
+        ////////        if (fieldValue == null) continue;
+        ////////        field.SetValue(returnValue, this.DeepCopy(fieldValue));
+        ////////    }
+
+        ////////    return returnValue;
+        ////////}
+
+
         /// <summary>
         /// Loads configuration property for component.
         /// </summary>
@@ -610,7 +632,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         public void Load(IPropertyBag pb, int errlog)
         {
             // Let the Service Mediation disassembler read its properties from the property bag.
-            this.serviceMediationDasm.Load(pb, errlog);
+            this.serviceMediationDasm.SafeLoadWhenWrapped(pb, errlog);
 
             // Let the XML disassembler read its properties from the property bag.
             this.xmlDasmComp.Load(pb, errlog);

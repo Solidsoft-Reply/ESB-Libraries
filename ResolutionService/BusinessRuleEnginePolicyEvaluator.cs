@@ -141,7 +141,7 @@ namespace SolidsoftReply.Esb.Libraries.ResolutionService
             };
 
             // Creates a fact array with an optional UDDI fact. Safely create a UDDI Inquiry Service 
-            // object using a dynamic reference.  UDDI use is optional,and the UDDI library may not 
+            // object using a dynamic reference.  UDDI use is optional, and the UDDI library may not 
             // be installed.
             Func<object[]> createFactsWithOptionalUddi = () =>
                 {
@@ -155,7 +155,6 @@ namespace SolidsoftReply.Esb.Libraries.ResolutionService
                     }
                     catch
                     {
-                        // TODO: Log error as warning
                         return new object[] { interchange };
                     }
                 };

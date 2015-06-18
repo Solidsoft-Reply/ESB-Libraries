@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright 2015 Solidsoft Reply Limited.
+
+      Licensed under the Apache License, Version 2.0 (the "License");
+      you may not use this file except in compliance with the License.
+      You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
+      -->
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <ComponentGroup Id="EsbUddiHelperComponents">
+      <Component Id="EsbUddiHelper" Guid="EE779FBF-E813-4A86-8A5B-8ECE85BB539A" Permanent="no" Directory="GAC">
+        <File Id="EsbUddiHelperFile" Source="$(var.Uddi.TargetPath)" ProcessorArchitecture="msil" Name="SolidsoftReply.Esb.Libraries.Uddi.dll" Assembly=".net" KeyPath="yes"/>
+      </Component>
+      <Component Id="EsbUddiHelperReference" Guid="EBF52FB3-13C8-4672-8B03-CFFFCB7029CC" Permanent="no" Directory="ReferenceAssemblies">
+        <!--Cannot use CopyFile because EsbUddiHelperFile is placed in actual GAC and not in the dummy GAC folder-->
+        <File Id="EsbUddiHelperFileReference" Source="$(var.Uddi.TargetPath)" Name="SolidsoftReply.Esb.Libraries.Uddi.dll"/>
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>

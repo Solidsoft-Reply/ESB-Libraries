@@ -44,6 +44,11 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Dictionaries
     public class DictionaryBase<T> : XmlSerializableDictionary<string, T>
     {
         /// <summary>
+        /// The XML schema for the dictionary.
+        /// </summary>
+        private XmlSchema schema;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="DictionaryBase{T}"/> class. 
         /// </summary>
         public DictionaryBase()
@@ -166,6 +171,15 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Dictionaries
         }
 
         /// <summary>
+        /// Returns the schema for the current dictionary.
+        /// </summary>
+        /// <returns>The XSD schema for the current dictionary.</returns>
+        public override XmlSchema GetSchema()
+        {
+            return this.schema ?? (this.schema = GetSchema(AssemblyProperties.Resources.XsdDictionarySchemaFile));
+        }
+
+        /// <summary>
         /// Reads a key value as a string.
         /// </summary>
         /// <param name="reader">An XML reader containing the serialized key.</param>
@@ -173,7 +187,7 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Dictionaries
         /// <returns>A string key value.</returns>
         protected internal string ReadKey(XmlReader reader, string dictionaryType)
         {
-            if (!reader.ReadToFollowing("string"))
+            if (!reader.ReadToFollowing("string", string.Empty))
             {
                 throw new EsbFactsException(
                     string.Format(

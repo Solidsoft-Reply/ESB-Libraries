@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright 2015 Solidsoft Reply Limited.
+
+      Licensed under the Apache License, Version 2.0 (the "License");
+      you may not use this file except in compliance with the License.
+      You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
+      -->
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+ 	<Product Id="*" Name="Solidsoft Reply ESB Libraries" Language="1033" Version="1.0.0.0" Manufacturer="Solidsoft Reply Ltd." UpgradeCode="6599097e-899b-4ba5-b081-fdb1291555cb">
+    <?include Config.wxi ?>
+    <Package Id='*' Description="Solidsoft Reply ESB Libraries 1.0 Installer"
+      Comments='Service mediation libraries.' Manufacturer='Solidsoft Reply Ltd.'
+      InstallerVersion='200' Languages='1033' Compressed='yes' SummaryCodepage='1252' InstallScope="perMachine"/>
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <Media Id="1" Cabinet="cab1.cab" EmbedCab="yes" />
+
+    <UIRef Id="WixUI_Mondo" />
+    <!-- ResolutionServiceUI must be placed after WixUI_Mondo in order to overwrite event handlers -->
+    <UIRef Id="ResolutionServiceUI" />
+    <UIRef Id="WixUI_ErrorProgressText" />
+    
+    <WixVariable Id="WixUILicenseRtf" Value="$(var.SourceDir)\LICENSE.rtf" />
+    <WixVariable Id="WixUIBannerBmp" Value="$(var.SourceDir)\Setup\Images\EsbLibrariesBanner.bmp" />
+    <WixVariable Id="WixUIDialogBmp" Value="$(var.SourceDir)\Setup\Images\EsbLibrariesDialog.bmp" />
+
+    <Property Id="BIZTALKSERVER_INSTALLPATH">
+      <RegistrySearch Id="BizTalkServerInstallationPath" Root="HKLM" Key="SOFTWARE\Microsoft\BizTalk Server\3.0" Name="InstallPath" Type="raw" />
+    </Property>
+    
+    <Feature Id="WindowsEventSources" Display="hidden" Level="1">
+      <ComponentGroupRef Id="EsbEventSources"/>
+    </Feature>
+
+ 		<Feature Id="ResolutionApi" Title="Resolution API" Level="1" 
+             Description="Provides policy-driven resolution via an API.  This component can be installed on any machine that can connect to the Resolution Service.">
+			<ComponentGroupRef Id="EsbResolutionApiComponents" />
+		</Feature>
+    
+    <Feature Id="BizTalkServer" Title="BizTalk Server Components" Display="expand" Level="1" 
+             Description="These components are installed on BizTalk Server boxes.">
+      
+      <Feature Id="EsbRS" Title="Resolution Service" Level="1"
+               Description="The Resolution web service runs under IIS." >
+			  <ComponentGroupRef Id="EsbResolutionServiceComponents" />
+        <!-- Perform changes in the web.config file. -->
+        <!--<ComponentRef Id="WebConfigCmp" />-->
+		  </Feature>
+      
+      <Feature Id="EsbBizTalkPipelineComponents" Title="Pipeline Components" Level="1"
+               Description="The BizTalk Pipeline components apply the Resolution API to messages.">
+			  <ComponentGroupRef Id="EsbBizTalkPipelineComponents" />
+		  </Feature>
+      
+      <Feature Id="EsbOrchestration" Title="Orchestration Components" Level="1"
+               Description="The BizTalk Orchestraion components support the Resolution API in orchestration code.">
+			  <ComponentGroupRef Id="EsbOrchestrationComponents" />
+		  </Feature>
+      
+      <Feature Id="EsbUDDIHelper" Title="UDDI Rule Helper" Level="1000"
+               Description="The UDDI rule helper extends the Resolution serivice to support UDDI service directories.">
+			  <ComponentGroupRef Id="EsbUddiHelperComponents" />
+		  </Feature>
+    
+    </Feature>
+  
+	</Product>
+</Wix>

@@ -713,7 +713,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         public void Load(IPropertyBag pb, int errlog)
         {
             // Let the Service Mediation disassembler read its properties from the property bag.
-            this.serviceMediationDasm.Load(pb, errlog);
+            this.serviceMediationDasm.SafeLoadWhenWrapped(pb, errlog);
 
             // Let the BTF disassembler read its properties from the property bag.
             this.btfDasmComp.Load(pb, errlog);
