@@ -25,6 +25,7 @@ namespace SolidsoftReply.Esb.Libraries.Facts
     /// <summary>
     /// Validates a directive during an interchange.
     /// </summary>
+    [Serializable]
     internal class DirectiveValidator
     {
         /// <summary>

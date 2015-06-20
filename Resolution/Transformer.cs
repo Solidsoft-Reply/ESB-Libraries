@@ -19,6 +19,7 @@
 namespace SolidsoftReply.Esb.Libraries.Resolution
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.Reflection;
@@ -29,6 +30,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
     /// <summary>
     /// Transform helper class
     /// </summary>
+    [Serializable]
     public class Transformer
     {
         /// <summary>
@@ -37,12 +39,12 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         internal static readonly SchemaStrongNameCache SchemaStrongNameCache = new SchemaStrongNameCache();
 
         /// <summary>
-        /// Apply a map to a an aggregation of two XML messages
+        /// Apply a map to an aggregation of two XML messages
         /// </summary>
         /// <param name="mapFullName">Map full name (Class, strong name)</param>
         /// <param name="messageIn1">The first XML message to be transformed</param>
         /// <param name="messageIn2">The second XML message to be transformed</param>
-        /// <returns>The transformed xml document</returns>
+        /// <returns>The transformed XML document</returns>
         public static TransformResults Transform(string mapFullName, XmlDocument messageIn1, XmlDocument messageIn2)
         {
             var merge = new XmlDocument();
@@ -205,7 +207,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 // Return the msg out                
                 msgOut.LoadXml(writer.ToString());
 
-                transformResults = new TransformResults(messageIn, msgOut, xslDoc, xslArgList, sourceSchemas, targetSchemas, from schemaName in targetSchemas select SchemaStrongNameCache.GetSchemaStrongName(map.GetType(), schemaName));
+                transformResults = new TransformResults(messageIn, msgOut, xslDoc, xslArgList, sourceSchemas, targetSchemas, (from schemaName in targetSchemas select SchemaStrongNameCache.GetSchemaStrongName(map.GetType(), schemaName)).ToList());
             }
             finally
             {

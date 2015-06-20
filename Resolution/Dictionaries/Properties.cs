@@ -22,10 +22,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Runtime.Serialization;
+    using System.Security.Permissions;
     using System.Xml;
     using System.Xml.Schema;
     using System.Xml.Serialization;
-
     using AssemblyProperties = SolidsoftReply.Esb.Libraries.Resolution.Properties;
 
     /// <summary>
@@ -140,6 +140,20 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
                 "PropertiesType",
                 AssemblyProperties.Resources.DictionaryNamespace,
                 AssemblyProperties.Resources.XsdPropertiesSchemaFile);
+        }
+
+        /// <summary>
+        /// Populates a SerializationInfo with the data needed to serialize the target object.
+        /// </summary>
+        /// <param name="info">The SerializationInfo to populate with data. </param>
+        /// <param name="context">The destination (see StreamingContext) for this serialization. </param>
+        [SecurityPermission(SecurityAction.Demand, SerializationFormatter = true)]
+        public override void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            if (info == null)
+                throw new ArgumentNullException("info");
+
+            base.GetObjectData(info, context);
         }
 
         /// <summary>

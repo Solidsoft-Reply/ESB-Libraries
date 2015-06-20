@@ -25,8 +25,9 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
     using System.Runtime.Caching;
 
     /// <summary>
-    /// SchemaStrongNameCache class
+    /// Schema strong name cache class
     /// </summary>
+    [Serializable]
     internal class SchemaStrongNameCache : BaseCache<string>
     {
         /// <summary>

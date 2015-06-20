@@ -127,7 +127,9 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// Streaming Context
         /// </param>
         protected SerializableDictionary(SerializationInfo info, StreamingContext context)
+            : base(info, context)
         {
+
             if (info == null)
             {
                 throw new ArgumentException(string.Format(Properties.Resources.ExceptionInfoNull, "constructor"));

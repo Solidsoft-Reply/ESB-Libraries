@@ -51,7 +51,8 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
             // Precondition
             if (UddiEventLog.DefaultLog == null)
             {
-                throw new Exception("The UDDI default event log is not initialised.");
+                // TODO: Log a warning here.  Do not throw an exception
+                // Warning = "The UDDI default event log is not initialised."
             }
 
             ////////// Define pre-condition.

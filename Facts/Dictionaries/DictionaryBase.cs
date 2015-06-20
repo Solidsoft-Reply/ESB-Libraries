@@ -24,10 +24,10 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Dictionaries
     using System.Globalization;
     using System.Reflection;
     using System.Runtime.Serialization;
+    using System.Security.Permissions;
     using System.Xml;
     using System.Xml.Schema;
     using System.Xml.Serialization;
-
     using AssemblyProperties = SolidsoftReply.Esb.Libraries.Facts.Properties;
 
     /// <summary>
@@ -168,6 +168,20 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Dictionaries
             schemaSet.Add(xs);
 
             return new XmlQualifiedName(schemaName, schemaNamespace);
+        }
+
+        /// <summary>
+        /// Populates a SerializationInfo with the data needed to serialize the target object.
+        /// </summary>
+        /// <param name="info">The SerializationInfo to populate with data. </param>
+        /// <param name="context">The destination (see StreamingContext) for this serialization. </param>
+        [SecurityPermission(SecurityAction.Demand, SerializationFormatter = true)]
+        public override void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            if (info == null)
+                throw new ArgumentNullException("info");
+
+            base.GetObjectData(info, context);
         }
 
         /// <summary>

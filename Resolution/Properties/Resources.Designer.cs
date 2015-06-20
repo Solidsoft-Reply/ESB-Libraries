@@ -187,6 +187,33 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Application.
+        /// </summary>
+        internal static string EventLogMain {
+            get {
+                return ResourceManager.GetString("EventLogMain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SolidsoftReplyESBLibraries.
+        /// </summary>
+        internal static string EventLogSecondary {
+            get {
+                return ResourceManager.GetString("EventLogSecondary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The activity ID for BAM activity {0} was not found at step {1}.  Have you started or continued the activity correctly?.
+        /// </summary>
+        internal static string ExceptionActivityNotRegistered {
+            get {
+                return ResourceManager.GetString("ExceptionActivityNotRegistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to BAM activity name is null or empty..
         /// </summary>
         internal static string ExceptionBamActivityNameInvalid {
@@ -457,7 +484,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The BAM macro defines {0} parameters, but only {1} values have been provided..
+        ///   Looks up a localized string similar to The BAM macro defines {0} parameters, but {1} value(s) have been provided..
         /// </summary>
         internal static string ExceptionWrongNumberOfMacroParameters {
             get {

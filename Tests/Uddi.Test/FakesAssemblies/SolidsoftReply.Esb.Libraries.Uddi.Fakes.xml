@@ -109,14 +109,44 @@
         <member name="P:SolidsoftReply.Esb.Libraries.Uddi.Fakes.ShimInquiryServices.StaticConstructor">
             <summary>Sets the shim of InquiryServices.InquiryServices()</summary>
         </member>
-        <member name="P:SolidsoftReply.Esb.Libraries.Uddi.Fakes.ShimInquiryServices._GetBindingTemplateb__0KeyValuePairOfStringUddiSiteLocation">
-            <summary>Sets the shim of InquiryServices.&lt;GetBindingTemplate&gt;b__0(KeyValuePair`2&lt;String,UddiSiteLocation&gt; entry)</summary>
+        <member name="P:SolidsoftReply.Esb.Libraries.Uddi.Fakes.ShimInquiryServices._GetBindingTemplateb__2dKeyValuePairOfStringUddiSiteLocation">
+            <summary>Sets the shim of InquiryServices.&lt;GetBindingTemplate&gt;b__2d(KeyValuePair`2&lt;String,UddiSiteLocation&gt; entry)</summary>
         </member>
-        <member name="P:SolidsoftReply.Esb.Libraries.Uddi.Fakes.ShimInquiryServices._GetBindingTemplateb__2KeyValuePairOfStringUddiSiteLocation">
-            <summary>Sets the shim of InquiryServices.&lt;GetBindingTemplate&gt;b__2(KeyValuePair`2&lt;String,UddiSiteLocation&gt; entry)</summary>
+        <member name="P:SolidsoftReply.Esb.Libraries.Uddi.Fakes.ShimInquiryServices._GetBindingTemplateb__2fKeyValuePairOfStringUddiSiteLocation">
+            <summary>Sets the shim of InquiryServices.&lt;GetBindingTemplate&gt;b__2f(KeyValuePair`2&lt;String,UddiSiteLocation&gt; entry)</summary>
         </member>
-        <member name="P:SolidsoftReply.Esb.Libraries.Uddi.Fakes.ShimInquiryServices._GetBindingTemplateb__4BindingTemplate">
-            <summary>Sets the shim of InquiryServices.&lt;GetBindingTemplate&gt;b__4(BindingTemplate bindingTemplate)</summary>
+        <member name="P:SolidsoftReply.Esb.Libraries.Uddi.Fakes.ShimInquiryServices._GetBindingTemplateb__31BindingTemplate">
+            <summary>Sets the shim of InquiryServices.&lt;GetBindingTemplate&gt;b__31(BindingTemplate bindingTemplate)</summary>
+        </member>
+        <member name="P:SolidsoftReply.Esb.Libraries.Uddi.Fakes.ShimInquiryServices._GetBusinessEntityb__10BusinessEntity">
+            <summary>Sets the shim of InquiryServices.&lt;GetBusinessEntity&gt;b__10(BusinessEntity businessEntity)</summary>
+        </member>
+        <member name="P:SolidsoftReply.Esb.Libraries.Uddi.Fakes.ShimInquiryServices._GetBusinessEntityb__11KeyValuePairOfStringUddiSiteLocation">
+            <summary>Sets the shim of InquiryServices.&lt;GetBusinessEntity&gt;b__11(KeyValuePair`2&lt;String,UddiSiteLocation&gt; entry)</summary>
+        </member>
+        <member name="P:SolidsoftReply.Esb.Libraries.Uddi.Fakes.ShimInquiryServices._GetBusinessEntityb__13BusinessEntity">
+            <summary>Sets the shim of InquiryServices.&lt;GetBusinessEntity&gt;b__13(BusinessEntity businessEntity)</summary>
+        </member>
+        <member name="P:SolidsoftReply.Esb.Libraries.Uddi.Fakes.ShimInquiryServices._GetBusinessEntityb__9KeyValuePairOfStringUddiSiteLocation">
+            <summary>Sets the shim of InquiryServices.&lt;GetBusinessEntity&gt;b__9(KeyValuePair`2&lt;String,UddiSiteLocation&gt; entry)</summary>
+        </member>
+        <member name="P:SolidsoftReply.Esb.Libraries.Uddi.Fakes.ShimInquiryServices._GetBusinessEntityb__eKeyValuePairOfStringUddiSiteLocation">
+            <summary>Sets the shim of InquiryServices.&lt;GetBusinessEntity&gt;b__e(KeyValuePair`2&lt;String,UddiSiteLocation&gt; entry)</summary>
+        </member>
+        <member name="P:SolidsoftReply.Esb.Libraries.Uddi.Fakes.ShimInquiryServices._GetBusinessServiceb__1bKeyValuePairOfStringUddiSiteLocation">
+            <summary>Sets the shim of InquiryServices.&lt;GetBusinessService&gt;b__1b(KeyValuePair`2&lt;String,UddiSiteLocation&gt; entry)</summary>
+        </member>
+        <member name="P:SolidsoftReply.Esb.Libraries.Uddi.Fakes.ShimInquiryServices._GetBusinessServiceb__20KeyValuePairOfStringUddiSiteLocation">
+            <summary>Sets the shim of InquiryServices.&lt;GetBusinessService&gt;b__20(KeyValuePair`2&lt;String,UddiSiteLocation&gt; entry)</summary>
+        </member>
+        <member name="P:SolidsoftReply.Esb.Libraries.Uddi.Fakes.ShimInquiryServices._GetBusinessServiceb__22BusinessService">
+            <summary>Sets the shim of InquiryServices.&lt;GetBusinessService&gt;b__22(BusinessService businessService)</summary>
+        </member>
+        <member name="P:SolidsoftReply.Esb.Libraries.Uddi.Fakes.ShimInquiryServices._GetBusinessServiceb__23KeyValuePairOfStringUddiSiteLocation">
+            <summary>Sets the shim of InquiryServices.&lt;GetBusinessService&gt;b__23(KeyValuePair`2&lt;String,UddiSiteLocation&gt; entry)</summary>
+        </member>
+        <member name="P:SolidsoftReply.Esb.Libraries.Uddi.Fakes.ShimInquiryServices._GetBusinessServiceb__25BusinessService">
+            <summary>Sets the shim of InquiryServices.&lt;GetBusinessService&gt;b__25(BusinessService businessService)</summary>
         </member>
         <member name="T:SolidsoftReply.Esb.Libraries.Uddi.Fakes.ShimInquiryServices.AllInstances">
             <summary>Define shims for all instances members</summary>

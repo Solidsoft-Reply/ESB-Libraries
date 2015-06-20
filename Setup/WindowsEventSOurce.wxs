@@ -40,6 +40,12 @@
          Log="SolidsoftReplyESBLibraries"
          EventMessageFile="[NETFRAMEWORK40FULLINSTALLROOTDIR]EventLogMessages.dll"
         />
+        <util:EventSource
+         xmlns:Util="http://schemas.microsoft.com/wix/UtilExtension"
+         Name="ESBLibraries"
+         Log="Application"
+         EventMessageFile="[NETFRAMEWORK40FULLINSTALLROOTDIR]EventLogMessages.dll"
+        />
       </Component>
       <Component Id="EsbResolverServiceEventSource32Client" Guid="6D8066C3-4D6D-4766-A33E-38D523E10152" Permanent="yes">
         <Condition><![CDATA[NETFRAMEWORK40CLIENTINSTALLROOTDIR AND NOT VersionNT64]]></Condition>
@@ -58,6 +64,12 @@
          xmlns:Util="http://schemas.microsoft.com/wix/UtilExtension"
          Name="ESBLibraries"
          Log="SolidsoftReplyESBLibraries"
+         EventMessageFile="[NETFRAMEWORK40CLIENTINSTALLROOTDIR]EventLogMessages.dll"
+        />
+        <util:EventSource
+         xmlns:Util="http://schemas.microsoft.com/wix/UtilExtension"
+         Name="ESBLibraries"
+         Log="Application"
          EventMessageFile="[NETFRAMEWORK40CLIENTINSTALLROOTDIR]EventLogMessages.dll"
         />
       </Component>
@@ -80,6 +92,12 @@
          Log="SolidsoftReplyESBLibraries"
          EventMessageFile="[NETFRAMEWORK40FULLINSTALLROOTDIR64]EventLogMessages.dll"
         />
+        <util:EventSource
+         xmlns:Util="http://schemas.microsoft.com/wix/UtilExtension"
+         Name="ESBLibraries"
+         Log="Application"
+         EventMessageFile="[NETFRAMEWORK40FULLINSTALLROOTDIR64]EventLogMessages.dll"
+        />
       </Component>
       <Component Id="EsbResolverServiceEventSource64Client" Guid="24DBF334-F65C-48D4-965F-63BEC6A281C3" Permanent="yes">
         <Condition><![CDATA[NETFRAMEWORK40CLIENTINSTALLROOTDIR64 AND VersionNT64]]></Condition>
@@ -98,6 +116,12 @@
          xmlns:Util="http://schemas.microsoft.com/wix/UtilExtension"
          Name="ESBLibraries"
          Log="SolidsoftReplyESBLibraries"
+         EventMessageFile="[NETFRAMEWORK40CLIENTINSTALLROOTDIR64]EventLogMessages.dll"
+        />
+        <util:EventSource
+         xmlns:Util="http://schemas.microsoft.com/wix/UtilExtension"
+         Name="ESBLibraries"
+         Log="Application"
          EventMessageFile="[NETFRAMEWORK40CLIENTINSTALLROOTDIR64]EventLogMessages.dll"
         />
       </Component>

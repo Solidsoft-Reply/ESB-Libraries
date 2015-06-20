@@ -214,7 +214,7 @@
     <value>BAM Trackpoint policy version is invalid.  Specified version is {0}.</value>
   </data>
   <data name="ExceptionWrongNumberOfMacroParameters" xml:space="preserve">
-    <value>The BAM macro defines {0} parameters, but only {1} values have been provided.</value>
+    <value>The BAM macro defines {0} parameters, but {1} value(s) have been provided.</value>
   </data>
   <data name="ExceptionPropertyNotAvailable" xml:space="preserve">
     <value>The BAM step has attempted to access a missing property named {0}.</value>
@@ -285,5 +285,14 @@
   </data>
   <data name="ExceptionInvalidDirective" xml:space="preserve">
     <value>An ESB Resolver directive is invalid or does not exist.  Check that the directive name exists in the policy.</value>
+  </data>
+  <data name="EventLogMain" xml:space="preserve">
+    <value>Application</value>
+  </data>
+  <data name="EventLogSecondary" xml:space="preserve">
+    <value>SolidsoftReplyESBLibraries</value>
+  </data>
+  <data name="ExceptionActivityNotRegistered" xml:space="preserve">
+    <value>The activity ID for BAM activity {0} was not found at step {1}.  Have you started or continued the activity correctly?</value>
   </data>
 </root>
