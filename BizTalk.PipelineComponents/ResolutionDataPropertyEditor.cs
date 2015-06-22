@@ -28,8 +28,10 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
 
     using SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.Properties;
 
-    // Example UITypeEditor that uses the IWindowsFormsEditorService  
-    // to display a Form.
+    /// <summary>
+    /// Example UITypeEditor that uses the IWindowsFormsEditorService  
+    /// to display a Form.
+    /// </summary>
     [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
     public class ResolutionDataPropertyEditor : UITypeEditor
     {
@@ -41,8 +43,8 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         /// <summary>
         /// Returns the editor style.
         /// </summary>
-        /// <param name="context"></param>
-        /// <returns></returns>
+        /// <param name="context">The type descriptor context</param>
+        /// <returns>A UI type editor edit style.</returns>
         [EnvironmentPermission(SecurityAction.LinkDemand, Unrestricted = false)]
         public override UITypeEditorEditStyle GetEditStyle(ITypeDescriptorContext context)
         {
@@ -61,7 +63,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         /// <param name="context">Type descriptor context.</param>
         /// <param name="provider">Service provider</param>
         /// <param name="value">The list of resolution data properties</param>
-        /// <returns>The list of resolution data properties</returns>
+        /// <returns>A list of resolution data properties</returns>
         [EnvironmentPermission(SecurityAction.LinkDemand, Unrestricted = false)]
         public override object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
         {
@@ -91,4 +93,3 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         }
     }
 }
-

@@ -139,9 +139,20 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             if (info == null)
+            {
                 throw new ArgumentNullException("info");
+            }
 
             base.GetObjectData(info, context);
+        }
+
+        /// <summary>
+        /// Returns the schema for the current dictionary.
+        /// </summary>
+        /// <returns>The XSD schema for the current dictionary.</returns>
+        public override XmlSchema GetSchema()
+        {
+            return this.schema ?? (this.schema = XmlSerializableDictionary<string, T>.GetSchema(AssemblyProperties.Resources.XsdDictionarySchemaFile));
         }
 
         /// <summary>
@@ -182,15 +193,6 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
             schemaSet.Add(xs);
 
             return new XmlQualifiedName(schemaName, schemaNamespace);
-        }
-
-        /// <summary>
-        /// Returns the schema for the current dictionary.
-        /// </summary>
-        /// <returns>The XSD schema for the current dictionary.</returns>
-        public override XmlSchema GetSchema()
-        {
-            return this.schema ?? (this.schema = GetSchema(AssemblyProperties.Resources.XsdDictionarySchemaFile));
         }
 
         /// <summary>

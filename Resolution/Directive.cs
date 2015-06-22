@@ -25,6 +25,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
     using System.Runtime.InteropServices;
+    using System.Text.RegularExpressions;
     using System.Xml;
 
     using Microsoft.BizTalk.Bam.EventObservation;
@@ -34,7 +35,6 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
     using SolidsoftReply.Esb.Libraries.Resolution.ResolutionService;
 
     using Directive = SolidsoftReply.Esb.Libraries.Resolution.ResolutionService.DirectivesDictionaryItemValueDirective;
-    using System.Text.RegularExpressions;
 
     /// <summary>
     /// Class representing the item on the output list
@@ -309,7 +309,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// Gets or sets the name of the current step extension within the BAM activity 
         /// to which this directive applies.
         /// </summary>
-        public virtual string BamRootStepName { get; set;}
+        public virtual string BamRootStepName { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the step within the BAM activity to which this directive applies.
@@ -782,12 +782,12 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
 
             set
             {
-                var btsProperties = new DirectivesDictionaryItemValueDirectiveItem1[value.Count];
+                var btsPropertiesCurrent = new DirectivesDictionaryItemValueDirectiveItem1[value.Count];
                 var index = 0;
 
                 foreach (var btsProperty in value)
                 {
-                    btsProperties[index++] = new DirectivesDictionaryItemValueDirectiveItem1
+                    btsPropertiesCurrent[index++] = new DirectivesDictionaryItemValueDirectiveItem1
                                                      {
                                                          Key =
                                                              new DirectivesDictionaryItemValueDirectiveItemKey1
@@ -1100,7 +1100,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// <summary>
         /// Selects a BAM step extension.
         /// </summary>
-        /// <param name="directiveEventStream">A Trackpoint directive event stream.</param>
+        /// <param name="directiveEventStream">A track point directive event stream.</param>
         /// <param name="stepExtensionName">The step extension</param>
         /// <remarks>
         /// This is a form of continuation in which the continuation is automatically managed by 
@@ -1141,7 +1141,8 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             var extendsPrefixToken = "extends_";
             var tokenisedStepName = Regex.Replace(
                 this.BamStepName,
-                @"\s", "_");
+                @"\s", 
+                "_");
             var counter = 0L;
             var extendsToken = string.Format(
                 "{0}_{1}_{2}_{3}",
@@ -1418,10 +1419,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// or at the point of resolution.
         /// </summary>
         /// <param name="xmlMsg">The message containing data.</param>
-        /// <param name="msgProperties">A dictionary of message msgProperties.</param>
+        /// <param name="messageProperties">A dictionary of message properties.</param>
         /// <param name="values">A positional array of additional values that can be recorded by BAM.</param>
         /// <param name="afterMap">Indicates if the step is after the application of a map.</param>
-        private void DoOnStep(XmlNode xmlMsg, IDictionary msgProperties, IList values, bool afterMap)
+        private void DoOnStep(XmlNode xmlMsg, IDictionary messageProperties, IList values, bool afterMap)
         {
             if (this.directive == null || !this.directive.DirectiveCategories.Contains("BamInterception"))
             {
@@ -1471,7 +1472,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
 
             if (bamInterceptor != null)
             {
-                var xpathDataExtractorWithMacros = new TrackpointDirectiveEventStream.XPathDataExtractorWithMacros(msgProperties, values);
+                var xpathDataExtractorWithMacros = new TrackpointDirectiveEventStream.XPathDataExtractorWithMacros(messageProperties, values);
                 bamInterceptor.OnStep(xpathDataExtractorWithMacros, bamStepName, xmlMsg, currentEventStream);
             }
             else

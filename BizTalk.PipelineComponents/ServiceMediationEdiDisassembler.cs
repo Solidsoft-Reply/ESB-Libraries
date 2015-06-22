@@ -47,6 +47,19 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
     public class ServiceMediationEdiDisassembler : BaseCustomTypeDescriptor, IBaseComponent, IDisassemblerComponent, IPersistPropertyBag, IProbeMessage, IComponentUI
     {
         /// <summary>
+        /// Specifies whether encoding is for inbound.
+        /// </summary>
+        /// <remarks>
+        /// The equivalent of this field is marked as public in Microsoft's disassembler code.
+        /// This is probably an error, but is faithfully reproduced here.
+        /// </remarks>
+        [SuppressMessage("StyleCop.CSharp.NamingRules", "SA1307:AccessibleFieldsMustBeginWithUpperCaseLetter", Justification = "Reviewed. Suppression is OK here.")]
+        [SuppressMessage("StyleCop.CSharp.NamingRules", "SA1305:FieldNamesMustNotUseHungarianNotation", Justification = "Reviewed. Suppression is OK here.")]
+        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1401:FieldsMustBePrivate", Justification = "Reviewed. Suppression is OK here.")]
+        // ReSharper disable once InconsistentNaming
+        public Encoding mEncodingInbound;
+
+        /// <summary>
         /// The resource manager.
         /// </summary>
         private static readonly ResourceManager ResourceManager;
@@ -66,12 +79,6 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         /// The current XML message.
         /// </summary>
         private IBaseMessage currentEdiMessage;
-
-        /// <summary>
-        /// Specifies whether encoding is for inbound.
-        /// </summary>
-        // ReSharper disable once InconsistentNaming
-        public Encoding mEncodingInbound;
 
         /// <summary>
         /// Initializes static members of the <see cref="ServiceMediationEdiDisassembler"/> class.
@@ -483,7 +490,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         }
 
         /// <summary>
-        /// Gets or sets whether to convert implied decimal format Nn to base 10 numeric value.
+        /// Gets or sets a value indicating whether to convert implied decimal format to base 10 numeric value.
         /// </summary>
         [Browsable(true)]
         [BtsDescription("ConvertToImpliedDecimalDescription")]
@@ -495,6 +502,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
             {
                 return this.ediDasmComp.ConvertToImpliedDecimal;
             }
+
             set
             {
                 this.ediDasmComp.ConvertToImpliedDecimal = value;
@@ -502,7 +510,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         }
 
         /// <summary>
-        /// Gets or sets a value that indicates whether XML tag is created for trailing separators.
+        /// Gets or sets a value indicating whether XML tag is created for trailing separators.
         /// </summary>
         [Browsable(true)]
         [BtsDescription("CreateXmlTagForTrailingSeparatorsDescription")]
@@ -514,6 +522,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
             {
                 return this.ediDasmComp.CreateXmlTagForTrailingSeparators;
             }
+
             set
             {
                 this.ediDasmComp.CreateXmlTagForTrailingSeparators = value;
@@ -521,7 +530,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         }
 
         /// <summary>
-        /// Gets or sets a value that indicates whether the disassembler detects multiple interchanges.
+        /// Gets or sets a value indicating whether the disassembler detects multiple interchanges.
         /// </summary>
         [Browsable(true)]
         [BtsDescription("DetectMultipleInterchangesDescription")]
@@ -533,6 +542,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
             {
                 return this.ediDasmComp.DetectMultipleInterchanges;
             }
+
             set
             {
                 this.ediDasmComp.DetectMultipleInterchanges = value;
@@ -540,7 +550,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         }
 
         /// <summary>
-        /// Gets or sets whether the EDI data is validated.
+        /// Gets or sets a value indicating whether the EDI data is validated.
         /// </summary>
         [Browsable(true)]
         [BtsDescription("EdiDataValidationDescription")]
@@ -552,6 +562,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
             {
                 return this.ediDasmComp.EdiDataValidation;
             }
+
             set
             {
                 this.ediDasmComp.EdiDataValidation = value;
@@ -571,6 +582,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
             {
                 return this.ediDasmComp.EfactDelimiters;
             }
+
             set
             {
                 this.ediDasmComp.EfactDelimiters = value;
@@ -578,7 +590,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         }
 
         /// <summary>
-        /// Gets or sets a value that indicates whether security information is masked to protect sensitive information.
+        /// Gets or sets a value indicating whether security information is masked to protect sensitive information.
         /// </summary>
         [Browsable(true)]
         [BtsDescription("MaskSecurityInformationDescription")]
@@ -590,6 +602,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
             {
                 return this.ediDasmComp.MaskSecurityInformation;
             }
+
             set
             {
                 this.ediDasmComp.MaskSecurityInformation = value;
@@ -597,7 +610,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         }
 
         /// <summary>
-        /// Gets or sets a value that indicates whether transaction set 997 is overridden by transaction set 999.
+        /// Gets or sets a value indicating whether transaction set 997 is overridden by transaction set 999.
         /// </summary>
         [Browsable(true)]
         [BtsDescription("Override997With999Description")]
@@ -609,6 +622,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
             {
                 return this.ediDasmComp.Override997With999;
             }
+
             set
             {
                 this.ediDasmComp.Override997With999 = value;
@@ -616,7 +630,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         }
 
         /// <summary>
-        /// Gets or sets whether the fallback settings are overridden.
+        /// Gets or sets a value indicating whether the fallback settings are overridden.
         /// </summary>
         [Browsable(true)]
         [BtsDescription("OverrideFallbackSettingsDescription")]
@@ -628,6 +642,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
             {
                 return this.ediDasmComp.OverrideFallbackSettings;
             }
+
             set
             {
                 this.ediDasmComp.OverrideFallbackSettings = value;
@@ -635,7 +650,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         }
 
         /// <summary>
-        /// Gets or sets a value that indicates whether batched interchange is preserved.
+        /// Gets or sets a value indicating whether batched interchange is preserved.
         /// </summary>
         [Browsable(true)]
         [BtsDescription("BiboModeDescription")]
@@ -647,6 +662,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
             {
                 return this.ediDasmComp.PreserveInterchange;
             }
+
             set
             {
                 this.ediDasmComp.PreserveInterchange = value;
@@ -654,7 +670,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         }
 
         /// <summary>
-        /// Gets or sets whether to route ACK to send pipeline on request-response receive port.
+        /// Gets or sets a value indicating whether to route ACK to send pipeline on request-response receive port.
         /// </summary>
         [Browsable(true)]
         [BtsDescription("RouteAckOn2WayPortDescription")]
@@ -666,6 +682,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
             {
                 return this.ediDasmComp.RouteAckOn2WayPort;
             }
+
             set
             {
                 this.ediDasmComp.RouteAckOn2WayPort = value;
@@ -673,7 +690,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         }
 
         /// <summary>
-        /// Gets or sets whether to use dot as a decimal separator for internal EDIFACT representation.
+        /// Gets or sets a value indicating whether to use dot as a decimal separator for internal EDIFACT representation.
         /// </summary>
         [Browsable(true)]
         [BtsDescription("UseDotAsDecimalSeparatorForInternalEDIFACTRepesentationDescription")]
@@ -686,6 +703,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
             {
                 return this.ediDasmComp.UseDotAsDecimalSeparatorForInternalEDIFACTRepesentation;
             }
+
             set
             {
                 this.ediDasmComp.UseDotAsDecimalSeparatorForInternalEDIFACTRepesentation = value;
@@ -693,7 +711,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         }
 
         /// <summary>
-        /// Gets or sets whether to use ISA11 as repetition separator.
+        /// Gets or sets a value indicating whether to use ISA11 as repetition separator.
         /// </summary>
         [Browsable(true)]
         [BtsDescription("UseIsa11AsRepetitionSeparatorDescription")]
@@ -705,6 +723,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
             {
                 return this.ediDasmComp.UseIsa11AsRepetitionSeparator;
             }
+
             set
             {
                 this.ediDasmComp.UseIsa11AsRepetitionSeparator = value;
@@ -712,7 +731,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         }
 
         /// <summary>
-        /// Gets or set whether XML schema is validated.
+        /// Gets or sets a value indicating whether XML schema is validated.
         /// </summary>
         [Browsable(true)]
         [BtsDescription("XmlSchemaValidationDescription")]
@@ -724,6 +743,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
             {
                 return this.ediDasmComp.XmlSchemaValidation;
             }
+
             set
             {
                 this.ediDasmComp.XmlSchemaValidation = value;

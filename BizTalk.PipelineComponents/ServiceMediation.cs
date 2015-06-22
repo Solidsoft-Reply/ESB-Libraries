@@ -561,149 +561,6 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         #region Methods
 
         /// <summary>
-        /// Loads configuration property for component.
-        /// </summary>
-        /// <param name="pb">
-        /// Configuration property bag.
-        /// </param>
-        /// <param name="errlog">
-        /// Error status (not used in this code).
-        /// </param>
-        /// <param name="wrapped">
-        /// Flag indicates if the service mediation pipeine component is wrapped with
-        /// other pipeline components.  This is a workaround for Microsoft's code that
-        /// disposes property bags  The service mediation component supports this
-        /// same pattern, but the pattern fails when the component iswrapped with
-        /// another component that also disposes the property bag.  If set to true, the
-        /// code does not dispose the property bag.  NB., the service mediation
-        /// coponent's Load() property should be called before calling Load on any
-        /// other component that disposes the property bag.  See the Load method of the
-        /// ESB service mediation disassemblers for an example.
-        /// </param>
-        private void Load(IPropertyBag pb, int errlog, bool wrapped)
-        {
-            if (pb == null)
-            {
-                throw new ArgumentNullException(Resources.ExceptionNullPropertyBag);
-            }
-
-            var disposableObj = wrapped ? new object() : pb;
-
-            using (new DisposableObjectWrapper(disposableObj))
-            {
-                var val = ReadPropertyBag(pb, "providerName");
-
-                if (val != null)
-                {
-                    this.ProviderName = (string)val;
-                }
-
-                val = ReadPropertyBag(pb, "serviceName");
-
-                if (val != null)
-                {
-                    this.ServiceName = (string)val;
-                }
-
-                val = ReadPropertyBag(pb, "bindingAccessPoint");
-
-                if (val != null)
-                {
-                    this.BindingAccessPoint = (string)val;
-                }
-
-                val = ReadPropertyBag(pb, "bindingUrlType");
-
-                if (val != null)
-                {
-                    this.BindingUrlType = (string)val;
-                }
-
-                val = ReadPropertyBag(pb, "bodyContainerXPath");
-
-                if (val != null)
-                {
-                    this.BodyContainerXPath = (string)val;
-                }
-
-                val = ReadPropertyBag(pb, "operationName");
-
-                if (val != null)
-                {
-                    this.OperationName = (string)val;
-                }
-
-                val = ReadPropertyBag(pb, "messageType");
-
-                if (val != null)
-                {
-                    this.MessageType = (string)val;
-                }
-
-                val = ReadPropertyBag(pb, "messageDirection");
-
-                if (val != null)
-                {
-                    var enumValue = (string)val;
-                    this.MessageDirection =
-                        (MessageDirectionTypes)Enum.Parse(typeof(MessageDirectionTypes), enumValue, true);
-                }
-
-                val = ReadPropertyBag(pb, "messageRole");
-
-                if (val != null)
-                {
-                    this.MessageRole = (string)val;
-                }
-
-                val = ReadPropertyBag(pb, "rulePolicy");
-
-                if (val != null)
-                {
-                    this.Policy = (string)val;
-                }
-
-                val = ReadPropertyBag(pb, "rulePolicyVersion");
-
-                if (string.IsNullOrWhiteSpace((string)val))
-                {
-                    this.PolicyVersion = null;
-                }
-                else
-                {
-                    this.PolicyVersion = (string)val;
-                }
-
-                val = ReadPropertyBag(pb, "resolutionData");
-
-                if (string.IsNullOrWhiteSpace((string)val))
-                {
-                    this.ResolutionData = ResolutionData.ValuesOnly;
-                }
-                else
-                {
-                    this.ResolutionData = (ResolutionData)Enum.Parse(typeof(ResolutionData), (string)val);
-                }
-
-                val = ReadPropertyBag(pb, "resolutionDataProperties");
-
-                // ReSharper disable once ConvertIfStatementToConditionalTernaryExpression
-                if (string.IsNullOrWhiteSpace((string)val))
-                {
-                    this.ResolutionDataProperties = new ResolutionDataPropertyList();
-                }
-                else
-                {
-                    this.ResolutionDataProperties = new ResolutionDataPropertyList(((string)val).Split('¦').ToList());
-                }
-
-                val = ReadPropertyBag(pb, "version");
-
-                this.version = val == null ? null : new Version((string)val);
-            }
-        }
-        
-        /// <summary>
         /// Adds additional parts from the original message.
         /// </summary>
         /// <param name="inMsg">
@@ -851,6 +708,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
                 Debug.WriteLine("WritePropertyBag error: " + ex.Message);
                 throw new EsbPipelineComponentException(ex.Message);
             }
+
             Debug.WriteLine("Leaving WritePropertyBag");
         }
 
@@ -1185,6 +1043,150 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         }
 
         /// <summary>
+        /// Loads configuration property for component.
+        /// </summary>
+        /// <param name="pb">
+        /// Configuration property bag.
+        /// </param>
+        /// <param name="errlog">
+        /// Error status (not used in this code).
+        /// </param>
+        /// <param name="wrapped">
+        /// Flag indicates if the service mediation pipeline component is wrapped with
+        /// other pipeline components.  This is a workaround for Microsoft's code that
+        /// disposes property bags  The service mediation component supports this
+        /// same pattern, but the pattern fails when the component is wrapped with
+        /// another component that also disposes the property bag.  If set to true, the
+        /// code does not dispose the property bag.  NB., the service mediation
+        /// component's Load() property should be called before calling Load on any
+        /// other component that disposes the property bag.  See the Load method of the
+        /// ESB service mediation disassemblers for an example.
+        /// </param>
+        // ReSharper disable once UnusedParameter.Local
+        private void Load(IPropertyBag pb, int errlog, bool wrapped)
+        {
+            if (pb == null)
+            {
+                throw new ArgumentNullException(Resources.ExceptionNullPropertyBag);
+            }
+
+            var disposableObj = wrapped ? new object() : pb;
+
+            using (new DisposableObjectWrapper(disposableObj))
+            {
+                var val = ReadPropertyBag(pb, "providerName");
+
+                if (val != null)
+                {
+                    this.ProviderName = (string)val;
+                }
+
+                val = ReadPropertyBag(pb, "serviceName");
+
+                if (val != null)
+                {
+                    this.ServiceName = (string)val;
+                }
+
+                val = ReadPropertyBag(pb, "bindingAccessPoint");
+
+                if (val != null)
+                {
+                    this.BindingAccessPoint = (string)val;
+                }
+
+                val = ReadPropertyBag(pb, "bindingUrlType");
+
+                if (val != null)
+                {
+                    this.BindingUrlType = (string)val;
+                }
+
+                val = ReadPropertyBag(pb, "bodyContainerXPath");
+
+                if (val != null)
+                {
+                    this.BodyContainerXPath = (string)val;
+                }
+
+                val = ReadPropertyBag(pb, "operationName");
+
+                if (val != null)
+                {
+                    this.OperationName = (string)val;
+                }
+
+                val = ReadPropertyBag(pb, "messageType");
+
+                if (val != null)
+                {
+                    this.MessageType = (string)val;
+                }
+
+                val = ReadPropertyBag(pb, "messageDirection");
+
+                if (val != null)
+                {
+                    var enumValue = (string)val;
+                    this.MessageDirection =
+                        (MessageDirectionTypes)Enum.Parse(typeof(MessageDirectionTypes), enumValue, true);
+                }
+
+                val = ReadPropertyBag(pb, "messageRole");
+
+                if (val != null)
+                {
+                    this.MessageRole = (string)val;
+                }
+
+                val = ReadPropertyBag(pb, "rulePolicy");
+
+                if (val != null)
+                {
+                    this.Policy = (string)val;
+                }
+
+                val = ReadPropertyBag(pb, "rulePolicyVersion");
+
+                if (string.IsNullOrWhiteSpace((string)val))
+                {
+                    this.PolicyVersion = null;
+                }
+                else
+                {
+                    this.PolicyVersion = (string)val;
+                }
+
+                val = ReadPropertyBag(pb, "resolutionData");
+
+                if (string.IsNullOrWhiteSpace((string)val))
+                {
+                    this.ResolutionData = ResolutionData.ValuesOnly;
+                }
+                else
+                {
+                    this.ResolutionData = (ResolutionData)Enum.Parse(typeof(ResolutionData), (string)val);
+                }
+
+                val = ReadPropertyBag(pb, "resolutionDataProperties");
+
+                // ReSharper disable once ConvertIfStatementToConditionalTernaryExpression
+                if (string.IsNullOrWhiteSpace((string)val))
+                {
+                    this.ResolutionDataProperties = new ResolutionDataPropertyList();
+                }
+                else
+                {
+                    this.ResolutionDataProperties = new ResolutionDataPropertyList(((string)val).Split('¦').ToList());
+                }
+
+                val = ReadPropertyBag(pb, "version");
+
+                this.version = val == null ? null : new Version((string)val);
+            }
+        }
+
+        /// <summary>
         /// Applies all resolver directives to a single outbound message.   If multiple directives overlap
         ///     in terms of the properties they set, the final state of the outbound message is governed according
         ///     to the order in which directives are applied.  This order should be considered arbitrary.
@@ -1436,6 +1438,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
                         // Set the key based on the namespace and name of the property
                         parameters.Add(property.NameSpace + "#" + property.Name, property.Value);
                     }
+
                     break;
                 case ResolutionData.ValuesWithListedPromotedProperties:
                     foreach (var property in inMsg.Properties().Where(
@@ -1444,6 +1447,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
                         // Set the key based on the namespace and name of the property
                         parameters.Add(property.NameSpace + "#" + property.Name, property.Value);
                     }
+
                     break;
                 case ResolutionData.ValuesWithAllProperties:
                     foreach (var property in inMsg.Properties())
@@ -1451,6 +1455,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
                         // Set the key based on the namespace and name of the property
                         parameters.Add(property.NameSpace + "#" + property.Name, property.Value);
                     }
+
                     break;
                 case ResolutionData.ValuesWithAllPromotedProperties:
                     foreach (var property in inMsg.Properties().Where(p => p.IsPromoted))
@@ -1458,6 +1463,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
                         // Set the key based on the namespace and name of the property
                         parameters.Add(property.NameSpace + "#" + property.Name, property.Value);
                     }
+
                     break;
             }
 

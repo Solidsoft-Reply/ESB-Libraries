@@ -22,7 +22,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
     using System.Runtime.InteropServices;
 
     /// <summary>
-    /// 
+    /// Represents a Windows event log for the Resolution library.
     /// </summary>
     public class EventLog : System.Diagnostics.EventLog
     {
@@ -32,40 +32,6 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         public EventLog()
             : base(Properties.Resources.EventLogMain)
         {
-            
-        }
-
-        /// <summary>
-        /// Writes an information type entry, with the given message text, to the event log.
-        /// </summary>
-        /// <param name="message">The string to write to the event log.</param>
-        public new void WriteEntry(string message)
-        {
-            this.WriteEntry(message, EventLogEntryType.Information);
-        }
-
-        /// <summary>
-        ///    Writes an error, warning, information, success audit, or failure audit entry
-        ///    with the given message text to the event log.
-        /// </summary>
-        /// <param name="message">The string to write to the event log.</param>
-        /// <param name="type">One of the System.Diagnostics.EventLogEntryType values.</param>
-        public new void WriteEntry(string message, EventLogEntryType type)
-        {
-            try
-            {
-                base.WriteEntry(message, type);
-            }
-            // ReSharper disable once EmptyGeneralCatchClause
-            catch 
-            {
-                try
-                {
-                    this.Log = Properties.Resources.EventLogSecondary;
-                    base.WriteEntry(message, type);
-                }
-                catch { }
-            }
         }
 
         /// <summary>
@@ -74,34 +40,9 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// </summary>
         /// <param name="source">The source by which the application is registered on the specified computer.</param>
         /// <param name="message">The string to write to the event log.</param>
-        public new static void WriteEntry(string source, string message)
+        public static new void WriteEntry(string source, string message)
         {
             WriteEntry(source, message, EventLogEntryType.Information);
-        }
-
-        /// <summary>
-        ///    Writes an entry with the given message text and application-defined event
-        ///    identifier to the event log.
-        /// </summary>
-        /// <param name="message">The string to write to the event log.</param>
-        /// <param name="type">One of the System.Diagnostics.EventLogEntryType values.</param>
-        /// <param name="eventId">The application-specific identifier for the event.</param>
-        public new void WriteEntry(string message, EventLogEntryType type, int eventId)
-        {
-            try
-            {
-                base.WriteEntry(message, type, eventId);
-            }
-            // ReSharper disable once EmptyGeneralCatchClause
-            catch
-            {
-                try
-                {
-                    this.Log = Properties.Resources.EventLogSecondary;
-                    base.WriteEntry(message, type, eventId);
-                }
-                catch { }
-            }
         }
 
         /// <summary>
@@ -112,7 +53,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// <param name="source">The source by which the application is registered on the specified computer.</param>
         /// <param name="message">The string to write to the event log.</param>
         /// <param name="type">One of the System.Diagnostics.EventLogEntryType values.</param>
-        public new static void WriteEntry(string source, string message, EventLogEntryType type)
+        public static new void WriteEntry(string source, string message, EventLogEntryType type)
         {
             try
             {
@@ -125,32 +66,6 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         }
 
         /// <summary>
-        ///    Writes an entry with the given message text, application-defined event identifier,
-        ///    and application-defined category to the event log.
-        /// </summary>
-        /// <param name="message">The string to write to the event log.</param>
-        /// <param name="type">One of the System.Diagnostics.EventLogEntryType values.</param>
-        /// <param name="eventId">The application-specific identifier for the event.</param>
-        /// <param name="category">The application-specific subcategory associated with the message.</param>
-        public new void WriteEntry(string message, EventLogEntryType type, int eventId, short category)
-        {
-            try
-            {
-                base.WriteEntry(message, type, eventId, category);
-            }
-            // ReSharper disable once EmptyGeneralCatchClause
-            catch
-            {
-                try
-                {
-                    this.Log = Properties.Resources.EventLogSecondary;
-                    base.WriteEntry(message, type, eventId, category);
-                }
-                catch { }
-            }
-        }
-
-        /// <summary>
         ///    Writes an entry with the given message text and application-defined event
         ///    identifier to the event log, using the specified registered event source.
         /// </summary>
@@ -158,7 +73,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// <param name="message">The string to write to the event log.</param>
         /// <param name="type">One of the System.Diagnostics.EventLogEntryType values.</param>
         /// <param name="eventId">The application-specific identifier for the event.</param>
-        public new static void WriteEntry(string source, string message, EventLogEntryType type, int eventId)
+        public static new void WriteEntry(string source, string message, EventLogEntryType type, int eventId)
         {
             try
             {
@@ -167,34 +82,6 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             // ReSharper disable once EmptyGeneralCatchClause
             catch
             {
-            }
-        }
-
-        /// <summary>
-        ///    Writes an entry with the given message text, application-defined event identifier,
-        ///    and application-defined category to the event log, and appends binary data
-        ///    to the message.
-        /// </summary>
-        /// <param name="message">The string to write to the event log.</param>
-        /// <param name="type">One of the System.Diagnostics.EventLogEntryType values.</param>
-        /// <param name="eventId">The application-specific identifier for the event.</param>
-        /// <param name="category">The application-specific subcategory associated with the message.</param>
-        /// <param name="rawData">An array of bytes that holds the binary data associated with the entry.</param>
-        public new void WriteEntry(string message, EventLogEntryType type, int eventId, short category, byte[] rawData)
-        {
-            try
-            {
-                base.WriteEntry(message, type, eventId, category, rawData);
-            }
-            // ReSharper disable once EmptyGeneralCatchClause
-            catch
-            {
-                try
-                {
-                    this.Log = Properties.Resources.EventLogSecondary;
-                    base.WriteEntry(message, type, eventId, category, rawData);
-                }
-                catch { }
             }
         }
 
@@ -209,7 +96,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// <param name="type">One of the System.Diagnostics.EventLogEntryType values.</param>
         /// <param name="eventId">The application-specific identifier for the event.</param>
         /// <param name="category">The application-specific subcategory associated with the message.</param>
-        public new static void WriteEntry(
+        public static new void WriteEntry(
             string source,
             string message,
             EventLogEntryType type,
@@ -241,7 +128,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// <param name="eventId">The application-specific identifier for the event.</param>
         /// <param name="category">The application-specific subcategory associated with the message.</param>
         /// <param name="rawData">An array of bytes that holds the binary data associated with the entry.</param>
-        public new static void WriteEntry(
+        public static new void WriteEntry(
             string source,
             string message,
             EventLogEntryType type,
@@ -260,62 +147,6 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         }
 
         /// <summary>
-        ///    Writes a localized entry to the event log.
-        /// </summary>
-        /// <param name="instance">
-        ///    An System.Diagnostics.EventInstance instance that represents a localized
-        ///    event log entry.
-        /// </param>
-        /// <param name="values">An array of strings to merge into the message text of the event log entry.</param>
-        [ComVisible(false)]
-        public new void WriteEvent(EventInstance instance, params object[] values)
-        {
-            try
-            {
-                base.WriteEvent(instance, values);
-            }
-            // ReSharper disable once EmptyGeneralCatchClause
-            catch
-            {
-                try
-                {
-                    this.Log = Properties.Resources.EventLogSecondary;
-                    base.WriteEvent(instance, values);
-                }
-                catch { }
-            }
-        }
-
-        /// <summary>
-        ///    Writes an event log entry with the given event data, message replacement
-        ///    strings, and associated binary data.
-        /// </summary>
-        /// <param name="instance">
-        ///    An System.Diagnostics.EventInstance instance that represents a localized
-        ///    event log entry.
-        /// </param>
-        /// <param name="data">An array of bytes that holds the binary data associated with the entry.</param>
-        /// <param name="values">An array of strings to merge into the message text of the event log entry.</param>
-        [ComVisible(false)]
-        public new void WriteEvent(EventInstance instance, byte[] data, params object[] values)
-        {
-            try
-            {
-                base.WriteEvent(instance, data, values);
-            }
-            // ReSharper disable once EmptyGeneralCatchClause
-            catch
-            {
-                try
-                {
-                    this.Log = Properties.Resources.EventLogSecondary;
-                    base.WriteEvent(instance, data, values);
-                }
-                catch { }
-            }
-        }
-
-        /// <summary>
         ///    Writes an event log entry with the given event data and message replacement
         ///    strings, using the specified registered event source.
         /// </summary>
@@ -328,7 +159,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         ///    event log entry.
         /// </param>
         /// <param name="values">An array of strings to merge into the message text of the event log entry.</param>
-        public new static void WriteEvent(string source, EventInstance instance, params object[] values)
+        public static new void WriteEvent(string source, EventInstance instance, params object[] values)
         {
             try
             {
@@ -355,7 +186,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// </param>
         /// <param name="data">An array of bytes that holds the binary data associated with the entry.</param>
         /// <param name="values">An array of strings to merge into the message text of the event log entry.</param>
-        public new static void WriteEvent(string source, EventInstance instance, byte[] data, params object[] values)
+        public static new void WriteEvent(string source, EventInstance instance, byte[] data, params object[] values)
         {
             try
             {
@@ -364,6 +195,186 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             // ReSharper disable once EmptyGeneralCatchClause
             catch
             {
+            }
+        }
+
+        /// <summary>
+        /// Writes an information type entry, with the given message text, to the event log.
+        /// </summary>
+        /// <param name="message">The string to write to the event log.</param>
+        public new void WriteEntry(string message)
+        {
+            this.WriteEntry(message, EventLogEntryType.Information);
+        }
+
+        /// <summary>
+        ///    Writes an error, warning, information, success audit, or failure audit entry
+        ///    with the given message text to the event log.
+        /// </summary>
+        /// <param name="message">The string to write to the event log.</param>
+        /// <param name="type">One of the System.Diagnostics.EventLogEntryType values.</param>
+        public new void WriteEntry(string message, EventLogEntryType type)
+        {
+            try
+            {
+                base.WriteEntry(message, type);
+            }
+            catch 
+            {
+                try
+                {
+                    this.Log = Properties.Resources.EventLogSecondary;
+                    base.WriteEntry(message, type);
+                }
+                // ReSharper disable once EmptyGeneralCatchClause
+                catch
+                {
+                }
+            }
+        }
+
+        /// <summary>
+        ///    Writes an entry with the given message text and application-defined event
+        ///    identifier to the event log.
+        /// </summary>
+        /// <param name="message">The string to write to the event log.</param>
+        /// <param name="type">One of the System.Diagnostics.EventLogEntryType values.</param>
+        /// <param name="eventId">The application-specific identifier for the event.</param>
+        public new void WriteEntry(string message, EventLogEntryType type, int eventId)
+        {
+            try
+            {
+                base.WriteEntry(message, type, eventId);
+            }
+            catch
+            {
+                try
+                {
+                    this.Log = Properties.Resources.EventLogSecondary;
+                    base.WriteEntry(message, type, eventId);
+                }
+                // ReSharper disable once EmptyGeneralCatchClause
+                catch
+                {
+                }
+            }
+        }
+
+        /// <summary>
+        ///    Writes an entry with the given message text, application-defined event identifier,
+        ///    and application-defined category to the event log.
+        /// </summary>
+        /// <param name="message">The string to write to the event log.</param>
+        /// <param name="type">One of the System.Diagnostics.EventLogEntryType values.</param>
+        /// <param name="eventId">The application-specific identifier for the event.</param>
+        /// <param name="category">The application-specific subcategory associated with the message.</param>
+        public new void WriteEntry(string message, EventLogEntryType type, int eventId, short category)
+        {
+            try
+            {
+                base.WriteEntry(message, type, eventId, category);
+            }
+            catch
+            {
+                try
+                {
+                    this.Log = Properties.Resources.EventLogSecondary;
+                    base.WriteEntry(message, type, eventId, category);
+                }
+                // ReSharper disable once EmptyGeneralCatchClause
+                catch
+                {
+                }
+            }
+        }
+
+        /// <summary>
+        ///    Writes an entry with the given message text, application-defined event identifier,
+        ///    and application-defined category to the event log, and appends binary data
+        ///    to the message.
+        /// </summary>
+        /// <param name="message">The string to write to the event log.</param>
+        /// <param name="type">One of the System.Diagnostics.EventLogEntryType values.</param>
+        /// <param name="eventId">The application-specific identifier for the event.</param>
+        /// <param name="category">The application-specific subcategory associated with the message.</param>
+        /// <param name="rawData">An array of bytes that holds the binary data associated with the entry.</param>
+        public new void WriteEntry(string message, EventLogEntryType type, int eventId, short category, byte[] rawData)
+        {
+            try
+            {
+                base.WriteEntry(message, type, eventId, category, rawData);
+            }
+            catch
+            {
+                try
+                {
+                    this.Log = Properties.Resources.EventLogSecondary;
+                    base.WriteEntry(message, type, eventId, category, rawData);
+                }
+                // ReSharper disable once EmptyGeneralCatchClause
+                catch
+                {
+                }
+            }
+        }
+
+        /// <summary>
+        ///    Writes a localized entry to the event log.
+        /// </summary>
+        /// <param name="instance">
+        ///    An System.Diagnostics.EventInstance instance that represents a localized
+        ///    event log entry.
+        /// </param>
+        /// <param name="values">An array of strings to merge into the message text of the event log entry.</param>
+        [ComVisible(false)]
+        public new void WriteEvent(EventInstance instance, params object[] values)
+        {
+            try
+            {
+                base.WriteEvent(instance, values);
+            }
+            catch
+            {
+                try
+                {
+                    this.Log = Properties.Resources.EventLogSecondary;
+                    base.WriteEvent(instance, values);
+                }
+                // ReSharper disable once EmptyGeneralCatchClause
+                catch
+                {
+                }
+            }
+        }
+
+        /// <summary>
+        ///    Writes an event log entry with the given event data, message replacement
+        ///    strings, and associated binary data.
+        /// </summary>
+        /// <param name="instance">
+        ///    An System.Diagnostics.EventInstance instance that represents a localized
+        ///    event log entry.
+        /// </param>
+        /// <param name="data">An array of bytes that holds the binary data associated with the entry.</param>
+        /// <param name="values">An array of strings to merge into the message text of the event log entry.</param>
+        [ComVisible(false)]
+        public new void WriteEvent(EventInstance instance, byte[] data, params object[] values)
+        {
+            try
+            {
+                base.WriteEvent(instance, data, values);
+            }
+            catch
+            {
+                try
+                {
+                    this.Log = Properties.Resources.EventLogSecondary;
+                    base.WriteEvent(instance, data, values);
+                }
+                // ReSharper disable once EmptyGeneralCatchClause
+                catch
+                {
+                }
             }
         }
     }

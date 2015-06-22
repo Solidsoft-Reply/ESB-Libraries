@@ -131,6 +131,31 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Dictionaries
         }
 
         /// <summary>
+        /// Populates a SerializationInfo with the data needed to serialize the target object.
+        /// </summary>
+        /// <param name="info">The SerializationInfo to populate with data. </param>
+        /// <param name="context">The destination (see StreamingContext) for this serialization. </param>
+        [SecurityPermission(SecurityAction.Demand, SerializationFormatter = true)]
+        public override void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            if (info == null)
+            {
+                throw new ArgumentNullException("info");
+            }
+
+            base.GetObjectData(info, context);
+        }
+
+        /// <summary>
+        /// Returns the schema for the current dictionary.
+        /// </summary>
+        /// <returns>The XSD schema for the current dictionary.</returns>
+        public override XmlSchema GetSchema()
+        {
+            return this.schema ?? (this.schema = XmlSerializableDictionary<string, T>.GetSchema(AssemblyProperties.Resources.XsdDictionarySchemaFile));
+        }
+
+        /// <summary>
         /// Returns an XSD schema for the serialisable facts dictionary.  This is referenced by the XmlSchemaProvider
         /// attribute on this class in order control the XML format. 
         /// </summary>
@@ -169,30 +194,7 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Dictionaries
 
             return new XmlQualifiedName(schemaName, schemaNamespace);
         }
-
-        /// <summary>
-        /// Populates a SerializationInfo with the data needed to serialize the target object.
-        /// </summary>
-        /// <param name="info">The SerializationInfo to populate with data. </param>
-        /// <param name="context">The destination (see StreamingContext) for this serialization. </param>
-        [SecurityPermission(SecurityAction.Demand, SerializationFormatter = true)]
-        public override void GetObjectData(SerializationInfo info, StreamingContext context)
-        {
-            if (info == null)
-                throw new ArgumentNullException("info");
-
-            base.GetObjectData(info, context);
-        }
-
-        /// <summary>
-        /// Returns the schema for the current dictionary.
-        /// </summary>
-        /// <returns>The XSD schema for the current dictionary.</returns>
-        public override XmlSchema GetSchema()
-        {
-            return this.schema ?? (this.schema = GetSchema(AssemblyProperties.Resources.XsdDictionarySchemaFile));
-        }
-
+        
         /// <summary>
         /// Reads a key value as a string.
         /// </summary>

@@ -30,6 +30,8 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
     using Microsoft.Uddi3.Extensions;
     using Microsoft.Uddi3.Services;
 
+    using SolidsoftReply.Esb.Libraries.Uddi.Properties;
+
     /// <summary>
     /// A library of helper extension methods.
     /// </summary>
@@ -107,7 +109,7 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
             // Precondition
             if (UddiEventLog.DefaultLog == null)
             {
-                throw new Exception("The UDDI default event log is not initialised.");
+                throw new Exception(Resources.ExceptionUDDIDefaultEventLogNotInitialised_);
             }
 
             ////// Define pre-condition.
@@ -135,7 +137,7 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
             // Precondition
             if (invalidSites == null)
             {
-                throw new ArgumentException("The UDDI default event log is not initialised.", "invalidSites");
+                throw new ArgumentException(Resources.ExceptionUDDIDefaultEventLogNotInitialised_, "invalidSites");
             }
 
             ////////// Define pre-condition.
@@ -171,7 +173,7 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
             // Precondition
             if (UddiEventLog.DefaultLog == null)
             {
-                throw new Exception("The UDDI default event log is not initialised.");
+                throw new Exception(Resources.ExceptionUDDIDefaultEventLogNotInitialised_);
             }
 
             //////// Define pre-condition.
@@ -579,51 +581,63 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
             // Precondition
             if (UddiEventLog.DefaultLog == null)
             {
-                throw new Exception("The UDDI default event log is not initialised.");
+                throw new Exception(Resources.ExceptionUDDIDefaultEventLogNotInitialised_);
             }
 
             ////////// Define pre-condition.
             ////////Contract.Assume(UddiEventLog.DefaultLog != null);
 
-            if (ex as ArgumentNullException != null)
+            var exception = ex as ArgumentNullException;
+
+            if (exception != null)
             {
                 // A null UDDI connection was passed when trying to invoke a UDDI service.
-                UddiEventLog.DefaultLog.WriteUddiConnectionIsNullError((ArgumentNullException)ex, requestType, siteLocation, loggingData);
+                UddiEventLog.DefaultLog.WriteUddiConnectionIsNullError(exception, requestType, siteLocation, loggingData);
                 return;
             }
 
-            if (ex as ArgumentException != null)
+            var argEx = ex as ArgumentException;
+
+            if (argEx != null)
             {
                 // An unknown message type was passed when trying to invoke a UDDI service.
-                UddiEventLog.DefaultLog.WriteUddiUnknownMessageTypeError((ArgumentException)ex, requestType, siteLocation, loggingData);
+                UddiEventLog.DefaultLog.WriteUddiUnknownMessageTypeError(argEx, requestType, siteLocation, loggingData);
                 return;
             }
 
-            if (ex as InvalidOperationException != null)
+            var operationEx = ex as InvalidOperationException;
+
+            if (operationEx != null)
             {
                 // A null site location or Inquiry URL was passed when trying to invoke a UDDI service.
-                UddiEventLog.DefaultLog.WriteUddiInvalidSiteError((InvalidOperationException)ex, requestType, siteLocation, loggingData);
+                UddiEventLog.DefaultLog.WriteUddiInvalidSiteError(operationEx, requestType, siteLocation, loggingData);
                 return;
             }
 
-            if (ex as InvalidKeyPassedException != null)
+            var keyEx = ex as InvalidKeyPassedException;
+
+            if (keyEx != null)
             {
                 // An invalid key value was passed when trying to invoke a UDDI service.
-                UddiEventLog.DefaultLog.WriteUddiInvalidKeyError((InvalidKeyPassedException)ex, requestType, siteLocation, loggingData);
+                UddiEventLog.DefaultLog.WriteUddiInvalidKeyError(keyEx, requestType, siteLocation, loggingData);
                 return;
             }
 
-            if (ex as UnknownErrorException != null)
+            var unkEx = ex as UnknownErrorException;
+
+            if (unkEx != null)
             {
                 // An unexpected error occurred when invoking a UDDI service.
-                UddiEventLog.DefaultLog.WriteUddiUnknownError((UnknownErrorException)ex, requestType, siteLocation, loggingData);
+                UddiEventLog.DefaultLog.WriteUddiUnknownError(unkEx, requestType, siteLocation, loggingData);
                 return;
             }
 
-            if (ex as UddiException != null)
+            var uddiEx = ex as UddiException;
+
+            if (uddiEx != null)
             {
                 // A SOAP fault occurred when invoking a UDDI service.
-                UddiEventLog.DefaultLog.WriteUddiError((UddiException)ex, requestType, siteLocation, loggingData);
+                UddiEventLog.DefaultLog.WriteUddiError(uddiEx, requestType, siteLocation, loggingData);
                 return;
             }
 

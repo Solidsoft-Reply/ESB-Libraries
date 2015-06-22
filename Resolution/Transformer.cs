@@ -19,13 +19,15 @@
 namespace SolidsoftReply.Esb.Libraries.Resolution
 {
     using System;
-    using System.Collections.Generic;
+    using System.Diagnostics;
     using System.IO;
     using System.Linq;
     using System.Reflection;
     using System.Text;
     using System.Xml;
     using System.Xml.Xsl;
+
+    using SolidsoftReply.Esb.Libraries.Resolution.Properties;
 
     /// <summary>
     /// Transform helper class
@@ -50,7 +52,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             var merge = new XmlDocument();
             var xml = new StringBuilder();
 
-            xml.Append(string.Format("<r:Root xmlns:r='{0}'>", Properties.Resources.UriAggSchema));
+            xml.Append(string.Format("<r:Root xmlns:r='{0}'>", Resources.UriAggSchema));
             xml.Append("<InputMessagePart_0>");
 
             if (messageIn1.DocumentElement != null)
@@ -90,7 +92,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             var msgOut = new XmlDocument();            
             StringWriter writer = null;
 
-            System.Diagnostics.Debug.Write("[Resolver] Transform using the map in " + mapFullName);
+            Debug.Write("[Resolver] Transform using the map in " + mapFullName);
 
             // Check parameters
             if (messageIn == null)
@@ -109,7 +111,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
 
             if (pos == -1)
             {
-                throw new ArgumentException(string.Format(Properties.Resources.ExceptionMapFullName, mapFullName));
+                throw new ArgumentException(string.Format(Resources.ExceptionMapFullName, mapFullName));
             }
 
             var strongName = mapFullName.Substring(pos);
@@ -133,7 +135,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 if (map == null)
                 {
                     throw new EsbResolutionException(
-                        string.Format(Properties.Resources.ExceptionMapClassInvalid, className));
+                        string.Format(Resources.ExceptionMapClassInvalid, className));
                 }
                 
                 // Extract the xslt
@@ -160,7 +162,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 {
                     // Load the argument list and create all the needed instances
                     xmlExtension.LoadXml(xsltArguments.ToString());
-                    var xmlExtensionNodes = xmlExtension.SelectNodes(Properties.Resources.XPathExtensionObject);
+                    var xmlExtensionNodes = xmlExtension.SelectNodes(Resources.XPathExtensionObject);
 
                     if (xmlExtensionNodes != null)
                     {

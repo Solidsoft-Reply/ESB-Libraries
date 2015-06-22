@@ -20,10 +20,11 @@ namespace SolidsoftReply.Esb.Libraries.Facts
 {
     using System;
     using System.Collections;
-    using System.Xml.Serialization;
-    using Microsoft.BizTalk.Bam.EventObservation;
+    using System.Collections.Generic; 
     using System.Text.RegularExpressions;
-using System.Collections.Generic; 
+    using System.Xml.Serialization;
+
+    using Microsoft.BizTalk.Bam.EventObservation;
     
     /// <summary>
     /// Represents an activity as a fact.  The policy for the named activity
@@ -37,8 +38,10 @@ using System.Collections.Generic;
     [XmlInclude(typeof(TrackPoint))]
     public class BamActivityStep : ActivityInterceptorConfiguration
     {
-        // A list of steps that extend the step specified in the StepName property.
-        private List<string> extensionSteps = new List<string>();
+        /// <summary>
+        /// A list of steps that extend the step specified in the StepName property.
+        /// </summary>
+        private readonly List<string> extensionSteps = new List<string>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BamActivityStep"/> class. 
@@ -113,7 +116,6 @@ using System.Collections.Generic;
             }
         }
 
-
         /// <summary>
         /// Registers the start of a new activity.
         /// </summary>
@@ -152,7 +154,7 @@ using System.Collections.Generic;
             // Tokenise the whitespace in a string.  We will deliberately replace each individual
             // whitespace character with an underscore, rather han grouping whitespace characters.
             // This handles situations where a developer decides to treat whitespace as significant.
-            Func<string, string> tokenizeWhitespace = str => Regex.Replace(str, @"\s","_");
+            Func<string, string> tokenizeWhitespace = str => Regex.Replace(str, @"\s", "_");
 
             this.RegisterContinue(
                 location, 
@@ -165,8 +167,8 @@ using System.Collections.Generic;
         /// Registers the extension of an existing activity.  This is really a continuation.  The prefix is 
         /// manufactured using the name of another step.
         /// </summary>
-        /// <param name="location">The named location.</param>
-        /// <param name="continuationTokenExtractionInfo">The extraction information of the continuation ID.</param>
+        /// <param name="step">The name of step to be extended.</param>
+        /// <param name="extendedStep">The name of the step that is being extended.</param>
         public void RegisterExtendStep(string step, string extendedStep)
         {
             if (string.IsNullOrEmpty(extendedStep))

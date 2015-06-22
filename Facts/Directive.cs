@@ -1067,6 +1067,9 @@ namespace SolidsoftReply.Esb.Libraries.Facts
             public string Value { get; set; }
         }
 
+        /// <summary>
+        /// Represents a list of BAM step extension names.
+        /// </summary>
         [DebuggerStepThrough]
         [CollectionDataContract(Name = "Directive.BamStepExtensionsType", Namespace = "http://solidsoftreply.com/schemas/webservices/esbresolutionservice/2015/05", ItemName = "BamStepExtension")]
         public class BamStepExtensionsType : List<string>

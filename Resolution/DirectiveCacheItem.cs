@@ -48,11 +48,5 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// </summary>
         [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1401:FieldsMustBePrivate", Justification = "Reviewed. Suppression is OK here.")]
         internal BamActivityStep BamActivityStep;
-
-        /// <summary>
-        /// Expiration date.
-        /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1401:FieldsMustBePrivate", Justification = "Reviewed. Suppression is OK here.")]
-        internal DateTime ExpirationDate;
     }
 }

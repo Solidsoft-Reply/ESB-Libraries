@@ -24,18 +24,15 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
     using System;
     using System.Collections;
     using System.ComponentModel;
-    using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
-    using System.IO;
-    using System.Reflection;
     using System.Resources;
     using System.Runtime.InteropServices;
-    using System.Runtime.Serialization.Formatters.Binary;
 
     using Microsoft.BizTalk.Component;
     using Microsoft.BizTalk.Component.Interop;
     using Microsoft.BizTalk.Component.Utilities;
     using Microsoft.BizTalk.Message.Interop;
+
     using SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.Properties;
     using SolidsoftReply.Esb.Libraries.Resolution;
 
@@ -618,7 +615,6 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
 
         ////////    return returnValue;
         ////////}
-
 
         /// <summary>
         /// Loads configuration property for component.

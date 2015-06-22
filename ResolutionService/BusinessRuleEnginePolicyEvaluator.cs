@@ -213,7 +213,7 @@ namespace SolidsoftReply.Esb.Libraries.ResolutionService
                         policyTester.Execute(shortTermFacts);
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     EventLog.WriteEntry("ESBResolutionService", GetFullMessage(ex));
                     throw;
@@ -423,14 +423,14 @@ namespace SolidsoftReply.Esb.Libraries.ResolutionService
         }
 
         /// <summary>
-        /// Recurcive function that returns a string composed of all exception messages including inner 
+        /// Recursive function that returns a string composed of all exception messages including inner 
         /// exceptions.
         /// </summary>
-        /// <param name="ex">The current eception</param>
+        /// <param name="ex">The current exception</param>
         /// <returns>A string composed of all exception messages including inner exceptions.</returns>
         private static string GetFullMessage(Exception ex)
         {
-            return ex.Message + ex.InnerException == null ? string.Empty : "\r\n" + GetFullMessage(ex.InnerException);
+            return ex.Message + (ex.InnerException == null ? string.Empty : "\r\n" + GetFullMessage(ex.InnerException));
         }
 
         /// <summary>

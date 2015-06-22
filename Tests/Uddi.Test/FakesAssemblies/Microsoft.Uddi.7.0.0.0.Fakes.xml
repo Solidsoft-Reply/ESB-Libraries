@@ -2002,33 +2002,6 @@
         <member name="P:Microsoft.Uddi3.Businesses.Fakes.StubAddressCollection.InstanceObserver">
             <summary>Gets or sets the instance observer.</summary>
         </member>
-        <member name="T:Microsoft.Uddi3.Businesses.Fakes.StubAddressLineCollection">
-            <summary>Stub type of Microsoft.Uddi3.Businesses.AddressLineCollection</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Businesses.Fakes.StubAddressLineCollection.#ctor">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Businesses.Fakes.StubAddressLineCollection.#ctor(Microsoft.Uddi3.Businesses.AddressLine)">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Businesses.Fakes.StubAddressLineCollection.Append(Microsoft.Uddi3.Businesses.AddressLine[])">
-            <summary>Sets the stub of UddiCollection`1.Append(!0[] array)</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Businesses.Fakes.StubAddressLineCollection.AppendAddressLineArray">
-            <summary>Sets the stub of UddiCollection`1.Append(!0[] array)</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Businesses.Fakes.StubAddressLineCollection.InitializeStub">
-            <summary>Initializes a new instance of type StubAddressLineCollection</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Businesses.Fakes.StubAddressLineCollection.CallBase">
-            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Businesses.Fakes.StubAddressLineCollection.InstanceBehavior">
-            <summary>Gets or sets the instance behavior.</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Businesses.Fakes.StubAddressLineCollection.InstanceObserver">
-            <summary>Gets or sets the instance observer.</summary>
-        </member>
         <member name="T:Microsoft.Uddi3.Businesses.Fakes.StubAssertionStatusItem">
             <summary>Stub type of Microsoft.Uddi3.Businesses.AssertionStatusItem</summary>
         </member>
@@ -2254,108 +2227,6 @@
         <member name="P:Microsoft.Uddi3.Businesses.Fakes.StubContactCollection.InstanceObserver">
             <summary>Gets or sets the instance observer.</summary>
         </member>
-        <member name="T:Microsoft.Uddi3.Businesses.Fakes.StubDiscoveryUrlCollection">
-            <summary>Stub type of Microsoft.Uddi3.Businesses.DiscoveryUrlCollection</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Businesses.Fakes.StubDiscoveryUrlCollection.#ctor">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Businesses.Fakes.StubDiscoveryUrlCollection.#ctor(Microsoft.Uddi3.Businesses.DiscoveryUrl)">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Businesses.Fakes.StubDiscoveryUrlCollection.InitializeStub">
-            <summary>Initializes a new instance of type StubDiscoveryUrlCollection</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Businesses.Fakes.StubDiscoveryUrlCollection.OnClear">
-            <summary>Sets the stub of CollectionBase.OnClear()</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Businesses.Fakes.StubDiscoveryUrlCollection.OnClear01">
-            <summary>Sets the stub of CollectionBase.OnClear()</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Businesses.Fakes.StubDiscoveryUrlCollection.OnClearComplete">
-            <summary>Sets the stub of CollectionBase.OnClearComplete()</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Businesses.Fakes.StubDiscoveryUrlCollection.OnClearComplete01">
-            <summary>Sets the stub of CollectionBase.OnClearComplete()</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Businesses.Fakes.StubDiscoveryUrlCollection.OnInsert(System.Int32,System.Object)">
-            <summary>Sets the stub of CollectionBase.OnInsert(Int32 index, Object value)</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Businesses.Fakes.StubDiscoveryUrlCollection.OnInsertComplete(System.Int32,System.Object)">
-            <summary>Sets the stub of CollectionBase.OnInsertComplete(Int32 index, Object value)</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Businesses.Fakes.StubDiscoveryUrlCollection.OnInsertCompleteInt32Object">
-            <summary>Sets the stub of CollectionBase.OnInsertComplete(Int32 index, Object value)</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Businesses.Fakes.StubDiscoveryUrlCollection.OnInsertInt32Object">
-            <summary>Sets the stub of CollectionBase.OnInsert(Int32 index, Object value)</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Businesses.Fakes.StubDiscoveryUrlCollection.OnRemove(System.Int32,System.Object)">
-            <summary>Sets the stub of CollectionBase.OnRemove(Int32 index, Object value)</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Businesses.Fakes.StubDiscoveryUrlCollection.OnRemoveComplete(System.Int32,System.Object)">
-            <summary>Sets the stub of CollectionBase.OnRemoveComplete(Int32 index, Object value)</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Businesses.Fakes.StubDiscoveryUrlCollection.OnRemoveCompleteInt32Object">
-            <summary>Sets the stub of CollectionBase.OnRemoveComplete(Int32 index, Object value)</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Businesses.Fakes.StubDiscoveryUrlCollection.OnRemoveInt32Object">
-            <summary>Sets the stub of CollectionBase.OnRemove(Int32 index, Object value)</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Businesses.Fakes.StubDiscoveryUrlCollection.OnSet(System.Int32,System.Object,System.Object)">
-            <summary>Sets the stub of CollectionBase.OnSet(Int32 index, Object oldValue, Object newValue)</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Businesses.Fakes.StubDiscoveryUrlCollection.OnSetComplete(System.Int32,System.Object,System.Object)">
-            <summary>Sets the stub of CollectionBase.OnSetComplete(Int32 index, Object oldValue, Object newValue)</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Businesses.Fakes.StubDiscoveryUrlCollection.OnSetCompleteInt32ObjectObject">
-            <summary>Sets the stub of CollectionBase.OnSetComplete(Int32 index, Object oldValue, Object newValue)</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Businesses.Fakes.StubDiscoveryUrlCollection.OnSetInt32ObjectObject">
-            <summary>Sets the stub of CollectionBase.OnSet(Int32 index, Object oldValue, Object newValue)</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Businesses.Fakes.StubDiscoveryUrlCollection.OnValidate(System.Object)">
-            <summary>Sets the stub of CollectionBase.OnValidate(Object value)</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Businesses.Fakes.StubDiscoveryUrlCollection.OnValidateObject">
-            <summary>Sets the stub of CollectionBase.OnValidate(Object value)</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Businesses.Fakes.StubDiscoveryUrlCollection.CallBase">
-            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Businesses.Fakes.StubDiscoveryUrlCollection.InstanceBehavior">
-            <summary>Gets or sets the instance behavior.</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Businesses.Fakes.StubDiscoveryUrlCollection.InstanceObserver">
-            <summary>Gets or sets the instance observer.</summary>
-        </member>
-        <member name="T:Microsoft.Uddi3.Businesses.Fakes.StubEmailCollection">
-            <summary>Stub type of Microsoft.Uddi3.Businesses.EmailCollection</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Businesses.Fakes.StubEmailCollection.#ctor">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Businesses.Fakes.StubEmailCollection.#ctor(Microsoft.Uddi3.Businesses.Email)">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Businesses.Fakes.StubEmailCollection.Append(Microsoft.Uddi3.Businesses.Email[])">
-            <summary>Sets the stub of UddiCollection`1.Append(!0[] array)</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Businesses.Fakes.StubEmailCollection.AppendEmailArray">
-            <summary>Sets the stub of UddiCollection`1.Append(!0[] array)</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Businesses.Fakes.StubEmailCollection.InitializeStub">
-            <summary>Initializes a new instance of type StubEmailCollection</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Businesses.Fakes.StubEmailCollection.CallBase">
-            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Businesses.Fakes.StubEmailCollection.InstanceBehavior">
-            <summary>Gets or sets the instance behavior.</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Businesses.Fakes.StubEmailCollection.InstanceObserver">
-            <summary>Gets or sets the instance observer.</summary>
-        </member>
         <member name="T:Microsoft.Uddi3.Businesses.Fakes.StubKeysOwned">
             <summary>Stub type of Microsoft.Uddi3.Businesses.KeysOwned</summary>
         </member>
@@ -2375,60 +2246,6 @@
             <summary>Gets or sets the instance behavior.</summary>
         </member>
         <member name="P:Microsoft.Uddi3.Businesses.Fakes.StubKeysOwned.InstanceObserver">
-            <summary>Gets or sets the instance observer.</summary>
-        </member>
-        <member name="T:Microsoft.Uddi3.Businesses.Fakes.StubPhoneCollection">
-            <summary>Stub type of Microsoft.Uddi3.Businesses.PhoneCollection</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Businesses.Fakes.StubPhoneCollection.#ctor">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Businesses.Fakes.StubPhoneCollection.#ctor(Microsoft.Uddi3.Businesses.Phone)">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Businesses.Fakes.StubPhoneCollection.Append(Microsoft.Uddi3.Businesses.Phone[])">
-            <summary>Sets the stub of UddiCollection`1.Append(!0[] array)</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Businesses.Fakes.StubPhoneCollection.AppendPhoneArray">
-            <summary>Sets the stub of UddiCollection`1.Append(!0[] array)</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Businesses.Fakes.StubPhoneCollection.InitializeStub">
-            <summary>Initializes a new instance of type StubPhoneCollection</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Businesses.Fakes.StubPhoneCollection.CallBase">
-            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Businesses.Fakes.StubPhoneCollection.InstanceBehavior">
-            <summary>Gets or sets the instance behavior.</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Businesses.Fakes.StubPhoneCollection.InstanceObserver">
-            <summary>Gets or sets the instance observer.</summary>
-        </member>
-        <member name="T:Microsoft.Uddi3.Businesses.Fakes.StubPublisherAssertionCollection">
-            <summary>Stub type of Microsoft.Uddi3.Businesses.PublisherAssertionCollection</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Businesses.Fakes.StubPublisherAssertionCollection.#ctor">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Businesses.Fakes.StubPublisherAssertionCollection.#ctor(Microsoft.Uddi3.Businesses.PublisherAssertion)">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Businesses.Fakes.StubPublisherAssertionCollection.Append(Microsoft.Uddi3.Businesses.PublisherAssertion[])">
-            <summary>Sets the stub of UddiCollection`1.Append(!0[] array)</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Businesses.Fakes.StubPublisherAssertionCollection.AppendPublisherAssertionArray">
-            <summary>Sets the stub of UddiCollection`1.Append(!0[] array)</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Businesses.Fakes.StubPublisherAssertionCollection.InitializeStub">
-            <summary>Initializes a new instance of type StubPublisherAssertionCollection</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Businesses.Fakes.StubPublisherAssertionCollection.CallBase">
-            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Businesses.Fakes.StubPublisherAssertionCollection.InstanceBehavior">
-            <summary>Gets or sets the instance behavior.</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Businesses.Fakes.StubPublisherAssertionCollection.InstanceObserver">
             <summary>Gets or sets the instance observer.</summary>
         </member>
         <member name="T:Microsoft.Uddi3.Businesses.Fakes.StubRelatedBusinessInfo">
@@ -3379,72 +3196,6 @@
         <member name="P:Microsoft.Uddi3.Extensions.Fakes.ShimGetRelatedCategories.AllInstances.UddiSiteUrlTypeMicrosoftUddi3IMessageget">
             <summary>Sets the shim of GetRelatedCategories.Microsoft.Uddi3.IMessage.get_UddiSiteUrlType()</summary>
         </member>
-        <member name="T:Microsoft.Uddi3.Extensions.Fakes.ShimRelationshipQualifierCollection">
-            <summary>Shim type of Microsoft.Uddi3.Extensions.RelationshipQualifierCollection</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Extensions.Fakes.ShimRelationshipQualifierCollection.#ctor">
-            <summary>Initializes a new shim instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Extensions.Fakes.ShimRelationshipQualifierCollection.#ctor(Microsoft.Uddi3.Extensions.RelationshipQualifierCollection)">
-            <summary>Initializes a new shim for the given instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Extensions.Fakes.ShimRelationshipQualifierCollection.BehaveAsCurrent">
-            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Extensions.Fakes.ShimRelationshipQualifierCollection.BehaveAsNotImplemented">
-            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Extensions.Fakes.ShimRelationshipQualifierCollection.Bind(System.Collections.ICollection)">
-            <summary>Binds the members of the interface to the shim.</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Extensions.Fakes.ShimRelationshipQualifierCollection.Bind(System.Collections.IEnumerable)">
-            <summary>Binds the members of the interface to the shim.</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Extensions.Fakes.ShimRelationshipQualifierCollection.Bind(System.Collections.IList)">
-            <summary>Binds the members of the interface to the shim.</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Extensions.Fakes.ShimRelationshipQualifierCollection.Bind(System.Collections.Generic.ICollection{Microsoft.Uddi3.Extensions.RelationshipQualifier})">
-            <summary>Binds the members of the interface to the shim.</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Extensions.Fakes.ShimRelationshipQualifierCollection.Bind(System.Collections.Generic.IEnumerable{Microsoft.Uddi3.Extensions.RelationshipQualifier})">
-            <summary>Binds the members of the interface to the shim.</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Extensions.Fakes.ShimRelationshipQualifierCollection.Bind(System.Collections.Generic.IList{Microsoft.Uddi3.Extensions.RelationshipQualifier})">
-            <summary>Binds the members of the interface to the shim.</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Extensions.Fakes.ShimRelationshipQualifierCollection.Bind(System.Collections.Generic.IReadOnlyCollection{Microsoft.Uddi3.Extensions.RelationshipQualifier})">
-            <summary>Binds the members of the interface to the shim.</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Extensions.Fakes.ShimRelationshipQualifierCollection.Bind(System.Collections.Generic.IReadOnlyList{Microsoft.Uddi3.Extensions.RelationshipQualifier})">
-            <summary>Binds the members of the interface to the shim.</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Extensions.Fakes.ShimRelationshipQualifierCollection.Behavior">
-            <summary>Assigns the behavior for all methods of the shimmed type</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Extensions.Fakes.ShimRelationshipQualifierCollection.Constructor">
-            <summary>Sets the shim of RelationshipQualifierCollection.RelationshipQualifierCollection()</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Extensions.Fakes.ShimRelationshipQualifierCollection.ConstructorRelationshipQualifier">
-            <summary>Sets the shim of RelationshipQualifierCollection.RelationshipQualifierCollection(RelationshipQualifier relationshipQualifier)</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Extensions.Fakes.ShimRelationshipQualifierCollection.ConstructorRelationshipQualifierCollection">
-            <summary>Sets the shim of RelationshipQualifierCollection.RelationshipQualifierCollection(RelationshipQualifierCollection relationshipQualifierCollection)</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Extensions.Fakes.ShimRelationshipQualifierCollection.SerializingGet">
-            <summary>Sets the shim of RelationshipQualifierCollection.get_Serializing()</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Extensions.Fakes.ShimRelationshipQualifierCollection.SerializingSetBoolean">
-            <summary>Sets the shim of RelationshipQualifierCollection.set_Serializing(Boolean value)</summary>
-        </member>
-        <member name="T:Microsoft.Uddi3.Extensions.Fakes.ShimRelationshipQualifierCollection.AllInstances">
-            <summary>Define shims for all instances members</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Extensions.Fakes.ShimRelationshipQualifierCollection.AllInstances.SerializingGet">
-            <summary>Sets the shim of RelationshipQualifierCollection.get_Serializing()</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Extensions.Fakes.ShimRelationshipQualifierCollection.AllInstances.SerializingSetBoolean">
-            <summary>Sets the shim of RelationshipQualifierCollection.set_Serializing(Boolean value)</summary>
-        </member>
         <member name="T:Microsoft.Uddi3.Extensions.Fakes.ShimUddiResources">
             <summary>Shim type of Microsoft.Uddi3.Extensions.UddiResources</summary>
         </member>
@@ -4007,33 +3758,6 @@
             <summary>Gets or sets the instance behavior.</summary>
         </member>
         <member name="P:Microsoft.Uddi3.Extensions.Fakes.StubGetRelatedCategories.InstanceObserver">
-            <summary>Gets or sets the instance observer.</summary>
-        </member>
-        <member name="T:Microsoft.Uddi3.Extensions.Fakes.StubRelationshipQualifierCollection">
-            <summary>Stub type of Microsoft.Uddi3.Extensions.RelationshipQualifierCollection</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Extensions.Fakes.StubRelationshipQualifierCollection.#ctor">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Extensions.Fakes.StubRelationshipQualifierCollection.#ctor(Microsoft.Uddi3.Extensions.RelationshipQualifier)">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Extensions.Fakes.StubRelationshipQualifierCollection.Append(Microsoft.Uddi3.Extensions.RelationshipQualifier[])">
-            <summary>Sets the stub of UddiCollection`1.Append(!0[] array)</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Extensions.Fakes.StubRelationshipQualifierCollection.AppendRelationshipQualifierArray">
-            <summary>Sets the stub of UddiCollection`1.Append(!0[] array)</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Extensions.Fakes.StubRelationshipQualifierCollection.InitializeStub">
-            <summary>Initializes a new instance of type StubRelationshipQualifierCollection</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Extensions.Fakes.StubRelationshipQualifierCollection.CallBase">
-            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Extensions.Fakes.StubRelationshipQualifierCollection.InstanceBehavior">
-            <summary>Gets or sets the instance behavior.</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Extensions.Fakes.StubRelationshipQualifierCollection.InstanceObserver">
             <summary>Gets or sets the instance observer.</summary>
         </member>
         <member name="T:Microsoft.Uddi3.Extensions.Fakes.StubUddiResources">
@@ -12979,33 +12703,6 @@
         <member name="T:Microsoft.Uddi3.Fakes.ShimValueNotAllowedException.AllInstances">
             <summary>Define shims for all instances members</summary>
         </member>
-        <member name="T:Microsoft.Uddi3.Fakes.StubAddPublisherAssertions">
-            <summary>Stub type of Microsoft.Uddi3.AddPublisherAssertions</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubAddPublisherAssertions.#ctor">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubAddPublisherAssertions.#ctor(Microsoft.Uddi3.Businesses.PublisherAssertion)">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubAddPublisherAssertions.InitializeStub">
-            <summary>Initializes a new instance of type StubAddPublisherAssertions</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubAddPublisherAssertions.ToString">
-            <summary>Sets the stub of AddPublisherAssertions.ToString()</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Fakes.StubAddPublisherAssertions.ToString01">
-            <summary>Sets the stub of AddPublisherAssertions.ToString()</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubAddPublisherAssertions.CallBase">
-            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubAddPublisherAssertions.InstanceBehavior">
-            <summary>Gets or sets the instance behavior.</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubAddPublisherAssertions.InstanceObserver">
-            <summary>Gets or sets the instance observer.</summary>
-        </member>
         <member name="T:Microsoft.Uddi3.Fakes.StubAssertionStatusReport">
             <summary>Stub type of Microsoft.Uddi3.AssertionStatusReport</summary>
         </member>
@@ -13189,39 +12886,6 @@
         <member name="P:Microsoft.Uddi3.Fakes.StubDeleteBusiness.InstanceObserver">
             <summary>Gets or sets the instance observer.</summary>
         </member>
-        <member name="T:Microsoft.Uddi3.Fakes.StubDeletePublisherAssertions">
-            <summary>Stub type of Microsoft.Uddi3.DeletePublisherAssertions</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubDeletePublisherAssertions.#ctor">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubDeletePublisherAssertions.#ctor(Microsoft.Uddi3.Businesses.PublisherAssertion)">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubDeletePublisherAssertions.#ctor(System.String,System.String,Microsoft.Uddi3.KeyedReference)">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubDeletePublisherAssertions.#ctor(System.String,System.String,System.String,System.String,System.String)">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubDeletePublisherAssertions.InitializeStub">
-            <summary>Initializes a new instance of type StubDeletePublisherAssertions</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubDeletePublisherAssertions.ToString">
-            <summary>Sets the stub of DeletePublisherAssertions.ToString()</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Fakes.StubDeletePublisherAssertions.ToString01">
-            <summary>Sets the stub of DeletePublisherAssertions.ToString()</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubDeletePublisherAssertions.CallBase">
-            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubDeletePublisherAssertions.InstanceBehavior">
-            <summary>Gets or sets the instance behavior.</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubDeletePublisherAssertions.InstanceObserver">
-            <summary>Gets or sets the instance observer.</summary>
-        </member>
         <member name="T:Microsoft.Uddi3.Fakes.StubDeleteService">
             <summary>Stub type of Microsoft.Uddi3.DeleteService</summary>
         </member>
@@ -13250,36 +12914,6 @@
             <summary>Gets or sets the instance behavior.</summary>
         </member>
         <member name="P:Microsoft.Uddi3.Fakes.StubDeleteService.InstanceObserver">
-            <summary>Gets or sets the instance observer.</summary>
-        </member>
-        <member name="T:Microsoft.Uddi3.Fakes.StubDeleteTModel">
-            <summary>Stub type of Microsoft.Uddi3.DeleteTModel</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubDeleteTModel.#ctor">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubDeleteTModel.#ctor(System.Collections.Specialized.StringCollection)">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubDeleteTModel.#ctor(System.String)">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubDeleteTModel.InitializeStub">
-            <summary>Initializes a new instance of type StubDeleteTModel</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubDeleteTModel.ToString">
-            <summary>Sets the stub of DeleteTModel.ToString()</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Fakes.StubDeleteTModel.ToString01">
-            <summary>Sets the stub of DeleteTModel.ToString()</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubDeleteTModel.CallBase">
-            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubDeleteTModel.InstanceBehavior">
-            <summary>Gets or sets the instance behavior.</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubDeleteTModel.InstanceObserver">
             <summary>Gets or sets the instance observer.</summary>
         </member>
         <member name="T:Microsoft.Uddi3.Fakes.StubDescriptionCollection">
@@ -13558,39 +13192,6 @@
         <member name="P:Microsoft.Uddi3.Fakes.StubFindService.InstanceObserver">
             <summary>Gets or sets the instance observer.</summary>
         </member>
-        <member name="T:Microsoft.Uddi3.Fakes.StubFindTModel">
-            <summary>Stub type of Microsoft.Uddi3.FindTModel</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubFindTModel.#ctor">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubFindTModel.#ctor(Microsoft.Uddi3.KeyedReferenceCollection)">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubFindTModel.#ctor(Microsoft.Uddi3.Name)">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubFindTModel.#ctor(System.String)">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubFindTModel.InitializeStub">
-            <summary>Initializes a new instance of type StubFindTModel</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubFindTModel.ToString">
-            <summary>Sets the stub of FindTModel.ToString()</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Fakes.StubFindTModel.ToString01">
-            <summary>Sets the stub of FindTModel.ToString()</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubFindTModel.CallBase">
-            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubFindTModel.InstanceBehavior">
-            <summary>Gets or sets the instance behavior.</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubFindTModel.InstanceObserver">
-            <summary>Gets or sets the instance observer.</summary>
-        </member>
         <member name="T:Microsoft.Uddi3.Fakes.StubGetAssertionStatusReport">
             <summary>Stub type of Microsoft.Uddi3.GetAssertionStatusReport</summary>
         </member>
@@ -13705,30 +13306,6 @@
         <member name="P:Microsoft.Uddi3.Fakes.StubGetBusinessDetail.InstanceObserver">
             <summary>Gets or sets the instance observer.</summary>
         </member>
-        <member name="T:Microsoft.Uddi3.Fakes.StubGetPublisherAssertions">
-            <summary>Stub type of Microsoft.Uddi3.GetPublisherAssertions</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubGetPublisherAssertions.#ctor">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubGetPublisherAssertions.InitializeStub">
-            <summary>Initializes a new instance of type StubGetPublisherAssertions</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubGetPublisherAssertions.ToString">
-            <summary>Sets the stub of GetPublisherAssertions.ToString()</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Fakes.StubGetPublisherAssertions.ToString01">
-            <summary>Sets the stub of GetPublisherAssertions.ToString()</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubGetPublisherAssertions.CallBase">
-            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubGetPublisherAssertions.InstanceBehavior">
-            <summary>Gets or sets the instance behavior.</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubGetPublisherAssertions.InstanceObserver">
-            <summary>Gets or sets the instance observer.</summary>
-        </member>
         <member name="T:Microsoft.Uddi3.Fakes.StubGetRegisteredInfo">
             <summary>Stub type of Microsoft.Uddi3.GetRegisteredInfo</summary>
         </member>
@@ -13781,36 +13358,6 @@
             <summary>Gets or sets the instance behavior.</summary>
         </member>
         <member name="P:Microsoft.Uddi3.Fakes.StubGetServiceDetail.InstanceObserver">
-            <summary>Gets or sets the instance observer.</summary>
-        </member>
-        <member name="T:Microsoft.Uddi3.Fakes.StubGetTModelDetail">
-            <summary>Stub type of Microsoft.Uddi3.GetTModelDetail</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubGetTModelDetail.#ctor">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubGetTModelDetail.#ctor(System.Collections.Specialized.StringCollection)">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubGetTModelDetail.#ctor(System.String)">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubGetTModelDetail.InitializeStub">
-            <summary>Initializes a new instance of type StubGetTModelDetail</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubGetTModelDetail.ToString">
-            <summary>Sets the stub of GetTModelDetail.ToString()</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Fakes.StubGetTModelDetail.ToString01">
-            <summary>Sets the stub of GetTModelDetail.ToString()</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubGetTModelDetail.CallBase">
-            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubGetTModelDetail.InstanceBehavior">
-            <summary>Gets or sets the instance behavior.</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubGetTModelDetail.InstanceObserver">
             <summary>Gets or sets the instance observer.</summary>
         </member>
         <member name="T:Microsoft.Uddi3.Fakes.StubGetTransferToken">
@@ -14110,54 +13657,6 @@
         <member name="P:Microsoft.Uddi3.Fakes.StubNameCollection.InstanceObserver">
             <summary>Gets or sets the instance observer.</summary>
         </member>
-        <member name="T:Microsoft.Uddi3.Fakes.StubPersonNameCollection">
-            <summary>Stub type of Microsoft.Uddi3.PersonNameCollection</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubPersonNameCollection.#ctor">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubPersonNameCollection.Append(Microsoft.Uddi3.PersonName[])">
-            <summary>Sets the stub of UddiCollection`1.Append(!0[] array)</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Fakes.StubPersonNameCollection.AppendPersonNameArray">
-            <summary>Sets the stub of UddiCollection`1.Append(!0[] array)</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubPersonNameCollection.InitializeStub">
-            <summary>Initializes a new instance of type StubPersonNameCollection</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubPersonNameCollection.CallBase">
-            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubPersonNameCollection.InstanceBehavior">
-            <summary>Gets or sets the instance behavior.</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubPersonNameCollection.InstanceObserver">
-            <summary>Gets or sets the instance observer.</summary>
-        </member>
-        <member name="T:Microsoft.Uddi3.Fakes.StubPublisherAssertionList">
-            <summary>Stub type of Microsoft.Uddi3.PublisherAssertionList</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubPublisherAssertionList.#ctor">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubPublisherAssertionList.InitializeStub">
-            <summary>Initializes a new instance of type StubPublisherAssertionList</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubPublisherAssertionList.ToString">
-            <summary>Sets the stub of PublisherAssertionList.ToString()</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Fakes.StubPublisherAssertionList.ToString01">
-            <summary>Sets the stub of PublisherAssertionList.ToString()</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubPublisherAssertionList.CallBase">
-            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubPublisherAssertionList.InstanceBehavior">
-            <summary>Gets or sets the instance behavior.</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubPublisherAssertionList.InstanceObserver">
-            <summary>Gets or sets the instance observer.</summary>
-        </member>
         <member name="T:Microsoft.Uddi3.Fakes.StubRegisteredInfo">
             <summary>Stub type of Microsoft.Uddi3.RegisteredInfo</summary>
         </member>
@@ -14338,33 +13837,6 @@
         <member name="P:Microsoft.Uddi3.Fakes.StubSaveService.InstanceObserver">
             <summary>Gets or sets the instance observer.</summary>
         </member>
-        <member name="T:Microsoft.Uddi3.Fakes.StubSaveTModel">
-            <summary>Stub type of Microsoft.Uddi3.SaveTModel</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubSaveTModel.#ctor">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubSaveTModel.#ctor(Microsoft.Uddi3.TModels.TModel)">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubSaveTModel.InitializeStub">
-            <summary>Initializes a new instance of type StubSaveTModel</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubSaveTModel.ToString">
-            <summary>Sets the stub of SaveTModel.ToString()</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Fakes.StubSaveTModel.ToString01">
-            <summary>Sets the stub of SaveTModel.ToString()</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubSaveTModel.CallBase">
-            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubSaveTModel.InstanceBehavior">
-            <summary>Gets or sets the instance behavior.</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubSaveTModel.InstanceObserver">
-            <summary>Gets or sets the instance observer.</summary>
-        </member>
         <member name="T:Microsoft.Uddi3.Fakes.StubServiceDetail">
             <summary>Stub type of Microsoft.Uddi3.ServiceDetail</summary>
         </member>
@@ -14413,39 +13885,6 @@
         <member name="P:Microsoft.Uddi3.Fakes.StubServiceList.InstanceObserver">
             <summary>Gets or sets the instance observer.</summary>
         </member>
-        <member name="T:Microsoft.Uddi3.Fakes.StubSetPublisherAssertions">
-            <summary>Stub type of Microsoft.Uddi3.SetPublisherAssertions</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubSetPublisherAssertions.#ctor">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubSetPublisherAssertions.#ctor(Microsoft.Uddi3.Businesses.PublisherAssertion)">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubSetPublisherAssertions.#ctor(System.String,System.String,Microsoft.Uddi3.KeyedReference)">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubSetPublisherAssertions.#ctor(System.String,System.String,System.String,System.String,System.String)">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubSetPublisherAssertions.InitializeStub">
-            <summary>Initializes a new instance of type StubSetPublisherAssertions</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubSetPublisherAssertions.ToString">
-            <summary>Sets the stub of SetPublisherAssertions.ToString()</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Fakes.StubSetPublisherAssertions.ToString01">
-            <summary>Sets the stub of SetPublisherAssertions.ToString()</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubSetPublisherAssertions.CallBase">
-            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubSetPublisherAssertions.InstanceBehavior">
-            <summary>Gets or sets the instance behavior.</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubSetPublisherAssertions.InstanceObserver">
-            <summary>Gets or sets the instance observer.</summary>
-        </member>
         <member name="T:Microsoft.Uddi3.Fakes.StubSubscriptionList">
             <summary>Stub type of Microsoft.Uddi3.SubscriptionList</summary>
         </member>
@@ -14492,54 +13931,6 @@
             <summary>Gets or sets the instance behavior.</summary>
         </member>
         <member name="P:Microsoft.Uddi3.Fakes.StubSubscriptionResultsList.InstanceObserver">
-            <summary>Gets or sets the instance observer.</summary>
-        </member>
-        <member name="T:Microsoft.Uddi3.Fakes.StubTModelDetail">
-            <summary>Stub type of Microsoft.Uddi3.TModelDetail</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubTModelDetail.#ctor">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubTModelDetail.InitializeStub">
-            <summary>Initializes a new instance of type StubTModelDetail</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubTModelDetail.ToString">
-            <summary>Sets the stub of TModelDetail.ToString()</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Fakes.StubTModelDetail.ToString01">
-            <summary>Sets the stub of TModelDetail.ToString()</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubTModelDetail.CallBase">
-            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubTModelDetail.InstanceBehavior">
-            <summary>Gets or sets the instance behavior.</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubTModelDetail.InstanceObserver">
-            <summary>Gets or sets the instance observer.</summary>
-        </member>
-        <member name="T:Microsoft.Uddi3.Fakes.StubTModelList">
-            <summary>Stub type of Microsoft.Uddi3.TModelList</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubTModelList.#ctor">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubTModelList.InitializeStub">
-            <summary>Initializes a new instance of type StubTModelList</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubTModelList.ToString">
-            <summary>Sets the stub of TModelList.ToString()</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Fakes.StubTModelList.ToString01">
-            <summary>Sets the stub of TModelList.ToString()</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubTModelList.CallBase">
-            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubTModelList.InstanceBehavior">
-            <summary>Gets or sets the instance behavior.</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubTModelList.InstanceObserver">
             <summary>Gets or sets the instance observer.</summary>
         </member>
         <member name="T:Microsoft.Uddi3.Fakes.StubTransferEntities">
@@ -14632,93 +14023,6 @@
         <member name="P:Microsoft.Uddi3.Fakes.StubUddiConnection.InstanceObserver">
             <summary>Gets or sets the instance observer.</summary>
         </member>
-        <member name="T:Microsoft.Uddi3.Fakes.StubUddiException">
-            <summary>Stub type of Microsoft.Uddi3.UddiException</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubUddiException.#ctor">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubUddiException.#ctor(System.String)">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubUddiException.#ctor(System.String,System.Exception)">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubUddiException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubUddiException.AttachBackingFieldToHelpLink">
-            <summary>Attaches delegates to emulate StubUddiException.HelpLink as a property with a backing field.</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubUddiException.AttachBackingFieldToSource">
-            <summary>Attaches delegates to emulate StubUddiException.Source as a property with a backing field.</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Fakes.StubUddiException.DataGet">
-            <summary>Sets the stub of Exception.get_Data()</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubUddiException.GetBaseException">
-            <summary>Sets the stub of Exception.GetBaseException()</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Fakes.StubUddiException.GetBaseException01">
-            <summary>Sets the stub of Exception.GetBaseException()</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubUddiException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-            <summary>Sets the stub of Exception.GetObjectData(SerializationInfo info, StreamingContext context)</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Fakes.StubUddiException.GetObjectDataSerializationInfoStreamingContext">
-            <summary>Sets the stub of Exception.GetObjectData(SerializationInfo info, StreamingContext context)</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Fakes.StubUddiException.HelpLinkGet">
-            <summary>Sets the stub of Exception.get_HelpLink()</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Fakes.StubUddiException.HelpLinkSetString">
-            <summary>Sets the stub of Exception.set_HelpLink(String value)</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubUddiException.InitializeStub">
-            <summary>Initializes a new instance of type StubUddiException</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Fakes.StubUddiException.MessageGet">
-            <summary>Sets the stub of Exception.get_Message()</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Fakes.StubUddiException.SourceGet">
-            <summary>Sets the stub of Exception.get_Source()</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Fakes.StubUddiException.SourceSetString">
-            <summary>Sets the stub of Exception.set_Source(String value)</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Fakes.StubUddiException.StackTraceGet">
-            <summary>Sets the stub of Exception.get_StackTrace()</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubUddiException.ToString">
-            <summary>Sets the stub of Exception.ToString()</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.Fakes.StubUddiException.ToString01">
-            <summary>Sets the stub of Exception.ToString()</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubUddiException.CallBase">
-            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubUddiException.Data">
-            <summary>Sets the stub of Exception.get_Data()</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubUddiException.HelpLink">
-            <summary>Sets the stub of Exception.get_HelpLink()</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubUddiException.InstanceBehavior">
-            <summary>Gets or sets the instance behavior.</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubUddiException.InstanceObserver">
-            <summary>Gets or sets the instance observer.</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubUddiException.Message">
-            <summary>Sets the stub of Exception.get_Message()</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubUddiException.Source">
-            <summary>Sets the stub of Exception.get_Source()</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubUddiException.StackTrace">
-            <summary>Sets the stub of Exception.get_StackTrace()</summary>
-        </member>
         <member name="T:Microsoft.Uddi3.Fakes.StubUddiScc14nTransform">
             <summary>Stub type of Microsoft.Uddi3.UddiScc14nTransform</summary>
         </member>
@@ -14787,42 +14091,6 @@
         </member>
         <member name="P:Microsoft.Uddi3.Fakes.StubUddiScc14nTransform.OutputTypes">
             <summary>Sets the stub of UddiScc14nTransform.get_OutputTypes()</summary>
-        </member>
-        <member name="T:Microsoft.Uddi3.Fakes.StubUddiSignatureGenerator">
-            <summary>Stub type of Microsoft.Uddi3.UddiSignatureGenerator</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubUddiSignatureGenerator.#ctor">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubUddiSignatureGenerator.InitializeStub">
-            <summary>Initializes a new instance of type StubUddiSignatureGenerator</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubUddiSignatureGenerator.CallBase">
-            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubUddiSignatureGenerator.InstanceBehavior">
-            <summary>Gets or sets the instance behavior.</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubUddiSignatureGenerator.InstanceObserver">
-            <summary>Gets or sets the instance observer.</summary>
-        </member>
-        <member name="T:Microsoft.Uddi3.Fakes.StubUddiSignatureValidator">
-            <summary>Stub type of Microsoft.Uddi3.UddiSignatureValidator</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubUddiSignatureValidator.#ctor">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.Fakes.StubUddiSignatureValidator.InitializeStub">
-            <summary>Initializes a new instance of type StubUddiSignatureValidator</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubUddiSignatureValidator.CallBase">
-            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubUddiSignatureValidator.InstanceBehavior">
-            <summary>Gets or sets the instance behavior.</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.Fakes.StubUddiSignatureValidator.InstanceObserver">
-            <summary>Gets or sets the instance observer.</summary>
         </member>
         <member name="T:Microsoft.Uddi3.Fakes.StubValidateValues">
             <summary>Stub type of Microsoft.Uddi3.ValidateValues</summary>
@@ -17728,156 +16996,6 @@
         <member name="P:Microsoft.Uddi3.TModels.Fakes.StubOverviewURL.InstanceObserver">
             <summary>Gets or sets the instance observer.</summary>
         </member>
-        <member name="T:Microsoft.Uddi3.TModels.Fakes.StubTModelCollection">
-            <summary>Stub type of Microsoft.Uddi3.TModels.TModelCollection</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.TModels.Fakes.StubTModelCollection.#ctor">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.TModels.Fakes.StubTModelCollection.#ctor(Microsoft.Uddi3.TModels.TModel)">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.TModels.Fakes.StubTModelCollection.Append(Microsoft.Uddi3.TModels.TModel[])">
-            <summary>Sets the stub of UddiCollection`1.Append(!0[] array)</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.TModels.Fakes.StubTModelCollection.AppendTModelArray">
-            <summary>Sets the stub of UddiCollection`1.Append(!0[] array)</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.TModels.Fakes.StubTModelCollection.InitializeStub">
-            <summary>Initializes a new instance of type StubTModelCollection</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.TModels.Fakes.StubTModelCollection.CallBase">
-            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.TModels.Fakes.StubTModelCollection.InstanceBehavior">
-            <summary>Gets or sets the instance behavior.</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.TModels.Fakes.StubTModelCollection.InstanceObserver">
-            <summary>Gets or sets the instance observer.</summary>
-        </member>
-        <member name="T:Microsoft.Uddi3.TModels.Fakes.StubTModelInfo">
-            <summary>Stub type of Microsoft.Uddi3.TModels.TModelInfo</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.TModels.Fakes.StubTModelInfo.#ctor">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.TModels.Fakes.StubTModelInfo.#ctor(Microsoft.Uddi3.Name)">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.TModels.Fakes.StubTModelInfo.#ctor(System.String)">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.TModels.Fakes.StubTModelInfo.InitializeStub">
-            <summary>Initializes a new instance of type StubTModelInfo</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.TModels.Fakes.StubTModelInfo.CallBase">
-            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.TModels.Fakes.StubTModelInfo.InstanceBehavior">
-            <summary>Gets or sets the instance behavior.</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.TModels.Fakes.StubTModelInfo.InstanceObserver">
-            <summary>Gets or sets the instance observer.</summary>
-        </member>
-        <member name="T:Microsoft.Uddi3.TModels.Fakes.StubTModelInfoCollection">
-            <summary>Stub type of Microsoft.Uddi3.TModels.TModelInfoCollection</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.TModels.Fakes.StubTModelInfoCollection.#ctor">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.TModels.Fakes.StubTModelInfoCollection.#ctor(Microsoft.Uddi3.TModels.TModelInfo)">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.TModels.Fakes.StubTModelInfoCollection.Append(Microsoft.Uddi3.TModels.TModelInfo[])">
-            <summary>Sets the stub of UddiCollection`1.Append(!0[] array)</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.TModels.Fakes.StubTModelInfoCollection.AppendTModelInfoArray">
-            <summary>Sets the stub of UddiCollection`1.Append(!0[] array)</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.TModels.Fakes.StubTModelInfoCollection.InitializeStub">
-            <summary>Initializes a new instance of type StubTModelInfoCollection</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.TModels.Fakes.StubTModelInfoCollection.CallBase">
-            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.TModels.Fakes.StubTModelInfoCollection.InstanceBehavior">
-            <summary>Gets or sets the instance behavior.</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.TModels.Fakes.StubTModelInfoCollection.InstanceObserver">
-            <summary>Gets or sets the instance observer.</summary>
-        </member>
-        <member name="T:Microsoft.Uddi3.TModels.Fakes.StubTModelInstanceDetail">
-            <summary>Stub type of Microsoft.Uddi3.TModels.TModelInstanceDetail</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.TModels.Fakes.StubTModelInstanceDetail.#ctor">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.TModels.Fakes.StubTModelInstanceDetail.InitializeStub">
-            <summary>Initializes a new instance of type StubTModelInstanceDetail</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.TModels.Fakes.StubTModelInstanceDetail.CallBase">
-            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.TModels.Fakes.StubTModelInstanceDetail.InstanceBehavior">
-            <summary>Gets or sets the instance behavior.</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.TModels.Fakes.StubTModelInstanceDetail.InstanceObserver">
-            <summary>Gets or sets the instance observer.</summary>
-        </member>
-        <member name="T:Microsoft.Uddi3.TModels.Fakes.StubTModelInstanceInfo">
-            <summary>Stub type of Microsoft.Uddi3.TModels.TModelInstanceInfo</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.TModels.Fakes.StubTModelInstanceInfo.#ctor">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.TModels.Fakes.StubTModelInstanceInfo.#ctor(System.String)">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.TModels.Fakes.StubTModelInstanceInfo.#ctor(System.String,Microsoft.Uddi3.TModels.InstanceDetails)">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.TModels.Fakes.StubTModelInstanceInfo.#ctor(System.String,Microsoft.Uddi3.TModels.InstanceDetails,Microsoft.Uddi3.DescriptionCollection)">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.TModels.Fakes.StubTModelInstanceInfo.InitializeStub">
-            <summary>Initializes a new instance of type StubTModelInstanceInfo</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.TModels.Fakes.StubTModelInstanceInfo.CallBase">
-            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.TModels.Fakes.StubTModelInstanceInfo.InstanceBehavior">
-            <summary>Gets or sets the instance behavior.</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.TModels.Fakes.StubTModelInstanceInfo.InstanceObserver">
-            <summary>Gets or sets the instance observer.</summary>
-        </member>
-        <member name="T:Microsoft.Uddi3.TModels.Fakes.StubTModelInstanceInfoCollection">
-            <summary>Stub type of Microsoft.Uddi3.TModels.TModelInstanceInfoCollection</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.TModels.Fakes.StubTModelInstanceInfoCollection.#ctor">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.TModels.Fakes.StubTModelInstanceInfoCollection.#ctor(Microsoft.Uddi3.TModels.TModelInstanceInfo)">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.TModels.Fakes.StubTModelInstanceInfoCollection.Append(Microsoft.Uddi3.TModels.TModelInstanceInfo[])">
-            <summary>Sets the stub of UddiCollection`1.Append(!0[] array)</summary>
-        </member>
-        <member name="F:Microsoft.Uddi3.TModels.Fakes.StubTModelInstanceInfoCollection.AppendTModelInstanceInfoArray">
-            <summary>Sets the stub of UddiCollection`1.Append(!0[] array)</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.TModels.Fakes.StubTModelInstanceInfoCollection.InitializeStub">
-            <summary>Initializes a new instance of type StubTModelInstanceInfoCollection</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.TModels.Fakes.StubTModelInstanceInfoCollection.CallBase">
-            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.TModels.Fakes.StubTModelInstanceInfoCollection.InstanceBehavior">
-            <summary>Gets or sets the instance behavior.</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.TModels.Fakes.StubTModelInstanceInfoCollection.InstanceObserver">
-            <summary>Gets or sets the instance observer.</summary>
-        </member>
         <member name="T:Microsoft.Uddi3.UddiKeys.Fakes.ShimKeyPartition">
             <summary>Shim type of Microsoft.Uddi3.UddiKeys.KeyPartition</summary>
         </member>
@@ -18030,45 +17148,6 @@
         </member>
         <member name="P:Microsoft.Uddi3.UddiKeys.Fakes.ShimPartitionStatusInfo.AllInstances.NodeIDGet">
             <summary>Sets the shim of PartitionStatusInfo.get_NodeID()</summary>
-        </member>
-        <member name="T:Microsoft.Uddi3.UddiKeys.Fakes.ShimUddiKeyUtility">
-            <summary>Shim type of Microsoft.Uddi3.UddiKeys.UddiKeyUtility</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.UddiKeys.Fakes.ShimUddiKeyUtility.#ctor">
-            <summary>Initializes a new shim instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.UddiKeys.Fakes.ShimUddiKeyUtility.#ctor(Microsoft.Uddi3.UddiKeys.UddiKeyUtility)">
-            <summary>Initializes a new shim for the given instance</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.UddiKeys.Fakes.ShimUddiKeyUtility.BehaveAsCurrent">
-            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
-        </member>
-        <member name="M:Microsoft.Uddi3.UddiKeys.Fakes.ShimUddiKeyUtility.BehaveAsNotImplemented">
-            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.UddiKeys.Fakes.ShimUddiKeyUtility.Behavior">
-            <summary>Assigns the behavior for all methods of the shimmed type</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.UddiKeys.Fakes.ShimUddiKeyUtility.Constructor">
-            <summary>Sets the shim of UddiKeyUtility.UddiKeyUtility()</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.UddiKeys.Fakes.ShimUddiKeyUtility.GetKeyPartitionString">
-            <summary>Sets the shim of UddiKeyUtility.GetKeyPartition(String key)</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.UddiKeys.Fakes.ShimUddiKeyUtility.GetKssString">
-            <summary>Sets the shim of UddiKeyUtility.GetKss(String key)</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.UddiKeys.Fakes.ShimUddiKeyUtility.IsKeyGeneratorKeyString">
-            <summary>Sets the shim of UddiKeyUtility.IsKeyGeneratorKey(String key)</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.UddiKeys.Fakes.ShimUddiKeyUtility.IsValidString">
-            <summary>Sets the shim of UddiKeyUtility.IsValid(String key)</summary>
-        </member>
-        <member name="P:Microsoft.Uddi3.UddiKeys.Fakes.ShimUddiKeyUtility.ValidateString">
-            <summary>Sets the shim of UddiKeyUtility.Validate(String key)</summary>
-        </member>
-        <member name="T:Microsoft.Uddi3.UddiKeys.Fakes.ShimUddiKeyUtility.AllInstances">
-            <summary>Define shims for all instances members</summary>
         </member>
         <member name="T:Microsoft.Uddi3.UddiKeys.Fakes.StubKeyPartition">
             <summary>Stub type of Microsoft.Uddi3.UddiKeys.KeyPartition</summary>

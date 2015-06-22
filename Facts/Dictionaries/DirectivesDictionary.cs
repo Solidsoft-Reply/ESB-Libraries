@@ -149,7 +149,9 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Dictionaries
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             if (info == null)
+            {
                 throw new ArgumentNullException("info");
+            }
 
             base.GetObjectData(info, context);
         }
@@ -160,7 +162,7 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Dictionaries
         /// <returns>The XSD schema for the current dictionary.</returns>
         public override XmlSchema GetSchema()
         {
-            return this.schema ?? (this.schema = GetSchema(AssemblyProperties.Resources.XsdDirectiveSchemaFile));
+            return this.schema ?? (this.schema = DictionaryBase<Directive>.GetSchema(AssemblyProperties.Resources.XsdDirectiveSchemaFile));
         }
         
         /// <summary>

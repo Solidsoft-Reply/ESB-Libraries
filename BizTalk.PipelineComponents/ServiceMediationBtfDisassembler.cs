@@ -66,7 +66,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         public const string AddressType = "biz:URL";
 
         /// <summary>
-        /// Date-time firmat information.
+        /// Date-time format information.
         /// </summary>
         public const string DateTimeFormatInfo = "s";
 
@@ -696,7 +696,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         /// <param name="pc">The pipeline context.</param>
         /// <param name="inMsg">The incoming message.</param>
         /// <returns>The probed incoming message.</returns>
-        public bool Probe(IPipelineContext pc,	IBaseMessage inMsg)
+        public bool Probe(IPipelineContext pc, IBaseMessage inMsg)
         {
             return this.btfDasmComp.Probe(pc, inMsg);
         }
@@ -798,6 +798,14 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         }
 
         /// <summary>
+        /// Releases the resources used by Service Mediation BTF Disassembler object.
+        /// </summary>
+        void IDisposable.Dispose()
+        {
+            ((IDisposable)this.btfDasmComp).Dispose();
+        }
+
+        /// <summary>
         /// Initializes a new instance of the Service Mediation component.
         /// </summary>
         private void InitialiseServiceMediation()
@@ -818,14 +826,6 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
                 ResolutionDataProperties = this.ResolutionDataProperties,
                 ServiceName = this.ServiceName
             };
-        }
-
-        /// <summary>
-        /// Releases the resources used by ServiceMediationBtfDisassembler object.
-        /// </summary>
-        void IDisposable.Dispose()
-        {
-            ((IDisposable)this.btfDasmComp).Dispose();
         }
     }
 }

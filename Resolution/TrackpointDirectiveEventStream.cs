@@ -136,7 +136,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         }
 
         /// <summary>
-        /// Gets the current BAM activity or continuation ID.
+        /// Gets or sets the current BAM activity or continuation ID.
         /// </summary>
         internal string CurrentBamActivityId
         {
@@ -270,6 +270,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// <summary>
         /// Extends the current BAM activity under a new directive.
         /// </summary>
+        /// <param name="directive">The new directive.</param>
         /// <remarks>
         /// This is a form of continuation in which the continuation is automatically managed by 
         /// assigning a new directive.  The directive 
@@ -277,8 +278,8 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         public void ExtendActivity(Directive directive)
         {
             if (this.Directive == null 
-                || string.IsNullOrWhiteSpace(directive.Name)
                 || directive == null 
+                || string.IsNullOrWhiteSpace(directive.Name)
                 || directive == this.Directive)
             {
                 return;
@@ -291,7 +292,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             // exteded step name and a counter.  The counter is included to support situations where
             // the developer uses the same directive moe than once in a continuation chain.
             var extendsPrefixToken = "extends_";
-            var tokenisedStepName = Regex.Replace(this.Directive.BamStepName, @"\s","_");
+            var tokenisedStepName = Regex.Replace(this.Directive.BamStepName, @"\s", "_");
             var counter = 0L;
             var extendsToken = string.Format(
                 "{0}_{1}_{2}_{3}", 
@@ -637,13 +638,13 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             var extractor = new XPathDataExtractorWithMacros(
                 this.BamStepData.Properties, 
                 this.BamStepData.ValueList);
+            var activityInstanceValue = extractor.GetValue(
+                startTrackPoint.ExtractionInfo,
+                startTrackPoint.Location,
+                this.BamStepData.XmlDocument) ?? string.Empty;
             this.activityInstances.Add(
-                activityInstanceKey, 
-                Convert.ToString(
-                    extractor.GetValue(
-                        startTrackPoint.ExtractionInfo, 
-                        startTrackPoint.Location, 
-                        this.BamStepData.XmlDocument) ?? string.Empty));
+                activityInstanceKey,
+                Convert.ToString(activityInstanceValue));
             this.InnerEventStream.BeginActivity(
                 this.Directive.BamActivity, 
                 this.GetActivityInstance(activityInstanceKey));
@@ -731,16 +732,14 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 return;
             }
 
+            var value = extractor.GetValue(
+                continueTrackPoint.ExtractionInfo,
+                continueTrackPoint.Location,
+                this.BamStepData.XmlDocument) ?? string.Empty;
+            var activityInstanceValue = string.Format("{0}{1}", continueTrackPoint.ItemName, Convert.ToString(value));
+
             this.activityInstances.Add(
-                activityInstanceKey, 
-                string.Format(
-                    "{0}{1}", 
-                    continueTrackPoint.ItemName, 
-                    Convert.ToString(
-                        extractor.GetValue(
-                            continueTrackPoint.ExtractionInfo, 
-                            continueTrackPoint.Location, 
-                            this.BamStepData.XmlDocument) ?? string.Empty)));
+                activityInstanceKey, activityInstanceValue);
         }
 
         /// <summary>
@@ -776,6 +775,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             {
                 this.Directive.BamStepName = this.Directive.BamRootStepName;
             }
+
             this.Directive.BamRootStepName = null;
             this.activityInstances.Clear();
         }
@@ -876,13 +876,12 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
 
             // Because of a logic error in Microsoft's code, a separate ActivityInterceptorConfiguration must be used 
             // for each location.  The following code extracts only those track points for a given step name (location).
-            return new StepTrackPointsByType(type, BamStepResolver.GetStep(
+            var step = BamStepResolver.GetStep(
                 this.Directive.BamActivity,
-                string.IsNullOrWhiteSpace(stepName)
-                ? directiveInvalid()
-                : stepName,
+                string.IsNullOrWhiteSpace(stepName) ? directiveInvalid() : stepName,
                 this.Directive.BamTrackpointPolicyName,
-                version));
+                version);
+            return new StepTrackPointsByType(type, step);
         }
 
         /// <summary>
@@ -895,12 +894,12 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             /// <summary>
             /// A dictionary of macroProperties that can be used by the property macro.
             /// </summary>
-            private readonly IDictionary macroProperties = new Hashtable();
+            private readonly IDictionary macroProperties;
 
             /// <summary>
             /// An array of values that can be used by format strings.
             /// </summary>
-            private readonly IList macroValues = new ArrayList();
+            private readonly IList macroValues;
 
             /// <summary>
             /// Initializes a new instance of the <see cref="XPathDataExtractorWithMacros"/> class.
@@ -933,7 +932,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             /// </exception>
             public object GetValue(object extractionInfo, object location, object data)
             {
-                if (!(extractionInfo is string) || string.IsNullOrEmpty((string)extractionInfo))
+                if (string.IsNullOrEmpty(extractionInfo as string))
                 {
                     throw new EsbResolutionException(
                         string.Format(Resources.ExceptionInterceptionFailedNotXPath, extractionInfo));

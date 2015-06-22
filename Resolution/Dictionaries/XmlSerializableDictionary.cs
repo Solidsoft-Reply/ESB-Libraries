@@ -132,8 +132,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
                 throw new XmlSerializableDictionaryException(message, innerException);
             }
 
-            var xs = schema ?? (schema = (GetSchema(AssemblyProperties.Resources.XsdDictionarySchemaFile) ?? new XmlSchema()));
-
+            var xs = schema ?? (schema = GetSchema(AssemblyProperties.Resources.XsdDictionarySchemaFile) ?? new XmlSchema());
 
             if (xs == null)
             {
@@ -152,7 +151,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
         /// <returns>The XSD schema for the current dictionary.</returns>
         public virtual XmlSchema GetSchema()
         {
-            return schema ?? (schema = (GetSchema(AssemblyProperties.Resources.XsdDictionarySchemaFile) ?? new XmlSchema()));
+            return schema ?? (schema = GetSchema(AssemblyProperties.Resources.XsdDictionarySchemaFile) ?? new XmlSchema());
         }
 
         /// <summary>
@@ -244,7 +243,9 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
                     var innerValueXml = nodeReader.ReadInnerXml().Trim();
 
                     Func<TKey> throwExceptionForInvalidKey = () =>
-                    { throw new EsbResolutionException("The key value is invalid."); };
+                        {
+                            throw new EsbResolutionException("The key value is invalid.");
+                        };
 
                     Action<TValue> addEntry = v =>
                         this.Add(keyInitialised ? key : throwExceptionForInvalidKey(), v);
@@ -355,6 +356,26 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
             }
         }
 
+        /// <summary>
+        /// Returns an XSD schema for the serializable dictionary.  This is referenced by the XmlSchemaProvider
+        /// attribute on this class in order control the XML format. 
+        /// </summary>
+        /// <param name="xsdSchemaFile">XSD schema file resource string</param>
+        /// <returns>The XML schema of the Dictionary type.</returns>
+        internal static XmlSchema GetSchema(string xsdSchemaFile)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            var stream = assembly.GetManifestResourceStream(xsdSchemaFile);
+
+            if (stream == null)
+            {
+                return null;
+            }
+
+            var xsdReader = new XmlTextReader(stream);
+            return XmlSchema.Read(xsdReader, null);
+        }
+        
         /// <summary>
         /// Reads a key value as an arbitrary object type.
         /// </summary>
@@ -513,26 +534,6 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
                 var sr = new StreamReader(ms);
                 writer.WriteRaw(sr.ReadToEnd());
             }
-        }
-
-        /// <summary>
-        /// Returns an XSD schema for the serializable dictionary.  This is referenced by the XmlSchemaProvider
-        /// attribute on this class in order control the XML format. 
-        /// </summary>
-        /// <param name="xsdSchemaFile">XSD schema file resource string</param>
-        /// <returns>The XML schema of the Dictionary type.</returns>
-        internal static XmlSchema GetSchema(string xsdSchemaFile)
-        {
-            var assembly = Assembly.GetExecutingAssembly();
-            var stream = assembly.GetManifestResourceStream(xsdSchemaFile);
-
-            if (stream == null)
-            {
-                return null;
-            }
-
-            var xsdReader = new XmlTextReader(stream);
-            return XmlSchema.Read(xsdReader, null);
         }
     }
 }

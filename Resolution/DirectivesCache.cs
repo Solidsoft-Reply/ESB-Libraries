@@ -125,7 +125,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// </returns>
         internal BamActivityStep GetBamActivityStep(string key)
         {
-            return GetCacheItem(key).BamActivityStep;
+            return this.GetCacheItem(key).BamActivityStep;
         }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// </returns>
         internal Directives GetResolverResults(string key)
         {
-            return GetCacheItem(key).Directives;
+            return this.GetCacheItem(key).Directives;
         }
     }
 }

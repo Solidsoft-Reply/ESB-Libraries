@@ -48,18 +48,14 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
         /// </summary>
         static SiteLocationCache()
         {
-            // Precondition
-            if (UddiEventLog.DefaultLog == null)
-            {
-                // TODO: Log a warning here.  Do not throw an exception
-                // Warning = "The UDDI default event log is not initialised."
-            }
-
             ////////// Define pre-condition.
             ////////Contract.Assume(UddiEventLog.DefaultLog != null);
 
             // Write an information record to the event log for start of initialisation of the inquiry services.
-            UddiEventLog.DefaultLog.WriteInquiryStartupInfo();
+            if (UddiEventLog.DefaultLog != null)
+            {
+                UddiEventLog.DefaultLog.WriteInquiryStartupInfo();
+            }
 
             // Create the lock for guarding cache integrity.
             Lock = new object();
@@ -131,7 +127,10 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
                 new CacheItemPolicy());
 
             // Write an information record to the event log for successful initialisation of the inquiry services.
-            UddiEventLog.DefaultLog.WriteInquiryInitialisedInfo(inquiryUrlAbsoluteUri);
+            if (UddiEventLog.DefaultLog != null)
+            {
+                UddiEventLog.DefaultLog.WriteInquiryInitialisedInfo(inquiryUrlAbsoluteUri);
+            }
 
             // Discover additional UDDI inquiry services from Active Directory.
             DiscoverInquiryServices();

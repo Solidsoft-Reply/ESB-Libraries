@@ -487,13 +487,12 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         {
             if (string.IsNullOrWhiteSpace(directiveKey))
             {
-                throw new EsbFactsException(
-                    string.Format(
-                        Properties.Resources.ExceptionInvalidDirective,
-                        "BAM interception step",
-                        string.Format(
-                            "extension {0}",
-                            bamExtensionStepName ?? "<null>")));
+                var extensionStepName = string.Format("extension {0}", bamExtensionStepName ?? "<null>");
+                var message = string.Format(
+                    Properties.Resources.ExceptionInvalidDirective,
+                    "BAM interception step",
+                    extensionStepName);
+                throw new EsbFactsException(message);
             }
 
             var directive = this.GetDirective(directiveKey);

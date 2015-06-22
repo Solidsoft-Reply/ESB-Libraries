@@ -204,4 +204,34 @@ Extensions URL: {8}
   <data name="UddiUnknownMessageType" xml:space="preserve">
     <value>An unknown message type was passed when trying to invoke a UDDI service.</value>
   </data>
+  <data name="ExceptionInvalidProviderKey" xml:space="preserve">
+    <value>Provider key is invalid or missing.</value>
+  </data>
+  <data name="ExceptionInvalidProviderName" xml:space="preserve">
+    <value>Provider name is invalid or missing.</value>
+  </data>
+  <data name="ExceptionInvalidServiceKey" xml:space="preserve">
+    <value>Service key is invalid or missing.</value>
+  </data>
+  <data name="ExceptionInvalidServiceName" xml:space="preserve">
+    <value>Service name is invalid or missing.</value>
+  </data>
+  <data name="ExceptionInvalidBindingKey" xml:space="preserve">
+    <value>Binding key is invalid or missing.</value>
+  </data>
+  <data name="ExcaptionInvalidServiceIdentifier" xml:space="preserve">
+    <value>Service identifier is invalid or missing.</value>
+  </data>
+  <data name="ExceptionInvalidServiceIdentifierValue" xml:space="preserve">
+    <value>Service identifier value is invalid or missing.</value>
+  </data>
+  <data name="ExceptionInvalidProviderIdentifier" xml:space="preserve">
+    <value>Provider identifier is invalid or missing.</value>
+  </data>
+  <data name="ExceptionInvalidServiceProviderIdentifierValue" xml:space="preserve">
+    <value>Provider identifier value is invalid or missing.</value>
+  </data>
+  <data name="ExceptionUDDIDefaultEventLogNotInitialised_" xml:space="preserve">
+    <value>The UDDI default event log is not initialised.</value>
+  </data>
 </root>

@@ -735,6 +735,14 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         }
 
         /// <summary>
+        /// Releases the resources used by ServiceMediationFlatFileDisassembler object.
+        /// </summary>
+        public void Dispose()
+        {
+            this.flatFileDasmComp.Dispose();
+        }
+        
+        /// <summary>
         /// Initializes a new instance of the Service Mediation component.
         /// </summary>
         private void InitialiseServiceMediation()
@@ -755,14 +763,6 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
                 ResolutionDataProperties = this.ResolutionDataProperties,
                 ServiceName = this.ServiceName
             };
-        }
-
-        /// <summary>
-        /// Releases the resources used by ServiceMediationFlatFileDisassembler object.
-        /// </summary>
-        public void Dispose()
-        {
-            this.flatFileDasmComp.Dispose();
         }
     }
 }

@@ -26,6 +26,8 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
     using Microsoft.Uddi3.Extensions;
     using Microsoft.Uddi3.Services;
 
+    using SolidsoftReply.Esb.Libraries.Uddi.Properties;
+
     /// <summary>
     ///   Represents enquiry services provided by one or more UDDI directories.  The
     ///   class can be configured to search Active Directory for multiple directories.
@@ -67,7 +69,7 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
             // Precondition
             if (string.IsNullOrWhiteSpace(key))
             {
-                throw new ArgumentException("Provider key is invalid or missing.", "key");
+                throw new ArgumentException(Resources.ExceptionInvalidProviderKey, "key");
             }
 
             ////////// Define pre-condition.
@@ -87,7 +89,7 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
             // Precondition
             if (string.IsNullOrWhiteSpace(name))
             {
-                throw new ArgumentException("Provider name is invalid or missing.", "name");
+                throw new ArgumentException(Resources.ExceptionInvalidProviderName, "name");
             }
 
             ////////// Define pre-condition.
@@ -107,7 +109,7 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
             // Precondition
             if (string.IsNullOrWhiteSpace(key))
             {
-                throw new ArgumentException("Service key is invalid or missing.", "key");
+                throw new ArgumentException(Resources.ExceptionInvalidServiceKey, "key");
             }
 
             //////// Define pre-condition.
@@ -127,7 +129,7 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
             // Precondition
             if (string.IsNullOrWhiteSpace(name))
             {
-                throw new ArgumentException("Service name is invalid or missing.", "name");
+                throw new ArgumentException(Resources.ExceptionInvalidServiceName, "name");
             }
 
             //////// Define pre-condition.
@@ -147,7 +149,7 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
             // Precondition
             if (string.IsNullOrWhiteSpace(bindingKey))
             {
-                throw new ArgumentException("Binding key is invalid or missing.", "bindingKey");
+                throw new ArgumentException(Resources.ExceptionInvalidBindingKey, "bindingKey");
             }
 
             //////////// Define pre-condition.
@@ -175,7 +177,7 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
             // Precondition.
             if (service == null)
             {
-                throw new ArgumentNullException("service", "Service identifier is invalid or missing.");
+                throw new ArgumentNullException("service", Resources.ExcaptionInvalidServiceIdentifier);
             }
 
             ////////// Define pre-condition.
@@ -196,13 +198,13 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
             // Precondition.
             if (service == null)
             {
-                throw new ArgumentNullException("service", "Service identifier is invalid or missing.");
+                throw new ArgumentNullException("service", Resources.ExcaptionInvalidServiceIdentifier);
             }
 
             // Precondition.
             if (string.IsNullOrWhiteSpace(service.Value))
             {
-                throw new ArgumentException("Service identifier value is invalid or missing.", "service");
+                throw new ArgumentException(Resources.ExceptionInvalidServiceIdentifierValue, "service");
             }
 
             ////////// Define pre-conditions.
@@ -247,13 +249,13 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
             // Precondition.
             if (provider == null)
             {
-                throw new ArgumentNullException("provider", "Provider identifier is invalid or missing.");
+                throw new ArgumentNullException("provider", Resources.ExceptionInvalidProviderIdentifier);
             }
 
             // Precondition.
             if (service == null)
             {
-                throw new ArgumentNullException("service", "Service identifier is invalid or missing.");
+                throw new ArgumentNullException("service", Resources.ExcaptionInvalidServiceIdentifier);
             }
 
             ////////// Define pre-conditions.
@@ -276,25 +278,25 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
             // Precondition.
             if (provider == null)
             {
-                throw new ArgumentNullException("provider", "Provider identifier is invalid or missing.");
+                throw new ArgumentNullException("provider", Resources.ExceptionInvalidProviderIdentifier);
             }
 
             // Precondition.
             if (service == null)
             {
-                throw new ArgumentNullException("service", "Service identifier is invalid or missing.");
+                throw new ArgumentNullException("service", Resources.ExcaptionInvalidServiceIdentifier);
             }
 
             // Precondition.
             if (string.IsNullOrWhiteSpace(provider.Value))
             {
-                throw new ArgumentException("Provider identifier value is invalid or missing.", "provider");
+                throw new ArgumentException(Resources.ExceptionInvalidServiceProviderIdentifierValue, "provider");
             }
 
             // Precondition.
             if (string.IsNullOrWhiteSpace(service.Value))
             {
-                throw new ArgumentException("Service identifier value is invalid or missing.", "service");
+                throw new ArgumentException(Resources.ExceptionInvalidServiceIdentifierValue, "service");
             }
             
             ////////// Define pre-conditions
@@ -370,7 +372,7 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
             // Precondition.
             if (provider == null) 
             {
-                throw new ArgumentNullException("provider", "Provider identifier is invalid or missing.");
+                throw new ArgumentNullException("provider", Resources.ExceptionInvalidProviderIdentifier);
             }
 
             //////// Define pre-condition.
@@ -433,7 +435,7 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
             // Precondition.
             if (service == null)
             {
-                throw new ArgumentNullException("service", "Service identifier is invalid or missing.");
+                throw new ArgumentNullException("service", Resources.ExcaptionInvalidServiceIdentifier);
             }
 
             //////// Define pre-condition.

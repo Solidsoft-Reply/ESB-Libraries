@@ -85,6 +85,11 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ExcludeFromStyleCop Include="$(IntermediateOutputPath)\**\*.cs" >
+      <Visible>False</Visible>
+    </ExcludeFromStyleCop>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

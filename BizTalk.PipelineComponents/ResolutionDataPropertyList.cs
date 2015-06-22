@@ -49,6 +49,46 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         {
             this.propertyList = propertyList;
         }
+        
+        /// <summary>
+        /// Gets the number of elements contained in the ICollection&lt;T&gt;.
+        /// </summary>
+        public int Count
+        {
+            get
+            {
+                return this.propertyList.Count;
+            }
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether the ICollection&lt;T&gt; is read-only.
+        /// </summary>
+        public bool IsReadOnly 
+        {
+            get
+            {
+                return this.propertyList.IsReadOnly;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the element at the specified index.
+        /// </summary>
+        /// <param name="index">The zero-based index of the element to get or set.</param>
+        /// <returns>The element at the specified index.</returns>
+        public string this[int index]
+        {
+            get
+            {
+                return this.propertyList[index];
+            }
+
+            set
+            {
+                this.propertyList[index] = value;
+            }
+        }
 
         /// <summary>
         /// Returns an enumerator that iterates through the collection.
@@ -117,29 +157,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         {
             return this.propertyList.Remove(item);
         }
-
-        /// <summary>
-        /// Gets the number of elements contained in the ICollection&lt;T&gt;.
-        /// </summary>
-        public int Count
-        {
-            get
-            {
-                return this.propertyList.Count;
-            }
-        }
-
-        /// <summary>
-        /// Gets a value indicating whether the ICollection&lt;T&gt; is read-only.
-        /// </summary>
-        public bool IsReadOnly 
-        {
-            get
-            {
-                return this.propertyList.IsReadOnly;
-            }
-        }
-
+        
         /// <summary>
         /// Determines the index of a specific item in the IList&lt;T&gt;.
         /// </summary>
@@ -168,25 +186,5 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         {
             this.propertyList.RemoveAt(index);
         }
-
-        /// <summary>
-        /// Gets or sets the element at the specified index.
-        /// </summary>
-        /// <param name="index">The zero-based index of the element to get or set.</param>
-        /// <returns>The element at the specified index.</returns>
-        public string this[int index]
-        {
-            get
-            {
-                return this.propertyList[index];
-            }
-            set
-            {
-                this.propertyList[index] = value;
-            }
-        }
     }
 }
-
-
-
