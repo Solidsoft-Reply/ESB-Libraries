@@ -51,10 +51,9 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         private readonly IDictionary<string, string> activityInstances = new Dictionary<string, string>();
 
         /// <summary>
-        /// A token representing the current activity instance.  This assumes that a different instance of the
-        /// event stream is used for each activity instance.
+        /// A token representing the current activity instance.
         /// </summary>
-        private readonly string currentActivityInstanceToken = Guid.NewGuid().ToString();
+        private string currentBamActivityId = Guid.NewGuid().ToString();
 
         /// <summary>
         /// The BAM step data currently used by the stream.
@@ -133,6 +132,33 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 {
                     this.bamStepData = value;
                 }
+            }
+        }
+
+        /// <summary>
+        /// Gets the current BAM activity or continuation ID.
+        /// </summary>
+        internal string CurrentBamActivityId
+        {
+            get
+            {
+                return this.currentBamActivityId;
+            }
+
+            set
+            {
+                this.currentBamActivityId = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets the current BAM activity or continuation ID.
+        /// </summary>
+        internal IDictionary<string, string> ActivityInstances
+        {
+            get
+            {
+                return this.activityInstances;
             }
         }
 
@@ -226,6 +252,102 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         public void ContinueActivity(bool afterMap, string activityInstance)
         {
             this.DoContinueActivity(afterMap, activityInstance);
+        }
+
+        /// <summary>
+        /// Selects a BAM step extension for the current directive..
+        /// </summary>
+        /// <param name="stepExtensionName">The step extension</param>
+        /// <remarks>
+        /// This is a form of continuation in which the continuation is automatically managed by 
+        /// selecting a BAM step extension.
+        /// </remarks>
+        public void ExtendActivity(string stepExtensionName)
+        {
+            this.Directive.SelectBamStepExtension(this, stepExtensionName);
+        }
+
+        /// <summary>
+        /// Extends the current BAM activity under a new directive.
+        /// </summary>
+        /// <remarks>
+        /// This is a form of continuation in which the continuation is automatically managed by 
+        /// assigning a new directive.  The directive 
+        /// </remarks>
+        public void ExtendActivity(Directive directive)
+        {
+            if (this.Directive == null 
+                || string.IsNullOrWhiteSpace(directive.Name)
+                || directive == null 
+                || directive == this.Directive)
+            {
+                return;
+            }
+
+            // Manufacture the continuation token for extending the current step. The prefix is 
+            // tokenised by replacing each individual whitespace character with an underscore, rather 
+            // than grouping whitespace characters.  This handles situations where a developer decides 
+            // to treat whitespace as significant. The token follows a pattern that includes the 
+            // exteded step name and a counter.  The counter is included to support situations where
+            // the developer uses the same directive moe than once in a continuation chain.
+            var extendsPrefixToken = "extends_";
+            var tokenisedStepName = Regex.Replace(this.Directive.BamStepName, @"\s","_");
+            var counter = 0L;
+            var extendsToken = string.Format(
+                "{0}_{1}_{2}_{3}", 
+                extendsPrefixToken, 
+                tokenisedStepName, 
+                ++counter, 
+                this.currentBamActivityId);
+
+            // If the current token 
+            if (this.currentBamActivityId.StartsWith(extendsPrefixToken))
+            {
+                var tokenWithoutPrefix = 
+                    this.currentBamActivityId.Substring(
+                        extendsPrefixToken.Length + tokenisedStepName.Length);
+                var match = Regex.Match(tokenWithoutPrefix, @"^_(\d+)_");
+
+                if (match.Success)
+                {
+                    var activityId = tokenWithoutPrefix.Substring(match.Length);
+
+                    try
+                    {
+                        counter = Convert.ToInt64(match.Groups[1].Value);
+                    }
+                    catch
+                    {
+                        activityId = tokenWithoutPrefix;
+                    }
+
+                    extendsToken = string.Format(
+                        "{0}_{1}_{2}_{3}",
+                        extendsPrefixToken,
+                        tokenisedStepName,
+                        counter,
+                        activityId);
+                }
+            }
+
+            // Enable continuation on the current BAM step using the manufactured prefix and current activity ID.
+            // Then end the activity.
+            var activityInstanceKey = string.Format(
+                "{0}#{1}#{2}", 
+                this.Directive.BamActivity, 
+                this.Directive.BamStepName, 
+                this.currentBamActivityId);
+            this.EnableContinuation(this.Directive.BamActivity, this.activityInstances[activityInstanceKey], extendsToken);
+            this.EndActivity();
+
+            // Update the event stream with the new directive
+            this.UpdateDirective(directive);
+
+            // Reset the current activity ID
+            this.currentBamActivityId = extendsToken;
+
+            // Continue the  activity
+            this.DoContinueActivity(false, null);
         }
 
         /// <summary>
@@ -377,7 +499,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             {
                 return this.activityInstances[activityInstanceKey];
             }
-            catch (KeyNotFoundException ex)
+            catch (KeyNotFoundException)
             {
                 throw new EsbResolutionException(string.Format(Resources.ExceptionActivityNotRegistered, this.Directive.BamActivity, this.Directive.BamStepName));
             }
@@ -396,19 +518,28 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 return;
             }
 
-            var referenceTrackPoints = this.GetTrackPoints(TrackPointType.Reference, afterMap);
+            var referenceTrackPoints = this.GetTrackPoints(TrackPointType.Reference, afterMap).TrackPoints;
 
             if (referenceTrackPoints == null)
             {
                 return;
             }
 
-            var activityInstanceKey = string.Format("{0}#{1}#{2}", this.Directive.BamActivity, this.Directive.BamStepName, activityInstance ?? this.currentActivityInstanceToken);
-            var extractor = new XPathDataExtractorWithMacros(this.BamStepData.Properties, this.BamStepData.ValueList);
+            var activityInstanceKey = string.Format(
+                "{0}#{1}#{2}", 
+                this.Directive.BamActivity, 
+                this.Directive.BamStepName, 
+                activityInstance ?? this.currentBamActivityId);
+            var extractor = new XPathDataExtractorWithMacros(
+                this.BamStepData.Properties, 
+                this.BamStepData.ValueList);
 
             foreach (var referenceTrackPoint in referenceTrackPoints)
             {
-                var referenceData = extractor.GetValue(referenceTrackPoint.ExtractionInfo, referenceTrackPoint.Location, this.BamStepData.XmlDocument);
+                var referenceData = extractor.GetValue(
+                    referenceTrackPoint.ExtractionInfo, 
+                    referenceTrackPoint.Location, 
+                    this.BamStepData.XmlDocument);
 
                 if (referenceData == null)
                 {
@@ -416,7 +547,9 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 }
 
                 var messageContent = storeMessage
-                                         ? this.BamStepData.XmlDocument != null ? this.BamStepData.XmlDocument.OuterXml : referenceData.ToString()
+                                         ? this.BamStepData.XmlDocument != null 
+                                            ? this.BamStepData.XmlDocument.OuterXml 
+                                            : referenceData.ToString()
                                          : referenceData.ToString();
 
                 this.InnerEventStream.AddReference(
@@ -441,19 +574,28 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 return;
             }
 
-            var relationshipTrackPoints = this.GetTrackPoints(TrackPointType.Relationship, afterMap);
+            var relationshipTrackPoints = this.GetTrackPoints(TrackPointType.Relationship, afterMap).TrackPoints;
 
             if (relationshipTrackPoints == null)
             {
                 return;
             }
 
-            var activityInstanceKey = string.Format("{0}#{1}#{2}", this.Directive.BamActivity, this.Directive.BamStepName, activityInstance ?? this.currentActivityInstanceToken);
-            var extractor = new XPathDataExtractorWithMacros(this.BamStepData.Properties, this.BamStepData.ValueList);
+            var activityInstanceKey = string.Format(
+                "{0}#{1}#{2}", 
+                this.Directive.BamActivity, 
+                this.Directive.BamStepName, 
+                activityInstance ?? this.currentBamActivityId);
+            var extractor = new XPathDataExtractorWithMacros(
+                this.BamStepData.Properties, 
+                this.BamStepData.ValueList);
 
             foreach (var relationshipTrackPoint in relationshipTrackPoints)
             {
-                var relatedTraceId = extractor.GetValue(relationshipTrackPoint.ExtractionInfo, relationshipTrackPoint.Location, this.BamStepData.XmlDocument);
+                var relatedTraceId = extractor.GetValue(
+                    relationshipTrackPoint.ExtractionInfo, 
+                    relationshipTrackPoint.Location, 
+                    this.BamStepData.XmlDocument);
 
                 if (relatedTraceId == null)
                 {
@@ -480,17 +622,31 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 return;
             }
 
-            var startTrackPoint = this.GetTrackPoints(TrackPointType.Start, afterMap).FirstOrDefault();
+            var startTrackPoint = this.GetTrackPoints(TrackPointType.Start, afterMap).TrackPoints.FirstOrDefault();
 
             if (startTrackPoint == null)
             {
                 return;
             }
 
-            var activityInstanceKey = string.Format("{0}#{1}#{2}", this.Directive.BamActivity, this.Directive.BamStepName, activityInstance ?? this.currentActivityInstanceToken);
-            var extractor = new XPathDataExtractorWithMacros(this.BamStepData.Properties, this.BamStepData.ValueList);
-            this.activityInstances.Add(activityInstanceKey, Convert.ToString(extractor.GetValue(startTrackPoint.ExtractionInfo, startTrackPoint.Location, this.BamStepData.XmlDocument) ?? string.Empty));
-            this.InnerEventStream.BeginActivity(this.Directive.BamActivity, this.GetActivityInstance(activityInstanceKey));
+            var activityInstanceKey = string.Format(
+                "{0}#{1}#{2}", 
+                this.Directive.BamActivity, 
+                this.Directive.BamStepName, 
+                activityInstance ?? this.currentBamActivityId);
+            var extractor = new XPathDataExtractorWithMacros(
+                this.BamStepData.Properties, 
+                this.BamStepData.ValueList);
+            this.activityInstances.Add(
+                activityInstanceKey, 
+                Convert.ToString(
+                    extractor.GetValue(
+                        startTrackPoint.ExtractionInfo, 
+                        startTrackPoint.Location, 
+                        this.BamStepData.XmlDocument) ?? string.Empty));
+            this.InnerEventStream.BeginActivity(
+                this.Directive.BamActivity, 
+                this.GetActivityInstance(activityInstanceKey));
         }
 
         /// <summary>
@@ -505,17 +661,29 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 return;
             }
 
-            var enableContinuationTrackPoints = this.GetTrackPoints(TrackPointType.EnableContinuation, afterMap);
+            var enableContinuationTrackPoints = this.GetTrackPoints(
+                TrackPointType.EnableContinuation, 
+                afterMap).TrackPoints;
 
             if (enableContinuationTrackPoints == null)
             {
                 return;
             }
 
-            var activityInstanceKey = string.Format("{0}#{1}#{2}", this.Directive.BamActivity, this.Directive.BamStepName, activityInstance ?? this.currentActivityInstanceToken);
-            var extractor = new XPathDataExtractorWithMacros(this.BamStepData.Properties, this.BamStepData.ValueList);
+            var activityInstanceKey = string.Format(
+                "{0}#{1}#{2}", 
+                this.Directive.BamActivity, 
+                this.Directive.BamStepName, 
+                activityInstance ?? this.currentBamActivityId);
+            var extractor = new XPathDataExtractorWithMacros(
+                this.BamStepData.Properties, 
+                this.BamStepData.ValueList);
 
-            foreach (var continuationToken in enableContinuationTrackPoints.Select(enableContinuationTrackPoint => extractor.GetValue(enableContinuationTrackPoint.ExtractionInfo, enableContinuationTrackPoint.Location, this.BamStepData.XmlDocument)).Where(continuationToken => continuationToken != null))
+            foreach (var continuationToken in enableContinuationTrackPoints.Select(
+                enableContinuationTrackPoint => extractor.GetValue(
+                    enableContinuationTrackPoint.ExtractionInfo, 
+                    enableContinuationTrackPoint.Location, 
+                    this.BamStepData.XmlDocument)).Where(continuationToken => continuationToken != null))
             {
                 this.InnerEventStream.EnableContinuation(
                     this.Directive.BamActivity,
@@ -536,16 +704,43 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 return;
             }
 
-            var continueTrackPoint = this.GetTrackPoints(TrackPointType.Continue, afterMap).FirstOrDefault();
+            var stepTrackPoints = this.GetTrackPoints(TrackPointType.Continue, afterMap);
+            var continueTrackPoint = stepTrackPoints.TrackPoints.FirstOrDefault();
 
             if (continueTrackPoint == null)
             {
                 return;
             }
 
-            var activityInstanceKey = string.Format("{0}#{1}#{2}", this.Directive.BamActivity, this.Directive.BamStepName, activityInstance ?? this.currentActivityInstanceToken);
-            var extractor = new XPathDataExtractorWithMacros(this.BamStepData.Properties, this.BamStepData.ValueList);
-            this.activityInstances.Add(activityInstanceKey, string.Format("{0}{1}", continueTrackPoint.ItemName, Convert.ToString(extractor.GetValue(continueTrackPoint.ExtractionInfo, continueTrackPoint.Location, this.BamStepData.XmlDocument) ?? string.Empty)));
+            var activityInstanceKey = string.Format(
+                "{0}#{1}#{2}", 
+                this.Directive.BamActivity, 
+                this.Directive.BamStepName, 
+                activityInstance ?? this.currentBamActivityId);
+            var extractor = new XPathDataExtractorWithMacros(
+                this.BamStepData.Properties, 
+                this.BamStepData.ValueList);
+
+            // If the step is an extension step, we use the current instance token without 
+            // macro language extraction.
+            if (stepTrackPoints.ExtensionSteps.Contains(this.Directive.BamStepName))
+            {
+                this.activityInstances.Add(
+                    activityInstanceKey,
+                    this.currentBamActivityId);
+                return;
+            }
+
+            this.activityInstances.Add(
+                activityInstanceKey, 
+                string.Format(
+                    "{0}{1}", 
+                    continueTrackPoint.ItemName, 
+                    Convert.ToString(
+                        extractor.GetValue(
+                            continueTrackPoint.ExtractionInfo, 
+                            continueTrackPoint.Location, 
+                            this.BamStepData.XmlDocument) ?? string.Empty)));
         }
 
         /// <summary>
@@ -560,15 +755,28 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 return;
             }
 
-            var endTrackPoint = this.GetTrackPoints(TrackPointType.End, afterMap).FirstOrDefault();
+            var endTrackPoint = this.GetTrackPoints(
+                TrackPointType.End, 
+                afterMap).TrackPoints.FirstOrDefault();
 
             if (endTrackPoint == null)
             {
                 return;
             }
 
-            var activityInstanceKey = string.Format("{0}#{1}#{2}", this.Directive.BamActivity, this.Directive.BamStepName, activityInstance ?? this.currentActivityInstanceToken);
-            this.InnerEventStream.EndActivity(this.Directive.BamActivity, this.GetActivityInstance(activityInstanceKey));
+            var activityInstanceKey = string.Format(
+                "{0}#{1}#{2}", 
+                this.Directive.BamActivity, 
+                this.Directive.BamStepName, 
+                activityInstance ?? this.currentBamActivityId);
+            this.InnerEventStream.EndActivity(
+                this.Directive.BamActivity, 
+                this.GetActivityInstance(activityInstanceKey));
+            if (!string.IsNullOrWhiteSpace(this.Directive.BamRootStepName))
+            {
+                this.Directive.BamStepName = this.Directive.BamRootStepName;
+            }
+            this.Directive.BamRootStepName = null;
             this.activityInstances.Clear();
         }
 
@@ -585,7 +793,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 return;
             }
 
-            var dataTrackPoints = this.GetTrackPoints(TrackPointType.Data, afterMap);
+            var dataTrackPoints = this.GetTrackPoints(TrackPointType.Data, afterMap).TrackPoints;
 
             if (dataTrackPoints == null)
             {
@@ -593,8 +801,14 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             }
 
             var nameValuePairs = new ArrayList();
-            var extractor = new XPathDataExtractorWithMacros(this.BamStepData.Properties, this.BamStepData.ValueList);
-            var activityInstanceKey = string.Format("{0}#{1}#{2}", this.Directive.BamActivity, this.Directive.BamStepName, activityInstance ?? this.currentActivityInstanceToken);
+            var extractor = new XPathDataExtractorWithMacros(
+                this.BamStepData.Properties, 
+                this.BamStepData.ValueList);
+            var activityInstanceKey = string.Format(
+                "{0}#{1}#{2}", 
+                this.Directive.BamActivity, 
+                this.Directive.BamStepName, 
+                activityInstance ?? this.currentBamActivityId);
 
             if (string.IsNullOrWhiteSpace(itemName))
             {
@@ -602,7 +816,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 {
                     nameValuePairs.Add(dataTrackPoint.ItemName);
                     nameValuePairs.Add(
-                        extractor.GetValue(dataTrackPoint.ExtractionInfo, dataTrackPoint.Location, this.BamStepData.XmlDocument));
+                        extractor.GetValue(
+                            dataTrackPoint.ExtractionInfo, 
+                            dataTrackPoint.Location, 
+                            this.BamStepData.XmlDocument));
                 }
             }
             else
@@ -614,11 +831,17 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 {
                     nameValuePairs.Add(dataTrackPoint.ItemName);
                     nameValuePairs.Add(
-                        extractor.GetValue(dataTrackPoint.ExtractionInfo, dataTrackPoint.Location, this.BamStepData.XmlDocument));
+                        extractor.GetValue(
+                            dataTrackPoint.ExtractionInfo, 
+                            dataTrackPoint.Location, 
+                            this.BamStepData.XmlDocument));
                 }
             }
 
-            this.InnerEventStream.UpdateActivity(this.Directive.BamActivity, this.GetActivityInstance(activityInstanceKey), nameValuePairs.ToArray());
+            this.InnerEventStream.UpdateActivity(
+                this.Directive.BamActivity, 
+                this.GetActivityInstance(activityInstanceKey), 
+                nameValuePairs.ToArray());
         }
 
         /// <summary>
@@ -627,7 +850,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// <param name="type">The type of track points required.</param>
         /// <param name="afterMap">Defines if the after-map step should be used.</param>
         /// <returns>A collection of BAM track points.</returns>
-        private IEnumerable<ResolutionService.TrackPoint> GetTrackPoints(TrackPointType type, bool afterMap)
+        private StepTrackPointsByType GetTrackPoints(TrackPointType type, bool afterMap)
         {
             if (this.Directive == null)
             {
@@ -651,19 +874,15 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                     throw new EsbResolutionException(Resources.ExceptionInvalidDirective);
                 };
 
-            var bamActivityStep = BamStepResolver.GetStep(
+            // Because of a logic error in Microsoft's code, a separate ActivityInterceptorConfiguration must be used 
+            // for each location.  The following code extracts only those track points for a given step name (location).
+            return new StepTrackPointsByType(type, BamStepResolver.GetStep(
                 this.Directive.BamActivity,
                 string.IsNullOrWhiteSpace(stepName)
                 ? directiveInvalid()
                 : stepName,
                 this.Directive.BamTrackpointPolicyName,
-                version);
-
-            // Because of a logic error in Microsoft's code, a separate ActivityInterceptorConfiguration must be used 
-            // for each location.  The following code extracts only those track points for a given step name (location).
-            return (from ResolutionService.TrackPoint tp in bamActivityStep.TrackPoints
-                   where tp.Type == type && (string)tp.Location == stepName
-                   select tp).ToList();
+                version));
         }
 
         /// <summary>
@@ -716,7 +935,8 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             {
                 if (!(extractionInfo is string) || string.IsNullOrEmpty((string)extractionInfo))
                 {
-                    throw new EsbResolutionException(string.Format(Resources.ExceptionInterceptionFailedNotXPath, extractionInfo));
+                    throw new EsbResolutionException(
+                        string.Format(Resources.ExceptionInterceptionFailedNotXPath, extractionInfo));
                 }
 
                 Func<string, string, Tuple<Type, object>> processMacro = (macro, format) =>
@@ -726,63 +946,120 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                         case "now":
                             return string.IsNullOrWhiteSpace(format)
                                 ? new Tuple<Type, object>(typeof(DateTime), DateTime.Now)
-                                : new Tuple<Type, object>(typeof(string), DateTime.Now.ToString(format, CultureInfo.CurrentCulture));
+                                : new Tuple<Type, object>(
+                                    typeof(string), 
+                                    DateTime.Now.ToString(format, CultureInfo.CurrentCulture));
                         case "date":
                             return string.IsNullOrWhiteSpace(format)
-                                ? new Tuple<Type, object>(typeof(DateTime), DateTime.Now.Date)
-                                : new Tuple<Type, object>(typeof(string), DateTime.Now.Date.ToString(format, CultureInfo.CurrentCulture));
+                                ? new Tuple<Type, object>(
+                                    typeof(DateTime), 
+                                    DateTime.Now.Date)
+                                : new Tuple<Type, object>(
+                                    typeof(string), 
+                                    DateTime.Now.Date.ToString(format, CultureInfo.CurrentCulture));
                         case "day":
                             return string.IsNullOrWhiteSpace(format)
-                                ? new Tuple<Type, object>(typeof(int), DateTime.Now.Day)
-                                : new Tuple<Type, object>(typeof(string), DateTime.Now.Day.ToString(format, CultureInfo.CurrentCulture));
+                                ? new Tuple<Type, object>(
+                                    typeof(int), 
+                                    DateTime.Now.Day)
+                                : new Tuple<Type, object>(
+                                    typeof(string),
+                                    DateTime.Now.Day.ToString(format, CultureInfo.CurrentCulture));
                         case "dayofweek":
                             return string.IsNullOrWhiteSpace(format)
-                                ? new Tuple<Type, object>(typeof(string), DateTime.Now.DayOfWeek.ToString())
-                                : new Tuple<Type, object>(typeof(string), DateTime.Now.DayOfWeek.ToString(format));
+                                ? new Tuple<Type, object>(
+                                    typeof(string), 
+                                    DateTime.Now.DayOfWeek.ToString())
+                                : new Tuple<Type, object>(
+                                    typeof(string), 
+                                    DateTime.Now.DayOfWeek.ToString(format));
                         case "dayofyear":
                             return string.IsNullOrWhiteSpace(format)
-                                ? new Tuple<Type, object>(typeof(int), DateTime.Now.DayOfYear)
-                                : new Tuple<Type, object>(typeof(string), DateTime.Now.DayOfYear.ToString(format, CultureInfo.CurrentCulture));
+                                ? new Tuple<Type, object>(
+                                    typeof(int), 
+                                    DateTime.Now.DayOfYear)
+                                : new Tuple<Type, object>(
+                                    typeof(string), 
+                                    DateTime.Now.DayOfYear.ToString(format, CultureInfo.CurrentCulture));
                         case "hour":
                             return string.IsNullOrWhiteSpace(format)
-                                ? new Tuple<Type, object>(typeof(int), DateTime.Now.Hour)
-                                : new Tuple<Type, object>(typeof(string), DateTime.Now.Hour.ToString(format, CultureInfo.CurrentCulture));
+                                ? new Tuple<Type, object>(
+                                    typeof(int), 
+                                    DateTime.Now.Hour)
+                                : new Tuple<Type, object>(
+                                    typeof(string), 
+                                    DateTime.Now.Hour.ToString(format, CultureInfo.CurrentCulture));
                         case "millisecond":
                             return string.IsNullOrWhiteSpace(format)
-                                ? new Tuple<Type, object>(typeof(int), DateTime.Now.Millisecond)
-                                : new Tuple<Type, object>(typeof(string), DateTime.Now.Millisecond.ToString(format, CultureInfo.CurrentCulture));
+                                ? new Tuple<Type, object>(
+                                    typeof(int), 
+                                    DateTime.Now.Millisecond)
+                                : new Tuple<Type, object>(
+                                    typeof(string), 
+                                    DateTime.Now.Millisecond.ToString(format, CultureInfo.CurrentCulture));
                         case "minute":
                             return string.IsNullOrWhiteSpace(format)
-                                ? new Tuple<Type, object>(typeof(int), DateTime.Now.Minute)
-                                : new Tuple<Type, object>(typeof(string), DateTime.Now.Minute.ToString(format, CultureInfo.CurrentCulture));
+                                ? new Tuple<Type, object>(
+                                    typeof(int), 
+                                    DateTime.Now.Minute)
+                                : new Tuple<Type, object>(
+                                    typeof(string), 
+                                    DateTime.Now.Minute.ToString(format, CultureInfo.CurrentCulture));
                         case "month":
                             return string.IsNullOrWhiteSpace(format)
-                                ? new Tuple<Type, object>(typeof(int), DateTime.Now.Month)
-                                : new Tuple<Type, object>(typeof(string), DateTime.Now.Month.ToString(format, CultureInfo.CurrentCulture));
+                                ? new Tuple<Type, object>(
+                                    typeof(int), 
+                                    DateTime.Now.Month)
+                                : new Tuple<Type, object>(
+                                    typeof(string), 
+                                    DateTime.Now.Month.ToString(format, CultureInfo.CurrentCulture));
                         case "second":
                             return string.IsNullOrWhiteSpace(format)
-                                ? new Tuple<Type, object>(typeof(int), DateTime.Now.Second)
-                                : new Tuple<Type, object>(typeof(string), DateTime.Now.Second.ToString(format, CultureInfo.CurrentCulture));
+                                ? new Tuple<Type, object>(
+                                    typeof(int),
+                                    DateTime.Now.Second)
+                                : new Tuple<Type, object>(
+                                    typeof(string), 
+                                    DateTime.Now.Second.ToString(format, CultureInfo.CurrentCulture));
                         case "ticks":
                             return string.IsNullOrWhiteSpace(format)
-                                ? new Tuple<Type, object>(typeof(long), DateTime.Now.Ticks)
-                                : new Tuple<Type, object>(typeof(string), DateTime.Now.Ticks.ToString(format, CultureInfo.CurrentCulture));
+                                ? new Tuple<Type, object>(
+                                    typeof(long),
+                                    DateTime.Now.Ticks)
+                                : new Tuple<Type, object>(
+                                    typeof(string), 
+                                    DateTime.Now.Ticks.ToString(format, CultureInfo.CurrentCulture));
                         case "timeofday":
-                            return new Tuple<Type, object>(typeof(string), DateTime.Now.TimeOfDay.ToString(format, CultureInfo.CurrentCulture));
+                            return new Tuple<Type, object>(
+                                typeof(string), 
+                                DateTime.Now.TimeOfDay.ToString(format, CultureInfo.CurrentCulture));
                         case "today":
                             return string.IsNullOrWhiteSpace(format)
-                                ? new Tuple<Type, object>(typeof(DateTime), DateTime.Today)
-                                : new Tuple<Type, object>(typeof(string), DateTime.Today.ToString(format, CultureInfo.CurrentCulture));
+                                ? new Tuple<Type, object>(
+                                    typeof(DateTime), DateTime.Today)
+                                : new Tuple<Type, object>(
+                                    typeof(string), 
+                                    DateTime.Today.ToString(format, CultureInfo.CurrentCulture));
                         case "utcnow":
                             return string.IsNullOrWhiteSpace(format)
-                                ? new Tuple<Type, object>(typeof(DateTime), DateTime.UtcNow)
-                                : new Tuple<Type, object>(typeof(string), DateTime.UtcNow.ToString(format, CultureInfo.CurrentCulture));
+                                ? new Tuple<Type, object>(
+                                    typeof(DateTime), 
+                                    DateTime.UtcNow)
+                                : new Tuple<Type, object>(
+                                    typeof(string), 
+                                    DateTime.UtcNow.ToString(format, CultureInfo.CurrentCulture));
                         case "year":
                             return string.IsNullOrWhiteSpace(format)
-                                ? new Tuple<Type, object>(typeof(int), DateTime.Now.Year)
-                                : new Tuple<Type, object>(typeof(string), DateTime.Now.Year.ToString(format, CultureInfo.CurrentCulture));
+                                ? new Tuple<Type, object>(
+                                    typeof(int), 
+                                    DateTime.Now.Year)
+                                : new Tuple<Type, object>(
+                                    typeof(string), 
+                                    DateTime.Now.Year.ToString(format, CultureInfo.CurrentCulture));
                         case "guid":
-                            return new Tuple<Type, object>(typeof(string), Guid.NewGuid().ToString(format, CultureInfo.CurrentCulture));
+                            return new Tuple<Type, object>(
+                                typeof(string), 
+                                Guid.NewGuid().ToString(format, CultureInfo.CurrentCulture));
                         case "property":
                             try
                             {

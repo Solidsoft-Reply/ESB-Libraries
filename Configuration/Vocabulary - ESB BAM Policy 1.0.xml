@@ -14,7 +14,7 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-  <brl xmlns="http://schemas.microsoft.com/businessruleslanguage/2002">
+<brl xmlns="http://schemas.microsoft.com/businessruleslanguage/2002">
   <vocabulary id="88b38591-1b61-4b42-a5c0-b19816d55776" name="ESB BAM Policy" uri="" description="">
     <version major="1" minor="0" description="" modifiedby="SOLIDSOFTREPLY\Author" date="2015-05-10T00:00:00.0000000+00:00" />
     <vocabularydefinition id="50a993c3-f881-46bc-b340-0c3c07be483b" name="Define Reference" description="">
@@ -337,6 +337,31 @@
         </argument>
         <argument position="1">
           <valuedefinitionliteral type="object" />
+        </argument>
+      </formatstring>
+    </vocabularydefinition>
+    <vocabularydefinition id="f4a38b06-ce14-417b-9942-f14fadfefa06" name="Enable Extension" description="Register the enablement of the extension of an activity step.  This is really a form a continuation, automated via an ESB directive at run time.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="RegisterExtendStep" type="void">
+          <classinfo class="BamActivityStep" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string" />
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="string" />
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[ Step {0} ]  Enable extension of step {1}" delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string" />
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="string" />
         </argument>
       </formatstring>
     </vocabularydefinition>

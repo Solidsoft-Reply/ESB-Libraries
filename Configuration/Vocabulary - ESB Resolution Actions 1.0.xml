@@ -72,6 +72,39 @@
         </argument>
       </formatstring>
     </vocabularydefinition>
+    <vocabularydefinition id="393A736A-9933-4B53-99D2-488BD9EC2D21" name="Extend a BAM activity step" description="Set a step extension for an activity containing a BAM step.">
+      <bindingdefinition>
+        <classmemberbindingdefinition member="SetBamInterceptionExtension" type="void">
+          <classinfo class="Interchange" instance="0">
+            <assembly>SolidsoftReply.Esb.Libraries.Facts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
+            <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Facts\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Facts.dll-->
+            <namespace>SolidsoftReply.Esb.Libraries.Facts</namespace>
+          </classinfo>
+          <argument position="0">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+          <argument position="1">
+            <valuedefinitionliteral type="string">
+              <string />
+            </valuedefinitionliteral>
+          </argument>
+        </classmemberbindingdefinition>
+      </bindingdefinition>
+      <formatstring language="en-US" string="[ Directive {0} ]  Define an extension called {1} for the BAM step in this directive." delimiter="{[0-9]+}">
+        <argument position="0">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+        <argument position="1">
+          <valuedefinitionliteral type="string">
+            <string />
+          </valuedefinitionliteral>
+        </argument>
+      </formatstring>
+    </vocabularydefinition>    
     <vocabularydefinition id="8d2c5974-2794-4721-8418-fe6f68945947" name="Perform retries at a given level" description="Set a retry policy on a directive for a given level.">
       <bindingdefinition>
         <classmemberbindingdefinition member="SetRetryPolicy" type="void">

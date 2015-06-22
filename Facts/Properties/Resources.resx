@@ -351,4 +351,13 @@
   <data name="ExceptionErrorOnInvalidFlag" xml:space="preserve">
     <value>The {0} directive can encode a single 'error-on-invalid' flag only for a single validation rule set.   Use multiple directives for multiple validation rule sets.</value>
   </data>
+  <data name="ExceptionInvalidBamExtendedStepName" xml:space="preserve">
+    <value>Invalid BAM step name provided for extension - {0}</value>
+  </data>
+  <data name="ExceptionInvalidBamInterceptionStepExtensionName" xml:space="preserve">
+    <value>BAM interception step extension names for directive {0} cannot be null, empty or whitespace.</value>
+  </data>
+  <data name="ExceptionInvalidBamStep" xml:space="preserve">
+    <value>Invalid BAM step name for {0} {1}.</value>
+  </data>
 </root>

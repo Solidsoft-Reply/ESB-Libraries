@@ -479,6 +479,31 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         }
 
         /// <summary>
+        /// Set a BAM interception step extension for a directive.  The directive must set a BAM step to be extended.
+        /// </summary>
+        /// <param name="directiveKey">Key name that identifies a directive.</param>
+        /// <param name="bamExtensionStepName">The name of the BAM step extension.</param>
+        public void SetBamInterceptionExtension(string directiveKey, string bamExtensionStepName)
+        {
+            if (string.IsNullOrWhiteSpace(directiveKey))
+            {
+                throw new EsbFactsException(
+                    string.Format(
+                        Properties.Resources.ExceptionInvalidDirective,
+                        "BAM interception step",
+                        string.Format(
+                            "extension {0}",
+                            bamExtensionStepName ?? "<null>")));
+            }
+
+            var directive = this.GetDirective(directiveKey);
+            directive.KeyName = directiveKey;
+            directive.BamStepExtensions.Add(bamExtensionStepName);
+
+            directive.DirectiveCategories |= Categories.BamInterception;
+        }
+
+        /// <summary>
         /// Sets BAM configuration as part of the policy.
         /// </summary>
         /// <param name="directiveKey">Key name that identifies a directive.</param>
@@ -860,7 +885,7 @@ namespace SolidsoftReply.Esb.Libraries.Facts
 
             directive.DirectiveCategories |= Categories.BamInterception;
         }
-        
+
         /// <summary>
         /// Gets a directive from the directive collection.    If the directive does
         /// not exist, it is created.

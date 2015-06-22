@@ -313,6 +313,8 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.ResolutionService {
         
         private string stepNameField;
         
+        private string[] extensionStepsField;
+        
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
         public string ActivityName {
@@ -334,6 +336,18 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.ResolutionService {
             set {
                 this.stepNameField = value;
                 this.RaisePropertyChanged("StepName");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=2)]
+        public string[] ExtensionSteps {
+            get {
+                return this.extensionStepsField;
+            }
+            set {
+                this.extensionStepsField = value;
+                this.RaisePropertyChanged("ExtensionSteps");
             }
         }
     }
@@ -594,6 +608,8 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.ResolutionService {
         
         private string bamStepNameField;
         
+        private string[] bamStepExtensionsField;
+        
         private string bamAfterMapStepNameField;
         
         private string bamConnectionStringField;
@@ -751,7 +767,20 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.ResolutionService {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=9)]
+        [System.Xml.Serialization.XmlArrayAttribute(Order=9)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("BamStepExtension", IsNullable=false)]
+        public string[] BamStepExtensions {
+            get {
+                return this.bamStepExtensionsField;
+            }
+            set {
+                this.bamStepExtensionsField = value;
+                this.RaisePropertyChanged("BamStepExtensions");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=10)]
         public string BamAfterMapStepName {
             get {
                 return this.bamAfterMapStepNameField;
@@ -763,7 +792,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.ResolutionService {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=10)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=11)]
         public string BamConnectionString {
             get {
                 return this.bamConnectionStringField;
@@ -775,7 +804,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.ResolutionService {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=11)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=12)]
         public bool BamIsBuffered {
             get {
                 return this.bamIsBufferedField;
@@ -799,7 +828,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.ResolutionService {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=12)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=13)]
         public int BamFlushThreshold {
             get {
                 return this.bamFlushThresholdField;
@@ -823,7 +852,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.ResolutionService {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=13)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=14)]
         public string BamTrackpointPolicyName {
             get {
                 return this.bamTrackpointPolicyNameField;
@@ -835,7 +864,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.ResolutionService {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=14)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=15)]
         public string BamTrackpointPolicyVersion {
             get {
                 return this.bamTrackpointPolicyVersionField;
@@ -847,7 +876,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.ResolutionService {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=15)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=16)]
         public int RetryCount {
             get {
                 return this.retryCountField;
@@ -871,7 +900,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.ResolutionService {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=16)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=17)]
         public int RetryInterval {
             get {
                 return this.retryIntervalField;
@@ -895,7 +924,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.ResolutionService {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=17)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=18)]
         public int RetryLevel {
             get {
                 return this.retryLevelField;
@@ -919,7 +948,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.ResolutionService {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=18)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=19)]
         public System.DateTime ServiceWindowStartTime {
             get {
                 return this.serviceWindowStartTimeField;
@@ -943,7 +972,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.ResolutionService {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=19)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=20)]
         public System.DateTime ServiceWindowStopTime {
             get {
                 return this.serviceWindowStopTimeField;
@@ -967,7 +996,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.ResolutionService {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=20)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=21)]
         public string ValidationPolicyName {
             get {
                 return this.validationPolicyNameField;
@@ -979,7 +1008,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.ResolutionService {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=21)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=22)]
         public string ValidationPolicyVersion {
             get {
                 return this.validationPolicyVersionField;
@@ -991,7 +1020,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.ResolutionService {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=22)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=23)]
         public bool ErrorOnInvalid {
             get {
                 return this.errorOnInvalidField;
@@ -1015,7 +1044,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.ResolutionService {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=23)]
+        [System.Xml.Serialization.XmlArrayAttribute(Order=24)]
         [System.Xml.Serialization.XmlArrayItemAttribute("Item", IsNullable=false)]
         public DirectivesDictionaryItemValueDirectiveItem[] Properties {
             get {
@@ -1028,7 +1057,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.ResolutionService {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=24)]
+        [System.Xml.Serialization.XmlArrayAttribute(Order=25)]
         [System.Xml.Serialization.XmlArrayItemAttribute("Item", IsNullable=false)]
         public DirectivesDictionaryItemValueDirectiveItem1[] BtsProperties {
             get {

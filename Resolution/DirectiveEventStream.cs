@@ -290,10 +290,30 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// </summary>
         /// <param name="directive">The directive.</param>
         // ReSharper disable once ParameterHidesMember
-        public void UpdateDirective(Directive directive)
+        internal void UpdateDirective(Directive directive)
         {
             lock (this.syncLock)
             {
+                // Copy directive information as required
+                if (this.Directive != null)
+                {
+                    // We are only changing the directive, but not the event stream, so
+                    // we will update the directive to conform to the current event stream.
+                    directive.BamConnectionString = this.Directive.BamConnectionString;
+                    directive.BamIsBuffered = this.Directive.BamIsBuffered;
+                    directive.BamFlushThreshold = this.Directive.BamFlushThreshold;
+
+                    if (string.IsNullOrWhiteSpace(directive.BamTrackpointPolicyName))
+                    {
+                        directive.BamTrackpointPolicyName = this.Directive.BamTrackpointPolicyName;
+                    }
+
+                    if (string.IsNullOrWhiteSpace(directive.BamTrackpointPolicyVersion))
+                    {
+                        directive.BamTrackpointPolicyVersion = this.Directive.BamTrackpointPolicyVersion;
+                    }
+                }
+
                 this.Directive = directive;
                 this.InitializeEventStreamFromDirective();
             }
@@ -309,14 +329,25 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 return;
             }
 
-            this.eventStream = this.Directive.BamIsBuffered
-                                   ? (EventStream)
-                                     new BufferedEventStream(
-                                         this.Directive.BamConnectionString,
-                                         this.Directive.BamFlushThreshold)
-                                   : new DirectEventStream(
-                                         this.Directive.BamConnectionString,
-                                         this.Directive.BamFlushThreshold);
+            try
+            {
+                this.eventStream = this.Directive.BamIsBuffered
+                                       ? (EventStream)
+                                         new BufferedEventStream(
+                                             this.Directive.BamConnectionString,
+                                             this.Directive.BamFlushThreshold)
+                                       : new DirectEventStream(
+                                             this.Directive.BamConnectionString,
+                                             this.Directive.BamFlushThreshold);
+            }
+            catch
+            {
+                // TODO: Log a warning here.  The failure to initialize an event stream
+                // suggests that the developer has tried to create a directive over an invalid
+                // directive name or has failed to set the BAM connection data in the directive.
+                return;
+            }
+
             this.ReadBamAppSettings();
         }
 

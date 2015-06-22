@@ -295,4 +295,16 @@
   <data name="ExceptionActivityNotRegistered" xml:space="preserve">
     <value>The activity ID for BAM activity {0} was not found at step {1}.  Have you started or continued the activity correctly?</value>
   </data>
+  <data name="ExceptionInvalidBamStepExtensionNameOnSelectBamStepExtension" xml:space="preserve">
+    <value>An invalid BAM step extension name was passed to the SelectBamStepExtension directive method.</value>
+  </data>
+  <data name="ExceptionInvalidBamStepNameOnSelectBamStepExtension" xml:space="preserve">
+    <value>An invalid BAM step name was passed to the SelectBamStepExtension directive method.</value>
+  </data>
+  <data name="ExceptionMissingEventStreamOnSelectBamStepExtension" xml:space="preserve">
+    <value>A null directive event stream was passed to the SelectBamStepExtension directive method.</value>
+  </data>
+  <data name="ExceptionUnregisteredBamStepExtensionNameOnSelectBamStepExtension" xml:space="preserve">
+    <value>An unrecognised BAM step extension name was passed to the SelectBamStepExtension directive method.  Is the extension defined in the Service Mediation policy for the current directive?</value>
+  </data>
 </root>

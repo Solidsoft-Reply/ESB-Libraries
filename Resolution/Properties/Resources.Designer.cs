@@ -322,6 +322,24 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An invalid BAM step extension name was passed to the SelectBamStepExtension directive method..
+        /// </summary>
+        internal static string ExceptionInvalidBamStepExtensionNameOnSelectBamStepExtension {
+            get {
+                return ResourceManager.GetString("ExceptionInvalidBamStepExtensionNameOnSelectBamStepExtension", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An invalid BAM step name was passed to the SelectBamStepExtension directive method..
+        /// </summary>
+        internal static string ExceptionInvalidBamStepNameOnSelectBamStepExtension {
+            get {
+                return ResourceManager.GetString("ExceptionInvalidBamStepNameOnSelectBamStepExtension", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An ESB Resolver directive is invalid or does not exist.  Check that the directive name exists in the policy..
         /// </summary>
         internal static string ExceptionInvalidDirective {
@@ -354,6 +372,15 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Properties {
         internal static string ExceptionMapFullName {
             get {
                 return ResourceManager.GetString("ExceptionMapFullName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A null directive event stream was passed to the SelectBamStepExtension directive method..
+        /// </summary>
+        internal static string ExceptionMissingEventStreamOnSelectBamStepExtension {
+            get {
+                return ResourceManager.GetString("ExceptionMissingEventStreamOnSelectBamStepExtension", resourceCulture);
             }
         }
         
@@ -462,6 +489,15 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Properties {
         internal static string ExceptionUnexpectedError {
             get {
                 return ResourceManager.GetString("ExceptionUnexpectedError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An unrecognised BAM step extension name was passed to the SelectBamStepExtension directive method.  Is the extension defined in the Service Mediation policy for the current directive?.
+        /// </summary>
+        internal static string ExceptionUnregisteredBamStepExtensionNameOnSelectBamStepExtension {
+            get {
+                return ResourceManager.GetString("ExceptionUnregisteredBamStepExtensionNameOnSelectBamStepExtension", resourceCulture);
             }
         }
         

@@ -130,6 +130,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="StepTrackPointsByType.cs" />
     <Compile Include="TrackpointDirectiveEventStream.cs" />
     <Compile Include="Transformer.cs" />
     <Compile Include="TransformResults.cs" />

@@ -268,7 +268,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
 
         /// <summary>
         /// Retrieves data for a step of a BAM activity for the first directive found that defines a
-        /// step.    Call this method on every step in which some data may be needed for BAM 
+        /// step. Call this method on every step in which some data may be needed for BAM 
         /// - e.g., at the point a service is called, or at the point of resolution.
         /// </summary>
         /// <param name="data">The BAM step data.</param>

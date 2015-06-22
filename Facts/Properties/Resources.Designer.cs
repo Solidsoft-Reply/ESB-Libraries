@@ -340,6 +340,15 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid BAM step name provided for extension - {0}.
+        /// </summary>
+        internal static string ExceptionInvalidBamExtendedStepName {
+            get {
+                return ResourceManager.GetString("ExceptionInvalidBamExtendedStepName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The BAM activity name for directive {0} cannot be null, empty or whitespace..
         /// </summary>
         internal static string ExceptionInvalidBamInterceptionActivity {
@@ -349,11 +358,29 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to BAM interception step extension names for directive {0} cannot be null, empty or whitespace..
+        /// </summary>
+        internal static string ExceptionInvalidBamInterceptionStepExtensionName {
+            get {
+                return ResourceManager.GetString("ExceptionInvalidBamInterceptionStepExtensionName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The BAM interception step name for directive {0} cannot be null, empty or whitespace..
         /// </summary>
         internal static string ExceptionInvalidBamInterceptionStepName {
             get {
                 return ResourceManager.GetString("ExceptionInvalidBamInterceptionStepName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid BAM step name for {0} {1}..
+        /// </summary>
+        internal static string ExceptionInvalidBamStep {
+            get {
+                return ResourceManager.GetString("ExceptionInvalidBamStep", resourceCulture);
             }
         }
         

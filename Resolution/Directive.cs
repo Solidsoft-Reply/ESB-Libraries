@@ -34,6 +34,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
     using SolidsoftReply.Esb.Libraries.Resolution.ResolutionService;
 
     using Directive = SolidsoftReply.Esb.Libraries.Resolution.ResolutionService.DirectivesDictionaryItemValueDirective;
+    using System.Text.RegularExpressions;
 
     /// <summary>
     /// Class representing the item on the output list
@@ -286,6 +287,29 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 }
             }
         }
+
+        /// <summary>
+        /// Gets or sets a list of steps that extend the step specified in the StepName property.
+        /// </summary>
+        public virtual IList<string> BamStepExtensions
+        {
+            // NB. The type is List<string> rather than IList<string> in order to be serialisable.
+            get
+            {
+                return this.directive == null ? new List<string>() : this.directive.BamStepExtensions.ToList();
+            }
+
+            set
+            {
+                this.directive.BamStepExtensions = value.ToArray();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the name of the current step extension within the BAM activity 
+        /// to which this directive applies.
+        /// </summary>
+        public virtual string BamRootStepName { get; set;}
 
         /// <summary>
         /// Gets or sets the name of the step within the BAM activity to which this directive applies.
@@ -1071,6 +1095,115 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         public virtual void OnStep(BamStepData data, bool afterMap)
         {
             this.DoOnStep(data.XmlDocument, data.Properties, data.ValueList, afterMap);
+        }
+
+        /// <summary>
+        /// Selects a BAM step extension.
+        /// </summary>
+        /// <param name="directiveEventStream">A Trackpoint directive event stream.</param>
+        /// <param name="stepExtensionName">The step extension</param>
+        /// <remarks>
+        /// This is a form of continuation in which the continuation is automatically managed by 
+        /// selecting a BAM step extension.
+        /// </remarks>
+        public virtual void SelectBamStepExtension(TrackpointDirectiveEventStream directiveEventStream, string stepExtensionName)
+        {
+            if (directiveEventStream == null)
+            {
+                throw new EsbResolutionException(
+                    Resources.ExceptionMissingEventStreamOnSelectBamStepExtension);
+            }
+ 
+            if (string.IsNullOrWhiteSpace(stepExtensionName))
+            {
+                throw new EsbResolutionException(
+                    Resources.ExceptionInvalidBamStepExtensionNameOnSelectBamStepExtension);
+            }
+
+            if (!this.BamStepExtensions.Contains(stepExtensionName))
+            {
+                throw new EsbResolutionException(
+                    Resources.ExceptionUnregisteredBamStepExtensionNameOnSelectBamStepExtension);
+            }
+
+            if (string.IsNullOrWhiteSpace(this.BamStepName))
+            {
+                throw new EsbResolutionException(
+                    Resources.ExceptionInvalidBamStepNameOnSelectBamStepExtension);
+            }
+
+            // Manufacture the continuation token for extending the current step. The prefix is 
+            // tokenised by replacing each individual whitespace character with an underscore, rather 
+            // than grouping whitespace characters.  This handles situations where a developer decides 
+            // to treat whitespace as significant. The token follows a pattern that includes the 
+            // exteded step name and a counter.  The counter is included to support situations where
+            // the developer uses the same directive moe than once in a continuation chain.
+            var extendsPrefixToken = "extends_";
+            var tokenisedStepName = Regex.Replace(
+                this.BamStepName,
+                @"\s", "_");
+            var counter = 0L;
+            var extendsToken = string.Format(
+                "{0}_{1}_{2}_{3}",
+                extendsPrefixToken,
+                tokenisedStepName,
+                ++counter,
+                directiveEventStream.CurrentBamActivityId);
+
+            // If the current token 
+            if (directiveEventStream.CurrentBamActivityId.StartsWith(extendsPrefixToken))
+            {
+                var tokenWithoutPrefix =
+                    directiveEventStream.CurrentBamActivityId.Substring(
+                        extendsPrefixToken.Length + tokenisedStepName.Length);
+                var match = Regex.Match(tokenWithoutPrefix, @"^_(\d+)_");
+
+                if (match.Success)
+                {
+                    var activityId = tokenWithoutPrefix.Substring(match.Length);
+
+                    try
+                    {
+                        counter = Convert.ToInt64(match.Groups[1].Value);
+                    }
+                    catch
+                    {
+                        activityId = tokenWithoutPrefix;
+                    }
+
+                    extendsToken = string.Format(
+                        "{0}_{1}_{2}_{3}",
+                        extendsPrefixToken,
+                        tokenisedStepName,
+                        counter,
+                        activityId);
+                }
+            }
+
+            // Enable continuation on the current BAM step using the manufactured prefix and current activity ID.
+            // Then end the activity.
+            var activityInstanceKey = string.Format(
+                "{0}#{1}#{2}",
+                this.BamActivity,
+                this.BamStepName,
+                directiveEventStream.CurrentBamActivityId);
+            directiveEventStream.EnableContinuation(this.BamActivity, directiveEventStream.ActivityInstances[activityInstanceKey], extendsToken);
+            directiveEventStream.EndActivity();
+
+            // Record the root step name for reset.
+            if (string.IsNullOrWhiteSpace(this.BamRootStepName))
+            {
+                this.BamRootStepName = this.BamStepName;
+            }
+
+            // Use the step extension as the new step name
+            this.BamStepName = stepExtensionName;
+
+            // Reset the current activity ID
+            directiveEventStream.CurrentBamActivityId = extendsToken;
+
+            // Continue the  activity
+            directiveEventStream.ContinueActivity(false, null);
         }
 
         /// <summary>

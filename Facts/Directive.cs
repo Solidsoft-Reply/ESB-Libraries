@@ -21,6 +21,7 @@ namespace SolidsoftReply.Esb.Libraries.Facts
     using System;
     using System.Collections.Generic;
     using System.Configuration;
+    using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
     using System.Runtime.Serialization;
     using System.Xml.Serialization;
@@ -86,6 +87,11 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// Name of conceptual BAM step ('location') within an activity.
         /// </summary>
         private string bamStepName;
+
+        /// <summary>
+        /// List of steps that extend the step specified in the StepName property.
+        /// </summary>
+        private BamStepExtensionsType bamStepExtensions = new BamStepExtensionsType();
 
         /// <summary>
         /// Name of conceptual BAM step ('location') within an activity that will
@@ -195,17 +201,6 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         [DataMember(Name = "KeyName", Order = 0)]
         [XmlElement("KeyName", Order = 0)]
         public string KeyName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the collection of general purpose property name-value pairs.
-        /// </summary>
-        [DataMember(Name = "Properties", Order = 23)]
-        [XmlElement("Properties", Order = 23)]
-        public Dictionaries.Properties Properties
-        {
-            get { return this.properties; }
-            set { this.properties = value; }
-        }
 
         /// <summary>
         /// Gets or sets a set of flags indicating the categories of settings within this directive
@@ -370,11 +365,42 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         }
 
         /// <summary>
+        /// Gets or sets a list of steps that extend the step specified in the StepName property.
+        /// </summary>
+        [DataMember(Name = "BamStepExtensions", Order = 9)]
+        [XmlElement("BamStepExtensions", Order = 9)]
+        public BamStepExtensionsType BamStepExtensions
+        {
+            // NB. The type is List<string> rather than IList<string> in order to be serialisable.
+            get
+            {
+                return this.bamStepExtensions;
+            }
+
+            set
+            {
+                this.bamStepExtensions.Clear();
+
+                if (value == null)
+                {
+                    return;
+                }
+
+                foreach (var item in value)
+                {
+                    this.bamStepExtensions.Add(item);
+                }
+
+                this.SetValidity(this.directiveValidator.ValidateBamStepExtensions());
+            }
+        }
+
+        /// <summary>
         /// Gets or sets the name of conceptual BAM step ('location') within an activity that will
         /// be placed after a transformation
         /// </summary>
-        [DataMember(Name = "BamAfterMapStepName", Order = 9)]
-        [XmlElement("BamAfterMapStepName", Order = 9)]
+        [DataMember(Name = "BamAfterMapStepName", Order = 10)]
+        [XmlElement("BamAfterMapStepName", Order = 10)]
         public string BamAfterMapStepName
         {
             get
@@ -393,8 +419,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// <summary>
         /// Gets or sets the connection string for BAM.
         /// </summary>
-        [DataMember(Name = "BamConnectionString", Order = 10)]
-        [XmlElement("BamConnectionString", Order = 10)]
+        [DataMember(Name = "BamConnectionString", Order = 11)]
+        [XmlElement("BamConnectionString", Order = 11)]
         public string BamConnectionString
         {
             get
@@ -437,8 +463,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// <summary>
         /// Gets or sets a value indicating whether BAM will use a buffered event stream.
         /// </summary>
-        [DataMember(Name = "BamIsBuffered", Order = 11)]
-        [XmlElement("BamIsBuffered", Order = 11)]
+        [DataMember(Name = "BamIsBuffered", Order = 12)]
+        [XmlElement("BamIsBuffered", Order = 12)]
         public bool BamIsBuffered
         {
             get
@@ -485,8 +511,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         ///         event count equals or exceeds this threshold; at this point, the Flush 
         ///         method will be called internally. 
         /// </remarks>
-        [DataMember(Name = "BamFlushThreshold", Order = 12)]
-        [XmlElement("BamFlushThreshold", Order = 12)]
+        [DataMember(Name = "BamFlushThreshold", Order = 13)]
+        [XmlElement("BamFlushThreshold", Order = 13)]
         public int BamFlushThreshold
         {
             get
@@ -522,8 +548,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// Gets or sets the name of the BAM Trackpoint policy.
         /// </summary>
         [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-        [DataMember(Name = "BamTrackpointPolicyName", Order = 13)]
-        [XmlElement("BamTrackpointPolicyName", Order = 13)]
+        [DataMember(Name = "BamTrackpointPolicyName", Order = 14)]
+        [XmlElement("BamTrackpointPolicyName", Order = 14)]
         public string BamTrackpointPolicyName
         {
             get
@@ -562,8 +588,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// Gets or sets the version of the BAM Trackpoint policy.
         /// </summary>
         [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-        [DataMember(Name = "BamTrackpointPolicyVersion", Order = 14)]
-        [XmlElement("BamTrackpointPolicyVersion", Order = 14)]
+        [DataMember(Name = "BamTrackpointPolicyVersion", Order = 15)]
+        [XmlElement("BamTrackpointPolicyVersion", Order = 15)]
         public string BamTrackpointPolicyVersion
         {
             get
@@ -615,8 +641,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// <summary>
         /// Gets or sets the number of retries to perform on failure
         /// </summary>
-        [DataMember(Name = "RetryCount", Order = 15)]
-        [XmlElement("RetryCount", Order = 15)]
+        [DataMember(Name = "RetryCount", Order = 16)]
+        [XmlElement("RetryCount", Order = 16)]
         public int RetryCount
         {
             get
@@ -635,8 +661,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// <summary>
         /// Gets or sets the number of minutes between each retry.
         /// </summary>
-        [DataMember(Name = "RetryInterval", Order = 16)]
-        [XmlElement("RetryInterval", Order = 16)]
+        [DataMember(Name = "RetryInterval", Order = 17)]
+        [XmlElement("RetryInterval", Order = 17)]
         public int RetryInterval
         {
             get
@@ -663,8 +689,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// perform an additional set of retries once an hour for five hours.
         /// </remarks>
         [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-        [DataMember(Name = "RetryLevel", Order = 17)]
-        [XmlElement("RetryLevel", Order = 17)]
+        [DataMember(Name = "RetryLevel", Order = 18)]
+        [XmlElement("RetryLevel", Order = 18)]
         public int RetryLevel
         {
             get
@@ -687,8 +713,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// <summary>
         /// Gets or sets the time at which service window opens.
         /// </summary>
-        [DataMember(Name = "ServiceWindowStartTime", Order = 18)]
-        [XmlElement("ServiceWindowStartTime", Order = 18)]
+        [DataMember(Name = "ServiceWindowStartTime", Order = 19)]
+        [XmlElement("ServiceWindowStartTime", Order = 19)]
         public DateTime ServiceWindowStartTime
         {
             get
@@ -707,8 +733,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// <summary>
         /// Gets or sets the time at which service window closes
         /// </summary>
-        [DataMember(Name = "ServiceWindowStopTime", Order = 19)]
-        [XmlElement("ServiceWindowStopTime", Order = 19)]
+        [DataMember(Name = "ServiceWindowStopTime", Order = 20)]
+        [XmlElement("ServiceWindowStopTime", Order = 20)]
         public DateTime ServiceWindowStopTime
         {
             get
@@ -731,8 +757,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// <summary>
         /// Gets or sets the name of the validation policy.
         /// </summary>
-        [DataMember(Name = "ValidationPolicyName", Order = 20)]
-        [XmlElement("ValidationPolicyName", Order = 20)]
+        [DataMember(Name = "ValidationPolicyName", Order = 21)]
+        [XmlElement("ValidationPolicyName", Order = 21)]
         public string ValidationPolicyName
         {
             get
@@ -770,8 +796,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// <summary>
         /// Gets or sets the version of the validation policy.
         /// </summary>
-        [DataMember(Name = "ValidationPolicyVersion", Order = 21)]
-        [XmlElement("ValidationPolicyVersion", Order = 21)]
+        [DataMember(Name = "ValidationPolicyVersion", Order = 22)]
+        [XmlElement("ValidationPolicyVersion", Order = 22)]
         public string ValidationPolicyVersion
         {
             get
@@ -819,8 +845,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// <summary>
         /// Gets or sets a value indicating whether to throw an error if a validation rule policy indicates invalidity.
         /// </summary>
-        [DataMember(Name = "ErrorOnInvalid", Order = 22)]
-        [XmlElement("ErrorOnInvalid", Order = 22)]
+        [DataMember(Name = "ErrorOnInvalid", Order = 23)]
+        [XmlElement("ErrorOnInvalid", Order = 23)]
         public bool ErrorOnInvalid
         {
             get
@@ -853,6 +879,17 @@ namespace SolidsoftReply.Esb.Libraries.Facts
             }
         }
 
+        /// <summary>
+        /// Gets or sets the collection of general purpose property name-value pairs.
+        /// </summary>
+        [DataMember(Name = "Properties", Order = 24)]
+        [XmlElement("Properties", Order = 24)]
+        public Dictionaries.Properties Properties
+        {
+            get { return this.properties; }
+            set { this.properties = value; }
+        }
+
         #endregion
 
         #region Biztalk Properties
@@ -860,8 +897,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// <summary>
         /// Gets or sets the collection of BTS property name-value pairs (with namespaces).
         /// </summary>
-        [DataMember(Name = "BtsProperties", Order = 24)]
-        [XmlElement("BtsProperties", Order = 24)]
+        [DataMember(Name = "BtsProperties", Order = 25)]
+        [XmlElement("BtsProperties", Order = 25)]
         public Dictionaries.BtsProperties BtsProperties
         {
             get { return this.btsProperties; }
@@ -1028,6 +1065,12 @@ namespace SolidsoftReply.Esb.Libraries.Facts
             [DataMember(Name = "Value", Order = 1)]
             [XmlElement("Value", Order = 1)]
             public string Value { get; set; }
+        }
+
+        [DebuggerStepThrough]
+        [CollectionDataContract(Name = "Directive.BamStepExtensionsType", Namespace = "http://solidsoftreply.com/schemas/webservices/esbresolutionservice/2015/05", ItemName = "BamStepExtension")]
+        public class BamStepExtensionsType : List<string>
+        {
         }
     }
 }

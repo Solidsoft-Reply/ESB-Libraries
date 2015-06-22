@@ -262,6 +262,26 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         }
 
         /// <summary>
+        /// Validates the name of each BAM step extension within an activity.
+        /// </summary>
+        /// <returns>True if valid; otherwise false.</returns>
+        public bool ValidateBamStepExtensions()
+        {
+            var isValid = true;
+
+            foreach (var stepExtension in this.directive.BamStepExtensions)
+            {
+                if (string.IsNullOrWhiteSpace(stepExtension))
+                {
+                    this.errorStrings.AppendLine(string.Format(Properties.Resources.ExceptionInvalidBamInterceptionStepExtensionName, this.directive.KeyName));
+                    isValid = false;
+                }
+            }
+
+            return isValid;
+        }
+
+        /// <summary>
         /// Validates the name of conceptual BAM step ('location') within an activity that will
         /// be placed after a transformation
         /// </summary>

@@ -41,7 +41,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
     using SolidsoftReply.Esb.Libraries.Resolution.ResolutionService;
 
     /// <summary>
-    ///     Class representing the item on the output list
+    /// Class representing the item on the output list
     /// </summary>
     [ComVisible(true)]
     [Serializable]
@@ -50,7 +50,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         #region Static Fields
 
         /// <summary>
-        ///     Dictionary of rule engine configuration values.
+        /// Dictionary of rule engine configuration values.
         /// </summary>
         private static readonly IDictionary ConfigValues;
 
@@ -59,7 +59,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         #region Fields
 
         /// <summary>
-        ///     A directive returned from the resolver
+        /// A directive returned from the resolver
         /// </summary>
         private readonly Resolution.Directive directive;
 
@@ -68,7 +68,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         #region Constructors and Destructors
 
         /// <summary>
-        ///     Initializes static members of the <see cref="Orchestration.Directive" /> class.
+        /// Initializes static members of the <see cref="Orchestration.Directive" /> class.
         /// </summary>
         static Directive()
         {
@@ -90,7 +90,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Finalizes an instance of the <see cref="Orchestration.Directive" /> class.
+        /// Finalizes an instance of the <see cref="Orchestration.Directive" /> class.
         /// </summary>
         ~Directive()
         {
@@ -102,7 +102,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         #region Public Properties
 
         /// <summary>
-        ///     Gets or sets the name of the BAM activity to which this directive applies.
+        /// Gets or sets the name of the BAM activity to which this directive applies.
         /// </summary>
         public override string BamActivity
         {
@@ -121,7 +121,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Gets or sets the name of the step within the BAM activity to which this directive applies.
+        /// Gets or sets the name of the step within the BAM activity to which this directive applies.
         /// </summary>
         public override string BamAfterMapStepName
         {
@@ -140,7 +140,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Gets or sets the connection string for BAM.
+        /// Gets or sets the connection string for BAM.
         /// </summary>
         public override string BamConnectionString
         {
@@ -159,18 +159,18 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Gets or sets a value that determines under what conditions the buffered
-        ///     data will be sent to the tracking database.
+        /// Gets or sets a value that determines under what conditions the buffered
+        /// data will be sent to the tracking database.
         /// </summary>
         /// <remarks>
-        ///     &lt;= 0 This value is not allowed.   If set to 0, the eventStream
-        ///     would never flush automatically and the application would have to
-        ///     call the Flush method explicitly.   There is no obvious way to do
-        ///     this in most common resolution scenarios
-        ///     1       Each event will be immediately persisted in the BAM database.
-        ///     &gt; 1  The eventStream will accumulate the events in memory until the
-        ///     event count equals or exceeds this threshold; at this point, the Flush
-        ///     method will be called internally.
+        /// &lt;= 0 This value is not allowed.   If set to 0, the eventStream
+        /// would never flush automatically and the application would have to
+        /// call the Flush method explicitly.   There is no obvious way to do
+        /// this in most common resolution scenarios
+        /// 1       Each event will be immediately persisted in the BAM database.
+        /// &gt; 1  The eventStream will accumulate the events in memory until the
+        /// event count equals or exceeds this threshold; at this point, the Flush
+        /// method will be called internally.
         /// </remarks>
         public override int BamFlushThreshold
         {
@@ -189,7 +189,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Gets or sets a value indicating whether BAM will use a buffered event stream.
+        /// Gets or sets a value indicating whether BAM will use a buffered event stream.
         /// </summary>
         public override bool BamIsBuffered
         {
@@ -208,7 +208,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Gets or sets the name of the step within the BAM activity to which this directive applies.
+        /// Gets or sets the name of the step within the BAM activity to which this directive applies.
         /// </summary>
         public override string BamStepName
         {
@@ -227,7 +227,24 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Gets or sets the BAM Trackpoint policy name.
+        /// Gets or sets a list of steps that extend the step specified in the StepName property.
+        /// </summary>
+        public override IList<string> BamStepExtensions
+        {
+            // NB. The type is List<string> rather than IList<string> in order to be serialisable.
+            get
+            {
+                return this.directive.BamStepExtensions;
+            }
+
+            set
+            {
+                this.directive.BamStepExtensions = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the BAM Trackpoint policy name.
         /// </summary>
         [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", 
             Justification = "Reviewed. Suppression is OK here.")]
@@ -248,7 +265,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Gets or sets the BAM Trackpoint policy bamTrackpointVersion.
+        /// Gets or sets the BAM Trackpoint policy bamTrackpointVersion.
         /// </summary>
         [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", 
             Justification = "Reviewed. Suppression is OK here.")]
@@ -269,7 +286,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Gets or sets the BizTalk Server property values.
+        /// Gets or sets the BizTalk Server property values.
         /// </summary>
         public override BtsProperties BtsProperties
         {
@@ -290,7 +307,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Gets or sets the message endpoint.
+        /// Gets or sets the message endpoint.
         /// </summary>
         public override string EndPoint
         {
@@ -309,7 +326,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Gets or sets the end point configuration token.
+        /// Gets or sets the end point configuration token.
         /// </summary>
         public override string EndPointConfiguration
         {
@@ -328,7 +345,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Gets or sets a value indicating whether to throw an error if a validation rule policy indicates invalidity.
+        /// Gets or sets a value indicating whether to throw an error if a validation rule policy indicates invalidity.
         /// </summary>
         public override bool ErrorOnInvalid
         {
@@ -349,7 +366,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Gets or sets the BAM event stream.
+        /// Gets or sets the BAM event stream.
         /// </summary>
         public override EventStream EventStream
         {
@@ -370,7 +387,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Gets a value indicating whether the current time is within the specified time service window.
+        /// Gets a value indicating whether the current time is within the specified time service window.
         /// </summary>
         public override bool InServiceWindow
         {
@@ -381,7 +398,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Gets or sets the full name of a map.
+        /// Gets or sets the full name of a map.
         /// </summary>
         public override string MapFullName
         {
@@ -400,7 +417,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Gets a collection of strong names for the map target schemas.
+        /// Gets a collection of strong names for the map target schemas.
         /// </summary>
         /// <remarks>This property is only set after a map has been executed.</remarks>
         public override IEnumerable<string> MapTargetSchemaStrongNames
@@ -412,7 +429,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Gets or sets the type of the map to apply.
+        /// Gets or sets the type of the map to apply.
         /// </summary>
         public override Type MapType
         {
@@ -431,7 +448,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Gets the name of directive used as a key in the policy.
+        /// Gets the name of directive used as a key in the policy.
         /// </summary>
         public override string Name
         {
@@ -442,7 +459,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Gets or sets the BizTalk Server property values.
+        /// Gets or sets the BizTalk Server property values.
         /// </summary>
         public override Resolution.Dictionaries.Properties Properties
         {
@@ -463,7 +480,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Gets or sets the number of retries for the current level.
+        /// Gets or sets the number of retries for the current level.
         /// </summary>
         public override int RetryCount
         {
@@ -484,7 +501,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Gets or sets a value indicating whether the Retry Count has been specified
+        /// Gets or sets a value indicating whether the Retry Count has been specified
         /// </summary>
         public override bool RetryCountSpecified
         {
@@ -505,12 +522,12 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Gets or sets the interval between retries.
+        /// Gets or sets the interval between retries.
         /// </summary>
         /// <remarks>
-        ///     Resolver clients are free
-        ///     to interpret this using any unit of time, but minutes is recommended
-        ///     (in keeping with BizTalk Send Ports).
+        /// Resolver clients are free
+        /// to interpret this using any unit of time, but minutes is recommended
+        /// (in keeping with BizTalk Send Ports).
         /// </remarks>
         public override int RetryInterval
         {
@@ -531,7 +548,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Gets or sets a value indicating whether the Retry Interval has been set
+        /// Gets or sets a value indicating whether the Retry Interval has been set
         /// </summary>
         public override bool RetryIntervalSpecified
         {
@@ -552,12 +569,12 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Gets or sets the a level indicator for the retry
+        /// Gets or sets the a level indicator for the retry
         /// </summary>
         /// <remarks>
-        ///     Retries must sometimes be carried out at different levels.   For example, we may want to
-        ///     carry out 3 retries at a minute interval at level 0, and then wrap this in an outer
-        ///     loop that retries 5 times each hour (level 1).
+        /// Retries must sometimes be carried out at different levels.   For example, we may want to
+        /// carry out 3 retries at a minute interval at level 0, and then wrap this in an outer
+        /// loop that retries 5 times each hour (level 1).
         /// </remarks>
         public override int RetryLevel
         {
@@ -578,7 +595,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Gets or sets a value indicating whether the Retry Level has been specified
+        /// Gets or sets a value indicating whether the Retry Level has been specified
         /// </summary>
         public override bool RetryLevelSpecified
         {
@@ -599,7 +616,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Gets or sets the time at which service window opens.
+        /// Gets or sets the time at which service window opens.
         /// </summary>
         public override DateTime ServiceWindowStartTime
         {
@@ -620,7 +637,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Gets or sets a value indicating whether the Service Window start time has been specified
+        /// Gets or sets a value indicating whether the Service Window start time has been specified
         /// </summary>
         public override bool ServiceWindowStartTimeSpecified
         {
@@ -641,7 +658,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Gets or sets the time at which service window closes.
+        /// Gets or sets the time at which service window closes.
         /// </summary>
         public override DateTime ServiceWindowStopTime
         {
@@ -662,7 +679,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Gets or sets a value indicating whether the Service Window stop time has been specified.
+        /// Gets or sets a value indicating whether the Service Window stop time has been specified.
         /// </summary>
         public override bool ServiceWindowStopTimeSpecified
         {
@@ -683,7 +700,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Gets or sets a URI indicating the intent of the SOAP operation.
+        /// Gets or sets a URI indicating the intent of the SOAP operation.
         /// </summary>
         public override string SoapAction
         {
@@ -702,7 +719,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Gets or sets the transport type.
+        /// Gets or sets the transport type.
         /// </summary>
         public override string TransportType
         {
@@ -721,7 +738,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Gets or sets the validation policy name.
+        /// Gets or sets the validation policy name.
         /// </summary>
         public override string ValidationPolicyName
         {
@@ -740,7 +757,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Gets or sets the validation policy version.
+        /// Gets or sets the validation policy version.
         /// </summary>
         public override string ValidationPolicyVersion
         {
@@ -765,7 +782,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         #region Public Methods and Operators
 
         /// <summary>
-        ///     Disposes the current object.
+        /// Disposes the current object.
         /// </summary>
         public new void Dispose()
         {
@@ -877,8 +894,8 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
 
         /// <summary>
         /// Retrieves data for a particular step of a BAM activity. Call this method on every
-        ///     step in which some data may be needed for BAM - e.g., at the point a service is called,
-        ///     or at the point of resolution.
+        /// step in which some data may be needed for BAM - e.g., at the point a service is called,
+        /// or at the point of resolution.
         /// </summary>
         /// <param name="data">
         /// The BAM step data.
@@ -895,8 +912,8 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
 
         /// <summary>
         /// Retrieves data for a particular step of a BAM activity. Call this method on every
-        ///     step in which some data may be needed for BAM - e.g., at the point a service is called,
-        ///     or at the point of resolution.
+        /// step in which some data may be needed for BAM - e.g., at the point a service is called,
+        /// or at the point of resolution.
         /// </summary>
         /// <param name="data">
         /// The BAM step data.
@@ -913,8 +930,8 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
 
         /// <summary>
         /// Retrieves data for a particular step of a BAM activity. Call this method on every
-        ///     step in which some data may be needed for BAM - e.g., at the point a service is called,
-        ///     or at the point of resolution.
+        /// step in which some data may be needed for BAM - e.g., at the point a service is called,
+        /// or at the point of resolution.
         /// </summary>
         /// <param name="data">
         /// The BAM step data.
@@ -934,8 +951,8 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
 
         /// <summary>
         /// Retrieves data for a particular step of a BAM activity. Call this method on every
-        ///     step in which some data may be needed for BAM - e.g., at the point a service is called,
-        ///     or at the point of resolution.
+        /// step in which some data may be needed for BAM - e.g., at the point a service is called,
+        /// or at the point of resolution.
         /// </summary>
         /// <param name="data">
         /// The BAM step data.
@@ -954,8 +971,8 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Resets the event stream.  If the event stream has previously been set, it will
-        ///     revert to an event stream specified by the directive.
+        /// Resets the event stream.  If the event stream has previously been set, it will
+        /// revert to an event stream specified by the directive.
         /// </summary>
         public override void ResetEventStream()
         {
@@ -1268,7 +1285,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Build the connection string to the business rule store
+        /// Build the connection string to the business rule store
         /// </summary>
         /// <returns>Connection string for the business rule store</returns>
         private static string GetRuleStoreConnectionString()
@@ -1311,10 +1328,10 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        ///     Indicates whether static support has been configured for the rule engine.
+        /// Indicates whether static support has been configured for the rule engine.
         /// </summary>
         /// <returns>
-        ///     True, if static support is being used.  Otherwise false.
+        /// True, if static support is being used.  Otherwise false.
         /// </returns>
         private static bool IsStaticSupport()
         {
