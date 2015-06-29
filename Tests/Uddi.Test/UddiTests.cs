@@ -1162,7 +1162,7 @@ namespace SolidsoftReply.Esb.Libraries.Uddi.Test
                     {
                         var privateObject =
                             new PrivateObject(
-                                "SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb2a1e0509631d62",
+                                "SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1",
                                 "SolidsoftReply.Esb.Libraries.Uddi.UddiEventLog");
                         privateObject.Invoke(
                             "WriteUddiError",
