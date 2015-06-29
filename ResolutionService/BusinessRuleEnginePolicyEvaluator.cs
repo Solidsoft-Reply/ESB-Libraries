@@ -262,6 +262,9 @@ namespace SolidsoftReply.Esb.Libraries.ResolutionService
 
             Debug.Write("[BusinessRuleEnginePolicyEvaluator] Eval - Returned # directives: " + interchange.Directives.Count);
 
+            // Perform any directive-level validations
+            interchange.ValidateDirectives();
+
             // If any directives are invalid, raise an exception.
             var validityStrings = from directive in interchange.Directives
                                   where !directive.Value.IsValid
@@ -415,6 +418,11 @@ namespace SolidsoftReply.Esb.Libraries.ResolutionService
                 {
                     policy.Dispose();
                 }
+            }
+
+            if (!bamActivityStep.IsValid)
+            {
+                throw new EsbResolutionServiceException(bamActivityStep.ValidErrors.Trim());
             }
 
             Debug.Write("[BusinessRuleEnginePolicyEvaluator] GetBamActivityPolicy - Returned a BAM policy.");

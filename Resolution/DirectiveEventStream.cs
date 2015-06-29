@@ -30,6 +30,12 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
     /// <summary>
     /// Represents a BAM event stream that supports configuration via a directive.
     /// </summary>
+    /// <remarks>
+    /// This class may be used directly in code in scenarios where the ESB Libraries'
+    /// support for BAM interception is not being used. In this case, the directive
+    /// over which the event stream is created will only be used to specify the 
+    /// connection configuration for BAM for a notional step.
+    /// </remarks>
     [ComVisible(true)]
     [Serializable]
     public class DirectiveEventStream : EventStream

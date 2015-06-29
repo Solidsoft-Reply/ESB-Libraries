@@ -20,6 +20,7 @@ namespace SolidsoftReply.Esb.Libraries.Facts
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
+    using System.Linq;
     using System.Text;
 
     /// <summary>
@@ -258,6 +259,7 @@ namespace SolidsoftReply.Esb.Libraries.Facts
             }
 
             this.errorStrings.AppendLine(string.Format(Properties.Resources.ExceptionInvalidBamInterceptionStepName, this.directive.KeyName));
+
             return false;
         }
 
@@ -269,16 +271,42 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         {
             var isValid = true;
 
-            foreach (var stepExtension in this.directive.BamStepExtensions)
+            if (string.IsNullOrWhiteSpace(this.directive.BamStepName))
             {
-                if (string.IsNullOrWhiteSpace(stepExtension))
-                {
-                    this.errorStrings.AppendLine(string.Format(Properties.Resources.ExceptionInvalidBamInterceptionStepExtensionName, this.directive.KeyName));
-                    isValid = false;
-                }
+                isValid = false;
+                this.errorStrings.AppendLine(string.Format(Properties.Resources.ExceptionInvalidBamExtendedStepNoStepName, this.directive.KeyName));
             }
 
-            return isValid;
+            if (!this.directive.BamStepExtensions.Any(string.IsNullOrWhiteSpace))
+            {
+                return isValid;
+            }
+
+            this.errorStrings.AppendLine(string.Format(Properties.Resources.ExceptionInvalidBamInterceptionStepExtensionName, this.directive.KeyName));
+            return false;
+        }
+
+        /// <summary>
+        /// Validates the name of each BAM after-map step extension within an activity.
+        /// </summary>
+        /// <returns>True if valid; otherwise false.</returns>
+        public bool ValidateBamAfterMapStepExtensions()
+        {
+            var isValid = true;
+
+            if (string.IsNullOrWhiteSpace(this.directive.BamAfterMapStepName))
+            {
+                isValid = false;
+                this.errorStrings.AppendLine(string.Format(Properties.Resources.ExceptionInvalidBamAfterMapExtendedStepNoStepName, this.directive.KeyName));
+            }
+
+            if (!this.directive.BamAfterMapStepExtensions.Any(string.IsNullOrWhiteSpace))
+            {
+                return isValid;
+            }
+
+            this.errorStrings.AppendLine(string.Format(Properties.Resources.ExceptionInvalidBamInterceptionAfterMapStepExtensionName, this.directive.KeyName));
+            return false;
         }
 
         /// <summary>
@@ -288,12 +316,20 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// <returns>True if valid; otherwise false.</returns>
         public bool ValidateBamAfterMapStepName()
         {
-            if (this.directive.PropertySetCount("BamAfterMapStepName") <= 1)
+            var isValid = true;
+
+            if (this.directive.PropertySetCount("BamAfterMapStepName") > 1)
             {
-                return true;
+                isValid = false;
+                this.errorStrings.AppendLine(string.Format(Properties.Resources.ExceptionBamPostTransformationStep, this.directive.KeyName));
             }
 
-            this.errorStrings.AppendLine(string.Format(Properties.Resources.ExceptionBamPostTransformationStep, this.directive.KeyName));
+            if (!string.IsNullOrWhiteSpace(this.directive.BamAfterMapStepName))
+            {
+                return isValid;
+            }
+
+            this.errorStrings.AppendLine(string.Format(Properties.Resources.ExceptionInvalidBamInterceptionPostTransformationStepName, this.directive.KeyName));
             return false;
         }
 
@@ -562,6 +598,28 @@ namespace SolidsoftReply.Esb.Libraries.Facts
 
             this.errorStrings.AppendLine(string.Format(Properties.Resources.ExceptionValidationPolicyVersionInvalid, this.directive.KeyName));
             return false;
+        }
+
+        /// <summary>
+        /// Validates a directive.  This method handles any validations that must compare across
+        /// multiple directive instructions.
+        /// </summary>
+        /// <returns>True if valid; otherwise false.</returns>
+        public bool ValidateDirective()
+        {
+            var isValid = true;
+
+            if (this.directive.BamStepExtensions.Count > 0)
+            {
+                isValid = this.ValidateBamStepExtensions();
+            }
+
+            if (this.directive.BamAfterMapStepExtensions.Count > 0)
+            {
+                isValid = this.ValidateBamStepExtensions() && isValid;
+            }
+
+            return isValid;
         }
 
         /// <summary>

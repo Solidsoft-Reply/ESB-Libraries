@@ -34,7 +34,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// <summary>
         /// The resolver directive items.
         /// </summary>
-        private readonly List<Directive> items;
+        private readonly List<Directive> items = new List<Directive>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Directives"/> class. 
@@ -55,8 +55,6 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             {
                 return;
             }
-
-            this.items = new List<Directive>();
 
             if (interchange.Directives == null)
             {
@@ -81,12 +79,6 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 // return 'true' by default for scenarios where no
                 // service window is defined by any directive.
                 var result = true;
-
-                if (this.items == null)
-                {
-                    return true;
-                }
-
                 var anyInWindow = false;
                 var anyOutsideWindow = false;
 
@@ -134,11 +126,6 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
 
                 TimeSpan[] earliestNext = { TimeSpan.MaxValue };
 
-                if (this.items == null)
-                {
-                    return earliestNext[0];
-                }
-
                 foreach (var directive in this.items.Where(directive => directive.ServiceWindowStartTimeSpecified && directive.ServiceWindowStopTimeSpecified).Where(directive => directive.ServiceWindowStartTime.TimeOfDay > timeNow
                                                                                                                                                                                   && directive.ServiceWindowStartTime.TimeOfDay < earliestNext[0]))
                 {
@@ -162,11 +149,6 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
 
                 TimeSpan[] earliestNext = { TimeSpan.MaxValue };
 
-                if (this.items == null)
-                {
-                    return earliestNext[0];
-                }
-
                 foreach (var directive in this.items.Where(directive => directive.ServiceWindowStartTimeSpecified && directive.ServiceWindowStopTimeSpecified).Where(directive => directive.ServiceWindowStopTime.TimeOfDay > timeNow
                                                                                                                                                                                   && directive.ServiceWindowStopTime.TimeOfDay < earliestNext[0]))
                 {
@@ -184,9 +166,6 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         {
             get
             {
-                //////if (this.items == null)
-                //////    throw new EsbResolutionException("The object is not constructed properly.");
-
                 return this.items.Count;
             }
         }
@@ -224,11 +203,6 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// <returns>A named resolver directive.</returns>
         public Directive GetDirective(int index)
         {
-            if (this.items == null)
-            {
-                throw new EsbResolutionException(Properties.Resources.ExceptionObjectMisconstructed);
-            }
-
             if (index > this.items.Count)
             {
                 throw new EsbResolutionException(Properties.Resources.ExceptionElementNotOnList);
@@ -244,11 +218,6 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// <returns>A named resolver directive.</returns>
         public Directive GetDirective(string name)
         {
-            if (this.items == null)
-            {
-                throw new EsbResolutionException(Properties.Resources.ExceptionObjectMisconstructed);
-            }
-
             return this.items.FirstOrDefault(directive => directive.Name == name) ?? new Directive();
         }
 
@@ -258,70 +227,117 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// <returns>The first directive, or null.</returns>
         public Directive FirstOrDefault()
         {
-            if (this.items == null || this.items.Count == 0)
-            {
-                return default(Directive);
-            }
-
-            return this.items[0];
+            return this.items.Count == 0 ? default(Directive) : this.items[0];
         }
 
         /// <summary>
-        /// Retrieves data for a step of a BAM activity for the first directive found that defines a
-        /// step. Call this method on every step in which some data may be needed for BAM 
-        /// - e.g., at the point a service is called, or at the point of resolution.
+        /// Performs all BAM actions for configured BAM steps in all the directives.
         /// </summary>
         /// <param name="data">The BAM step data.</param>
-        public void OnFirstStep(BamStepData data)
+        public void OnStep(BamStepData data)
         {
-            var firstBamDirective = this.items.FirstOrDefault(item => string.IsNullOrWhiteSpace(item.BamStepName))
-                                    ?? this.items.FirstOrDefault(item => string.IsNullOrWhiteSpace(item.BamAfterMapStepName));
-
-            if (firstBamDirective != null)
-            {
-                firstBamDirective.OnStep(data);
-            }
+            this.OnStep(data, MultiStepControl.AllSteps, false);
         }
 
         /// <summary>
-        /// Retrieves data for a particular step of a BAM activity for the first directive found that 
-        /// defines a step.    Call this method on every step in which some data may be needed for BAM 
-        /// - e.g., at the point a service is called, or at the point of resolution.
+        /// Performs all BAM actions for configured BAM steps in all the directives.  This method 
+        /// can optionally handle step processing after application of a map.
         /// </summary>
         /// <param name="data">The BAM step data.</param>
         /// <param name="afterMap">Indicates if the step is after the application of a map.</param>
-        public void OnFirstStep(BamStepData data, bool afterMap)
+        public void OnStep(BamStepData data, bool afterMap)
         {
-            var bamDirective = this.items.FirstOrDefault(item => string.IsNullOrWhiteSpace(item.BamStepName))
-                                    ?? this.items.FirstOrDefault(item => string.IsNullOrWhiteSpace(item.BamAfterMapStepName));
+            this.OnStep(data, MultiStepControl.AllSteps, afterMap);
+        }
 
-            if (bamDirective != null)
+        /// <summary>
+        /// Performs all BAM actions for configured BAM steps in either the first or 
+        /// all the directives.  Optionally perform BAM actions for all step extensions.
+        /// </summary>
+        /// <param name="data">The BAM step data.</param>
+        /// <param name="depth">
+        /// Specify the depth of BAM processing; first or all steps and, optionally, 
+        /// each step extension.
+        /// </param>
+        public void OnStep(BamStepData data, MultiStepControl depth)
+        {
+            this.OnStep(data, depth, false);
+        }
+
+        /// <summary>
+        /// Performs all BAM actions for configured BAM steps in either the first or all 
+        /// the directives.  Optionally perform BAM actions for all step extensions.  
+        /// This method can optionally handle step processing after application of a map.
+        /// </summary>
+        /// <param name="data">The BAM step data.</param>
+        /// <param name="depth">
+        /// Specify the depth of BAM processing; first or all steps and, optionally, 
+        /// each step extension.
+        /// </param>
+        /// <param name="afterMap">Indicates if the step is after the application of a map.</param>
+        public void OnStep(BamStepData data, MultiStepControl depth, bool afterMap)
+        {
+            switch (depth)
             {
-                bamDirective.OnStep(data, afterMap);
+                case MultiStepControl.AllSteps:
+                    foreach (var bamDirective in this.items)
+                    {
+                        bamDirective.OnStep(data, afterMap);
+                    }
+
+                    break;
+                case MultiStepControl.AllStepsWithExtensions:
+                    foreach (var bamDirective in this.items)
+                    {
+                        bamDirective.OnStep(data, afterMap);
+
+                        foreach (var extension in bamDirective.BamStepExtensions)
+                        {
+                            bamDirective.SelectBamStepExtension(
+                                new TrackpointDirectiveEventStream(bamDirective, data), 
+                                extension,
+                                afterMap);
+                        }
+                    }
+
+                    break;
+                case MultiStepControl.FirstStepOnly:
+                    this.OnFirstStep(data, afterMap);
+                    break;
+                case MultiStepControl.FirstStepWithExtensions:
+                    var firstBamDirective = this.items.FirstOrDefault(item => !string.IsNullOrWhiteSpace(item.BamStepName))
+                        ?? this.items.FirstOrDefault(item => !string.IsNullOrWhiteSpace(item.BamAfterMapStepName));
+
+                    if (firstBamDirective != null)
+                    {
+                        firstBamDirective.OnStep(data, afterMap);
+
+                        foreach (var extension in firstBamDirective.BamStepExtensions)
+                        {
+                            firstBamDirective.SelectBamStepExtension(
+                                new TrackpointDirectiveEventStream(firstBamDirective, data), 
+                                extension,
+                                afterMap);
+                        }
+                    }
+
+                    break;
             }
         }
 
         /// <summary>
-        /// Retrieves data for a step of a BAM activity for a named directive. Call this method on a 
-        /// step in which some data may be needed for BAM - e.g., at the point a service is called,
-        /// or at the point of resolution.
+        /// Performs all BAM actions for a BAM steps in a specified directive.  
         /// </summary>
         /// <param name="directiveName">The name of the directive that defines the BAM step.</param>
         /// <param name="data">The BAM step data.</param>
         public void OnStep(string directiveName, BamStepData data)
         {
-            var bamDirective = this.items.FirstOrDefault(directive => directive.Name == directiveName);
-
-            if (bamDirective != null)
-            {
-                bamDirective.OnStep(data);
-            }
+            this.OnStep(directiveName, data, false);
         }
 
         /// <summary>
-        /// Retrieves data for a particular step of a BAM activity for a named directive. Call this method on a 
-        /// step in which some data may be needed for BAM - e.g., at the point a service is called,
-        /// or at the point of resolution.
+        /// Performs all BAM actions for a BAM steps in a specified directive.  This method can 
+        /// optionally handle step processing after application of a map.
         /// </summary>
         /// <param name="directiveName">The name of the directive that defines the BAM step.</param>
         /// <param name="data">The BAM step data.</param>
@@ -352,6 +368,24 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         public IEnumerator GetEnumerator()
         {
             return this.items.GetEnumerator();
+        }
+
+        /// <summary>
+        /// Retrieves data for a particular step of a BAM activity for the first directive found that 
+        /// defines a step.    Call this method on every step in which some data may be needed for BAM 
+        /// - e.g., at the point a service is called, or at the point of resolution.
+        /// </summary>
+        /// <param name="data">The BAM step data.</param>
+        /// <param name="afterMap">Indicates if the step is after the application of a map.</param>
+        private void OnFirstStep(BamStepData data, bool afterMap)
+        {
+            var firstBamDirective = this.items.FirstOrDefault(item => !string.IsNullOrWhiteSpace(item.BamStepName))
+                                    ?? this.items.FirstOrDefault(item => !string.IsNullOrWhiteSpace(item.BamAfterMapStepName));
+
+            if (firstBamDirective != null)
+            {
+                firstBamDirective.OnStep(data, afterMap);
+            }
         }
     }
 }

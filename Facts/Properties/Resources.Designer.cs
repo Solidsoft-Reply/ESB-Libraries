@@ -232,6 +232,15 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The {0} step in the {1} BAM activity can be configured with a single &apos;start&apos; tackpoint only.  This may be a &apos;start new&apos;, &apos;continue&apos; or &apos;extend&apos; trackpoint..
+        /// </summary>
+        internal static string ExceptionBamStart {
+            get {
+                return ResourceManager.GetString("ExceptionBamStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The {0} directive can encode a single BAM step only.   Use multiple directives for multiple BAM steps..
         /// </summary>
         internal static string ExceptionBamStep {
@@ -331,6 +340,15 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid BAM after-map step extension name(s).  No after-map step has been defined in directive {0}.
+        /// </summary>
+        internal static string ExceptionInvalidBamAfterMapExtendedStepNoStepName {
+            get {
+                return ResourceManager.GetString("ExceptionInvalidBamAfterMapExtendedStepNoStepName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The BAM connection string for directive {0} cannot be null, empty or whitespace..
         /// </summary>
         internal static string ExceptionInvalidBamConnectionstring {
@@ -349,11 +367,38 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid BAM step extension name(s).  No step has been defined in directive {0}.
+        /// </summary>
+        internal static string ExceptionInvalidBamExtendedStepNoStepName {
+            get {
+                return ResourceManager.GetString("ExceptionInvalidBamExtendedStepNoStepName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The BAM activity name for directive {0} cannot be null, empty or whitespace..
         /// </summary>
         internal static string ExceptionInvalidBamInterceptionActivity {
             get {
                 return ResourceManager.GetString("ExceptionInvalidBamInterceptionActivity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BAM interception after-map step extension names for directive {0} cannot be null, empty or whitespace..
+        /// </summary>
+        internal static string ExceptionInvalidBamInterceptionAfterMapStepExtensionName {
+            get {
+                return ResourceManager.GetString("ExceptionInvalidBamInterceptionAfterMapStepExtensionName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The post-transformation BAM interception step name for directive {0} cannot be null, empty or whitespace..
+        /// </summary>
+        internal static string ExceptionInvalidBamInterceptionPostTransformationStepName {
+            get {
+                return ResourceManager.GetString("ExceptionInvalidBamInterceptionPostTransformationStepName", resourceCulture);
             }
         }
         
@@ -430,6 +475,15 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid BAM data extraction item name for the {0} step in {1}..
+        /// </summary>
+        internal static string ExceptionInvalidDataExtractionItemName {
+            get {
+                return ResourceManager.GetString("ExceptionInvalidDataExtractionItemName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid directive name for {0} {1}..
         /// </summary>
         internal static string ExceptionInvalidDirective {
@@ -466,7 +520,25 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &apos;{0}&apos; is not a valid property.
+        ///   Looks up a localized string similar to Invalid BAM extraction information for {0} {1}..
+        /// </summary>
+        internal static string ExceptionInvalidExtractionInfo {
+            get {
+                return ResourceManager.GetString("ExceptionInvalidExtractionInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid BAM continuation prefix for {0} {1}..
+        /// </summary>
+        internal static string ExceptionInvalidPrefix {
+            get {
+                return ResourceManager.GetString("ExceptionInvalidPrefix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;{0}&apos; is not a valid property..
         /// </summary>
         internal static string ExceptionInvalidProperty {
             get {
@@ -489,6 +561,33 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Properties {
         internal static string ExceptionInvalidPropertyValue {
             get {
                 return ResourceManager.GetString("ExceptionInvalidPropertyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid BAM reference name for the {0} step in {1}..
+        /// </summary>
+        internal static string ExceptionInvalidReferenceName {
+            get {
+                return ResourceManager.GetString("ExceptionInvalidReferenceName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid BAM reference type for the {0} step in {1}..
+        /// </summary>
+        internal static string ExceptionInvalidReferenceType {
+            get {
+                return ResourceManager.GetString("ExceptionInvalidReferenceType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid BAM related activity name for the {0} step in {1}..
+        /// </summary>
+        internal static string ExceptionInvalidRelatedActivityName {
+            get {
+                return ResourceManager.GetString("ExceptionInvalidRelatedActivityName", resourceCulture);
             }
         }
         

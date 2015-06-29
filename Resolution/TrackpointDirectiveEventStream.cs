@@ -264,7 +264,21 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// </remarks>
         public void ExtendActivity(string stepExtensionName)
         {
-            this.Directive.SelectBamStepExtension(this, stepExtensionName);
+            this.Directive.SelectBamStepExtension(this, stepExtensionName, false);
+        }
+
+        /// <summary>
+        /// Selects a BAM step extension for the current directive..
+        /// </summary>
+        /// <param name="stepExtensionName">The step extension</param>
+        /// <param name="afterMap">Defines if the after-map step should be used.</param>
+        /// <remarks>
+        /// This is a form of continuation in which the continuation is automatically managed by 
+        /// selecting a BAM step extension.
+        /// </remarks>
+        public void ExtendActivity(string stepExtensionName, bool afterMap)
+        {
+            this.Directive.SelectBamStepExtension(this, stepExtensionName, afterMap);
         }
 
         /// <summary>
@@ -294,7 +308,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             var extendsPrefixToken = "extends_";
             var tokenisedStepName = Regex.Replace(this.Directive.BamStepName, @"\s", "_");
             var counter = 0L;
-            var extendsToken = string.Format(
+            var continuationId = string.Format(
                 "{0}_{1}_{2}_{3}", 
                 extendsPrefixToken, 
                 tokenisedStepName, 
@@ -322,7 +336,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                         activityId = tokenWithoutPrefix;
                     }
 
-                    extendsToken = string.Format(
+                    continuationId = string.Format(
                         "{0}_{1}_{2}_{3}",
                         extendsPrefixToken,
                         tokenisedStepName,
@@ -338,14 +352,15 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 this.Directive.BamActivity, 
                 this.Directive.BamStepName, 
                 this.currentBamActivityId);
-            this.EnableContinuation(this.Directive.BamActivity, this.activityInstances[activityInstanceKey], extendsToken);
-            this.EndActivity();
+            var currentId = this.activityInstances[activityInstanceKey];
+            this.EnableContinuation(this.Directive.BamActivity, currentId, continuationId);
+            this.EndActivity(this.Directive.BamActivity, currentId);
 
             // Update the event stream with the new directive
             this.UpdateDirective(directive);
 
             // Reset the current activity ID
-            this.currentBamActivityId = extendsToken;
+            this.currentBamActivityId = continuationId;
 
             // Continue the  activity
             this.DoContinueActivity(false, null);
@@ -528,8 +543,8 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
 
             var activityInstanceKey = string.Format(
                 "{0}#{1}#{2}", 
-                this.Directive.BamActivity, 
-                this.Directive.BamStepName, 
+                this.Directive.BamActivity,
+                afterMap ? this.Directive.BamAfterMapStepName : this.Directive.BamStepName,
                 activityInstance ?? this.currentBamActivityId);
             var extractor = new XPathDataExtractorWithMacros(
                 this.BamStepData.Properties, 
@@ -584,8 +599,8 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
 
             var activityInstanceKey = string.Format(
                 "{0}#{1}#{2}", 
-                this.Directive.BamActivity, 
-                this.Directive.BamStepName, 
+                this.Directive.BamActivity,
+                afterMap ? this.Directive.BamAfterMapStepName : this.Directive.BamStepName,
                 activityInstance ?? this.currentBamActivityId);
             var extractor = new XPathDataExtractorWithMacros(
                 this.BamStepData.Properties, 
@@ -632,8 +647,8 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
 
             var activityInstanceKey = string.Format(
                 "{0}#{1}#{2}", 
-                this.Directive.BamActivity, 
-                this.Directive.BamStepName, 
+                this.Directive.BamActivity,
+                afterMap ? this.Directive.BamAfterMapStepName : this.Directive.BamStepName, 
                 activityInstance ?? this.currentBamActivityId);
             var extractor = new XPathDataExtractorWithMacros(
                 this.BamStepData.Properties, 
@@ -673,8 +688,8 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
 
             var activityInstanceKey = string.Format(
                 "{0}#{1}#{2}", 
-                this.Directive.BamActivity, 
-                this.Directive.BamStepName, 
+                this.Directive.BamActivity,
+                afterMap ? this.Directive.BamAfterMapStepName : this.Directive.BamStepName,
                 activityInstance ?? this.currentBamActivityId);
             var extractor = new XPathDataExtractorWithMacros(
                 this.BamStepData.Properties, 
@@ -715,8 +730,8 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
 
             var activityInstanceKey = string.Format(
                 "{0}#{1}#{2}", 
-                this.Directive.BamActivity, 
-                this.Directive.BamStepName, 
+                this.Directive.BamActivity,
+                afterMap ? this.Directive.BamAfterMapStepName : this.Directive.BamStepName,
                 activityInstance ?? this.currentBamActivityId);
             var extractor = new XPathDataExtractorWithMacros(
                 this.BamStepData.Properties, 
@@ -724,8 +739,8 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
 
             // If the step is an extension step, we use the current instance token without 
             // macro language extraction.
-            if (stepTrackPoints.ExtensionSteps.Contains(this.Directive.BamStepName))
-            {
+            if (!string.IsNullOrWhiteSpace(stepTrackPoints.ExtendedStepName))
+                {
                 this.activityInstances.Add(
                     activityInstanceKey,
                     this.currentBamActivityId);
@@ -765,19 +780,31 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
 
             var activityInstanceKey = string.Format(
                 "{0}#{1}#{2}", 
-                this.Directive.BamActivity, 
-                this.Directive.BamStepName, 
+                this.Directive.BamActivity,
+                afterMap ? this.Directive.BamAfterMapStepName : this.Directive.BamStepName,
                 activityInstance ?? this.currentBamActivityId);
             this.InnerEventStream.EndActivity(
                 this.Directive.BamActivity, 
                 this.GetActivityInstance(activityInstanceKey));
-            if (!string.IsNullOrWhiteSpace(this.Directive.BamRootStepName))
+
+            if (afterMap)
             {
-                this.Directive.BamStepName = this.Directive.BamRootStepName;
+                if (!string.IsNullOrWhiteSpace(this.Directive.BamRootAfterMapStepName))
+                {
+                    this.Directive.BamAfterMapStepName = this.Directive.BamRootAfterMapStepName;
+                }
+            }
+            else
+            {
+                if (!string.IsNullOrWhiteSpace(this.Directive.BamRootStepName))
+                {
+                    this.Directive.BamStepName = this.Directive.BamRootStepName;
+                }
             }
 
-            this.Directive.BamRootStepName = null;
-            this.activityInstances.Clear();
+           this.Directive.BamRootStepName = null;
+           this.Directive.BamRootAfterMapStepName = null;
+           this.activityInstances.Clear();
         }
 
         /// <summary>
@@ -806,8 +833,8 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 this.BamStepData.ValueList);
             var activityInstanceKey = string.Format(
                 "{0}#{1}#{2}", 
-                this.Directive.BamActivity, 
-                this.Directive.BamStepName, 
+                this.Directive.BamActivity,
+                afterMap ? this.Directive.BamAfterMapStepName : this.Directive.BamStepName,
                 activityInstance ?? this.currentBamActivityId);
 
             if (string.IsNullOrWhiteSpace(itemName))

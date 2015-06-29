@@ -740,10 +740,13 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                         {
                             SlidingExpiration =
                                 new TimeSpan(
-                                Convert.ToInt32(
-                                    ConfigurationManager.AppSettings[Resources.AppSettingEsbCacheExpiration]),
-                                0,
-                                0)
+                                    ConfigurationManager.AppSettings.GetValues(Resources.AppSettingEsbCacheExpiration) == null
+                                    ? 24
+                                    : Convert.ToInt32(
+                                        ConfigurationManager.AppSettings[
+                                            Resources.AppSettingEsbCacheExpiration]),
+                                    0,
+                                    0)
                         });
             }
                 // ReSharper disable once EmptyGeneralCatchClause

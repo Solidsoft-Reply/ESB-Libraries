@@ -37,15 +37,11 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         {
             this.ActivityName = bamActivityStep.ActivityName;
             this.StepName = bamActivityStep.StepName;
-            this.ExtensionSteps = bamActivityStep.ExtensionSteps;
+            this.ExtendedStepName = bamActivityStep.ExtendedStepName;
             this.TrackPointType = type;
-
-            // Because of a logic error in Microsoft's code, a separate ActivityInterceptorConfiguration must be used 
-            // for each location.  The following code extracts only those track points of the requested type
-            // for a given step name (location).
             this.TrackPoints = (from TrackPoint tp in bamActivityStep.TrackPoints
-                    where tp.Type == type && (string)tp.Location == bamActivityStep.StepName
-                    select tp).ToList();
+                                where tp.Type == type
+                                select tp).ToList();
         }
 
         /// <summary>
@@ -59,9 +55,9 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         public string StepName { get; private set; }
 
         /// <summary>
-        /// Gets a value indicating if the track point is an extension to a given step.
+        /// Gets the BAM extended step name.
         /// </summary>
-        public IList<string> ExtensionSteps { get; private set; }
+        public string ExtendedStepName { get; private set; }
 
         /// <summary>
         /// Gets the type of the track points.

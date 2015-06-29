@@ -159,32 +159,57 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        /// Retrieves data for a step of a BAM activity for the first directive found that defines a
-        /// step.    Call this method on every step in which some data may be needed for BAM 
-        /// - e.g., at the point a service is called, or at the point of resolution.
+        /// Performs all BAM actions for configured BAM steps in all the directives.
         /// </summary>
         /// <param name="data">The BAM step data.</param>
-        public void OnFirstStep(BamStepData data)
+        public void OnStep(BamStepData data)
         {
-            this.directives.OnFirstStep(data);
+             this.directives.OnStep(data, Resolution.MultiStepControl.AllSteps, false);
         }
 
         /// <summary>
-        /// Retrieves data for a particular step of a BAM activity for the first directive found that 
-        /// defines a step.    Call this method on every step in which some data may be needed for BAM 
-        /// - e.g., at the point a service is called, or at the point of resolution.
+        /// Performs all BAM actions for configured BAM steps in all the directives.  This method 
+        /// can optionally handle step processing after application of a map.
         /// </summary>
         /// <param name="data">The BAM step data.</param>
         /// <param name="afterMap">Indicates if the step is after the application of a map.</param>
-        public void OnFirstStep(BamStepData data, bool afterMap)
+        public void OnStep(BamStepData data, bool afterMap)
         {
-            this.directives.OnFirstStep(data, afterMap);
+            this.directives.OnStep(data, Resolution.MultiStepControl.AllSteps, afterMap);
         }
 
         /// <summary>
-        /// Retrieves data for a step of a BAM activity for a named directive. Call this method on a 
-        /// step in which some data may be needed for BAM - e.g., at the point a service is called,
-        /// or at the point of resolution.
+        /// Performs all BAM actions for configured BAM steps in either the first or 
+        /// all the directives.  Optionally perform BAM actions for all step extensions.
+        /// </summary>
+        /// <param name="data">The BAM step data.</param>
+        /// <param name="depth">
+        /// Specify the depth of BAM processing; first or all steps and, optionally, 
+        /// each step extension.
+        /// </param>
+        public void OnStep(BamStepData data, Resolution.MultiStepControl depth)
+        {
+            this.directives.OnStep(data, depth, false);
+        }
+
+        /// <summary>
+        /// Performs all BAM actions for configured BAM steps in either the first or all 
+        /// the directives.  Optionally perform BAM actions for all step extensions.  
+        /// This method can optionally handle step processing after application of a map.
+        /// </summary>
+        /// <param name="data">The BAM step data.</param>
+        /// <param name="depth">
+        /// Specify the depth of BAM processing; first or all steps and, optionally, 
+        /// each step extension.
+        /// </param>
+        /// <param name="afterMap">Indicates if the step is after the application of a map.</param>
+        public void OnStep(BamStepData data, Resolution.MultiStepControl depth, bool afterMap)
+        {
+            this.directives.OnStep(data, depth, afterMap);
+        }
+
+        /// <summary>
+        /// Performs all BAM actions for a BAM steps in a specified directive.  
         /// </summary>
         /// <param name="directiveName">The name of the directive that defines the BAM step.</param>
         /// <param name="data">The BAM step data.</param>
@@ -194,9 +219,8 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        /// Retrieves data for a particular step of a BAM activity for a named directive. Call this method on a 
-        /// step in which some data may be needed for BAM - e.g., at the point a service is called,
-        /// or at the point of resolution.
+        /// Performs all BAM actions for a BAM steps in a specified directive.  This method can 
+        /// optionally handle step processing after application of a map.
         /// </summary>
         /// <param name="directiveName">The name of the directive that defines the BAM step.</param>
         /// <param name="data">The BAM step data.</param>

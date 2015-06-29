@@ -205,7 +205,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The activity ID for BAM activity {0} was not found at step {1}.  Have you started or continued the activity correctly?.
+        ///   Looks up a localized string similar to The activity ID for BAM activity {0} was not found at step {1}.  Have you started, continued and ended the activity correctly?.
         /// </summary>
         internal static string ExceptionActivityNotRegistered {
             get {
@@ -318,6 +318,24 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Properties {
         internal static string ExceptionInterceptorNotObtained {
             get {
                 return ResourceManager.GetString("ExceptionInterceptorNotObtained", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An invalid BAM after-map step extension name was passed to the SelectBamStepExtension directive method..
+        /// </summary>
+        internal static string ExceptionInvalidBamAfterMapStepExtensionNameOnSelectBamStepExtension {
+            get {
+                return ResourceManager.GetString("ExceptionInvalidBamAfterMapStepExtensionNameOnSelectBamStepExtension", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An invalid BAM after-map step name was passed to the SelectBamStepExtension directive method..
+        /// </summary>
+        internal static string ExceptionInvalidBamAfterMapStepNameOnSelectBamStepExtension {
+            get {
+                return ResourceManager.GetString("ExceptionInvalidBamAfterMapStepNameOnSelectBamStepExtension", resourceCulture);
             }
         }
         
@@ -489,6 +507,15 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Properties {
         internal static string ExceptionUnexpectedError {
             get {
                 return ResourceManager.GetString("ExceptionUnexpectedError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An unrecognised BAM after-map step extension name was passed to the SelectBamStepExtension directive method.  Is the extension defined in the Service Mediation policy for the current directive?.
+        /// </summary>
+        internal static string ExceptionUnregisteredBamAfterMapStepExtensionNameOnSelectBamStepExtension {
+            get {
+                return ResourceManager.GetString("ExceptionUnregisteredBamAfterMapStepExtensionNameOnSelectBamStepExtension", resourceCulture);
             }
         }
         

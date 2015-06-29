@@ -77,16 +77,6 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         /// </summary>
         private static readonly PropertyBase MessageTypeProp = new MessageType();
 
-        /////////// <summary>
-        ///////////     RetryCount BizTalk property.
-        /////////// </summary>
-        ////////private static readonly PropertyBase RetryCountProp = new RetryCount();
-
-        /////////// <summary>
-        ///////////     RetryInterval BizTalk property.
-        /////////// </summary>
-        ////////private static readonly PropertyBase RetryIntervalProp = new RetryInterval();
-
         #endregion
 
         #region Fields
@@ -723,43 +713,6 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
 
             // Set the BTS.MessageType property.  This may be overridden by BtsProperties below.
             outMsg.Context.Promote("MessageID", Resources.UriBtsSystemProperties, outMsg.MessageID.ToString());
-
-            //////// Set all other properties
-            //////for (var idx = 0; idx < inMsg.Context.CountProperties; idx++)
-            //////{
-            //////    string propertyName, propertyNamespace;
-            //////    var property = inMsg.Context.ReadAt(idx, out propertyName, out propertyNamespace);
-
-            //////    ////////// Treat certain properties as read-only
-            //////    ////////if (propertyNamespace == Resources.UriBtsSystemProperties)
-            //////    ////////{
-            //////    ////////    switch (propertyName)
-            //////    ////////    {
-            //////    ////////        case "MessageID":
-            //////    ////////        case "MessageType":
-            //////    ////////        case "SchemaStrongName":
-            //////    ////////            continue;
-            //////    ////////    }
-            //////    ////////}
-
-            //////    ////////if (propertyNamespace == Resources.UriMicrosoftBizTalkXLANGsBTXEngineProperties)
-            //////    ////////{
-            //////    ////////    switch (propertyName)
-            //////    ////////    {
-            //////    ////////        case "BodyPartIndex":
-            //////    ////////            continue;
-            //////    ////////    }
-            //////    ////////}
-
-            //////    if (inMsg.Context.IsPromoted(propertyName, propertyNamespace))
-            //////    {
-            //////        outMsg.Context.Promote(propertyName, propertyNamespace, property);
-            //////    }
-            //////    else
-            //////    {
-            //////        outMsg.Context.Write(propertyName, propertyNamespace, property);
-            //////    }
-            //////}
         }
 
         /// <summary>

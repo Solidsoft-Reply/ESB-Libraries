@@ -17,7 +17,7 @@
 <brl xmlns="http://schemas.microsoft.com/businessruleslanguage/2002">
   <vocabulary id="88b38591-1b61-4b42-a5c0-b19816d55776" name="ESB BAM Policy" uri="" description="">
     <version major="1" minor="0" description="" modifiedby="SOLIDSOFTREPLY\Author" date="2015-05-10T00:00:00.0000000+00:00" />
-    <vocabularydefinition id="50a993c3-f881-46bc-b340-0c3c07be483b" name="Define Reference" description="">
+    <vocabularydefinition id="50a993c3-f881-46bc-b340-0c3c07be483b" name="Define Reference" description="Register the definition of a reference to an external document or location.">
       <bindingdefinition>
         <classmemberbindingdefinition member="RegisterReference" type="void">
           <classinfo class="BamActivityStep" instance="0">
@@ -43,7 +43,7 @@
           </argument>
         </classmemberbindingdefinition>
       </bindingdefinition>
-      <formatstring language="en-US" string="[ Step {2} ]  Create a reference named {0} of type {1} using the following XPath or macro to extract the instance ID: {3}" delimiter="{[0-9]+}">
+      <formatstring language="en-US" string="[ Step {2} ]  Create a reference named {0} of type {1} using XPath or macro {3} to extract the instance ID" delimiter="{[0-9]+}">
         <argument position="0">
           <valuedefinitionliteral type="string">
             <string />
@@ -62,7 +62,7 @@
         </argument>
       </formatstring>
     </vocabularydefinition>
-    <vocabularydefinition id="73192756-16e5-4084-9894-a60661c73a44" name="Extract Data" description="Register BAM data extraction of a named data item for an activity step">
+    <vocabularydefinition id="73192756-16e5-4084-9894-a60661c73a44" name="Extract Data" description="Register BAM data extraction of a named data item for an activity step.">
       <bindingdefinition>
         <classmemberbindingdefinition member="RegisterDataExtraction" type="void">
           <classinfo class="BamActivityStep" instance="0">
@@ -83,7 +83,7 @@
           </argument>
         </classmemberbindingdefinition>
       </bindingdefinition>
-      <formatstring language="en-US" string="[ Step {1} ]  Extract the data item named {0} using the following XPath or macro: {2}" delimiter="{[0-9]+}">
+      <formatstring language="en-US" string="[ Step {1} ]  Extract the data item named {0} using XPath or macro {2}" delimiter="{[0-9]+}">
         <argument position="0">
           <valuedefinitionliteral type="string">
             <string />
@@ -97,7 +97,7 @@
         </argument>
       </formatstring>
     </vocabularydefinition>
-    <vocabularydefinition id="eae92985-9234-43c6-aa45-f95bc5bdcfc3" name="Continue Activity" description="Register a BAM continution for an activity step.">
+    <vocabularydefinition id="eae92985-9234-43c6-aa45-f95bc5bdcfc3" name="Continue Activity" description="Register a BAM continuation for an activity step.">
       <bindingdefinition>
         <classmemberbindingdefinition member="RegisterContinueEx" type="void">
           <classinfo class="BamActivityStep" instance="0">
@@ -113,7 +113,7 @@
           </argument>
         </classmemberbindingdefinition>
       </bindingdefinition>
-      <formatstring language="en-US" string="[ Step {0} ]  Continue a previous activity using {1} as the continuation ID" delimiter="{[0-9]+}">
+      <formatstring language="en-US" string="[ Step {0} ]  Continue a previous activity using XPath or macro {1} to extract the continuation ID" delimiter="{[0-9]+}">
         <argument position="0">
           <valuedefinitionliteral type="object" />
         </argument>
@@ -122,7 +122,7 @@
         </argument>
       </formatstring>
     </vocabularydefinition>
-    <vocabularydefinition id="be369495-0ea9-4d70-a273-7952846cea49" name="Define Relationship" description="Regsiters the extraction of relationship information between BAM activities.">
+    <vocabularydefinition id="be369495-0ea9-4d70-a273-7952846cea49" name="Define Relationship" description="Register the extraction of relationship information between BAM activities.">
       <bindingdefinition>
         <classmemberbindingdefinition member="RegisterRelationship" type="void">
           <classinfo class="BamActivityStep" instance="0">
@@ -143,7 +143,7 @@
           </argument>
         </classmemberbindingdefinition>
       </bindingdefinition>
-      <formatstring language="en-US" string="[ Step {1} ]  Create a relationship between this activity and the {0} activity using the following XPath or macro to extract the ID of the other activity: {2}" delimiter="{[0-9]+}">
+      <formatstring language="en-US" string="[ Step {1} ]  Create a relationship between this activity and the {0} activity using XPath or macro {2} to extract the ID of the other activity" delimiter="{[0-9]+}">
         <argument position="0">
           <valuedefinitionliteral type="string">
             <string />
@@ -157,7 +157,7 @@
         </argument>
       </formatstring>
     </vocabularydefinition>
-    <vocabularydefinition id="828b5453-4667-4df4-a17d-456f710350e7" name="Record Milestone" description="Register data extraction for BAM milestone for an activity step">
+    <vocabularydefinition id="828b5453-4667-4df4-a17d-456f710350e7" name="Record Milestone" description="Register data extraction for a BAM milestone for an activity step.">
       <bindingdefinition>
         <classmemberbindingdefinition member="RegisterDataExtraction" type="void">
           <classinfo class="BamActivityStep" instance="0">
@@ -180,7 +180,7 @@
           </argument>
         </classmemberbindingdefinition>
       </bindingdefinition>
-      <formatstring language="en-US" string="[ Step {1} ]  Record milestone {0} as {2}" delimiter="{[0-9]+}">
+      <formatstring language="en-US" string="[ Step {1} ]  Record milestone {0} using XPath or macro {2} to extract a date/time" delimiter="{[0-9]+}">
         <argument position="0">
           <valuedefinitionliteral type="string">
             <string />
@@ -196,7 +196,7 @@
         </argument>
       </formatstring>
     </vocabularydefinition>
-    <vocabularydefinition id="128940f6-4253-490c-9d98-11d990bfe175" name="Continue Activity with Unique ID Prefix" description="Register a BAM continution for an activity step using a unique ID prefix.">
+    <vocabularydefinition id="128940f6-4253-490c-9d98-11d990bfe175" name="Continue Activity with Unique ID Prefix" description="Register a BAM continuation for an activity step using a unique ID prefix.">
       <bindingdefinition>
         <classmemberbindingdefinition member="RegisterContinueEx" type="void">
           <classinfo class="BamActivityStep" instance="0">
@@ -217,7 +217,7 @@
           </argument>
         </classmemberbindingdefinition>
       </bindingdefinition>
-      <formatstring language="en-US" string="[ Step {0} ]  Continue a previous activity using {1} as the activity ID and {2} as the unique ID prefix" delimiter="{[0-9]+}">
+      <formatstring language="en-US" string="[ Step {0} ]  Continue a previous activity using XPath or macro {1} to extract the activity ID and {2} as the unique ID prefix" delimiter="{[0-9]+}">
         <argument position="0">
           <valuedefinitionliteral type="object" />
         </argument>
@@ -231,7 +231,7 @@
         </argument>
       </formatstring>
     </vocabularydefinition>
-    <vocabularydefinition id="0246e1a8-0578-4a30-9af3-68313fe7a59b" name="Enable Continuation with Unique ID Prefix" description="Register the enablement of a BAM continution for an activity step using a unique ID prefix">
+    <vocabularydefinition id="0246e1a8-0578-4a30-9af3-68313fe7a59b" name="Enable Continuation with Unique ID Prefix" description="Register the enablement of a BAM continuation for an activity step using a unique ID prefix.">
       <bindingdefinition>
         <classmemberbindingdefinition member="RegisterEnableContinuation" type="void">
           <classinfo class="BamActivityStep" instance="0">
@@ -252,7 +252,7 @@
           </argument>
         </classmemberbindingdefinition>
       </bindingdefinition>
-      <formatstring language="en-US" string="[ Step {0} ]  Enable continuation of the current activity using {1} as the activity ID and {2} as the unique ID prefix" delimiter="{[0-9]+}">
+      <formatstring language="en-US" string="[ Step {0} ]  Enable continuation of the current activity using XPath or macro {1} to extract the activity ID and {2} as the unique ID prefix" delimiter="{[0-9]+}">
         <argument position="0">
           <valuedefinitionliteral type="object" />
         </argument>
@@ -278,7 +278,7 @@
       </bindingdefinition>
       <formatstring language="en-US" string="Activity Name" />
     </vocabularydefinition>
-    <vocabularydefinition id="3725f454-51e0-4cfa-b56d-df0abfd8ec14" name="Start Activity" description="Register the start of a BAM activity.">
+    <vocabularydefinition id="3725f454-51e0-4cfa-b56d-df0abfd8ec14" name="Start New Activity" description="Register the start of a new BAM activity.  This instruction indicates that the step is a root fragment.">
       <bindingdefinition>
         <classmemberbindingdefinition member="RegisterStartNewEx" type="void">
           <classinfo class="BamActivityStep" instance="0">
@@ -294,7 +294,7 @@
           </argument>
         </classmemberbindingdefinition>
       </bindingdefinition>
-      <formatstring language="en-US" string="[ Step {0} ]  Start an activity using the following XPath or macro to extract the activity ID: {1}" delimiter="{[0-9]+}">
+      <formatstring language="en-US" string="[ Step {0} ]  Start a new activity using XPath or macro {1} to extract the activity ID" delimiter="{[0-9]+}">
         <argument position="0">
           <valuedefinitionliteral type="object" />
         </argument>
@@ -315,7 +315,7 @@
       </bindingdefinition>
       <formatstring language="en-US" string="Step Name" />
     </vocabularydefinition>
-    <vocabularydefinition id="312ac3d8-a2db-4eb9-b809-30975212c76e" name="Enable Continuation" description="Register the enablement of a BAM continution for an activity step.">
+    <vocabularydefinition id="312ac3d8-a2db-4eb9-b809-30975212c76e" name="Enable Continuation" description="Register the enablement of a BAM continuation for an activity step.">
       <bindingdefinition>
         <classmemberbindingdefinition member="RegisterEnableContinuation" type="void">
           <classinfo class="BamActivityStep" instance="0">
@@ -331,7 +331,7 @@
           </argument>
         </classmemberbindingdefinition>
       </bindingdefinition>
-      <formatstring language="en-US" string="[ Step {0} ]  Enable continuation of the current activity using {1} as the continuation ID" delimiter="{[0-9]+}">
+      <formatstring language="en-US" string="[ Step {0} ]  Enable continuation of the current activity using XPath or macro {1} to extract the continuation ID" delimiter="{[0-9]+}">
         <argument position="0">
           <valuedefinitionliteral type="object" />
         </argument>
@@ -340,7 +340,7 @@
         </argument>
       </formatstring>
     </vocabularydefinition>
-    <vocabularydefinition id="f4a38b06-ce14-417b-9942-f14fadfefa06" name="Enable Extension" description="Register the enablement of the extension of an activity step.  This is really a form a continuation, automated via an ESB directive at run time.">
+    <vocabularydefinition id="f4a38b06-ce14-417b-9942-f14fadfefa06" name="Extend Step" description="Register the extension of a previous activity step.  This is really a form of BAM continuation, automated via an ESB directive at run time.">
       <bindingdefinition>
         <classmemberbindingdefinition member="RegisterExtendStep" type="void">
           <classinfo class="BamActivityStep" instance="0">
@@ -356,7 +356,7 @@
           </argument>
         </classmemberbindingdefinition>
       </bindingdefinition>
-      <formatstring language="en-US" string="[ Step {0} ]  Enable extension of step {1}" delimiter="{[0-9]+}">
+      <formatstring language="en-US" string="[ Step {0} ]  Extend step {1}" delimiter="{[0-9]+}">
         <argument position="0">
           <valuedefinitionliteral type="string" />
         </argument>

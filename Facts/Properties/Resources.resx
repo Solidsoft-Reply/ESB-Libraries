@@ -226,7 +226,7 @@
     <value>The transport for directive {0} and endpoint {1} cannot be null, empty or whitespace.</value>
   </data>
   <data name="ExceptionInvalidProperty" xml:space="preserve">
-    <value>'{0}' is not a valid property</value>
+    <value>'{0}' is not a valid property.</value>
   </data>
   <data name="ExceptionInvalidPropertyName" xml:space="preserve">
     <value>The property name for directive {0} cannot be null, empty or whitespace.</value>
@@ -359,5 +359,38 @@
   </data>
   <data name="ExceptionInvalidBamStep" xml:space="preserve">
     <value>Invalid BAM step name for {0} {1}.</value>
+  </data>
+  <data name="ExceptionInvalidBamExtendedStepNoStepName" xml:space="preserve">
+    <value>Invalid BAM step extension name(s).  No step has been defined in directive {0}</value>
+  </data>
+  <data name="ExceptionInvalidBamInterceptionPostTransformationStepName" xml:space="preserve">
+    <value>The post-transformation BAM interception step name for directive {0} cannot be null, empty or whitespace.</value>
+  </data>
+  <data name="ExceptionBamStart" xml:space="preserve">
+    <value>The {0} step in the {1} BAM activity can be configured with a single 'start' tackpoint only.  This may be a 'start new', 'continue' or 'extend' trackpoint.</value>
+  </data>
+  <data name="ExceptionInvalidBamAfterMapExtendedStepNoStepName" xml:space="preserve">
+    <value>Invalid BAM after-map step extension name(s).  No after-map step has been defined in directive {0}</value>
+  </data>
+  <data name="ExceptionInvalidBamInterceptionAfterMapStepExtensionName" xml:space="preserve">
+    <value>BAM interception after-map step extension names for directive {0} cannot be null, empty or whitespace.</value>
+  </data>
+  <data name="ExceptionInvalidDataExtractionItemName" xml:space="preserve">
+    <value>Invalid BAM data extraction item name for the {0} step in {1}.</value>
+  </data>
+  <data name="ExceptionInvalidExtractionInfo" xml:space="preserve">
+    <value>Invalid BAM extraction information for {0} {1}.</value>
+  </data>
+  <data name="ExceptionInvalidPrefix" xml:space="preserve">
+    <value>Invalid BAM continuation prefix for {0} {1}.</value>
+  </data>
+  <data name="ExceptionInvalidReferenceName" xml:space="preserve">
+    <value>Invalid BAM reference name for the {0} step in {1}.</value>
+  </data>
+  <data name="ExceptionInvalidReferenceType" xml:space="preserve">
+    <value>Invalid BAM reference type for the {0} step in {1}.</value>
+  </data>
+  <data name="ExceptionInvalidRelatedActivityName" xml:space="preserve">
+    <value>Invalid BAM related activity name for the {0} step in {1}.</value>
   </data>
 </root>

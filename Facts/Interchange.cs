@@ -20,6 +20,7 @@ namespace SolidsoftReply.Esb.Libraries.Facts
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
+    using System.Linq;
     using System.Xml;
     using System.Xml.Schema;
     using System.Xml.Serialization;
@@ -490,7 +491,31 @@ namespace SolidsoftReply.Esb.Libraries.Facts
                 var extensionStepName = string.Format("extension {0}", bamExtensionStepName ?? "<null>");
                 var message = string.Format(
                     Properties.Resources.ExceptionInvalidDirective,
-                    "BAM interception step",
+                    "BAM interception step extension",
+                    extensionStepName);
+                throw new EsbFactsException(message);
+            }
+
+            var directive = this.GetDirective(directiveKey);
+            directive.KeyName = directiveKey;
+            directive.BamStepExtensions.Add(bamExtensionStepName);
+
+            directive.DirectiveCategories |= Categories.BamInterception;
+        }
+
+        /// <summary>
+        /// Set a BAM interception step extension for a directive.  The directive must set a BAM step to be extended.
+        /// </summary>
+        /// <param name="directiveKey">Key name that identifies a directive.</param>
+        /// <param name="bamExtensionStepName">The name of the BAM step extension.</param>
+        public void SetBamInterceptionExtensionAfterMap(string directiveKey, string bamExtensionStepName)
+        {
+            if (string.IsNullOrWhiteSpace(directiveKey))
+            {
+                var extensionStepName = string.Format("extension {0}", bamExtensionStepName ?? "<null>");
+                var message = string.Format(
+                    Properties.Resources.ExceptionInvalidDirective,
+                    "BAM post-transformation interception step extension",
                     extensionStepName);
                 throw new EsbFactsException(message);
             }
@@ -788,6 +813,16 @@ namespace SolidsoftReply.Esb.Libraries.Facts
             }
 
             directive.Properties.Add(name, propertyDef);
+        }
+
+        /// <summary>
+        /// Performs validation at the directive level.  These validations cover situations
+        /// where one instruction must be validated against another.
+        /// </summary>
+        public void ValidateDirectives()
+        {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            this.directives.All(kvp => kvp.Value.Validate());
         }
 
         /// <summary>

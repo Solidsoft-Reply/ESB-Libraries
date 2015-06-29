@@ -64,6 +64,7 @@
     <Compile Include="Dictionaries\XmlSerializableDictionaryException.cs" />
     <Compile Include="Directive.cs" />
     <Compile Include="Dictionaries\DirectivesDictionary.cs" />
+    <Compile Include="BamActivityStepValidator.cs" />
     <Compile Include="DirectiveValidator.cs" />
     <Compile Include="EsbFactsException.cs" />
     <Compile Include="ExtensionMethodsString.cs" />
@@ -103,7 +104,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ExcludeFromStyleCop Include="$(IntermediateOutputPath)\**\*.cs" >
+    <ExcludeFromStyleCop Include="$(IntermediateOutputPath)\**\*.cs">
       <Visible>False</Visible>
     </ExcludeFromStyleCop>
   </ItemGroup>

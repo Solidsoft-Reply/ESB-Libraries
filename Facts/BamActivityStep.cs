@@ -39,9 +39,19 @@ namespace SolidsoftReply.Esb.Libraries.Facts
     public class BamActivityStep : ActivityInterceptorConfiguration
     {
         /// <summary>
-        /// A list of steps that extend the step specified in the StepName property.
+        /// The BAM activity step validator.
         /// </summary>
-        private readonly List<string> extensionSteps = new List<string>();
+        private readonly BamActivityStepValidator bamActivityStepValidator;
+
+        /// <summary>
+        /// Dictionary of the number of times a given property has been set in this directive.
+        /// </summary>
+        private readonly Dictionary<string, int> actionCounts = new Dictionary<string, int>();
+
+        /// <summary>
+        /// Indicates whether the BAM activity step is valid;
+        /// </summary>
+        private bool isValid = true;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BamActivityStep"/> class. 
@@ -65,6 +75,7 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         {
             this.ActivityName = activityName;
             this.StepName = stepName;
+            this.bamActivityStepValidator = new BamActivityStepValidator(this);
         }
         
         /// <summary>
@@ -78,31 +89,9 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         public string StepName { get; set; }
 
         /// <summary>
-        /// Gets or sets a list of steps that extend the step specified in the StepName property.
+        /// Gets or sets the extended step name (extensions only).
         /// </summary>
-        public List<string> ExtensionSteps
-        {
-            // NB. The type is List<string> rather than IList<string> in order to be serialisable.
-            get
-            {
-                return this.extensionSteps;
-            }
-
-            set
-            {
-                this.extensionSteps.Clear();
-
-                if (value == null)
-                {
-                    return;
-                }
-
-                foreach (var item in value)
-                {
-                    this.extensionSteps.Add(item);
-                }
-            }
-        }
+        public string ExtendedStepName { get; set; }
 
         /// <summary>
         /// Gets the TrackPoints.
@@ -114,6 +103,187 @@ namespace SolidsoftReply.Esb.Libraries.Facts
             {
                 return base.TrackPoints;
             }
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether the BAM step is valid;
+        /// </summary>
+        public bool IsValid
+        {
+            get
+            {
+                return this.isValid;
+            }
+        }
+
+        /// <summary>
+        /// Gets the current validity errors as text;
+        /// </summary>
+        public string ValidErrors
+        {
+            get
+            {
+                return this.isValid ? string.Empty : this.bamActivityStepValidator.ValidErrors;
+            }
+        }
+
+        /// <summary>
+        /// Registers point in the application where the activity begins.
+        /// </summary>
+        /// <param name="location">The identifier of a location (step) in the application code.</param>
+        /// <param name="activityIdExtractionInfo">The callback argument used to extract the activity identifier.</param>
+        public new void RegisterStartNew(object location, object activityIdExtractionInfo)
+        {
+            if (location != null && (location.ToString() != this.StepName))
+            {
+                return;
+            }
+
+            this.SetValidity(this.bamActivityStepValidator.ValidateStart(location, activityIdExtractionInfo));
+            this.IncrementActionCount("Start");
+            base.RegisterStartNew(location, activityIdExtractionInfo);
+        }
+
+        /// <summary>
+        /// Registers the track point in the application where the activity events cease.
+        /// </summary>
+        /// <param name="location">The identifier of a location (step) in the application code.</param>
+        public new void RegisterEnd(object location)
+        {
+            if (location != null && (location.ToString() != this.StepName))
+            {
+                return;
+            }
+
+            this.SetValidity(this.bamActivityStepValidator.ValidateEnd(location));
+            this.IncrementActionCount("End");
+            base.RegisterEnd(location);
+        }
+
+        /// <summary>
+        /// Registers step in the application where the activity continues, using a continuation token.
+        /// </summary>
+        /// <param name="location">The identifier of a location (step) in the application code.</param>
+        /// <param name="continuationTokenExtractionInfo">The callback argument to extract the Correlation token.</param>
+        public new void RegisterContinue(object location, object continuationTokenExtractionInfo)
+        {
+            if (location != null && (location.ToString() != this.StepName))
+            {
+                return;
+            }
+
+            this.SetValidity(this.bamActivityStepValidator.ValidateContinue(location, continuationTokenExtractionInfo));
+            this.IncrementActionCount("Start");
+            base.RegisterContinue(location, continuationTokenExtractionInfo);
+        }
+
+        /// <summary>
+        /// Registers step in the application where the activity continues, using a continuation token.
+        /// </summary>
+        /// <param name="location">The identifier of a location (step) in the application code.</param>
+        /// <param name="continuationTokenExtractionInfo">The callback argument to extract the Correlation token.</param>
+        /// <param name="prefix">
+        /// The prefix that makes the ID used as the activity ID and continuation ID unique among 
+        /// components of the application that process the same activity instances.
+        /// </param>
+        public new void RegisterContinue(object location, object continuationTokenExtractionInfo, string prefix)
+        {
+            if (location != null && (location.ToString() != this.StepName))
+            {
+                return;
+            }
+
+            this.SetValidity(this.bamActivityStepValidator.ValidateContinue(location, continuationTokenExtractionInfo, prefix));
+            this.IncrementActionCount("Start");
+            base.RegisterContinue(location, continuationTokenExtractionInfo, prefix);
+        }
+
+        /// <summary>
+        /// Registers the extraction of the continuation token.
+        /// </summary>
+        /// <param name="location">The identifier of a location (step) in the application code.</param>
+        /// <param name="continuationTokenExtractionInfo">The callback argument to extract the Correlation token.</param>
+        public new void RegisterEnableContinuation(object location, object continuationTokenExtractionInfo)
+        {
+            if (location != null && (location.ToString() != this.StepName))
+            {
+                return;
+            }
+
+            this.SetValidity(this.bamActivityStepValidator.ValidateEnableContinuation(location, continuationTokenExtractionInfo));
+            base.RegisterEnableContinuation(location, continuationTokenExtractionInfo);
+        }
+
+        /// <summary>
+        /// Registers the extraction of the continuation token.
+        /// </summary>
+        /// <param name="location">The identifier of a location (step) in the application code.</param>
+        /// <param name="continuationTokenExtractionInfo">The callback argument to extract the Correlation token.</param>
+        /// <param name="prefix">
+        /// The prefix that makes the ID used as the activity ID and continuation ID unique among 
+        /// components of the application that process the same activity instances.
+        /// </param>
+        public new void RegisterEnableContinuation(object location, object continuationTokenExtractionInfo, string prefix)
+        {
+            if (location != null && (location.ToString() != this.StepName))
+            {
+                return;
+            }
+
+            this.SetValidity(this.bamActivityStepValidator.ValidateEnableContinuation(location, continuationTokenExtractionInfo, prefix));
+            base.RegisterEnableContinuation(location, continuationTokenExtractionInfo, prefix);
+        }
+
+        /// <summary>
+        /// Registers extraction of a Business Activity Monitoring (BAM) activity item, such as a milestone or data.
+        /// </summary>
+        /// <param name="itemName">The BAM activity item name. This is the database column name.</param>
+        /// <param name="location">Identifier of a location (step) in the application code.</param>
+        /// <param name="extractionInfo">The callback argument indicating how to extract the data item.</param>
+        public new void RegisterDataExtraction(string itemName, object location, object extractionInfo)
+        {
+            if (location != null && (location.ToString() != this.StepName))
+            {
+                return;
+            }
+
+            this.SetValidity(this.bamActivityStepValidator.ValidateDataExtraction(itemName, location, extractionInfo));
+            base.RegisterDataExtraction(itemName, location, extractionInfo);
+        }
+
+        /// <summary>
+        /// Registers extraction of activity relationship.
+        /// </summary>
+        /// <param name="otherActivityName">The name of the other activity item.</param>
+        /// <param name="location">The identifier of a location (step) in the application code.</param>
+        /// <param name="otherIdExtractionInfo">The callback argument to extract the instance ID for the other activity item.</param>
+        public new void RegisterRelationship(string otherActivityName, object location, object otherIdExtractionInfo)
+        {
+            if (location != null && (location.ToString() != this.StepName))
+            {
+                return;
+            }
+
+            this.SetValidity(this.bamActivityStepValidator.ValidateRelationship(otherActivityName, location, otherIdExtractionInfo));
+            base.RegisterRelationship(otherActivityName, location, otherIdExtractionInfo);
+        }
+
+        /// <summary>
+        /// Registers the reference associated with this instance.
+        /// </summary>
+        /// <param name="referenceName">The name of the reference.</param>
+        /// <param name="referenceType">The type of the reference.</param>
+        /// <param name="location">The identifier of a location (step) in the application code.</param>
+        /// <param name="instanceIdExtractionInfo">The callback argument to extract the instance ID for the other activity item.</param>
+        public new void RegisterReference(string referenceName, string referenceType, object location, object instanceIdExtractionInfo)
+        {
+            if (location != null && (location.ToString() != this.StepName))
+            {
+                return;
+            }
+
+            this.SetValidity(this.bamActivityStepValidator.ValidateReference(referenceName, referenceType, location, instanceIdExtractionInfo));
+            base.RegisterReference(referenceName, referenceType, location, instanceIdExtractionInfo);
         }
 
         /// <summary>
@@ -145,12 +315,6 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// <param name="prefix">A unique prefix used to convert the activity ID to a continuation ID.</param>
         public void RegisterContinueEx(object location, object continuationTokenExtractionInfo, string prefix)
         {
-            if (location == null || string.IsNullOrWhiteSpace((string)location))
-            {
-                throw new EsbFactsException(
-                    string.Format(Properties.Resources.ExceptionInvalidBamStep, "continuation", prefix ?? string.Empty));
-            }
-
             // Tokenise the whitespace in a string.  We will deliberately replace each individual
             // whitespace character with an underscore, rather han grouping whitespace characters.
             // This handles situations where a developer decides to treat whitespace as significant.
@@ -171,25 +335,56 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// <param name="extendedStep">The name of the step that is being extended.</param>
         public void RegisterExtendStep(string step, string extendedStep)
         {
-            if (string.IsNullOrEmpty(extendedStep))
+            if (step != this.StepName)
             {
-                throw new EsbFactsException(
-                    string.Format(Properties.Resources.ExceptionInvalidBamExtendedStepName, "Extended step name is null or empty."));
+                return;
             }
 
-            // Step names are case sensitive, so we can perform a simple comparison.
-            if (step == extendedStep)
-            {
-                throw new EsbFactsException(
-                    string.Format(Properties.Resources.ExceptionInvalidBamExtendedStepName, string.Format("Extended step name is same as step name: {0}", extendedStep)));
-            }
-
+            this.SetValidity(this.bamActivityStepValidator.ValidateExtend(step, extendedStep));
+            this.IncrementActionCount("Start");
             this.RegisterContinueEx(
                 step, 
                 null,
                 string.Format("extends_{0}", extendedStep));
+            this.ExtendedStepName = extendedStep;
+        }
 
-            this.ExtensionSteps.Add(step);
+        /// <summary>
+        /// Returns the number of times a given action has been set.
+        /// </summary>
+        /// <param name="actionName">The name of the action.</param>
+        /// <returns>A count of the number of times the action has been set.</returns>
+        internal int ActionCount(string actionName)
+        {
+            int count;
+
+            return this.actionCounts.TryGetValue(actionName, out count) ? count : 0;
+        }
+
+        /// <summary>
+        /// Increments the number of times a given action has been set.
+        /// </summary>
+        /// <param name="actionName">The name of the property.</param>
+        private void IncrementActionCount(string actionName)
+        {
+            if (!this.actionCounts.ContainsKey(actionName))
+            {
+                this.actionCounts.Add(actionName, 0);
+            }
+
+            this.actionCounts[actionName] = this.actionCounts[actionName] + 1;
+        }
+
+        /// <summary>
+        /// Sets the validity flag to false if invalidity is detected.
+        /// </summary>
+        /// <param name="valid">Validity of a specific validation test.</param>
+        private void SetValidity(bool valid)
+        {
+            if (!valid)
+            {
+                this.isValid = false;
+            }
         }
     }
 }

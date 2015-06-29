@@ -147,6 +147,13 @@
                     </xs:complexType>
                   </xs:element>
                   <xs:element minOccurs="0" name="BamAfterMapStepName" type="xs:string" />
+                  <xs:element minOccurs="0" name="BamAfterMapStepExtensions">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element minOccurs="0" maxOccurs="unbounded" name="BamAfterMapStepExtension" type="xs:string" />
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
                   <xs:element minOccurs="0" name="BamConnectionString" type="xs:string" />
                   <xs:element minOccurs="0" name="BamIsBuffered" type="xs:boolean" />
                   <xs:element minOccurs="0" name="BamFlushThreshold" type="xs:int" />
@@ -267,7 +274,7 @@
         <xs:sequence>
           <xs:element minOccurs="0" maxOccurs="1" name="ActivityName" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="StepName" type="xs:string" />
-          <xs:element minOccurs="0" maxOccurs="1" name="ExtensionSteps" type="tns:ArrayOfString" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ExtendedStepName" type="xs:string" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -297,9 +304,4 @@
       <xs:enumeration value="EnableContinuation" />
     </xs:restriction>
   </xs:simpleType>
-  <xs:complexType name="ArrayOfString">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
 </xs:schema>

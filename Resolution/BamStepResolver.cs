@@ -20,6 +20,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
 {
     using System;
     using System.Configuration;
+    using System.Diagnostics;
     using System.Linq;
     using System.Runtime.Caching;
     using System.ServiceModel;
@@ -29,7 +30,8 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
     using SolidsoftReply.Esb.Libraries.Resolution.Properties;
     using SolidsoftReply.Esb.Libraries.Resolution.ResolutionService;
 
-    using TrackPointType = SolidsoftReply.Esb.Libraries.Resolution.ResolutionService.TrackPointType;
+    using ActivityInterceptorConfiguration = Microsoft.BizTalk.Bam.EventObservation.ActivityInterceptorConfiguration;
+    using TrackPoint = SolidsoftReply.Esb.Libraries.Resolution.ResolutionService.TrackPoint;
 
     /// <summary>
     /// Class to resolve BAM step directives.
@@ -127,11 +129,12 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
 
                 if (string.IsNullOrEmpty(policyName))
                 {
+                    // Assume that the current directive name is being used:
                     throw new ArgumentException(Resources.ExceptionBamTrackpointPolicyUndetermined);
                 }
             }
 
-            string ver = string.Empty;
+            var ver = string.Empty;
 
             try
             {
@@ -184,26 +187,29 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 throw new EsbResolutionException(Resources.ExceptionNoBamActivity);
             }
 
-                try
-                {
-                    Resolver.DirectivesCache.Add(
-                        key,
-                        bamActivityStep,
-                        new CacheItemPolicy
-                            {
-                                SlidingExpiration =
-                                    new TimeSpan(
-                                    Convert.ToInt32(
-                                        ConfigurationManager.AppSettings[Resources.AppSettingEsbCacheExpiration]),
+            try
+            {
+                Resolver.DirectivesCache.Add(
+                    key,
+                    bamActivityStep,
+                    new CacheItemPolicy
+                        {
+                            SlidingExpiration =
+                                new TimeSpan(
+                                    ConfigurationManager.AppSettings.GetValues(Resources.AppSettingEsbCacheExpiration) == null
+                                    ? 24
+                                    : Convert.ToInt32(
+                                        ConfigurationManager.AppSettings[
+                                            Resources.AppSettingEsbCacheExpiration]),
                                     0,
                                     0)
-                            });
-                }
-                    // ReSharper disable once EmptyGeneralCatchClause
-                catch
-                {
-                    // TODO: Configuration error - log this.
-                }
+                        });
+            }
+            // ReSharper disable once EmptyGeneralCatchClause
+            catch
+            {
+                // TODO: Configuration error - log this.
+            }
 
             return bamActivityStep;
         }
@@ -229,10 +235,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
 
             // Because of a logic error in Microsoft's code, a separate ActivityInterceptorConfiguration must be used 
             // for each location.  The following code extracts only those track points for a given step name (location).
-            var trackPointGroup = from ResolutionService.TrackPoint tp in bamActivityStep.TrackPoints
+            var trackPointGroup = from TrackPoint tp in bamActivityStep.TrackPoints
                                   where (string)tp.Location == stepName
                                   select tp;
-            var bamActivityInterceptorConfig = new Microsoft.BizTalk.Bam.EventObservation.ActivityInterceptorConfiguration(activityName);
+            var bamActivityInterceptorConfig = new ActivityInterceptorConfiguration(activityName);
 
             foreach (var trackPoint in trackPointGroup)
             {
@@ -289,7 +295,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             // #endif
             this.bamInterceptor = interceptor;
 
-            System.Diagnostics.Debug.Write("[Resolver] GetInterceptor - Returned a BAM interceptor for activity " + activityName);
+            Debug.Write("[Resolver] GetInterceptor - Returned a BAM interceptor for activity " + activityName);
 
             return interceptor;
         }
