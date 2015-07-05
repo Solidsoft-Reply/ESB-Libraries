@@ -23,6 +23,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
 {
     using System;
     using System.Collections;
+    using System.Collections.Generic;
     using System.ComponentModel;
     using System.Diagnostics.CodeAnalysis;
     using System.Resources;
@@ -32,6 +33,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
     using Microsoft.BizTalk.Component.Interop;
     using Microsoft.BizTalk.Component.Utilities;
     using Microsoft.BizTalk.Message.Interop;
+
     using SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.Properties;
     using SolidsoftReply.Esb.Libraries.Resolution;
 
@@ -58,12 +60,22 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         /// <summary>
         /// Instance of Service Mediation Disassembler
         /// </summary>
-        private ServiceMediation serviceMediationDasm;
+        private readonly ServiceMediation serviceMediationDasm;
 
         /// <summary>
-        /// The current flat file message.
+        /// A list of disassembled messages from the FF disassembler
         /// </summary>
-        private IBaseMessage currentFlatFileMessage;
+        private readonly List<IBaseMessage> innerDisassembledMessages = new List<IBaseMessage>();
+
+        /// <summary>
+        /// The current mediated message.
+        /// </summary>
+        private IBaseMessage currentMediatedMessage;
+        
+        /// <summary>
+        /// Index of thecurrent XML message provided by the FF disasembler.
+        /// </summary>
+        private int innerDisasembledMessageIndex;
 
         /// <summary>
         /// Initializes static members of the <see cref="ServiceMediationFlatFileDisassembler"/> class.
@@ -584,47 +596,110 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         /// </param>
         public void Disassemble(IPipelineContext pipelineContext, IBaseMessage inMsg)
         {
-            ////this.currentFlatFileMessage = inMsg;
             this.flatFileDasmComp.Disassemble(pipelineContext, inMsg);
+            this.innerDisassembledMessages.Clear();
+            this.innerDisasembledMessageIndex = 0;
+            this.currentMediatedMessage = default(IBaseMessage);
+
+            // Fullt disassemble the flat file here and store each message in an 
+            // in-memory collection.  See the GetNext() method for a description
+            // of why this is being done here.
+            while (true)
+            {
+                var nextMessage = this.flatFileDasmComp.GetNext(pipelineContext);
+
+                // If there are no further disassembled XML messages, return null.
+                if (nextMessage == null)
+                {
+                    return;
+                }
+
+                this.innerDisassembledMessages.Add(nextMessage);
+            }
         }
 
         /// <summary>
-        /// The get next.
+        /// Gets the next message from the message set resulting from the disassembler execution.
         /// </summary>
         /// <param name="pipelineContext">
-        /// The pipeline context.
+        /// The IPipelineContext containing the current pipeline context.
         /// </param>
         /// <returns>
-        /// The <see cref="IBaseMessage"/>.
+        /// A pointer to the IBaseMessage containing the next message from the disassembled document.
+        /// Returns NULL if there are no more messages left.
         /// </returns>
         public IBaseMessage GetNext(IPipelineContext pipelineContext)
         {
-            while (true)
+            /* *************************************************************************************
+             * This method was written specifically to handle a logical issue with Microsoft's
+             * FF Disassembler component.  The root issue is that the FF Disassember is not safe
+             * to use with downstream components.  Depending on how the downstream component  
+             * behaves, it is possible for the FF disassember to loose internal integrity during 
+             * its disassembly cycle.  An XML reader object used to read through the the XSD 
+             * document spec during internal processing of FF records and their cnversion to XML 
+             * can become deferenced and subject to garbage collection prematurely.  If a GC 
+             * collection happens, the FF disassemble throws an error saying that the DataReader  
+             * has been disposed.  One well-documented workaround is to switch on recoverable 
+             * interchage processing.  This causes the FF disassembler to follow a route through 
+             * the code that avoids the issue altogether.  However, it isn't an acceptable solution  
+             * for a general-purpose component.
+             * 
+             * This code avoids the issue by completely disassembling the flat file in the 
+             * Dissassemble() method and storing the resultant messages in an in-memory collection.  
+             * This method processes that list, further disassembling each message and returning 
+             * the messages one by one on each call.  Holding messages in-memory in this way is not 
+             * ideal, but does have the merit of ensuring the the problems with Microsoft's FF 
+             * Disassembler are dealt with internally inside this component and not propogated 
+             * further through the pipeline.
+             * *************************************************************************************/
+
+            var messageCount = this.innerDisassembledMessages.Count;
+
+            // Check to see if there are any more messages to process.
+            if (messageCount == 0 ||
+                this.innerDisasembledMessageIndex >= messageCount)
             {
-                if (this.currentFlatFileMessage == null)
-                {
-                    this.currentFlatFileMessage = this.flatFileDasmComp.GetNext(pipelineContext);
-
-                    if (this.currentFlatFileMessage == null)
-                    {
-                        break;
-                    }
-
-                    this.InitialiseServiceMediation();
-                    this.serviceMediationDasm.Disassemble(pipelineContext, this.currentFlatFileMessage);
-                }
-
-                var nextMsg = this.serviceMediationDasm.GetNext(pipelineContext);
-
-                if (nextMsg != null)
-                {
-                    return nextMsg;
-                }
-
-                this.currentFlatFileMessage = null;
+                this.innerDisassembledMessages.Clear();
+                this.innerDisasembledMessageIndex = 0;
+                this.currentMediatedMessage = default(IBaseMessage);
+                return null;
             }
 
-            return null;
+            // If this is the first call to thsi method, call Disassemble on the 
+            // Service Mediation component.
+            if (this.innerDisasembledMessageIndex == 0 && this.currentMediatedMessage == null)
+            {
+                this.serviceMediationDasm.Disassemble(
+                    pipelineContext, 
+                    this.innerDisassembledMessages[this.innerDisasembledMessageIndex]);
+            }
+
+            // Get the next mediated message
+            while (true)
+            {
+                this.currentMediatedMessage = this.serviceMediationDasm.GetNext(pipelineContext);
+
+                if (this.currentMediatedMessage != null)
+                {
+                    return this.currentMediatedMessage;
+                }
+
+                this.innerDisasembledMessageIndex++;
+
+                // Check to see if all disassembled FF messages have been processed
+                if (this.innerDisasembledMessageIndex >= messageCount)
+                {
+                    this.innerDisassembledMessages.Clear();
+                    this.innerDisasembledMessageIndex = 0;
+                    this.currentMediatedMessage = default(IBaseMessage);
+                    return null;
+                }
+
+                // If more diassembled FF messages exist, cycle to the next one.
+                this.serviceMediationDasm.Disassemble(
+                    pipelineContext, 
+                    this.innerDisassembledMessages[++this.innerDisasembledMessageIndex]);
+            }
         }
 
         /// <summary>
@@ -740,29 +815,6 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         public void Dispose()
         {
             this.flatFileDasmComp.Dispose();
-        }
-        
-        /// <summary>
-        /// Initializes a new instance of the Service Mediation component.
-        /// </summary>
-        private void InitialiseServiceMediation()
-        {
-            this.serviceMediationDasm = new ServiceMediation
-            {
-                BindingAccessPoint = this.BindingAccessPoint,
-                BindingUrlType = this.BindingUrlType,
-                BodyContainerXPath = this.BodyContainerXPath,
-                MessageDirection = this.MessageDirection,
-                MessageRole = this.MessageRole,
-                MessageType = this.MessageType,
-                OperationName = this.OperationName,
-                Policy = this.Policy,
-                PolicyVersion = this.PolicyVersion,
-                ProviderName = this.ProviderName,
-                ResolutionData = this.ResolutionData,
-                ResolutionDataProperties = this.ResolutionDataProperties,
-                ServiceName = this.ServiceName
-            };
         }
     }
 }

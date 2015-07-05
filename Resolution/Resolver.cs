@@ -25,7 +25,6 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
     using System.Runtime.Caching;
     using System.ServiceModel;
     using System.Text;
-    using System.Xml;
 
     using SolidsoftReply.Esb.Libraries.Resolution.Properties;
     using SolidsoftReply.Esb.Libraries.Resolution.ResolutionService;
@@ -46,325 +45,61 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// <summary>
         /// Execute the policy and returns the info related, the information is then cached
         /// </summary>
-        /// <param name="serviceName">Service name</param>
-        /// <param name="messageType">Message type</param>        
+        /// <param name="facts">Facts to be asserted to the Resolution Service.</param>
         /// <returns>Return a Directive object with the result</returns>
-        public static Directives Resolve(string serviceName, string messageType)
+        public static Directives Resolve(Facts facts)
         {
             return Resolve(
-                null,
-                serviceName,
-                null,
-                null,
-                messageType,
-                null,
-                null,
-                MessageDirectionTypes.NotSpecified,
-                null,
+                facts,
                 string.Empty,
-                null,
-                null);
+                string.Empty);
         }
 
         /// <summary>
         /// Execute the policy and returns the info related, the information is then cached
         /// </summary>
-        /// <param name="serviceName">Service name</param>
-        /// <param name="messageType">Message type</param>    
-        /// <param name="messageDirection">Direction of the message</param>
-        /// <returns>Return a Directive object with the result</returns>
-        public static Directives Resolve(string serviceName, string messageType, MessageDirectionTypes messageDirection)
-        {
-            return Resolve(
-                null,
-                serviceName,
-                null,
-                null,
-                messageType,
-                null,
-                null,
-                messageDirection,
-                null,
-                string.Empty,
-                null,
-                null);
-        }
-
-        /// <summary>
-        /// Execute the policy and returns the info related, the information is then cached
-        /// </summary>
-        /// <param name="parameters">Parameter items</param>
-        /// <returns>Return a Directive object with the result</returns>
-        public static Directives Resolve(Parameters parameters)
-        {
-            return Resolve(
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                MessageDirectionTypes.NotSpecified,
-                null,
-                string.Empty,
-                null,
-                parameters);
-        }
-
-        /// <summary>
-        /// Execute the policy and returns the info related, the information is then cached
-        /// </summary>
-        /// <param name="policyName">Policy name</param>
-        /// <param name="parameters">Parameter items</param>
-        /// <returns>Return a Directive object with the result</returns>
-        public static Directives Resolve(string policyName, Parameters parameters)
-        {
-            return Resolve(
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                MessageDirectionTypes.NotSpecified,
-                null,
-                policyName,
-                null,
-                parameters);
-        }
-
-        /// <summary>
-        /// Execute the policy and returns the info related, the information is then cached
-        /// </summary>
-        /// <param name="policyName">Policy name</param>
-        /// <param name="version">Policy version in the format of x.y where x is the major and y is the minor version number</param>
-        /// <param name="parameters">Parameter items</param>
-        /// <returns>Return a Directive object with the result</returns>
-        public static Directives Resolve(
-            string policyName, Version version, Parameters parameters)
-        {
-            return Resolve(
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                MessageDirectionTypes.NotSpecified,
-                null,
-                policyName,
-                version,
-                parameters);
-        }
-
-        /// <summary>
-        /// Execute the policy and returns the info related, the information is then cached
-        /// </summary>
-        /// <param name="messageType">Message type</param>
-        /// <param name="messageDirection">Direction of the message</param>
-        /// <param name="messageIn">Message to be transformed</param>
-        /// <returns>Return a Directive object with the result</returns>
-        public static Directives Resolve(
-            string messageType, MessageDirectionTypes messageDirection, XmlDocument messageIn)
-        {
-            return Resolve(
-                null,
-                null,
-                null,
-                null,
-                messageType,
-                null,
-                null,
-                messageDirection,
-                messageIn,
-                string.Empty,
-                null,
-                null);
-        }
-
-        /// <summary>
-        /// Execute the policy and returns the info related, the information is then cached
-        /// </summary>
-        /// <param name="messageType">Message type</param>
-        /// <param name="messageDirection">Direction of the message</param>
-        /// <param name="messageIn">Message to be transformed</param>
+        /// <param name="facts">Facts to be asserted to the Resolution Service.</param>
         /// <param name="policyName">Policy name</param>
         /// <returns>Return a Directive object with the result</returns>
-        public static Directives Resolve(
-            string messageType, MessageDirectionTypes messageDirection, XmlDocument messageIn, string policyName)
+        public static Directives Resolve(Facts facts, string policyName)
         {
             return Resolve(
-                null,
-                null,
-                null,
-                null,
-                messageType,
-                null,
-                null,
-                messageDirection,
-                messageIn,
+                facts,
                 policyName,
-                null,
-                null);
+                string.Empty);
         }
 
         /// <summary>
         /// Execute the policy and returns the info related, the information is then cached
         /// </summary>
-        /// <param name="messageType">Message type</param>
-        /// <param name="messageDirection">Direction of the message</param>
-        /// <param name="messageIn">Message to be transformed</param>
+        /// <param name="facts">Facts to be asserted to the Resolution Service.</param>
         /// <param name="policyName">Policy name</param>
-        /// <param name="version">Policy version in the format of x.y where x is the major and y is the minor version number</param>
+        /// <param name="policyVersion">Policy version in the format of x.y where x is the major and y is the minor version number</param>
         /// <returns>Return a Directive object with the result</returns>
-        public static Directives Resolve(
-            string messageType,
-            MessageDirectionTypes messageDirection,
-            XmlDocument messageIn,
-            string policyName,
-            Version version)
+        public static Directives Resolve(Facts facts, string policyName, string policyVersion)
         {
             return Resolve(
-                null,
-                null,
-                null,
-                null,
-                messageType,
-                null,
-                null,
-                messageDirection,
-                messageIn,
+                facts.ProviderName,
+                facts.ServiceName,
+                facts.BindingAccessPoint,
+                facts.BindingUrlType,
+                facts.MessageType,
+                facts.OperationName,
+                facts.MessageRole,
+                facts.MessageDirection,
                 policyName,
-                version,
-                null);
+                policyVersion,
+                facts.Parameters);
         }
 
         /// <summary>
-        /// Execute the policy and returns the info related, the information is then cached
+        /// Invalidate the cache
         /// </summary>
-        /// <param name="providerName">Provider name</param>
-        /// <param name="serviceName">Service name</param>
-        /// <param name="bindingAccessPoint">Binding access point</param>
-        /// <param name="bindingUrlType">Binding URL type</param>
-        /// <param name="messageType">Message type</param>
-        /// <param name="operationName">Operation name</param>
-        /// <param name="messageRole">Message role</param>
-        /// <param name="messageDirection">Direction of the message</param>
-        /// <param name="messageIn">Message to be transformed</param>
-        /// <param name="policyName">Policy name</param>
-        /// <returns>Return a Directive object with the result</returns>
-        public static Directives Resolve(
-            string providerName,
-            string serviceName, 
-            string bindingAccessPoint,
-            string bindingUrlType,
-            string messageType,
-            string operationName,
-            string messageRole,
-            MessageDirectionTypes messageDirection,
-            XmlDocument messageIn, 
-            string policyName)
+        public static void InvalidateCache()
         {
-            return Resolve(
-                providerName,
-                serviceName,
-                bindingAccessPoint,
-                bindingUrlType,
-                messageType,
-                operationName,
-                messageRole,
-                messageDirection,
-                messageIn,
-                policyName,
-                null, 
-                null);
+            DirectivesCache.InvalidateCache();
         }
-
-        /// <summary>
-        /// Execute the policy and returns the info related, the information is then cached
-        /// </summary>
-        /// <param name="providerName">Provider name</param>
-        /// <param name="serviceName">Service name</param>
-        /// <param name="bindingAccessPoint">Binding access point</param>
-        /// <param name="bindingUrlType">Binding URL type</param>
-        /// <param name="messageType">Message type</param>
-        /// <param name="operationName">Operation name</param>
-        /// <param name="messageRole">Message role</param>
-        /// <param name="messageDirection">Direction of the message</param>
-        /// <param name="messageIn">Message to be transformed</param>
-        /// <param name="policyName">Policy name</param>
-        /// <param name="version">Policy version in the format of x.y where x is the major and y is the minor version number</param>
-        /// <returns>Return a Directive object with the result</returns>
-        public static Directives Resolve(
-            string providerName,
-            string serviceName,
-            string bindingAccessPoint,
-            string bindingUrlType,
-            string messageType,
-            string operationName,
-            string messageRole,
-            MessageDirectionTypes messageDirection,
-            XmlDocument messageIn,
-            string policyName,
-            Version version)
-        {
-            return Resolve(
-                providerName,
-                serviceName,
-                bindingAccessPoint,
-                bindingUrlType,
-                messageType,
-                operationName,
-                messageRole,
-                messageDirection,
-                messageIn,
-                policyName,
-                version,
-                null);
-        }
-
-        /// <summary>
-        /// Execute the policy and returns the info related, the information is then cached
-        /// </summary>
-        /// <param name="providerName">Provider name</param>
-        /// <param name="serviceName">Service name</param>
-        /// <param name="bindingAccessPoint">Binding access point</param>
-        /// <param name="bindingUrlType">Binding URL type</param>
-        /// <param name="messageType">Message type</param>
-        /// <param name="operationName">Operation name</param>
-        /// <param name="messageRole">Message role</param>
-        /// <param name="messageDirection">Direction of the message</param>
-        /// <param name="parameters">Parameter items</param>
-        /// <returns>Return a Directive object with the result</returns>
-        public static Directives Resolve(
-            string providerName,
-            string serviceName,
-            string bindingAccessPoint,
-            string bindingUrlType,
-            string messageType,
-            string operationName,
-            string messageRole,
-            MessageDirectionTypes messageDirection,
-            Parameters parameters)
-        {
-            return Resolve(
-                providerName,
-                serviceName,
-                bindingAccessPoint,
-                bindingUrlType,
-                messageType,
-                operationName,
-                messageRole,
-                messageDirection,
-                null,
-                string.Empty,
-                null,
-                parameters);
-        }
-
+        
         /// <summary>
         /// Execute the policy and returns the info related, the information is then cached
         /// </summary>
@@ -377,9 +112,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// <param name="messageRole">Message role</param>
         /// <param name="messageDirection">Direction of the message</param>
         /// <param name="policyName">Policy name</param>
+        /// <param name="policyVersion">Policy version in the format of x.y where x is the major and y is the minor version number</param>
         /// <param name="parameters">Parameter items</param>
         /// <returns>Return a Directive object with the result</returns>
-        public static Directives Resolve(
+        private static Directives Resolve(
             string providerName,
             string serviceName,
             string bindingAccessPoint,
@@ -389,199 +125,39 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             string messageRole,
             MessageDirectionTypes messageDirection,
             string policyName,
-            Parameters parameters)
-        {
-            return Resolve(
-                providerName,
-                serviceName,
-                bindingAccessPoint,
-                bindingUrlType,
-                messageType,
-                operationName,
-                messageRole,
-                messageDirection,
-                null,
-                policyName,
-                null,
-                parameters);
-        }
-
-        /// <summary>
-        /// Execute the policy and returns the info related, the information is then cached
-        /// </summary>
-        /// <param name="providerName">Provider name</param>
-        /// <param name="serviceName">Service name</param>
-        /// <param name="bindingAccessPoint">Binding access point</param>
-        /// <param name="bindingUrlType">Binding URL type</param>
-        /// <param name="messageType">Message type</param>
-        /// <param name="operationName">Operation name</param>
-        /// <param name="messageRole">Message role</param>
-        /// <param name="messageDirection">Direction of the message</param>
-        /// <param name="policyName">Policy name</param>
-        /// <param name="version">Policy version in the format of x.y where x is the major and y is the minor version number</param>
-        /// <param name="parameters">Parameter items</param>
-        /// <returns>Return a Directive object with the result</returns>
-        public static Directives Resolve(
-            string providerName,
-            string serviceName,
-            string bindingAccessPoint,
-            string bindingUrlType,
-            string messageType,
-            string operationName,
-            string messageRole,
-            MessageDirectionTypes messageDirection,
-            string policyName,
-            Version version,
-            Parameters parameters)
-        {
-            return Resolve(
-                providerName,
-                serviceName,
-                bindingAccessPoint,
-                bindingUrlType,
-                messageType,
-                operationName,
-                messageRole,
-                messageDirection,
-                null,
-                policyName,
-                version,
-                parameters);
-        }
-
-        /// <summary>
-        /// Execute the policy and returns the info related, the information is then cached
-        /// </summary>
-        /// <param name="providerName">Provider name</param>
-        /// <param name="serviceName">Service name</param>
-        /// <param name="bindingAccessPoint">Binding access point</param>
-        /// <param name="bindingUrlType">Binding URL type</param>
-        /// <param name="messageType">Message type</param>
-        /// <param name="operationName">Operation name</param>
-        /// <param name="messageRole">Message role</param>
-        /// <param name="messageDirection">Direction of the message</param>
-        /// <param name="messageIn">Message to be transformed</param>
-        /// <param name="parameters">Parameter items</param>
-        /// <returns>Return a Directive object with the result</returns>
-        public static Directives Resolve(
-            string providerName,
-            string serviceName,
-            string bindingAccessPoint,
-            string bindingUrlType,
-            string messageType,
-            string operationName,
-            string messageRole,
-            MessageDirectionTypes messageDirection,
-            XmlDocument messageIn,
-            Parameters parameters)
-        {
-            return Resolve(
-                providerName,
-                serviceName,
-                bindingAccessPoint,
-                bindingUrlType,
-                messageType,
-                operationName,
-                messageRole,
-                messageDirection,
-                messageIn,
-                string.Empty,
-                null,
-                parameters);
-        }
-
-        /// <summary>
-        /// Execute the policy and returns the info related, the information is then cached
-        /// </summary>
-        /// <param name="providerName">Provider name</param>
-        /// <param name="serviceName">Service name</param>
-        /// <param name="bindingAccessPoint">Binding access point</param>
-        /// <param name="bindingUrlType">Binding URL type</param>
-        /// <param name="messageType">Message type</param>
-        /// <param name="operationName">Operation name</param>
-        /// <param name="messageRole">Message role</param>
-        /// <param name="messageDirection">Direction of the message</param>
-        /// <param name="messageIn">Message to be transformed</param>
-        /// <param name="policyName">Policy name</param>
-        /// <param name="parameters">Parameter items</param>
-        /// <returns>Return a Directive object with the result</returns>
-        public static Directives Resolve(
-            string providerName,
-            string serviceName,
-            string bindingAccessPoint,
-            string bindingUrlType,
-            string messageType,
-            string operationName,
-            string messageRole,
-            MessageDirectionTypes messageDirection,
-            XmlDocument messageIn,
-            string policyName,
-            Parameters parameters)
-        {
-            return Resolve(
-                providerName,
-                serviceName,
-                bindingAccessPoint,
-                bindingUrlType,
-                messageType,
-                operationName,
-                messageRole,
-                messageDirection,
-                messageIn,
-                policyName,
-                null,
-                parameters);
-        }
-
-        /// <summary>
-        /// Execute the policy and returns the info related, the information is then cached
-        /// </summary>
-        /// <param name="providerName">Provider name</param>
-        /// <param name="serviceName">Service name</param>
-        /// <param name="bindingAccessPoint">Binding access point</param>
-        /// <param name="bindingUrlType">Binding URL type</param>
-        /// <param name="messageType">Message type</param>
-        /// <param name="operationName">Operation name</param>
-        /// <param name="messageRole">Message role</param>
-        /// <param name="messageDirection">Direction of the message</param>
-        /// <param name="messageIn">Message to be transformed</param>
-        /// <param name="policyName">Policy name</param>
-        /// <param name="version">Policy version in the format of x.y where x is the major and y is the minor version number</param>
-        /// <param name="parameters">Parameter items</param>
-        /// <returns>Return a Directive object with the result</returns>
-        public static Directives Resolve(
-            string providerName,
-            string serviceName,
-            string bindingAccessPoint,
-            string bindingUrlType,
-            string messageType,
-            string operationName,
-            string messageRole,
-            MessageDirectionTypes messageDirection,
-            XmlDocument messageIn,
-            string policyName,
-            Version version,
+            string policyVersion,
             Parameters parameters)
         {
             // TraceHelper.TraceMessage("Resolver.Resolve - In");
 
             // Check parameters
-            if (string.IsNullOrEmpty(policyName))
+            if (string.IsNullOrWhiteSpace(policyName))
             {
                 try
                 {
-                    policyName = ConfigurationManager.AppSettings[Resources.AppSettingEsbDefaultPolicy];
+                    policyName = ConfigurationManager.AppSettings[Resources.AppSettingEsbDefaultPolicyName];
+
+                    try
+                    {
+                        policyVersion = ConfigurationManager.AppSettings[Resources.AppSettingEsbDefaultPolicyVersion];
+                    }
+                    catch (Exception)
+                    {
+                        policyVersion = string.Empty;
+                    }
                 }
                 catch
                 {
                     // TODO: Log the exception
-                    policyName = string.Empty;
+                    throw new ArgumentException(string.Format(Resources.ExceptionEsbPolicyUndetermined, Resources.AppSettingEsbDefaultPolicyName));
                 }
+            }
 
-                if (string.IsNullOrEmpty(policyName))
-                {
-                    throw new ArgumentException(string.Format(Resources.ExceptionEsbPolicyUndetermined, Resources.AppSettingEsbDefaultPolicy));
-                }
+            Version version;
+
+            if (!Version.TryParse(policyVersion, out version))
+            {
+                version = default(Version);
             }
 
             // Build the key
@@ -639,13 +215,13 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             if (!string.IsNullOrEmpty(messageDirection.ToString()))
             {
                 key.Append("8;");
-                key.Append(messageDirection.ToString());
+                key.Append(messageDirection);
                 key.Append(";");
             }
 
             var keyParams = new StringBuilder(256);
 
-            if (parameters != null)
+            if (parameters != null && parameters.Count > 0)
             {
                 foreach (var paramItem in parameters.Where(paramItem => !string.IsNullOrEmpty(paramItem.Key)))
                 {
@@ -708,12 +284,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             }
 
             //////svc.ClientCredentials = System.Net.CredentialCache.DefaultCredentials;
-            string ver = null;
-
-            if (version != null)
-            {
-                ver = version.ToString(2);
-            }
+            var ver = version == null ? null : version.ToString(2);
 
             var resolverResultFromWs = svc.Resolve(
                 providerName,
@@ -723,7 +294,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 messageType,
                 operationName,
                 messageRole,
-                parameters,
+                parameters == null || parameters.Count == 0 ? null : parameters,
                 messageDirection,
                 policyName,
                 ver);
@@ -743,8 +314,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                                     ConfigurationManager.AppSettings.GetValues(Resources.AppSettingEsbCacheExpiration) == null
                                     ? 24
                                     : Convert.ToInt32(
-                                        ConfigurationManager.AppSettings[
-                                            Resources.AppSettingEsbCacheExpiration]),
+                                        ConfigurationManager.AppSettings[Resources.AppSettingEsbCacheExpiration]),
                                     0,
                                     0)
                         });
@@ -758,14 +328,6 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             Debug.Write("[Resolver] Resolve - Returned # elements: " + resolverResultFromWs.Directives == null ? 0 : resolverResultFromWs.Directives.Length);
 
             return resolverLocalResult;
-        }
-
-        /// <summary>
-        /// Invalidate the cache
-        /// </summary>
-        public static void InvalidateCache()
-        {
-            DirectivesCache.InvalidateCache();
         }
     }
 }

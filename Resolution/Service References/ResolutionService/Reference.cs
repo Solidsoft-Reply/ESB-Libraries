@@ -763,6 +763,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.ResolutionService {
                 return this.bamStepNameField;
             }
             set {
+                System.Diagnostics.Debug.WriteLine("SET BAMSTEPNAME in underlying Directive: " + value);
                 this.bamStepNameField = value;
                 this.RaisePropertyChanged("BamStepName");
             }

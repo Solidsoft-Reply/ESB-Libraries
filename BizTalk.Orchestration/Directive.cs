@@ -102,7 +102,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         #region Public Properties
 
         /// <summary>
-        /// Gets or sets the name of the BAM activity to which this directive applies.
+        /// Gets the name of the BAM activity to which this directive applies.
         /// </summary>
         public override string BamActivity
         {
@@ -110,18 +110,10 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
             {
                 return this.directive.BamActivity;
             }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.BamActivity = value;
-                }
-            }
         }
 
         /// <summary>
-        /// Gets or sets the name of the step within the BAM activity to which this directive applies.
+        /// Gets the name of the step within the BAM activity to which this directive applies.
         /// </summary>
         public override string BamAfterMapStepName
         {
@@ -129,18 +121,10 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
             {
                 return this.directive.BamAfterMapStepName;
             }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.BamAfterMapStepName = value;
-                }
-            }
         }
 
         /// <summary>
-        /// Gets or sets the connection string for BAM.
+        /// Gets the connection string for BAM.
         /// </summary>
         public override string BamConnectionString
         {
@@ -148,18 +132,10 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
             {
                 return this.directive.BamConnectionString;
             }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.BamConnectionString = value;
-                }
-            }
         }
 
         /// <summary>
-        /// Gets or sets a value that determines under what conditions the buffered
+        /// Gets a value that determines under what conditions the buffered
         /// data will be sent to the tracking database.
         /// </summary>
         /// <remarks>
@@ -178,18 +154,10 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
             {
                 return this.directive.BamFlushThreshold;
             }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.BamFlushThreshold = value;
-                }
-            }
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether BAM will use a buffered event stream.
+        /// Gets a value indicating whether BAM will use a buffered event stream.
         /// </summary>
         public override bool BamIsBuffered
         {
@@ -197,18 +165,10 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
             {
                 return this.directive.BamIsBuffered;
             }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.BamIsBuffered = value;
-                }
-            }
         }
 
         /// <summary>
-        /// Gets or sets the name of the step within the BAM activity to which this directive applies.
+        /// Gets the name of the step within the BAM activity to which this directive applies.
         /// </summary>
         public override string BamStepName
         {
@@ -216,18 +176,10 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
             {
                 return this.directive.BamStepName;
             }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.BamStepName = value;
-                }
-            }
         }
 
         /// <summary>
-        /// Gets or sets a list of steps that extend the step specified in the StepName property.
+        /// Gets a list of steps that extend the step specified in the StepName property.
         /// </summary>
         public override IList<string> BamStepExtensions
         {
@@ -236,15 +188,10 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
             {
                 return this.directive.BamStepExtensions;
             }
-
-            set
-            {
-                this.directive.BamStepExtensions = value;
-            }
         }
 
         /// <summary>
-        /// Gets or sets the BAM Trackpoint policy name.
+        /// Gets the BAM Trackpoint policy name.
         /// </summary>
         [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", 
             Justification = "Reviewed. Suppression is OK here.")]
@@ -254,18 +201,10 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
             {
                 return this.directive.BamTrackpointPolicyName;
             }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.BamTrackpointPolicyName = value;
-                }
-            }
         }
 
         /// <summary>
-        /// Gets or sets the BAM Trackpoint policy bamTrackpointVersion.
+        /// Gets the BAM Trackpoint policy bamTrackpointVersion.
         /// </summary>
         [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", 
             Justification = "Reviewed. Suppression is OK here.")]
@@ -275,18 +214,10 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
             {
                 return this.directive.BamTrackpointPolicyVersion;
             }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.BamTrackpointPolicyVersion = value;
-                }
-            }
         }
 
         /// <summary>
-        /// Gets or sets the BizTalk Server property values.
+        /// Gets the BizTalk Server property values.
         /// </summary>
         public override BtsProperties BtsProperties
         {
@@ -294,20 +225,10 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
             {
                 return this.directive.BtsProperties;
             }
-
-            set
-            {
-                if (this.directive == null)
-                {
-                    return;
-                }
-
-                this.directive.BtsProperties = value;
-            }
         }
 
         /// <summary>
-        /// Gets or sets the message endpoint.
+        /// Gets the message endpoint.
         /// </summary>
         public override string EndPoint
         {
@@ -315,18 +236,10 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
             {
                 return this.directive.EndPoint;
             }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.EndPoint = value;
-                }
-            }
         }
 
         /// <summary>
-        /// Gets or sets the end point configuration token.
+        /// Gets the end point configuration token.
         /// </summary>
         public override string EndPointConfiguration
         {
@@ -334,18 +247,10 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
             {
                 return this.directive.EndPointConfiguration;
             }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.EndPointConfiguration = value;
-                }
-            }
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether to throw an error if a validation rule policy indicates invalidity.
+        /// Gets a value indicating whether to throw an error if a validation rule policy indicates invalidity.
         /// </summary>
         public override bool ErrorOnInvalid
         {
@@ -353,36 +258,16 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
             {
                 return this.directive.ErrorOnInvalid;
             }
-
-            set
-            {
-                if (this.directive == null)
-                {
-                    return;
-                }
-
-                this.directive.ErrorOnInvalid = value;
-            }
         }
 
         /// <summary>
-        /// Gets or sets the BAM event stream.
+        /// Gets the BAM event stream.
         /// </summary>
         public override EventStream EventStream
         {
             get
             {
                 return this.directive.EventStream;
-            }
-
-            set
-            {
-                if (this.directive == null)
-                {
-                    return;
-                }
-
-                this.directive.EventStream = value;
             }
         }
 
@@ -398,21 +283,13 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        /// Gets or sets the full name of a map.
+        /// Gets the full name of a map.
         /// </summary>
         public override string MapFullName
         {
             get
             {
                 return this.directive.MapFullName;
-            }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.MapFullName = value;
-                }
             }
         }
 
@@ -429,21 +306,13 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        /// Gets or sets the type of the map to apply.
+        /// Gets the type of the map to apply.
         /// </summary>
         public override Type MapType
         {
             get
             {
                 return this.directive.MapType;
-            }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.MapType = value;
-                }
             }
         }
 
@@ -459,7 +328,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        /// Gets or sets the BizTalk Server property values.
+        /// Gets the BizTalk Server property values.
         /// </summary>
         public override Resolution.Dictionaries.Properties Properties
         {
@@ -467,36 +336,16 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
             {
                 return this.directive.Properties;
             }
-
-            set
-            {
-                if (this.directive == null)
-                {
-                    return;
-                }
-
-                this.directive.Properties = value;
-            }
         }
 
         /// <summary>
-        /// Gets or sets the number of retries for the current level.
+        /// Gets the number of retries for the current level.
         /// </summary>
         public override int RetryCount
         {
             get
             {
                 return this.directive.RetryCount;
-            }
-
-            set
-            {
-                if (this.directive == null)
-                {
-                    return;
-                }
-
-                this.directive.RetryCount = value;
             }
         }
 
@@ -509,20 +358,10 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
             {
                 return this.directive.RetryCountSpecified;
             }
-
-            set
-            {
-                if (this.directive == null)
-                {
-                    return;
-                }
-
-                this.directive.RetryCountSpecified = value;
-            }
         }
 
         /// <summary>
-        /// Gets or sets the interval between retries.
+        /// Gets the interval between retries.
         /// </summary>
         /// <remarks>
         /// Resolver clients are free
@@ -535,20 +374,10 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
             {
                 return this.directive.RetryInterval;
             }
-
-            set
-            {
-                if (this.directive == null)
-                {
-                    return;
-                }
-
-                this.directive.RetryInterval = value;
-            }
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether the Retry Interval has been set
+        /// Gets a value indicating whether the Retry Interval has been set
         /// </summary>
         public override bool RetryIntervalSpecified
         {
@@ -556,20 +385,10 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
             {
                 return this.directive.RetryIntervalSpecified;
             }
-
-            set
-            {
-                if (this.directive == null)
-                {
-                    return;
-                }
-
-                this.directive.RetryIntervalSpecified = value;
-            }
         }
 
         /// <summary>
-        /// Gets or sets the a level indicator for the retry
+        /// Gets the a level indicator for the retry
         /// </summary>
         /// <remarks>
         /// Retries must sometimes be carried out at different levels.   For example, we may want to
@@ -582,20 +401,10 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
             {
                 return this.directive.RetryLevel;
             }
-
-            set
-            {
-                if (this.directive == null)
-                {
-                    return;
-                }
-
-                this.directive.RetryLevel = value;
-            }
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether the Retry Level has been specified
+        /// Gets a value indicating whether the Retry Level has been specified
         /// </summary>
         public override bool RetryLevelSpecified
         {
@@ -603,20 +412,10 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
             {
                 return this.directive.RetryLevelSpecified;
             }
-
-            set
-            {
-                if (this.directive == null)
-                {
-                    return;
-                }
-
-                this.directive.RetryLevelSpecified = value;
-            }
         }
 
         /// <summary>
-        /// Gets or sets the time at which service window opens.
+        /// Gets the time at which service window opens.
         /// </summary>
         public override DateTime ServiceWindowStartTime
         {
@@ -624,20 +423,10 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
             {
                 return this.directive.ServiceWindowStartTime;
             }
-
-            set
-            {
-                if (this.directive == null)
-                {
-                    return;
-                }
-
-                this.directive.ServiceWindowStartTime = value;
-            }
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether the Service Window start time has been specified
+        /// Gets a value indicating whether the Service Window start time has been specified
         /// </summary>
         public override bool ServiceWindowStartTimeSpecified
         {
@@ -645,20 +434,10 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
             {
                 return this.directive.ServiceWindowStartTimeSpecified;
             }
-
-            set
-            {
-                if (this.directive == null)
-                {
-                    return;
-                }
-
-                this.directive.ServiceWindowStartTimeSpecified = value;
-            }
         }
 
         /// <summary>
-        /// Gets or sets the time at which service window closes.
+        /// Gets the time at which service window closes.
         /// </summary>
         public override DateTime ServiceWindowStopTime
         {
@@ -666,20 +445,10 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
             {
                 return this.directive.ServiceWindowStopTime;
             }
-
-            set
-            {
-                if (this.directive == null)
-                {
-                    return;
-                }
-
-                this.directive.ServiceWindowStopTime = value;
-            }
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether the Service Window stop time has been specified.
+        /// Gets a value indicating whether the Service Window stop time has been specified.
         /// </summary>
         public override bool ServiceWindowStopTimeSpecified
         {
@@ -687,20 +456,10 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
             {
                 return this.directive.ServiceWindowStopTimeSpecified;
             }
-
-            set
-            {
-                if (this.directive == null)
-                {
-                    return;
-                }
-
-                this.directive.ServiceWindowStopTimeSpecified = value;
-            }
         }
 
         /// <summary>
-        /// Gets or sets a URI indicating the intent of the SOAP operation.
+        /// Gets a URI indicating the intent of the SOAP operation.
         /// </summary>
         public override string SoapAction
         {
@@ -708,18 +467,10 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
             {
                 return this.directive.SoapAction;
             }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.SoapAction = value;
-                }
-            }
         }
 
         /// <summary>
-        /// Gets or sets the transport type.
+        /// Gets the transport type.
         /// </summary>
         public override string TransportType
         {
@@ -727,18 +478,10 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
             {
                 return this.directive.TransportType;
             }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.TransportType = value;
-                }
-            }
         }
 
         /// <summary>
-        /// Gets or sets the validation policy name.
+        /// Gets the validation policy name.
         /// </summary>
         public override string ValidationPolicyName
         {
@@ -746,34 +489,16 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
             {
                 return this.directive.ValidationPolicyName;
             }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.ValidationPolicyName = value;
-                }
-            }
         }
 
         /// <summary>
-        /// Gets or sets the validation policy version.
+        /// Gets the validation policy version.
         /// </summary>
         public override string ValidationPolicyVersion
         {
             get
             {
                 return this.directive.ValidationPolicyVersion;
-            }
-
-            set
-            {
-                if (this.directive == null)
-                {
-                    return;
-                }
-
-                this.directive.ValidationPolicyVersion = value;
             }
         }
 

@@ -182,7 +182,9 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Dictionaries
 
                     if (nodeReader.IsEmptyElement)
                     {
-                        throw new XmlSerializableDictionaryException("The reader contains no XML.");
+                        // The following line was removed - July 2015.  No exception is necessary here!
+                        // throw new XmlSerializableDictionaryException("The reader contains no XML.");
+                        return;
                     }
                 }
 

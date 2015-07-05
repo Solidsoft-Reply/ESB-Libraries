@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="ZMggK3em/1drkjerxDdQTYR7Sao=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="m3BZeRIF0fVR/LiKN4IsL8hBHY0=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_IResolver">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_IResolver" contract="ResolutionService.IResolver" bindingType="basicHttpBinding" address="http://localhost/EsbResolution2/Resolver.svc" bindingConfiguration="BasicHttpBinding_IResolver">
+    <endpoint name="BasicHttpBinding_IResolver" contract="ResolutionService.IResolver" bindingType="basicHttpBinding" address="http://localhost:8080/ResolutionService/Resolver.svc" bindingConfiguration="BasicHttpBinding_IResolver">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost/EsbResolution2/Resolver.svc</serializedValue>
+          <serializedValue>http://localhost:8080/ResolutionService/Resolver.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

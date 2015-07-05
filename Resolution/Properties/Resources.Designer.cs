@@ -126,9 +126,18 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Properties {
         /// <summary>
         ///   Looks up a localized string similar to ESB.DefaultPolicyName.
         /// </summary>
-        internal static string AppSettingEsbDefaultPolicy {
+        internal static string AppSettingEsbDefaultPolicyName {
             get {
-                return ResourceManager.GetString("AppSettingEsbDefaultPolicy", resourceCulture);
+                return ResourceManager.GetString("AppSettingEsbDefaultPolicyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ESB.DefaultPolicyVersion.
+        /// </summary>
+        internal static string AppSettingEsbDefaultPolicyVersion {
+            get {
+                return ResourceManager.GetString("AppSettingEsbDefaultPolicyVersion", resourceCulture);
             }
         }
         
@@ -138,33 +147,6 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Properties {
         internal static string AppSettingEsbServiceEndPoint {
             get {
                 return ResourceManager.GetString("AppSettingEsbServiceEndPoint", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ESB.BRE.PolicyTester.
-        /// </summary>
-        internal static string AppSettingsEsbBrePolicyTester {
-            get {
-                return ResourceManager.GetString("AppSettingsEsbBrePolicyTester", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ESB.BRE.Trace.
-        /// </summary>
-        internal static string AppSettingsEsbBreTrace {
-            get {
-                return ResourceManager.GetString("AppSettingsEsbBreTrace", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ESB.BRE.TraceFileLocation.
-        /// </summary>
-        internal static string AppSettingsEsbBreTraceFileLocation {
-            get {
-                return ResourceManager.GetString("AppSettingsEsbBreTraceFileLocation", resourceCulture);
             }
         }
         
@@ -219,6 +201,15 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Properties {
         internal static string ExceptionBamActivityNameInvalid {
             get {
                 return ResourceManager.GetString("ExceptionBamActivityNameInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Calls to OnStep are only valid when the BAM directive specifies a BAM interception policy for trackpoint data..
+        /// </summary>
+        internal static string ExceptionBamInvaidCallToOnStep {
+            get {
+                return ResourceManager.GetString("ExceptionBamInvaidCallToOnStep", resourceCulture);
             }
         }
         
@@ -331,11 +322,20 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An invalid BAM after-map step name was passed to the SelectBamStepExtension directive method..
+        ///   Looks up a localized string similar to The call to OnStep for BAM step &apos;{0}&apos; is invalid.  You cannot perform an OnStep operation for an event stream that has already been used to extend a step..
         /// </summary>
-        internal static string ExceptionInvalidBamAfterMapStepNameOnSelectBamStepExtension {
+        internal static string ExceptionInvalidBamOnStep {
             get {
-                return ResourceManager.GetString("ExceptionInvalidBamAfterMapStepNameOnSelectBamStepExtension", resourceCulture);
+                return ResourceManager.GetString("ExceptionInvalidBamOnStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The BAM step extension &apos;{0}&apos; is invalid.  You cannot extend a step after performing an OnStep operation on the same event stream..
+        /// </summary>
+        internal static string ExceptionInvalidBamStepExtension {
+            get {
+                return ResourceManager.GetString("ExceptionInvalidBamStepExtension", resourceCulture);
             }
         }
         
@@ -394,15 +394,6 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A null directive event stream was passed to the SelectBamStepExtension directive method..
-        /// </summary>
-        internal static string ExceptionMissingEventStreamOnSelectBamStepExtension {
-            get {
-                return ResourceManager.GetString("ExceptionMissingEventStreamOnSelectBamStepExtension", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to ESB Resolver directive {0} indicates that BAM interception is required, but no activity has been specified..
         /// </summary>
         internal static string ExceptionNoActivity {
@@ -430,29 +421,11 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No ESB policy defined..
-        /// </summary>
-        internal static string ExceptionNoPolicyDefined {
-            get {
-                return ResourceManager.GetString("ExceptionNoPolicyDefined", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No TrackPoints from the BRE.
+        ///   Looks up a localized string similar to No TrackPoints are defined in the current policy.
         /// </summary>
         internal static string ExceptionNoTrackpoints {
             get {
                 return ResourceManager.GetString("ExceptionNoTrackpoints", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The object is not constructed properly..
-        /// </summary>
-        internal static string ExceptionObjectMisconstructed {
-            get {
-                return ResourceManager.GetString("ExceptionObjectMisconstructed", resourceCulture);
             }
         }
         
@@ -624,15 +597,6 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Properties {
         internal static string XsdDirectiveSchemaFile {
             get {
                 return ResourceManager.GetString("XsdDirectiveSchemaFile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to SolidsoftReply.Esb.Libraries.Resolution.Dictionaries.Resources.DirectivesSchemaProperties.xsd.
-        /// </summary>
-        internal static string XsdDirectiveSchemaPropertiesFile {
-            get {
-                return ResourceManager.GetString("XsdDirectiveSchemaPropertiesFile", resourceCulture);
             }
         }
         

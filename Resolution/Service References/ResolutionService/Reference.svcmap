@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="722a0962-bc5b-4ab0-81fa-7523dd3d5189" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7dcb633c-9d3a-48d9-b66f-585785331405" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,12 +19,12 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost/EsbResolution2/Resolver.svc?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:8080/ResolutionService/Resolver.svc?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Resolver2.wsdl" MetadataType="Wsdl" ID="cd03acea-1afb-46c6-99f3-da0720fd6606" SourceId="1" SourceUrl="http://localhost/EsbResolution2/Resolver.svc?wsdl" />
-    <MetadataFile FileName="Resolver21.wsdl" MetadataType="Wsdl" ID="9bcf6a4f-08c2-4b02-87f0-6b7b871d7e2a" SourceId="1" SourceUrl="http://localhost/EsbResolution2/Resolver.svc?wsdl=wsdl0" />
-    <MetadataFile FileName="Resolver1.xsd" MetadataType="Schema" ID="624671ff-fbc0-411d-b0a4-bef989f1bf88" SourceId="1" SourceUrl="http://localhost/EsbResolution2/Resolver.svc?xsd=xsd0" />
+    <MetadataFile FileName="Resolver.xsd" MetadataType="Schema" ID="d41f20f5-70fe-452a-9722-1cf66124af59" SourceId="1" SourceUrl="http://localhost:8080/ResolutionService/Resolver.svc?xsd=xsd0" />
+    <MetadataFile FileName="Resolver.wsdl" MetadataType="Wsdl" ID="dcfca765-53e7-4d8f-8acc-329eb120801b" SourceId="1" SourceUrl="http://localhost:8080/ResolutionService/Resolver.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="Resolver1.wsdl" MetadataType="Wsdl" ID="f9b3294b-355b-472c-b3b5-51de31c9c4d4" SourceId="1" SourceUrl="http://localhost:8080/ResolutionService/Resolver.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

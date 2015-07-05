@@ -21,6 +21,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
     using System;
     using System.Configuration;
     using System.Data.SqlClient;
+    using System.Diagnostics.CodeAnalysis;
     using System.Runtime.InteropServices;
 
     using Microsoft.BizTalk.Bam.EventObservation;
@@ -69,7 +70,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         public DirectiveEventStream(Directive directive)
         {
             this.Directive = directive;
-            this.InitializeEventStreamFromDirective();
+            this.UpdateDirectiveBamData(directive);
         }
 
         /// <summary>
@@ -113,6 +114,44 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 return this.eventStream;
             }
         }
+
+        /// <summary>
+        /// Gets or sets the BAM Trackpoint policy bamTrackpointVersion.
+        /// </summary>
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
+        public virtual string BamTrackpointPolicyVersion { get; set; }
+
+        /// <summary>
+        /// Gets or sets the connection string for BAM.
+        /// </summary>
+        internal string BamConnectionString { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether BAM will use a buffered event stream.
+        /// </summary>
+        internal bool BamIsBuffered { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value that determines under what conditions the buffered 
+        /// data will be sent to the tracking database.
+        /// </summary>
+        /// <remarks>
+        /// &lt;= 0 This value is not allowed.   If set to 0, the eventStream 
+        ///         would never flush automatically and the application would have to
+        ///         call the Flush method explicitly.   There is no obvious way to do
+        ///         this in most common resolution scenarios
+        /// 1       Each event will be immediately persisted in the BAM database. 
+        /// &gt; 1  The eventStream will accumulate the events in memory until the 
+        ///         event count equals or exceeds this threshold; at this point, the Flush 
+        ///         method will be called internally. 
+        /// </remarks>
+        internal int BamFlushThreshold { get; set; }
+
+        /// <summary>
+        /// Gets or sets the BAM Trackpoint policy name.
+        /// </summary>
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
+        internal string BamTrackpointPolicyName { get; set; }
 
         /// <summary>
         /// Provides the current activity instance with a reference to additional data.
@@ -292,11 +331,11 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         }
 
         /// <summary>
-        /// Updates the current directive used by the event stream.
+        /// Updates the event stream with BAM data from the current directive.
         /// </summary>
         /// <param name="directive">The directive.</param>
         // ReSharper disable once ParameterHidesMember
-        internal void UpdateDirective(Directive directive)
+        internal void UpdateDirectiveBamData(Directive directive)
         {
             lock (this.syncLock)
             {
@@ -305,22 +344,21 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 {
                     // We are only changing the directive, but not the event stream, so
                     // we will update the directive to conform to the current event stream.
-                    directive.BamConnectionString = this.Directive.BamConnectionString;
-                    directive.BamIsBuffered = this.Directive.BamIsBuffered;
-                    directive.BamFlushThreshold = this.Directive.BamFlushThreshold;
+                    this.BamConnectionString = this.Directive.BamConnectionString;
+                    this.BamIsBuffered = this.Directive.BamIsBuffered;
+                    this.BamFlushThreshold = this.Directive.BamFlushThreshold;
 
                     if (string.IsNullOrWhiteSpace(directive.BamTrackpointPolicyName))
                     {
-                        directive.BamTrackpointPolicyName = this.Directive.BamTrackpointPolicyName;
+                        this.BamTrackpointPolicyName = this.Directive.BamTrackpointPolicyName;
                     }
 
                     if (string.IsNullOrWhiteSpace(directive.BamTrackpointPolicyVersion))
                     {
-                        directive.BamTrackpointPolicyVersion = this.Directive.BamTrackpointPolicyVersion;
+                        this.BamTrackpointPolicyVersion = this.Directive.BamTrackpointPolicyVersion;
                     }
                 }
 
-                this.Directive = directive;
                 this.InitializeEventStreamFromDirective();
             }
         }
@@ -330,21 +368,16 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// </summary>
         private void InitializeEventStreamFromDirective()
         {
-            if (this.Directive == null)
-            {
-                return;
-            }
-
             try
             {
-                this.eventStream = this.Directive.BamIsBuffered
+                this.eventStream = this.BamIsBuffered
                                        ? (EventStream)
                                          new BufferedEventStream(
-                                             this.Directive.BamConnectionString,
-                                             this.Directive.BamFlushThreshold)
+                                             this.BamConnectionString,
+                                             this.BamFlushThreshold)
                                        : new DirectEventStream(
-                                             this.Directive.BamConnectionString,
-                                             this.Directive.BamFlushThreshold);
+                                             this.BamConnectionString,
+                                             this.BamFlushThreshold);
             }
             catch
             {
@@ -380,12 +413,12 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                         case "yes":
                         case "1":
                         case "true":
-                            this.Directive.BamIsBuffered = true;
+                            this.BamIsBuffered = true;
                             break;
                         case "no":
                         case "0":
                         case "false":
-                            this.Directive.BamIsBuffered = false;
+                            this.BamIsBuffered = false;
                             break;
                     }
                 }
@@ -404,7 +437,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                     ConfigurationManager.AppSettings[Resources.AppSettingEsbBamFlushThreshold];
                 if (!string.IsNullOrWhiteSpace(appSettingBamFlushThreshold))
                 {
-                    this.Directive.BamFlushThreshold = Convert.ToInt32(appSettingBamFlushThreshold.Trim());
+                    this.BamFlushThreshold = Convert.ToInt32(appSettingBamFlushThreshold.Trim());
                 }
             }
             // ReSharper disable once EmptyGeneralCatchClause
@@ -425,9 +458,9 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 if (!string.IsNullOrWhiteSpace(appSettingBamBufferedConnectionString)
                     && !string.IsNullOrWhiteSpace(appSettingBamDirectConnectionString))
                 {
-                    this.Directive.BamConnectionString = this.Directive.BamIsBuffered
-                                                             ? appSettingBamBufferedConnectionString.Trim()
-                                                             : appSettingBamDirectConnectionString.Trim();
+                    this.BamConnectionString = this.Directive.BamIsBuffered
+                                                    ? appSettingBamBufferedConnectionString.Trim()
+                                                    : appSettingBamDirectConnectionString.Trim();
                 }
             }
             // ReSharper disable once EmptyGeneralCatchClause

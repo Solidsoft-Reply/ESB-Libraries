@@ -62,9 +62,24 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         private ServiceMediation serviceMediationDasm;
 
         /// <summary>
-        /// The current XML message.
+        /// Indicates whether the service mediation component has no further messages to disassemble.
+        /// </summary>
+        private bool serviceMediationDasmNoFurtherMessages;
+
+        /// <summary>
+        /// The current disassembled XML message.
         /// </summary>
         private IBaseMessage currentXmlMessage;
+
+        /// <summary>
+        /// The current mediated message.
+        /// </summary>
+        private IBaseMessage currentMediatedMessage;
+
+        /// <summary>
+        /// Property bag of the service mediation component.
+        /// </summary>
+        private IPropertyBag serviceMediationPropertyBag;
 
         /// <summary>
         /// Initializes static members of the <see cref="ServiceMediationXmlDisassembler"/> class.
@@ -556,65 +571,58 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         /// </param>
         public void Disassemble(IPipelineContext pipelineContext, IBaseMessage inMsg)
         {
-            ////this.currentXmlMessage = inMsg;
             this.xmlDasmComp.Disassemble(pipelineContext, inMsg);
         }
 
         /// <summary>
-        /// The get next.
+        /// Gets the next message from the message set resulting from the disassembler execution.
         /// </summary>
         /// <param name="pipelineContext">
-        /// The pipeline context.
+        /// The IPipelineContext containing the current pipeline context.
         /// </param>
         /// <returns>
-        /// The <see cref="IBaseMessage"/>.
+        /// A pointer to the IBaseMessage containing the next message from the disassembled document.
+        /// Returns NULL if there are no more messages left.
         /// </returns>
         public IBaseMessage GetNext(IPipelineContext pipelineContext)
         {
             while (true)
             {
-                if (this.currentXmlMessage == null)
+                // Check to see see if we have just processed a mediated message.
+                if (this.currentMediatedMessage == null)
                 {
+                    // If not, get the next disassembled XML message
                     this.currentXmlMessage = this.xmlDasmComp.GetNext(pipelineContext);
 
+                    // If there are no further disassembled XML messages, return null.
                     if (this.currentXmlMessage == null)
                     {
-                        break;
+                        return null;
                     }
 
+                    // Indicate that we have just got the next flat file message by ensuring that 
+                    // the service mediation component is null.
+                    this.serviceMediationDasmNoFurtherMessages = true;
+                }
+
+                // Check if we have just got the next flat file message.  If so, create and initialise
+                // a new service mediation component.
+                if (this.serviceMediationDasmNoFurtherMessages)
+                {
                     this.InitialiseServiceMediation();
                     this.serviceMediationDasm.Disassemble(pipelineContext, this.currentXmlMessage);
                 }
 
-                var nextMsg = this.serviceMediationDasm.GetNext(pipelineContext);
+                // Get the next mediated message
+                this.currentMediatedMessage = this.serviceMediationDasm.GetNext(pipelineContext);
 
-                if (nextMsg != null)
+                // If a mediated message was found, return it.
+                if (this.currentMediatedMessage != null)
                 {
-                    return nextMsg;
+                    return this.currentMediatedMessage;
                 }
-
-                this.currentXmlMessage = null;
             }
-
-            return null;
         }
-
-        ////////private object DeepCopy (object obj)
-        ////////{
-        ////////    var type = obj.GetType();
-        ////////    var returnValue = Activator.CreateInstance(type);
-        ////////    var fields = type.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-
-        ////////    foreach (var field in fields)
-        ////////    {
-        ////////        var fieldValue = field.GetValue(obj);
-
-        ////////        if (fieldValue == null) continue;
-        ////////        field.SetValue(returnValue, this.DeepCopy(fieldValue));
-        ////////    }
-
-        ////////    return returnValue;
-        ////////}
 
         /// <summary>
         /// Loads configuration property for component.
@@ -629,6 +637,9 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         {
             // Let the Service Mediation disassembler read its properties from the property bag.
             this.serviceMediationDasm.SafeLoadWhenWrapped(pb, errlog);
+
+            // Capture the property values to a local property bag.
+            this.serviceMediationPropertyBag = pb;
 
             // Let the XML disassembler read its properties from the property bag.
             this.xmlDasmComp.Load(pb, errlog);
@@ -728,22 +739,8 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         /// </summary>
         private void InitialiseServiceMediation()
         {
-            this.serviceMediationDasm = new ServiceMediation
-            {
-                BindingAccessPoint = this.BindingAccessPoint,
-                BindingUrlType = this.BindingUrlType,
-                BodyContainerXPath = this.BodyContainerXPath,
-                MessageDirection = this.MessageDirection,
-                MessageRole = this.MessageRole,
-                MessageType = this.MessageType,
-                OperationName = this.OperationName,
-                Policy = this.Policy,
-                PolicyVersion = this.PolicyVersion,
-                ProviderName = this.ProviderName,
-                ResolutionData = this.ResolutionData,
-                ResolutionDataProperties = this.ResolutionDataProperties,
-                ServiceName = this.ServiceName
-            };
+            this.serviceMediationDasm = new ServiceMediation();
+            this.serviceMediationDasm.Load(this.serviceMediationPropertyBag, 0);
         }
     }
 }

@@ -63,9 +63,24 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         private ServiceMediation serviceMediationDasm;
 
         /// <summary>
-        /// The current AS2 message.
+        /// Indicates whether the service mediation component has no further messages to disassemble.
         /// </summary>
-        private IBaseMessage currentAs2Message;
+        private bool serviceMediationDasmNoFurtherMessages;
+
+        /// <summary>
+        /// The current mediated message.
+        /// </summary>
+        private IBaseMessage currentMediatedMessage;
+
+        /// <summary>
+        /// The current disassembled XML message.
+        /// </summary>
+        private IBaseMessage currentXmlMessage;
+
+        /// <summary>
+        /// Property bag of the service mediation component.
+        /// </summary>
+        private IPropertyBag serviceMediationPropertyBag;
 
         /// <summary>
         /// Initializes static members of the <see cref="ServiceMediationAs2Disassembler"/> class.
@@ -463,42 +478,53 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         }
 
         /// <summary>
-        /// The get next.
+        /// Gets the next message from the message set resulting from the disassembler execution.
         /// </summary>
         /// <param name="pipelineContext">
-        /// The pipeline context.
+        /// The IPipelineContext containing the current pipeline context.
         /// </param>
         /// <returns>
-        /// The <see cref="IBaseMessage"/>.
+        /// A pointer to the IBaseMessage containing the next message from the disassembled document.
+        /// Returns NULL if there are no more messages left.
         /// </returns>
         public IBaseMessage GetNext(IPipelineContext pipelineContext)
         {
             while (true)
             {
-                if (this.currentAs2Message == null)
+                // Check to see see if we have just processed a mediated message.
+                if (this.currentMediatedMessage == null)
                 {
-                    this.currentAs2Message = this.as2DasmComp.GetNext(pipelineContext);
+                    // If not, get the next disassembled XML message
+                    this.currentXmlMessage = this.as2DasmComp.GetNext(pipelineContext);
 
-                    if (this.currentAs2Message == null)
+                    // If there are no further disassembled XML messages, return null.
+                    if (this.currentXmlMessage == null)
                     {
-                        break;
+                        return null;
                     }
 
-                    this.InitialiseServiceMediation();
-                    this.serviceMediationDasm.Disassemble(pipelineContext, this.currentAs2Message);
+                    // Indicate that we have just got the next flat file message by ensuring that 
+                    // the service mediation component is null.
+                    this.serviceMediationDasmNoFurtherMessages = true;
                 }
 
-                var nextMsg = this.serviceMediationDasm.GetNext(pipelineContext);
-
-                if (nextMsg != null)
+                // Check if we have just got the next flat file message.  If so, create and initialise
+                // a new service mediation component.
+                if (this.serviceMediationDasmNoFurtherMessages)
                 {
-                    return nextMsg;
+                    this.InitialiseServiceMediation();
+                    this.serviceMediationDasm.Disassemble(pipelineContext, this.currentXmlMessage);
                 }
 
-                this.currentAs2Message = null;
-            }
+                // Get the next mediated message
+                this.currentMediatedMessage = this.serviceMediationDasm.GetNext(pipelineContext);
 
-            return null;
+                // If a mediated message was found, return it.
+                if (this.currentMediatedMessage != null)
+                {
+                    return this.currentMediatedMessage;
+                }
+            } 
         }
 
         /// <summary>
@@ -514,6 +540,9 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         {
             // Let the Service Mediation disassembler read its properties from the property bag.
             this.serviceMediationDasm.SafeLoadWhenWrapped(pb, errlog);
+
+            // Capture the property values to a local property bag.
+            this.serviceMediationPropertyBag = pb;
 
             // Let the AS2 disassembler read its properties from the property bag.
             this.as2DasmComp.Load(pb, errlog);
@@ -613,22 +642,8 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         /// </summary>
         private void InitialiseServiceMediation()
         {
-            this.serviceMediationDasm = new ServiceMediation
-            {
-                BindingAccessPoint = this.BindingAccessPoint,
-                BindingUrlType = this.BindingUrlType,
-                BodyContainerXPath = this.BodyContainerXPath,
-                MessageDirection = this.MessageDirection,
-                MessageRole = this.MessageRole,
-                MessageType = this.MessageType,
-                OperationName = this.OperationName,
-                Policy = this.Policy,
-                PolicyVersion = this.PolicyVersion,
-                ProviderName = this.ProviderName,
-                ResolutionData = this.ResolutionData,
-                ResolutionDataProperties = this.ResolutionDataProperties,
-                ServiceName = this.ServiceName
-            };
+            this.serviceMediationDasm = new ServiceMediation();
+            this.serviceMediationDasm.Load(this.serviceMediationPropertyBag, 0);
         }
     }
 }

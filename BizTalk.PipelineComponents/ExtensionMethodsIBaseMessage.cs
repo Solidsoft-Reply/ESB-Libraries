@@ -29,6 +29,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
 
     using Microsoft.BizTalk.Component.Interop;
     using Microsoft.BizTalk.Message.Interop;
+    using Microsoft.BizTalk.Streaming;
     using Microsoft.XLANGs.BaseTypes;
 
     /// <summary>
@@ -138,12 +139,14 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
                 newPart.Charset = part.Charset;
                 newPart.ContentType = part.ContentType;
                 part.Data.StreamAtStart();
-                newPart.Data = new MemoryStream();
+                newPart.Data = new VirtualStream(VirtualStream.MemoryFlag.AutoOverFlowToDisk);
+                pc.ResourceTracker.AddResource(newPart.Data);
                 part.Data.CopyTo(newPart.Data);
                 part.Data.StreamAtStart();
                 newPart.Data.StreamAtStart();
                 newPart.PartProperties = messageFactory.CreatePropertyBag();
                 var partPoperties = part.PartProperties;
+
                 for (var propertyNo = 0; propertyNo < partPoperties.CountProperties; propertyNo++)
                 {
                     string propertyName, propertyNamespace;

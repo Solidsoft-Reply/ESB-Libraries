@@ -24,7 +24,6 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
     using System.IO;
     using System.Runtime.Serialization;
     using System.Xml;
-    //// using System.Xml.Linq;
 
     /// <summary>
     /// A library of helper extension methods.

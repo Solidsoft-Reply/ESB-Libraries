@@ -293,10 +293,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
 
                         foreach (var extension in bamDirective.BamStepExtensions)
                         {
-                            bamDirective.SelectBamStepExtension(
-                                new TrackpointDirectiveEventStream(bamDirective, data), 
-                                extension,
-                                afterMap);
+                            var eventStream = new TrackpointDirectiveEventStream(bamDirective, data);
+                            eventStream.SelectBamStepExtension(extension, afterMap);
+                            bamDirective.EventStream = eventStream;
+                            bamDirective.OnStep(data, afterMap);
                         }
                     }
 
@@ -314,10 +314,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
 
                         foreach (var extension in firstBamDirective.BamStepExtensions)
                         {
-                            firstBamDirective.SelectBamStepExtension(
-                                new TrackpointDirectiveEventStream(firstBamDirective, data), 
-                                extension,
-                                afterMap);
+                            var eventStream = new TrackpointDirectiveEventStream(firstBamDirective, data);
+                            eventStream.SelectBamStepExtension(extension, afterMap);
+                            firstBamDirective.EventStream = eventStream;
+                            firstBamDirective.OnStep(data, afterMap);
                         }
                     }
 

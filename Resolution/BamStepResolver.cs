@@ -199,8 +199,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                                     ConfigurationManager.AppSettings.GetValues(Resources.AppSettingEsbCacheExpiration) == null
                                     ? 24
                                     : Convert.ToInt32(
-                                        ConfigurationManager.AppSettings[
-                                            Resources.AppSettingEsbCacheExpiration]),
+                                        ConfigurationManager.AppSettings[Resources.AppSettingEsbCacheExpiration]),
                                     0,
                                     0)
                         });

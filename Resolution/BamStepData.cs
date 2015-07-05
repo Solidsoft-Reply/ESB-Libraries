@@ -41,6 +41,11 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         private bool disposed;
 
         /// <summary>
+        /// Dictionary of properties
+        /// </summary>
+        private IDictionary properties = new Hashtable();
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="BamStepData"/> class. 
         /// </summary>
         public BamStepData()
@@ -80,9 +85,15 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         }
 
         /// <summary>
-        /// Gets or sets a dictionary of properties.
+        /// Gets a dictionary of properties.
         /// </summary>
-        public IDictionary Properties { get; set; }
+        public IDictionary Properties
+        {
+            get
+            {
+                return this.properties;
+            }
+        }
 
         /// <summary>
         /// Gets or sets a list of values for the positional arguments of a format string.

@@ -439,14 +439,14 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
 
         /// <summary>
         /// Gets the next message from the message set resulting from the disassembler execution.
-        ///     A message is created per directive returned by the resolver.
+        /// A message is created per directive returned by the resolver.
         /// </summary>
         /// <param name="pipelineContext">
         /// The IPipelineContext containing the current pipeline context.
         /// </param>
         /// <returns>
         /// A pointer to the IBaseMessage containing the next message from the disassembled document.
-        ///     Returns NULL if there are no more messages left.
+        /// Returns NULL if there are no more messages left.
         /// </returns>
         public IBaseMessage GetNext(IPipelineContext pipelineContext)
         {
@@ -1351,8 +1351,6 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
             {
                 // TODO: Log a warning
                 return inMsg;
-                //////throw new EsbPipelineComponentException(
-                //////    string.Format(Resources.ExceptionPolicyUndetermined, Resources.AppSettingsESBDefaultPolicy));
             }
 
             // [var] The part to be processed, de-enveloped if required.  If no part exists, an empty part assigned.
@@ -1420,20 +1418,27 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
                     break;
             }
 
+            var policyVersionString = this.policyVersion == null ? null : this.policyVersion.ToString(2);
+
+            // Construct the facts for resolution
+            var facts = new Facts
+                            {
+                                ProviderName = this.ProviderName,
+                                ServiceName = this.ServiceName,
+                                BindingAccessPoint = this.BindingAccessPoint,
+                                BindingUrlType = this.BindingUrlType,
+                                MessageType = this.MessageType,
+                                OperationName = this.OperationName,
+                                MessageRole = this.MessageRole,
+                                MessageDirection = this.MessageDirection,
+                                Parameters = parameters.Count == 0 ? null : parameters
+                            };
+
             // Call the resolver
             this.directives = Resolver.Resolve(
-                this.ProviderName,
-                this.ServiceName,
-                this.BindingAccessPoint,
-                this.BindingUrlType,
-                this.MessageType,
-                this.OperationName,
-                this.MessageRole,
-                this.MessageDirection,
-                msgPartContentAsXml(),
+                facts,
                 this.policy,
-                this.policyVersion,
-                parameters.Count == 0 ? null : parameters);
+                policyVersionString);
 
             // [var] The out message.
             IBaseMessage outMsg = null;
@@ -1460,26 +1465,25 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         /// </returns>
         private IBaseMessage ProcessMessagePerDirective(IPipelineContext pc)
         {
-            var inMsg = this.pipelineInMsg.Clone(pc);
-
             if (this.directives == null && !string.IsNullOrWhiteSpace(this.policy))
             {
-                throw new EsbPipelineComponentException(
-                    string.Format(Resources.ExceptionPolicyFailedGettingDirectives, this.policy));
+                // TODO: Log a warning
             }
 
             // If there are no directives, then return the current message
             if (this.current == 0 && (this.directives == null || this.directives.Count == 0))
             {
                 this.current++;
-                return inMsg;
+                return this.pipelineInMsg;
             }
 
+            // If there are no more directives to process, return null.
             if (this.directives == null || this.current >= this.directives.Count)
             {
                 return null;
             }
 
+            var inMsg = this.pipelineInMsg.Clone(pc);
             var outMsg = pc.GetMessageFactory().CreateMessage();
             var bodyPartAdded = false;
 

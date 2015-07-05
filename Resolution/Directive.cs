@@ -121,7 +121,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         #region Category: Endpoint
 
         /// <summary>
-        /// Gets or sets the message endpoint.
+        /// Gets the message endpoint.
         /// </summary>
         public virtual string EndPoint
         {
@@ -129,18 +129,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             {
                 return this.directive == null ? string.Empty : this.directive.EndPoint;
             }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.EndPoint = value;
-                }
-            }
         }
 
         /// <summary>
-        /// Gets or sets the transport type.
+        /// Gets the transport type.
         /// </summary>
         public virtual string TransportType
         {
@@ -148,18 +140,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             {
                 return this.directive == null ? string.Empty : this.directive.TransportType;
             }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.TransportType = value;
-                }
-            }
         }
 
         /// <summary>
-        /// Gets or sets the end point configuration token.
+        /// Gets the end point configuration token.
         /// </summary>
         public virtual string EndPointConfiguration
         {
@@ -169,18 +153,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                     (this.directive == null ? string.Empty : this.directive.EndPointConfiguration ?? string.Empty)
                         .DecodeFromBase64();
             }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.EndPointConfiguration = (value ?? string.Empty).EncodeToBase64();
-                }
-            }
         }
 
         /// <summary>
-        /// Gets or sets a URI indicating the intent of the SOAP operation.
+        /// Gets a URI indicating the intent of the SOAP operation.
         /// </summary>
         public virtual string SoapAction
         {
@@ -188,20 +164,12 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             {
                 return this.directive == null ? string.Empty : this.directive.SoapAction;
             }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.SoapAction = value;
-                }
-            }
         }
 
         #endregion
 
         /// <summary>
-        /// Gets or sets the full name of a map.
+        /// Gets the full name of a map.
         /// </summary>
         public virtual string MapFullName
         {
@@ -209,18 +177,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             {
                 return this.directive == null ? string.Empty : this.directive.MapToApply;
             }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.MapToApply = value;
-                }
-            }
         }
 
         /// <summary>
-        /// Gets or sets the type of the map to apply. 
+        /// Gets the type of the map to apply. 
         /// </summary>
         public virtual Type MapType
         {
@@ -234,11 +194,6 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 this.mapType = this.directive == null ? null : Type.GetType(this.directive.MapToApply);
                 return this.mapType;
             }
-
-            set
-            {
-                this.mapType = value;
-            }
         }
 
         /// <summary>
@@ -248,7 +203,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         public virtual IEnumerable<string> MapTargetSchemaStrongNames { get; private set; }
 
         /// <summary>
-        /// Gets or sets the name of the BAM activity to which this directive applies.
+        /// Gets the name of the BAM activity to which this directive applies.
         /// </summary>
         public virtual string BamActivity
         {
@@ -256,18 +211,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             {
                 return this.directive == null ? string.Empty : this.directive.BamActivity;
             }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.BamActivity = value;
-                }
-            }
         }
 
         /// <summary>
-        /// Gets or sets the name of the step within the BAM activity to which this directive applies.
+        /// Gets the name of the step within the BAM activity to which this directive applies.
         /// </summary>
         public virtual string BamStepName
         {
@@ -275,18 +222,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             {
                 return this.directive == null ? string.Empty : this.directive.BamStepName;
             }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.BamStepName = value;
-                }
-            }
         }
 
         /// <summary>
-        /// Gets or sets a list of steps that extend the step specified in the StepName property.
+        /// Gets a list of steps that extend the step specified in the StepName property.
         /// </summary>
         public virtual IList<string> BamStepExtensions
         {
@@ -295,15 +234,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             {
                 return this.directive == null ? new List<string>() : this.directive.BamStepExtensions.ToList();
             }
-
-            set
-            {
-                this.directive.BamStepExtensions = value.ToArray();
-            }
         }
 
         /// <summary>
-        /// Gets or sets a list of steps that extend the post-transformation step specified in the StepName property.
+        /// Gets a list of steps that extend the post-transformation step specified in the StepName property.
         /// </summary>
         public virtual IList<string> BamAfterMapStepExtensions
         {
@@ -312,27 +246,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             {
                 return this.directive == null ? new List<string>() : this.directive.BamAfterMapStepExtensions.ToList();
             }
-
-            set
-            {
-                this.directive.BamAfterMapStepExtensions = value.ToArray();
-            }
         }
 
         /// <summary>
-        /// Gets or sets the name of the current step within the BAM activity 
-        /// which this directive has extended.
-        /// </summary>
-        public virtual string BamRootStepName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the current after-map step within the BAM activity 
-        /// which this directive has extended.
-        /// </summary>
-        public virtual string BamRootAfterMapStepName { get; set; }
-        
-        /// <summary>
-        /// Gets or sets the name of the step within the BAM activity to which this directive applies.
+        /// Gets the name of the step within the BAM activity to which this directive applies.
         /// </summary>
         public virtual string BamAfterMapStepName
         {
@@ -340,18 +257,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             {
                 return this.directive == null ? string.Empty : this.directive.BamAfterMapStepName;
             }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.BamAfterMapStepName = value;
-                }
-            }
         }
 
         /// <summary>
-        /// Gets or sets a value that determines under what conditions the buffered 
+        /// Gets a value that determines under what conditions the buffered 
         /// data will be sent to the tracking database.
         /// </summary>
         /// <remarks>
@@ -370,21 +279,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             {
                 return this.directive == null ? 1 : this.directive.BamFlushThreshold;
             }
-
-            set
-            {
-                if (this.directive == null)
-                {
-                    return;
-                }
-
-                this.FlushAndReleaseEventBuffers();
-                this.directive.BamFlushThreshold = value;
-            }
         }
 
         /// <summary>
-        /// Gets or sets the connection string for BAM.
+        /// Gets the connection string for BAM.
         /// </summary>
         public virtual string BamConnectionString
         {
@@ -392,21 +290,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             {
                 return this.directive == null ? string.Empty : this.directive.BamConnectionString;
             }
-
-            set
-            {
-                if (this.directive == null)
-                {
-                    return;
-                }
-
-                this.FlushAndReleaseEventBuffers();
-                this.directive.BamConnectionString = value;
-            }
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether BAM will use a buffered event stream.
+        /// Gets a value indicating whether BAM will use a buffered event stream.
         /// </summary>
         public virtual bool BamIsBuffered
         {
@@ -414,18 +301,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             {
                 return this.directive == null || this.directive.BamIsBuffered;
             }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.BamIsBuffered = value;
-                }
-            }
         }
 
         /// <summary>
-        /// Gets or sets the BAM Trackpoint policy name.
+        /// Gets the BAM Trackpoint policy name.
         /// </summary>
         [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
         public virtual string BamTrackpointPolicyName
@@ -434,21 +313,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             {
                 return this.directive == null ? string.Empty : this.directive.BamTrackpointPolicyName;
             }
-
-            set
-            {
-                if (this.directive == null)
-                {
-                    return;
-                }
-
-                this.FlushAndReleaseEventBuffers();
-                this.directive.BamTrackpointPolicyName = value;
-            }
         }
 
         /// <summary>
-        /// Gets or sets the BAM Trackpoint policy bamTrackpointVersion.
+        /// Gets the BAM Trackpoint policy bamTrackpointVersion.
         /// </summary>
         [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
         public virtual string BamTrackpointPolicyVersion
@@ -457,21 +325,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             {
                 return this.directive == null ? string.Empty : this.directive.BamTrackpointPolicyVersion;
             }
-
-            set
-            {
-                if (this.directive == null)
-                {
-                    return;
-                }
-
-                this.FlushAndReleaseEventBuffers();
-                this.directive.BamTrackpointPolicyVersion = value;
-            }
         }
 
         /// <summary>
-        /// Gets or sets the validation policy name.
+        /// Gets the validation policy name.
         /// </summary>
         public virtual string ValidationPolicyName
         {
@@ -479,20 +336,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             {
                 return this.directive == null ? string.Empty : this.directive.ValidationPolicyName;
             }
-
-            set
-            {
-                if (this.directive == null)
-                {
-                    return;
-                }
-
-                this.directive.ValidationPolicyName = value;
-            }
         }
 
         /// <summary>
-        /// Gets or sets the validation policy version.
+        /// Gets the validation policy version.
         /// </summary>
         public virtual string ValidationPolicyVersion
         {
@@ -500,20 +347,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             {
                 return this.directive == null ? string.Empty : this.directive.ValidationPolicyVersion;
             }
-
-            set
-            {
-                if (this.directive == null)
-                {
-                    return;
-                }
-
-                this.directive.ValidationPolicyVersion = value;
-            }
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether to throw an error if a validation rule policy indicates invalidity.
+        /// Gets a value indicating whether to throw an error if a validation rule policy indicates invalidity.
         /// </summary>
         public virtual bool ErrorOnInvalid
         {
@@ -521,18 +358,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             {
                 return this.directive == null || this.directive.ErrorOnInvalid;
             }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.ErrorOnInvalid = value;
-                }
-            }
         }
 
         /// <summary>
-        /// Gets or sets the a level indicator for the retry
+        /// Gets the a level indicator for the retry
         /// </summary>
         /// <remarks>
         /// Retries must sometimes be carried out at different levels.   For example, we may want to
@@ -545,18 +374,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             {
                 return this.directive == null ? 0 : this.directive.RetryLevel;
             }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.RetryLevel = value;
-                }
-            }
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether the Retry Level has been specified
+        /// Gets a value indicating whether the Retry Level has been specified
         /// </summary>
         public virtual bool RetryLevelSpecified
         {
@@ -564,18 +385,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             {
                 return this.directive != null && this.directive.RetryLevelSpecified;
             }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.RetryLevelSpecified = value;
-                }
-            }
         }
 
         /// <summary>
-        /// Gets or sets the number of retries for the current level.
+        /// Gets the number of retries for the current level.
         /// </summary>
         public virtual int RetryCount
         {
@@ -583,18 +396,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             {
                 return this.directive == null ? 0 : this.directive.RetryCount;
             }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.RetryCount = value;
-                }
-            }
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether the Retry Count has been specified
+        /// Gets a value indicating whether the Retry Count has been specified
         /// </summary>
         public virtual bool RetryCountSpecified
         {
@@ -602,18 +407,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             {
                 return this.directive != null && this.directive.RetryCountSpecified;
             }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.RetryCountSpecified = value;
-                }
-            }
         }
 
         /// <summary>
-        /// Gets or sets the interval between retries.
+        /// Gets the interval between retries.
         /// </summary>
         /// <remarks>
         /// Resolver clients are free
@@ -626,18 +423,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             {
                 return this.directive == null ? 0 : this.directive.RetryInterval;
             }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.RetryInterval = value;
-                }
-            }
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether the Retry Interval has been set
+        /// Gets a value indicating whether the Retry Interval has been set
         /// </summary>
         public virtual bool RetryIntervalSpecified
         {
@@ -645,18 +434,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             {
                 return this.directive != null && this.directive.RetryIntervalSpecified;
             }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.RetryIntervalSpecified = value;
-                }
-            }
         }
 
         /// <summary>
-        /// Gets or sets the time at which service window opens.
+        /// Gets the time at which service window opens.
         /// </summary>
         public virtual DateTime ServiceWindowStartTime
         {
@@ -664,18 +445,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             {
                 return this.directive == null ? DateTime.MinValue : this.directive.ServiceWindowStartTime;
             }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.ServiceWindowStartTime = value;
-                }
-            }
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether the Service Window start time has been specified
+        /// Gets a value indicating whether the Service Window start time has been specified
         /// </summary>
         public virtual bool ServiceWindowStartTimeSpecified
         {
@@ -683,18 +456,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             {
                 return this.directive != null && this.directive.ServiceWindowStartTimeSpecified;
             }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.ServiceWindowStartTimeSpecified = value;
-                }
-            }
         }
 
         /// <summary>
-        /// Gets or sets the time at which service window closes. 
+        /// Gets the time at which service window closes. 
         /// </summary>
         public virtual DateTime ServiceWindowStopTime
         {
@@ -702,32 +467,16 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             {
                 return this.directive == null ? DateTime.MinValue : this.directive.ServiceWindowStopTime;
             }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.ServiceWindowStopTime = value;
-                }
-            }
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether the Service Window stop time has been specified.
+        /// Gets a value indicating whether the Service Window stop time has been specified.
         /// </summary>
         public virtual bool ServiceWindowStopTimeSpecified
         {
             get
             {
                 return this.directive != null && this.directive.ServiceWindowStopTimeSpecified;
-            }
-
-            set
-            {
-                if (this.directive != null)
-                {
-                    this.directive.ServiceWindowStopTimeSpecified = value;
-                }
             }
         }
 
@@ -758,7 +507,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         }
 
         /// <summary>
-        /// Gets or sets the BizTalk Server property values.
+        /// Gets the BizTalk Server property values.
         /// </summary>
         public virtual BtsProperties BtsProperties
         {
@@ -799,60 +548,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
 
                 return this.btsProperties;
             }
-
-            set
-            {
-                var btsPropertiesCurrent = new DirectivesDictionaryItemValueDirectiveItem1[value.Count];
-                var index = 0;
-
-                foreach (var btsProperty in value)
-                {
-                    btsPropertiesCurrent[index++] = new DirectivesDictionaryItemValueDirectiveItem1
-                                                     {
-                                                         Key =
-                                                             new DirectivesDictionaryItemValueDirectiveItemKey1
-                                                                 {
-                                                                     @string
-                                                                         =
-                                                                         btsProperty
-                                                                         .Key
-                                                                 },
-                                                         Value =
-                                                             new DirectivesDictionaryItemValueDirectiveItemValue1
-                                                                 {
-                                                                     BtsProperty
-                                                                         =
-                                                                         new BtsPropertyType
-                                                                             {
-                                                                                 Promoted
-                                                                                     =
-                                                                                     btsProperty
-                                                                                     .Value
-                                                                                     .Promoted,
-                                                                                 Name
-                                                                                     =
-                                                                                     btsProperty
-                                                                                     .Value
-                                                                                     .Name,
-                                                                                 Namespace
-                                                                                     =
-                                                                                     btsProperty
-                                                                                     .Value
-                                                                                     .Namespace,
-                                                                                 Value
-                                                                                     =
-                                                                                     btsProperty
-                                                                                     .Value
-                                                                                     .Value
-                                                                             }
-                                                                 }
-                                                     };
-                }
-            }
         }
 
         /// <summary>
-        /// Gets or sets the BizTalk Server property values.
+        /// Gets the BizTalk Server property values.
         /// </summary>
         public virtual Dictionaries.Properties Properties
         {
@@ -873,55 +572,15 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 foreach (var property in this.directive.Properties)
                 {
                     var newProperty = new Property
-                                                  { 
-                                                      Name = property.Value.Property.Name,
-                                                      Value = property.Value.Property.Value
-                                                  };
+                                            { 
+                                                Name = property.Value.Property.Name,
+                                                Value = property.Value.Property.Value
+                                            };
 
                     this.properties.Add(property.Key.@string, newProperty);
                 }
 
                 return this.properties;
-            }
-
-            set
-            {
-                var newProperties = new DirectivesDictionaryItemValueDirectiveItem[value.Count];
-                var index = 0;
-
-                foreach (var property in value)
-                {
-                    newProperties[index++] = new DirectivesDictionaryItemValueDirectiveItem
-                    {
-                        Key =
-                            new DirectivesDictionaryItemValueDirectiveItemKey
-                            {
-                                @string
-                                    =
-                                    property
-                                    .Key
-                            },
-                        Value =
-                            new DirectivesDictionaryItemValueDirectiveItemValue
-                            {
-                                Property
-                                    =
-                                    new PropertyType
-                                    {
-                                        Name
-                                            =
-                                            property
-                                            .Value
-                                            .Name,
-                                        Value
-                                            =
-                                            property
-                                            .Value
-                                            .Value
-                                    }
-                            }
-                    };
-                }
             }
         }
 
@@ -1115,170 +774,6 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         }
 
         /// <summary>
-        /// Selects a BAM step extension.
-        /// </summary>
-        /// <param name="directiveEventStream">A track point directive event stream.</param>
-        /// <param name="stepExtensionName">The step extension</param>
-        /// <remarks>
-        /// This is a form of continuation in which the continuation is automatically managed by 
-        /// selecting a BAM step extension.
-        /// </remarks>
-        public virtual void SelectBamStepExtension(
-            TrackpointDirectiveEventStream directiveEventStream,
-            string stepExtensionName)
-        {
-            this.SelectBamStepExtension(directiveEventStream, stepExtensionName, false);
-        }
-
-        /// <summary>
-        /// Selects a BAM step extension.
-        /// </summary>
-        /// <param name="directiveEventStream">A track point directive event stream.</param>
-        /// <param name="stepExtensionName">The step extension</param>
-        /// <param name="afterMap">Indicates if the step is after the application of a map.</param>
-        /// <remarks>
-        /// This is a form of continuation in which the continuation is automatically managed by 
-        /// selecting a BAM step extension.
-        /// </remarks>
-        public virtual void SelectBamStepExtension(TrackpointDirectiveEventStream directiveEventStream, string stepExtensionName, bool afterMap)
-        {
-            if (directiveEventStream == null)
-            {
-                throw new EsbResolutionException(
-                    Resources.ExceptionMissingEventStreamOnSelectBamStepExtension);
-            }
- 
-            if (afterMap)
-            {
-                if (string.IsNullOrWhiteSpace(stepExtensionName))
-                {
-                    throw new EsbResolutionException(
-                        Resources.ExceptionInvalidBamAfterMapStepExtensionNameOnSelectBamStepExtension);
-                }
-
-                if (!this.BamAfterMapStepExtensions.Contains(stepExtensionName))
-                {
-                    throw new EsbResolutionException(
-                        Resources.ExceptionUnregisteredBamAfterMapStepExtensionNameOnSelectBamStepExtension);
-                }
-
-                if (string.IsNullOrWhiteSpace(this.BamAfterMapStepName))
-                {
-                    throw new EsbResolutionException(
-                        Resources.ExceptionInvalidBamStepNameOnSelectBamStepExtension);
-                }
-            }
-            else
-            {
-                if (string.IsNullOrWhiteSpace(stepExtensionName))
-                {
-                    throw new EsbResolutionException(
-                        Resources.ExceptionInvalidBamStepExtensionNameOnSelectBamStepExtension);
-                }
-
-                if (!this.BamStepExtensions.Contains(stepExtensionName))
-                {
-                    throw new EsbResolutionException(
-                        Resources.ExceptionUnregisteredBamStepExtensionNameOnSelectBamStepExtension);
-                }
-
-                if (string.IsNullOrWhiteSpace(this.BamStepName))
-                {
-                    throw new EsbResolutionException(
-                        Resources.ExceptionInvalidBamStepNameOnSelectBamStepExtension);
-                }
-            }
-
-            // Manufacture the continuation token for extending the current step. The prefix is 
-            // tokenised by replacing each individual whitespace character with an underscore, rather 
-            // than grouping whitespace characters.  This handles situations where a developer decides 
-            // to treat whitespace as significant. The token follows a pattern that includes the 
-            // exteded step name and a counter.  The counter is included to support situations where
-            // the developer uses the same directive moe than once in a continuation chain.
-            const string ExtendsPrefixToken = "extends_";
-            var tokenisedStepName = Regex.Replace(
-                afterMap ? this.BamAfterMapStepName : this.BamStepName,
-                @"\s", 
-                "_");
-            var counter = 0L;
-            var continuationId = string.Format(
-                "{0}_{1}_{2}_{3}",
-                ExtendsPrefixToken,
-                tokenisedStepName,
-                ++counter,
-                directiveEventStream.CurrentBamActivityId);
-
-            // If the current token 
-            if (directiveEventStream.CurrentBamActivityId.StartsWith(ExtendsPrefixToken))
-            {
-                var tokenWithoutPrefix =
-                    directiveEventStream.CurrentBamActivityId.Substring(
-                        ExtendsPrefixToken.Length + tokenisedStepName.Length);
-                var match = Regex.Match(tokenWithoutPrefix, @"^_(\d+)_");
-
-                if (match.Success)
-                {
-                    var activityId = tokenWithoutPrefix.Substring(match.Length);
-
-                    try
-                    {
-                        counter = Convert.ToInt64(match.Groups[1].Value);
-                    }
-                    catch
-                    {
-                        activityId = tokenWithoutPrefix;
-                    }
-
-                    continuationId = string.Format(
-                        "{0}_{1}_{2}_{3}",
-                        ExtendsPrefixToken,
-                        tokenisedStepName,
-                        counter,
-                        activityId);
-                }
-            }
-
-            // Enable continuation on the current BAM step using the manufactured prefix and current activity ID.
-            // Then end the activity.
-            var activityInstanceKey = string.Format(
-                "{0}#{1}#{2}",
-                this.BamActivity,
-                afterMap ? this.BamAfterMapStepName : this.BamStepName,
-                directiveEventStream.CurrentBamActivityId);
-            var currentId = directiveEventStream.ActivityInstances[activityInstanceKey];
-            directiveEventStream.EnableContinuation(this.BamActivity, currentId, continuationId);
-            directiveEventStream.EndActivity(this.BamActivity, currentId);
-
-            // Use the step extension as the new step name
-            if (afterMap)
-            {
-                // Record the root step name for reset.
-                if (string.IsNullOrWhiteSpace(this.BamRootAfterMapStepName))
-                {
-                    this.BamRootAfterMapStepName = this.BamAfterMapStepName;
-                }
-
-                this.BamAfterMapStepName = stepExtensionName;
-            }
-            else
-            {
-                // Record the root step name for reset.
-                if (string.IsNullOrWhiteSpace(this.BamRootStepName))
-                {
-                    this.BamRootStepName = this.BamStepName;
-                }
-
-                this.BamStepName = stepExtensionName;
-            }
-
-            // Reset the current activity ID
-            directiveEventStream.CurrentBamActivityId = continuationId;
-
-            // Continue the  activity
-            directiveEventStream.ContinueActivity(false, null);
-        }
-
-        /// <summary>
         /// Returns a BTS property
         /// </summary>
         /// <param name="name">Name of BTS property (e.g., BTS.MessageType)</param>
@@ -1443,7 +938,19 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             // Perform any required pre-transformation interception.
             if (doInterception && !string.IsNullOrEmpty(this.directive.BamStepName))
             {
-                var stepDataBefore = new BamStepData { XmlDocument = messageIn, Properties = messageProperties };
+                var stepDataBefore = new BamStepData { XmlDocument = messageIn };
+                foreach (var messagePropertyKey in messageProperties.Keys)
+                {
+                    if (stepDataBefore.Properties.Contains(messagePropertyKey))
+                    {
+                        stepDataBefore.Properties[messagePropertyKey] = messageProperties[messagePropertyKey];
+                    }
+                    else
+                    {
+                        stepDataBefore.Properties.Add(messagePropertyKey, messageProperties[messagePropertyKey]);
+                    }
+                }
+
                 this.OnStep(stepDataBefore);
             }
 
@@ -1475,9 +982,21 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                                         XmlDocument =
                                             transformedMessage.HasChildNodes
                                                 ? transformedMessage
-                                                : messageIn,
-                                        Properties = messageProperties
+                                                : messageIn
                                     };
+
+            foreach (var messagePropertyKey in messageProperties.Keys)
+            {
+                if (stepDataAfter.Properties.Contains(messagePropertyKey))
+                {
+                    stepDataAfter.Properties[messagePropertyKey] = messageProperties[messagePropertyKey];
+                }
+                else
+                {
+                    stepDataAfter.Properties.Add(messagePropertyKey, messageProperties[messagePropertyKey]);
+                }
+            }
+
             this.OnStep(stepDataAfter, true);
 
             // Return the transformed message
@@ -1498,19 +1017,14 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 return;
             }
 
-            EventStream currentEventStream;
-
-            lock (this.eventStreamLock)
+            // OnStep is only valid if the directive specifies trackpoint data via a BAM
+            // interception policy
+            if (string.IsNullOrWhiteSpace(this.directive.BamTrackpointPolicyName))
             {
-                if (this.eventStream == null)
-                {
-                    this.eventStream = new DirectiveEventStream(this);
-                }
-
-                currentEventStream = this.eventStream;
+                throw new EsbResolutionException(Resources.ExceptionBamInvaidCallToOnStep);
             }
 
-            // Get a BAM interceptor for the specified activity
+            // The directive must specify a BAM activity
             if (string.IsNullOrEmpty(this.directive.BamActivity))
             {
                 throw new EsbResolutionException(
@@ -1519,10 +1033,27 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
 
             var bamStepName = afterMap ? this.directive.BamAfterMapStepName : this.directive.BamStepName;
 
+            // The directive must specify a BAM step
             if (string.IsNullOrEmpty(bamStepName))
             {
                 throw new EsbResolutionException(
                     string.Format(Resources.ExceptionNoActivityStep, this.directive.KeyName));
+            }
+
+            lock (this.eventStreamLock)
+            {
+                if (this.eventStream == null)
+                {
+                    this.eventStream = new TrackpointDirectiveEventStream(this);
+                }
+            }
+
+            var trackpointDirectiveEventStream = this.eventStream as TrackpointDirectiveEventStream;
+
+            if (trackpointDirectiveEventStream != null)
+            {
+                // Notify the trackpoint event stream that an OnStep is about to be performed.
+                trackpointDirectiveEventStream.BeforeOnStep();
             }
 
             var bamStepResolver = new BamStepResolver();
@@ -1542,7 +1073,13 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             if (bamInterceptor != null)
             {
                 var xpathDataExtractorWithMacros = new TrackpointDirectiveEventStream.XPathDataExtractorWithMacros(messageProperties, values);
-                bamInterceptor.OnStep(xpathDataExtractorWithMacros, bamStepName, xmlMsg, currentEventStream);
+                bamInterceptor.OnStep(xpathDataExtractorWithMacros, bamStepName, xmlMsg, this.eventStream);
+
+                if (trackpointDirectiveEventStream != null)
+                {
+                    // Notify the trackpoint event stream that an OnStep has been performed.
+                    trackpointDirectiveEventStream.AfterOnStep();
+                }
             }
             else
             {

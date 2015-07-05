@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BamStepData.cs" />
+    <Compile Include="Facts.cs" />
     <Compile Include="RuleSetNotFoundException.cs" />
     <Compile Include="RuleStoreConnectionParametersException.cs" />
     <Compile Include="ValidationException.cs" />
@@ -108,7 +109,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ExcludeFromStyleCop Include="$(IntermediateOutputPath)\**\*.cs" >
+    <ExcludeFromStyleCop Include="$(IntermediateOutputPath)\**\*.cs">
       <Visible>False</Visible>
     </ExcludeFromStyleCop>
   </ItemGroup>

@@ -62,11 +62,6 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
             {
                 return base.Properties;
             }
-
-            private set
-            {
-                base.Properties = value;
-            }
         }
 
         /// <summary>
@@ -97,12 +92,6 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
                 {
                     try
                     {
-                        ////var reader = (XmlReader)this.bizTalkMessage[0].RetrieveAs(typeof(XmlReader));
-                        ////var reader = (XmlReader)part.RetrieveAs(typeof(XmlReader));
-                        ////this.XmlDocument = new XmlDocument();
-                        ////this.XmlDocument.Load(reader);
-                        ////reader.Close();
-
                         this.XmlDocument = (XmlDocument)part.RetrieveAs(typeof(XmlDocument));
                     }
                     catch
@@ -117,7 +106,6 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
                 // Get content properties dictionary. Content properties are linked to message content via XSD annotations
                 foreach (DictionaryEntry contentProperty in unwrappedBizTalkMessage.GetContentProperties() ?? new Hashtable())
                 {
-                    ////var fn = contentProperty.Value.GetType().FullName;
                     var queryNameContent = (XmlQName)contentProperty.Key;
                     properties.Add(string.Format("{0}#{1}", queryNameContent.Namespace, queryNameContent.Name), contentProperty.Value);
                 }
@@ -129,7 +117,17 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
                     properties.Add(string.Format("{0}#{1}", queryNameContext.Namespace, queryNameContext.Name), contextProperty.Value);
                 }
 
-                this.Properties = properties;
+                foreach (var messagePropertyKey in properties.Keys)
+                {
+                    if (this.Properties.Contains(messagePropertyKey))
+                    {
+                        this.Properties[messagePropertyKey] = properties[messagePropertyKey];
+                    }
+                    else
+                    {
+                        this.Properties.Add(messagePropertyKey, properties[messagePropertyKey]);
+                    }
+                }
             }
         }
 

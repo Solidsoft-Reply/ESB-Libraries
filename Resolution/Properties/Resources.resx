@@ -138,8 +138,11 @@
   <data name="AppSettingEsbBamDefaultTrackpointPolicyVersion" xml:space="preserve">
     <value>ESB.BAM.DefaultTrackpointPolicyVersion</value>
   </data>
-  <data name="AppSettingEsbDefaultPolicy" xml:space="preserve">
+  <data name="AppSettingEsbDefaultPolicyName" xml:space="preserve">
     <value>ESB.DefaultPolicyName</value>
+  </data>
+  <data name="AppSettingEsbDefaultPolicyVersion" xml:space="preserve">
+    <value>ESB.DefaultPolicyVersion</value>
   </data>
   <data name="AppSettingEsbServiceEndPoint" xml:space="preserve">
     <value>ESB.ServiceEndPoint</value>
@@ -189,14 +192,8 @@
   <data name="ExceptionNoBamActivity" xml:space="preserve">
     <value>Failed to get the Bam Activity object</value>
   </data>
-  <data name="ExceptionNoPolicyDefined" xml:space="preserve">
-    <value>No ESB policy defined.</value>
-  </data>
   <data name="ExceptionNoTrackpoints" xml:space="preserve">
-    <value>No TrackPoints from the BRE</value>
-  </data>
-  <data name="ExceptionObjectMisconstructed" xml:space="preserve">
-    <value>The object is not constructed properly.</value>
+    <value>No TrackPoints are defined in the current policy</value>
   </data>
   <data name="ExceptionXmlTransformationFailedOnNull" xml:space="preserve">
     <value>The XML document/message could not be transformed for resolver directive {0}.  Message is null.</value>
@@ -265,23 +262,11 @@
   <data name="XsdDirectiveSchemaFile" xml:space="preserve">
     <value>SolidsoftReply.Esb.Libraries.Resolution.Dictionaries.Resources.DirectivesSchema.xsd</value>
   </data>
-  <data name="XsdDirectiveSchemaPropertiesFile" xml:space="preserve">
-    <value>SolidsoftReply.Esb.Libraries.Resolution.Dictionaries.Resources.DirectivesSchemaProperties.xsd</value>
-  </data>
   <data name="XsdPropertiesSchemaFile" xml:space="preserve">
     <value>SolidsoftReply.Esb.Libraries.Resolution.Dictionaries.Resources.PropertiesSchema.xsd</value>
   </data>
   <data name="XsdParameterSchemaFile" xml:space="preserve">
     <value>SolidsoftReply.Esb.Libraries.Resolution.Dictionaries.Resources.ParametersSchema.xsd</value>
-  </data>
-  <data name="AppSettingsEsbBrePolicyTester" xml:space="preserve">
-    <value>ESB.BRE.PolicyTester</value>
-  </data>
-  <data name="AppSettingsEsbBreTrace" xml:space="preserve">
-    <value>ESB.BRE.Trace</value>
-  </data>
-  <data name="AppSettingsEsbBreTraceFileLocation" xml:space="preserve">
-    <value>ESB.BRE.TraceFileLocation</value>
   </data>
   <data name="ExceptionInvalidDirective" xml:space="preserve">
     <value>An ESB Resolver directive is invalid or does not exist.  Check that the directive name exists in the policy.</value>
@@ -301,19 +286,22 @@
   <data name="ExceptionInvalidBamStepNameOnSelectBamStepExtension" xml:space="preserve">
     <value>An invalid BAM step name was passed to the SelectBamStepExtension directive method.</value>
   </data>
-  <data name="ExceptionMissingEventStreamOnSelectBamStepExtension" xml:space="preserve">
-    <value>A null directive event stream was passed to the SelectBamStepExtension directive method.</value>
-  </data>
   <data name="ExceptionUnregisteredBamStepExtensionNameOnSelectBamStepExtension" xml:space="preserve">
     <value>An unrecognised BAM step extension name was passed to the SelectBamStepExtension directive method.  Is the extension defined in the Service Mediation policy for the current directive?</value>
   </data>
   <data name="ExceptionInvalidBamAfterMapStepExtensionNameOnSelectBamStepExtension" xml:space="preserve">
     <value>An invalid BAM after-map step extension name was passed to the SelectBamStepExtension directive method.</value>
   </data>
-  <data name="ExceptionInvalidBamAfterMapStepNameOnSelectBamStepExtension" xml:space="preserve">
-    <value>An invalid BAM after-map step name was passed to the SelectBamStepExtension directive method.</value>
-  </data>
   <data name="ExceptionUnregisteredBamAfterMapStepExtensionNameOnSelectBamStepExtension" xml:space="preserve">
     <value>An unrecognised BAM after-map step extension name was passed to the SelectBamStepExtension directive method.  Is the extension defined in the Service Mediation policy for the current directive?</value>
+  </data>
+  <data name="ExceptionBamInvaidCallToOnStep" xml:space="preserve">
+    <value>Calls to OnStep are only valid when the BAM directive specifies a BAM interception policy for trackpoint data.</value>
+  </data>
+  <data name="ExceptionInvalidBamOnStep" xml:space="preserve">
+    <value>The call to OnStep for BAM step '{0}' is invalid.  You cannot perform an OnStep operation for an event stream that has already been used to extend a step.</value>
+  </data>
+  <data name="ExceptionInvalidBamStepExtension" xml:space="preserve">
+    <value>The BAM step extension '{0}' is invalid.  You cannot extend a step after performing an OnStep operation on the same event stream.</value>
   </data>
 </root>
