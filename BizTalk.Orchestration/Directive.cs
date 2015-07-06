@@ -826,15 +826,17 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
                     Guid.NewGuid());
             }
 
+            var breValidations = new Libraries.Facts.Validations();
+
             // Determine if static support is being used by rule engine and create the array of short-term facts 
             var shortTermFacts = IsStaticSupport()
                                           ? new object[]
                                                 {
-                                                   new TypedXmlDocument(documentType, xmlDocument), validations 
+                                                   new TypedXmlDocument(documentType, xmlDocument), breValidations 
                                                 }
                                           : new object[]
                                                 {
-                                                    new TypedXmlDocument(documentType, xmlDocument), validations, 
+                                                    new TypedXmlDocument(documentType, xmlDocument), breValidations, 
                                                     new XmlHelper()
                                                 };
 
@@ -933,12 +935,12 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
             }
 
             // Throw an exception if dictated by the policy
-            if (this.directive.ErrorOnInvalid && validations.ErrorCount > 0)
+            if (this.directive.ErrorOnInvalid && breValidations.ErrorCount > 0)
             {
-                throw new ValidationException(string.Format("\r\nValidation Errors:\r\n{0}", validations.ToString(ValidationLevel.Error)));
+                throw new ValidationException(string.Format("\r\nValidation Errors:\r\n{0}", breValidations.ToString(Libraries.Facts.ValidationLevel.Error)));
             }
 
-            return validations;
+            return validations.InitialiseFromBreValidations(breValidations);
         }
 
         /// <summary>

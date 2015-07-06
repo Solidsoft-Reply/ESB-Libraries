@@ -151,7 +151,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// <summary>
         /// Gets or sets the BAM step data currently used by the stream.
         /// </summary>
-        public BamStepData BamStepData
+        public virtual BamStepData BamStepData
         {
             get
             {

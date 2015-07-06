@@ -71,8 +71,10 @@
   <ItemGroup>
     <Compile Include="BamStepData.cs" />
     <Compile Include="Facts.cs" />
+    <Compile Include="ParametersFactory.cs" />
     <Compile Include="RuleSetNotFoundException.cs" />
     <Compile Include="RuleStoreConnectionParametersException.cs" />
+    <Compile Include="ValidationEntry.cs" />
     <Compile Include="ValidationException.cs" />
     <Compile Include="Directive.cs" />
     <Compile Include="Directives.cs" />
@@ -86,6 +88,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Resolver.cs" />
+    <Compile Include="ValidationLevel.cs" />
+    <Compile Include="Validations.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ESB.snk" />
