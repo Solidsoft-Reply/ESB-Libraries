@@ -22,6 +22,7 @@
       <Component Id="EsbUddiHelperReference" Guid="EBF52FB3-13C8-4672-8B03-CFFFCB7029CC" Permanent="no" Directory="ReferenceAssemblies">
         <!--Cannot use CopyFile because EsbUddiHelperFile is placed in actual GAC and not in the dummy GAC folder-->
         <File Id="EsbUddiHelperFileReference" Source="$(var.Uddi.TargetPath)" Name="SolidsoftReply.Esb.Libraries.Uddi.dll"/>
+        <File Id="EsbUddiHelperFileReferencePdb" Source="$(var.Uddi.TargetPath)" Name="SolidsoftReply.Esb.Libraries.Uddi.pdb"/>
       </Component>
     </ComponentGroup>
   </Fragment>

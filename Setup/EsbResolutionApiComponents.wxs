@@ -22,6 +22,7 @@
       <Component Id="EsbResolutionApiReference" Guid="3758CF62-212B-41B1-8D3C-076DCF033288" Permanent="no" Directory="ReferenceAssemblies">
         <!--Cannot use CopyFile because EsbResolutionApiFile is placed in actual GAC and not in the dummy GAC folder-->
         <File Id="EsbResolutionApiFileReference" Source="$(var.Resolution.TargetPath)" Name="SolidsoftReply.Esb.Libraries.Resolution.dll"/>
+        <File Id="EsbResolutionApiFileReferencePdb" Source="$(var.Resolution.TargetPath)" Name="SolidsoftReply.Esb.Libraries.Resolution.pdb"/>
       </Component>
     </ComponentGroup>
   </Fragment>

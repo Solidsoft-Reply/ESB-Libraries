@@ -22,6 +22,7 @@
       <Component Id="EsbPipelineComponentsReference" Guid="0836F30E-4631-4FB1-8872-940FF46B8C48" Permanent="no" Directory="ReferenceAssemblies">
         <!--Cannot use CopyFile because EsbPipelineComponentsFile is placed in actual GAC and not in the dummy GAC folder-->
         <File Id="EsbPipelineComponentsFileReference" Source="$(var.BizTalk.PipelineComponents.TargetPath)" Name="SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.dll"/>
+        <File Id="EsbPipelineComponentsFileReferencePdb" Source="$(var.BizTalk.PipelineComponents.TargetPath)" Name="SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.pdb"/>
       </Component>
       <Component Id="RegisteredEsbPipelineComponents" Guid="75CBFEA9-59DE-456E-BA79-B39C0930C408" KeyPath="yes" Permanent="no" Directory="PipelineComponents" >
         <File Id="EsbPipelineComponents" Name="SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.dll" Source="$(var.BizTalk.PipelineComponents.TargetPath)"/>

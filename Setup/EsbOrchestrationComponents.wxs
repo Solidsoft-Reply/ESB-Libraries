@@ -22,6 +22,7 @@
       <Component Id="EsbOrchestrationReference" Guid="BCF27791-E41A-4ADB-917D-0CD49589ABB6" Permanent="no" Directory="ReferenceAssemblies">
         <!--Cannot use CopyFile because EsbOrchestrationFile is placed in actual GAC and not in the dummy GAC folder-->
         <File Id="EsbOrchestrationFileReference" Source="$(var.BizTalk.Orchestration.TargetPath)" Name="SolidsoftReply.Esb.Libraries.BizTalk.Orchestration.dll"/>
+        <File Id="EsbOrchestrationFileReferencePdb" Source="$(var.BizTalk.Orchestration.TargetPath)" Name="SolidsoftReply.Esb.Libraries.BizTalk.Orchestration.pdb"/>
       </Component>
     </ComponentGroup>
   </Fragment>

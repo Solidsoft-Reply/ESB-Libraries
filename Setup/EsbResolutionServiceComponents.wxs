@@ -57,6 +57,7 @@
       <Component Id="FactsReference" Guid="1838967C-20D7-4C4E-9651-056CF30987CA" Permanent="no" Directory="ReferenceAssemblies">
         <!--Cannot use CopyFile because FactsFile is placed in actual GAC and not in the dummy GAC folder-->
         <File Id="FactsFileReference" Source="$(var.Facts.TargetPath)" Name="SolidsoftReply.Esb.Libraries.Facts.dll"/>
+        <File Id="FactsFileReferencePdb" Source="$(var.Facts.TargetPath)" Name="SolidsoftReply.Esb.Libraries.Facts.pdb"/>
       </Component>
     </ComponentGroup>
   </Fragment>
