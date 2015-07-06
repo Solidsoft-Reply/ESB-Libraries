@@ -614,7 +614,10 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
                     return;
                 }
 
-                this.innerDisassembledMessages.Add(nextMessage);
+                // Can we read the stream here?
+                var msg = nextMessage.Clone(pipelineContext);
+
+                this.innerDisassembledMessages.Add(msg);
             }
         }
 

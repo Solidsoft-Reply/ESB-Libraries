@@ -81,7 +81,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         public TrackpointDirectiveEventStream(Directive directive)
             : base(directive)
         {
-            this.BamStepData = new BamStepData();
+            this.bamStepData = new BamStepData();
 
             if (directive != null)
             {
@@ -99,7 +99,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         public TrackpointDirectiveEventStream(Directive directive, BamStepData data)
             : base(directive)
         {
-            this.BamStepData = data ?? new BamStepData();
+            this.bamStepData = data ?? new BamStepData();
 
             if (directive != null)
             {
@@ -119,7 +119,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         public TrackpointDirectiveEventStream(Directive directive, EventStream eventStream)
             : base(directive, eventStream)
         {
-            this.BamStepData = new BamStepData();
+            this.bamStepData = new BamStepData();
 
             if (directive != null)
             {
@@ -140,7 +140,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         public TrackpointDirectiveEventStream(Directive directive, EventStream eventStream, BamStepData data)
             : base(directive, eventStream)
         {
-            this.BamStepData = data ?? new BamStepData();
+            this.bamStepData = data ?? new BamStepData();
 
             if (directive != null)
             {
@@ -360,7 +360,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             // exteded step name and a counter.  The counter is included to support situations where
             // the developer uses the same directive moe than once in a continuation chain.
             const string ExtendsPrefixToken = "extends_";
-            var tokenisedStepName = Regex.Replace(this.BamStepName, @"\s", "_");
+            var tokenisedStepName = Regex.Replace(this.BamRootStepName, @"\s", "_");
             var counter = 0L;
             var continuationId = string.Format(
                 "{0}_{1}_{2}_{3}", 
@@ -369,7 +369,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 ++counter, 
                 this.currentBamActivityId);
 
-            // If the current token 
+            // If the current token is an extension, set the counter.
             if (this.currentBamActivityId.StartsWith(ExtendsPrefixToken))
             {
                 var tokenWithoutPrefix = 
@@ -379,7 +379,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
 
                 if (match.Success)
                 {
-                    var activityId = tokenWithoutPrefix.Substring(match.Length);
+                    var activityId = tokenWithoutPrefix.Substring(match.Length + 1);
 
                     try
                     {
@@ -394,7 +394,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                         "{0}_{1}_{2}_{3}",
                         ExtendsPrefixToken,
                         tokenisedStepName,
-                        counter,
+                        ++counter,
                         activityId);
                 }
             }
@@ -651,7 +651,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             // the developer uses the same directive moe than once in a continuation chain.
             const string ExtendsPrefixToken = "extends_";
             var tokenisedStepName = Regex.Replace(
-                afterMap ? this.BamAfterMapStepName : this.BamStepName,
+                afterMap ? this.BamRootAfterMapStepName : this.BamRootStepName,
                 @"\s",
                 "_");
             var counter = 0L;
@@ -662,12 +662,12 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 ++counter,
                 this.CurrentBamActivityId);
 
-            // If the current token 
+            // If the current token is an extension, set the counter.
             if (this.CurrentBamActivityId.StartsWith(ExtendsPrefixToken))
             {
                 var tokenWithoutPrefix =
                     this.CurrentBamActivityId.Substring(
-                        ExtendsPrefixToken.Length + tokenisedStepName.Length);
+                        ExtendsPrefixToken.Length + tokenisedStepName.Length + 1);
                 var match = Regex.Match(tokenWithoutPrefix, @"^_(\d+)_");
 
                 if (match.Success)
@@ -687,7 +687,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                         "{0}_{1}_{2}_{3}",
                         ExtendsPrefixToken,
                         tokenisedStepName,
-                        counter,
+                        ++counter,
                         activityId);
                 }
             }

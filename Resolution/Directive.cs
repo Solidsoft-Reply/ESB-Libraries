@@ -25,7 +25,6 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
     using System.Runtime.InteropServices;
-    using System.Text.RegularExpressions;
     using System.Xml;
 
     using Microsoft.BizTalk.Bam.EventObservation;
