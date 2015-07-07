@@ -1194,20 +1194,20 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                             return string.IsNullOrWhiteSpace(format)
                                 ? new Tuple<Type, object>(typeof(DateTime), DateTime.Now)
                                 : new Tuple<Type, object>(
-                                    typeof(string), 
+                                    typeof(string),
                                     DateTime.Now.ToString(format, CultureInfo.CurrentCulture));
                         case "date":
                             return string.IsNullOrWhiteSpace(format)
                                 ? new Tuple<Type, object>(
-                                    typeof(DateTime), 
+                                    typeof(DateTime),
                                     DateTime.Now.Date)
                                 : new Tuple<Type, object>(
-                                    typeof(string), 
+                                    typeof(string),
                                     DateTime.Now.Date.ToString(format, CultureInfo.CurrentCulture));
                         case "day":
                             return string.IsNullOrWhiteSpace(format)
                                 ? new Tuple<Type, object>(
-                                    typeof(int), 
+                                    typeof(int),
                                     DateTime.Now.Day)
                                 : new Tuple<Type, object>(
                                     typeof(string),
@@ -1215,50 +1215,50 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                         case "dayofweek":
                             return string.IsNullOrWhiteSpace(format)
                                 ? new Tuple<Type, object>(
-                                    typeof(string), 
+                                    typeof(string),
                                     DateTime.Now.DayOfWeek.ToString())
                                 : new Tuple<Type, object>(
-                                    typeof(string), 
+                                    typeof(string),
                                     DateTime.Now.DayOfWeek.ToString(format));
                         case "dayofyear":
                             return string.IsNullOrWhiteSpace(format)
                                 ? new Tuple<Type, object>(
-                                    typeof(int), 
+                                    typeof(int),
                                     DateTime.Now.DayOfYear)
                                 : new Tuple<Type, object>(
-                                    typeof(string), 
+                                    typeof(string),
                                     DateTime.Now.DayOfYear.ToString(format, CultureInfo.CurrentCulture));
                         case "hour":
                             return string.IsNullOrWhiteSpace(format)
                                 ? new Tuple<Type, object>(
-                                    typeof(int), 
+                                    typeof(int),
                                     DateTime.Now.Hour)
                                 : new Tuple<Type, object>(
-                                    typeof(string), 
+                                    typeof(string),
                                     DateTime.Now.Hour.ToString(format, CultureInfo.CurrentCulture));
                         case "millisecond":
                             return string.IsNullOrWhiteSpace(format)
                                 ? new Tuple<Type, object>(
-                                    typeof(int), 
+                                    typeof(int),
                                     DateTime.Now.Millisecond)
                                 : new Tuple<Type, object>(
-                                    typeof(string), 
+                                    typeof(string),
                                     DateTime.Now.Millisecond.ToString(format, CultureInfo.CurrentCulture));
                         case "minute":
                             return string.IsNullOrWhiteSpace(format)
                                 ? new Tuple<Type, object>(
-                                    typeof(int), 
+                                    typeof(int),
                                     DateTime.Now.Minute)
                                 : new Tuple<Type, object>(
-                                    typeof(string), 
+                                    typeof(string),
                                     DateTime.Now.Minute.ToString(format, CultureInfo.CurrentCulture));
                         case "month":
                             return string.IsNullOrWhiteSpace(format)
                                 ? new Tuple<Type, object>(
-                                    typeof(int), 
+                                    typeof(int),
                                     DateTime.Now.Month)
                                 : new Tuple<Type, object>(
-                                    typeof(string), 
+                                    typeof(string),
                                     DateTime.Now.Month.ToString(format, CultureInfo.CurrentCulture));
                         case "second":
                             return string.IsNullOrWhiteSpace(format)
@@ -1266,7 +1266,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                                     typeof(int),
                                     DateTime.Now.Second)
                                 : new Tuple<Type, object>(
-                                    typeof(string), 
+                                    typeof(string),
                                     DateTime.Now.Second.ToString(format, CultureInfo.CurrentCulture));
                         case "ticks":
                             return string.IsNullOrWhiteSpace(format)
@@ -1274,38 +1274,38 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                                     typeof(long),
                                     DateTime.Now.Ticks)
                                 : new Tuple<Type, object>(
-                                    typeof(string), 
+                                    typeof(string),
                                     DateTime.Now.Ticks.ToString(format, CultureInfo.CurrentCulture));
                         case "timeofday":
                             return new Tuple<Type, object>(
-                                typeof(string), 
+                                typeof(string),
                                 DateTime.Now.TimeOfDay.ToString(format, CultureInfo.CurrentCulture));
                         case "today":
                             return string.IsNullOrWhiteSpace(format)
                                 ? new Tuple<Type, object>(
                                     typeof(DateTime), DateTime.Today)
                                 : new Tuple<Type, object>(
-                                    typeof(string), 
+                                    typeof(string),
                                     DateTime.Today.ToString(format, CultureInfo.CurrentCulture));
                         case "utcnow":
                             return string.IsNullOrWhiteSpace(format)
                                 ? new Tuple<Type, object>(
-                                    typeof(DateTime), 
+                                    typeof(DateTime),
                                     DateTime.UtcNow)
                                 : new Tuple<Type, object>(
-                                    typeof(string), 
+                                    typeof(string),
                                     DateTime.UtcNow.ToString(format, CultureInfo.CurrentCulture));
                         case "year":
                             return string.IsNullOrWhiteSpace(format)
                                 ? new Tuple<Type, object>(
-                                    typeof(int), 
+                                    typeof(int),
                                     DateTime.Now.Year)
                                 : new Tuple<Type, object>(
-                                    typeof(string), 
+                                    typeof(string),
                                     DateTime.Now.Year.ToString(format, CultureInfo.CurrentCulture));
                         case "guid":
                             return new Tuple<Type, object>(
-                                typeof(string), 
+                                typeof(string),
                                 Guid.NewGuid().ToString(format, CultureInfo.CurrentCulture));
                         case "property":
                             try
@@ -1328,7 +1328,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                             }
                             catch
                             {
-                                throw new EsbResolutionException(String.Format(Resources.ExceptionPropertyNotAvailable, format));
+                                throw new EsbResolutionException(string.Format(Resources.ExceptionPropertyNotAvailable, format));
                             }
 
                         case "if":
@@ -1395,7 +1395,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                                 break;
                             }
 
-                            infoStringBuilder.Append(infoString.Substring(startIndex, macroGroup.Index - 1) + expansion.Item2);
+                            infoStringBuilder.Append(infoString.Substring(startIndex, macroGroup.Index - startIndex - 1) + expansion.Item2);
 
                             startIndex = string.IsNullOrWhiteSpace(formatString)
                                              ? macroGroup.Index + macroGroup.Length + 1
@@ -1408,7 +1408,13 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                         }
 
                         macroExpression = infoStringBuilder.Append(macroExpression.Substring(startIndex)).ToString();
+                        macroExpression = macroExpression.Substring(1, macroExpression.Length - 2);
                         macrosExpanded = true;
+                    }
+                    else
+                    {
+                        // Strip off the start and end braces
+                        macroExpression = infoString.Substring(1, macroExpression.Length - 2);
                     }
 
                     // Determine if this is a format string
@@ -1429,7 +1435,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                         }
 
                         // Format the string
-                        macroExpression = string.Format(infoString, array);
+                        macroExpression = string.Format(macroExpression, array);
                     }
                     catch (FormatException ex)
                     {
