@@ -43,7 +43,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// <summary>
         /// Dictionary of properties
         /// </summary>
-        private IDictionary properties = new Hashtable();
+        private readonly IDictionary properties = new Hashtable();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BamStepData"/> class. 

@@ -121,28 +121,73 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         }
 
         /// <summary>
-        /// Clones a pipeline message creating an entirely independent copy.
+        /// Clones a pipeline message creating an entirely independent and seekable copy.
         /// </summary>
         /// <param name="message">The message to be cloned.</param>
         /// <param name="pc">The pipeline context.</param>
         /// <returns>The cloned message.</returns>
         public static IBaseMessage Clone(this IBaseMessage message, IPipelineContext pc)
         {
+            // Create the cloned message
             var messageFactory = pc.GetMessageFactory();
             var clonedMessage = messageFactory.CreateMessage();
 
+            // CLone each part
             for (var partNo = 0; partNo < message.PartCount; partNo++)
             {
                 string partName;
                 var part = message.GetPartByIndex(partNo, out partName);
+
+                // Create and initilialize the new part
                 var newPart = messageFactory.CreateMessagePart();
                 newPart.Charset = part.Charset;
                 newPart.ContentType = part.ContentType;
-                part.Data.StreamAtStart();
+
+                // Get the original uncloned data stream
+                var originalStream = part.GetOriginalDataStream();
+
+                // If the original data stream is non-seekable, check the
+                // clone returned by the Data property, and failing that, 
+                // manufacture a seekable stream
+                if (!originalStream.CanSeek)
+                {
+                    Stream candidateSeekableStream;
+
+                    try
+                    {
+                        candidateSeekableStream = part.Data;
+                    }
+                    catch (NotSupportedException)
+                    {
+                        // Ssome streams (e.g. ICSharpCode.SharpZipLib.Zip.ZipInputStream) throw 
+                        // a System.NotSupportedException when an attempt is made to clone them
+                        candidateSeekableStream = null;
+                    }
+
+                    if (candidateSeekableStream != null && !candidateSeekableStream.Equals(originalStream))
+                    {
+                        originalStream = candidateSeekableStream;
+                    }
+                    else
+                    {
+                        originalStream = new ReadOnlySeekableStream(originalStream);
+                    }
+                }
+
+                // Add the original stream to the Resource tracker to prevent it being
+                // disposed, in case we need to clone the same stream multiple times.
+                pc.ResourceTracker.AddResource(originalStream);
+                originalStream.StreamAtStart();
+
+                // Create the new part with a Virtual Stream, and add the the resource tracker
                 newPart.Data = new VirtualStream(VirtualStream.MemoryFlag.AutoOverFlowToDisk);
                 pc.ResourceTracker.AddResource(newPart.Data);
-                part.Data.CopyTo(newPart.Data);
-                part.Data.StreamAtStart();
+
+                // Clone the stream, and seek back to the beginning
+                originalStream.CopyTo(newPart.Data);
+                originalStream.StreamAtStart();
+
+                // Create and populate the property bag for the new message part.
                 newPart.Data.StreamAtStart();
                 newPart.PartProperties = messageFactory.CreatePropertyBag();
                 var partPoperties = part.PartProperties;
@@ -154,6 +199,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
                     newPart.PartProperties.Write(propertyName, propertyNamespace, property);
                 }
 
+                // Add the new part to the cloned message
                 clonedMessage.AddPart(partName, newPart, partName == message.BodyPartName);
             }
 

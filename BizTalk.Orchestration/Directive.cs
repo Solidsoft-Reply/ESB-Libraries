@@ -36,7 +36,6 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
     using Microsoft.XLANGs.BaseTypes;
 
     using SolidsoftReply.Esb.Libraries.BizTalk.Orchestration.Properties;
-    using SolidsoftReply.Esb.Libraries.Facts;
     using SolidsoftReply.Esb.Libraries.Resolution.Dictionaries;
     using SolidsoftReply.Esb.Libraries.Resolution.ResolutionService;
 

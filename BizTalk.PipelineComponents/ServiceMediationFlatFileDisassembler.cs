@@ -33,6 +33,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
     using Microsoft.BizTalk.Component.Interop;
     using Microsoft.BizTalk.Component.Utilities;
     using Microsoft.BizTalk.Message.Interop;
+    using Microsoft.BizTalk.Streaming;
 
     using SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents.Properties;
     using SolidsoftReply.Esb.Libraries.Resolution;
@@ -614,10 +615,8 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
                     return;
                 }
 
-                // Can we read the stream here?
-                var msg = nextMessage.Clone(pipelineContext);
-
-                this.innerDisassembledMessages.Add(msg);
+                // Add a clone of the message to the in-memory collection.
+                this.innerDisassembledMessages.Add(nextMessage.Clone(pipelineContext));
             }
         }
 
@@ -668,7 +667,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
                 return null;
             }
 
-            // If this is the first call to thsi method, call Disassemble on the 
+            // If this is the first call to this method, call Disassemble on the 
             // Service Mediation component.
             if (this.innerDisasembledMessageIndex == 0 && this.currentMediatedMessage == null)
             {
