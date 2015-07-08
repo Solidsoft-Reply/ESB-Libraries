@@ -206,8 +206,30 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
 
                 writer.Flush();
 
-                // Return the msg out                
-                msgOut.LoadXml(writer.ToString());
+                try
+                {
+                    // Return the msg out                
+                    msgOut.LoadXml(writer.ToString());
+                }
+                catch (Exception)
+                {
+                    // Log the error here with useful information!  If the map fails (e.g., the wrong
+                    // map is configured in the Service Mediation policy) the Load may fail with an unhelpful
+                    // 'Root not missing' error.  We need to log an additional error here that records what
+                    // map was being applied.
+                    var inMessageType = messageIn.DocumentElement == null
+                            ? "<source message is empty>"
+                            :string.Format(
+                                "{0}#{1}",
+                                messageIn.DocumentElement.NamespaceURI,
+                                messageIn.DocumentElement.LocalName);
+                    var message = string.Format(
+                        "A transformation failed for map {0} and message of type {1}.  Is the correct map configured in the ESB service mediation policy?",
+                        mapFullName,
+                        inMessageType);
+                    EventLog.WriteEntry("Application", message, EventLogEntryType.Error, 3);
+                    throw;
+                }
 
                 transformResults = new TransformResults(messageIn, msgOut, xslDoc, xslArgList, sourceSchemas, targetSchemas, (from schemaName in targetSchemas select SchemaStrongNameCache.GetSchemaStrongName(map.GetType(), schemaName)).ToList());
             }
