@@ -74,7 +74,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         private IBaseMessage currentMediatedMessage;
         
         /// <summary>
-        /// Index of thecurrent XML message provided by the FF disasembler.
+        /// Index of the current XML message provided by the FF disassembler.
         /// </summary>
         private int innerDisasembledMessageIndex;
 

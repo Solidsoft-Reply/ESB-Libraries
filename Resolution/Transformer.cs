@@ -219,7 +219,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                     // map was being applied.
                     var inMessageType = messageIn.DocumentElement == null
                             ? "<source message is empty>"
-                            :string.Format(
+                            : string.Format(
                                 "{0}#{1}",
                                 messageIn.DocumentElement.NamespaceURI,
                                 messageIn.DocumentElement.LocalName);

@@ -31,6 +31,11 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
     public class BamStepData : IDisposable
     {
         /// <summary>
+        /// Dictionary of properties
+        /// </summary>
+        private readonly IDictionary properties = new Hashtable();
+
+        /// <summary>
         /// XML content of an XML document.
         /// </summary>
         private string xmlContent;
@@ -39,11 +44,6 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         /// Flag indicates if the object is disposed.
         /// </summary>
         private bool disposed;
-
-        /// <summary>
-        /// Dictionary of properties
-        /// </summary>
-        private readonly IDictionary properties = new Hashtable();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BamStepData"/> class. 

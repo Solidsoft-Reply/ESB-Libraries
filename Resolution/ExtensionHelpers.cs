@@ -20,7 +20,6 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
 {
     using System;
     using System.Runtime.Caching;
-    using System.Text;
 
     /// <summary>
     /// A library of helper extension methods.
@@ -47,25 +46,5 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 new CacheItemPolicy { SlidingExpiration = TimeSpan.FromDays(1) });
             return schemaStrongName;
          }
-
-        /// <summary>
-        /// Returns a Base64 encoded string.
-        /// </summary>
-        /// <param name="unencodedData">The unencoded string.</param>
-        /// <returns>A Base64 encoded representation of the string.</returns>
-        public static string EncodeToBase64(this string unencodedData)
-        {
-            return Convert.ToBase64String(Encoding.UTF8.GetBytes(unencodedData ?? string.Empty));
-        }
-
-        /// <summary>
-        /// Returns an unencoded string from Base64 representation.
-        /// </summary>
-        /// <param name="encodedData">The Base64 encoded string.</param>
-        /// <returns>An unencoded string.</returns>
-        public static string DecodeFromBase64(this string encodedData)
-        {
-            return Encoding.UTF8.GetString(Convert.FromBase64String(encodedData ?? string.Empty));
-        }
     }
 }

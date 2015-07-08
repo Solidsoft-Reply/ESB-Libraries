@@ -67,7 +67,6 @@
     <Compile Include="BamActivityStepValidator.cs" />
     <Compile Include="DirectiveValidator.cs" />
     <Compile Include="EsbFactsException.cs" />
-    <Compile Include="ExtensionMethodsString.cs" />
     <Compile Include="Interchange.cs" />
     <Compile Include="Dictionaries\Parameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

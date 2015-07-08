@@ -148,9 +148,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         {
             get
             {
-                return
-                    (this.directive == null ? string.Empty : this.directive.EndPointConfiguration ?? string.Empty)
-                        .DecodeFromBase64();
+                return this.directive == null ? string.Empty : this.directive.EndPointConfiguration ?? string.Empty;
             }
         }
 

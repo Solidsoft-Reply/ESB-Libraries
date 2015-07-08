@@ -268,12 +268,12 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         {
             get
             {
-                return this.PropertySetCount("EndPointConfiguration") > 0 ? this.endPointConfiguration.DecodeFromBase64() : null;
+                return this.endPointConfiguration;
             }
 
             set
             {
-                this.endPointConfiguration = value.EncodeToBase64();
+                this.endPointConfiguration = value;
                 this.SetValidity(this.directiveValidator.ValidateEndPointConfiguration());
                 this.IncrementPropertySetCount("EndPointConfiguration");
             }
