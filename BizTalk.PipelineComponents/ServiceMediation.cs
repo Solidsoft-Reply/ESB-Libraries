@@ -73,9 +73,14 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         private static readonly ResourceManager ResourceManager;
 
         /// <summary>
-        ///     MessageType BizTalk property.
+        /// MessageType BizTalk property.
         /// </summary>
         private static readonly PropertyBase MessageTypeProp = new MessageType();
+
+        /// <summary>
+        /// Schema Strong Name BizTalk property.
+        /// </summary>
+        private static readonly PropertyBase SchemaStrongNameProp = new SchemaStrongName();
 
         #endregion
 
@@ -611,9 +616,11 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
                     continue;
                 }
 
-                if (name == MessageTypeProp.Name.Name && nameSpace == MessageTypeProp.Name.Namespace)
+                if ((name == MessageTypeProp.Name.Name && nameSpace == MessageTypeProp.Name.Namespace) ||
+                    (name == SchemaStrongNameProp.Name.Name && nameSpace == SchemaStrongNameProp.Name.Namespace))
                 {
-                    // Provide special handling for message type, which may have been set after transform
+                    // Provide special handling for message type and schema strong name, which may have 
+                    // been set after transform.
                     var outMsgTypeProperty = outMsg.Context.Read(name, nameSpace);
 
                     if (outMsgTypeProperty != null)
@@ -628,8 +635,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
                         outMsg.Context.Promote(name, nameSpace, inProperty);
                     }
                 }
-
-                if (inMsg.Context.IsPromoted(name, nameSpace))
+                else if (inMsg.Context.IsPromoted(name, nameSpace))
                 {
                     outMsg.Context.Promote(name, nameSpace, inProperty);
                 }
@@ -1300,9 +1306,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
                 if (transformedDoc.HasChildNodes)
                 {
                     // Assign the transformed message to the body part of the outbound message
-                    bodyPartAssigned = outMsg.PopulateBodyPartFromXmlDocument(transformedDoc, pc);
-
-                    if (bodyPartAssigned)
+                    if (outMsg.PopulateBodyPartFromXmlDocument(transformedDoc, pc))
                     {
                         // Set the message type for the transformed document
                         this.MessageType = transformedDoc.TypeSpecifier();
