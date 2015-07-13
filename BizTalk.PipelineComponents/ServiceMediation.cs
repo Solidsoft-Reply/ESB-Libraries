@@ -1306,7 +1306,9 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
                 if (transformedDoc.HasChildNodes)
                 {
                     // Assign the transformed message to the body part of the outbound message
-                    if (outMsg.PopulateBodyPartFromXmlDocument(transformedDoc, pc))
+                    bodyPartAssigned = outMsg.PopulateBodyPartFromXmlDocument(transformedDoc, pc);
+
+                    if (bodyPartAssigned)
                     {
                         // Set the message type for the transformed document
                         this.MessageType = transformedDoc.TypeSpecifier();
