@@ -36,37 +36,10 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
     public class OesEventStream : EventStream
     {
         /// <summary>
-        /// A lock used to control setting the directive.
-        /// </summary>
-        private readonly object syncLock = new object();
-
-        /// <summary>
-        /// A directive used to initialise the event stream.
-        /// </summary>
-        private volatile Resolution.Directive directive;
-
-        /// <summary>
-        /// An event stream used by a BAM Interceptor.   When an OrchestrationEventStream is used by a 
-        /// BAM Interceptor, it effectively reverts to a normal event stream.
-        /// </summary>
-        private EventStream eventStream;
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="OesEventStream"/> class.
         /// </summary>
         public OesEventStream()
         {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="OesEventStream"/> class.
-        /// </summary>
-        /// <param name="directive">
-        /// A directive.
-        /// </param>
-        public OesEventStream(Resolution.Directive directive)
-        {
-            this.directive = directive;
         }
 
         /// <summary>
@@ -163,90 +136,29 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.Orchestration
         }
 
         /// <summary>
-        /// Flushes the event stream.
+        /// Ignored in the contects of the BizTalk OES.  
         /// </summary>
         public override void Flush()
         {
-            if (this.directive == null)
-            {
-                return;
-            }
-
-            lock (this.directive)
-            {
-                this.SetEventStreamFromDirective();
-                this.eventStream.Flush();
-            }
+            return;
         }
 
         /// <summary>
-        /// Fluses the event stream for a given SQL connection.
+        /// Ignored in the contects of the BizTalk OES.  
         /// </summary>
         /// <param name="connection">A SQL connection.</param>
         public override void Flush(SqlConnection connection)
         {
-            if (this.directive == null)
-            {
-                return;
-            }
-
-            lock (this.directive)
-            {
-                this.SetEventStreamFromDirective();
-                this.eventStream.Flush(connection);
-            }
+            return;
         }
 
         /// <summary>
-        /// Stores a custom serialized event.
+        /// Ignored in the contects of the BizTalk OES.  
         /// </summary>
         /// <param name="singleEvent">The event to be serialized.</param>
         public override void StoreCustomEvent(IPersistQueryable singleEvent)
         {
-            if (this.directive == null)
-            {
-                return;
-            }
-
-            lock (this.directive)
-            {
-                this.SetEventStreamFromDirective();
-                this.eventStream.StoreCustomEvent(singleEvent);
-            }
-        }
-
-        /// <summary>
-        /// Updates the current directive used by the orchestration event stream.
-        /// </summary>
-        /// <param name="directive">The directive.</param>
-        // ReSharper disable once ParameterHidesMember
-        public void UpdateDirective(Directive directive)
-        {
-            lock (this.syncLock)
-            {
-                this.directive = directive;
-                this.SetEventStreamFromDirective();
-                directive.EventStream = this;
-            }
-        }
-
-        /// <summary>
-        /// Sets the event stream from the current directive.
-        /// </summary>
-        private void SetEventStreamFromDirective()
-        {
-            if (this.eventStream == null)
-            {
-                this.eventStream = this.directive.EventStream
-                                    ?? (this.directive.BamIsBuffered
-                                            ? (EventStream)
-                                                new BufferedEventStream(
-                                                    this.directive.BamConnectionString,
-                                                    this.directive.BamFlushThreshold)
-                                            : new DirectEventStream(
-                                                    this.directive.BamConnectionString,
-                                                    this.directive.BamFlushThreshold));
-            }
+            return;
         }
     }
 } 

@@ -357,8 +357,8 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             // tokenised by replacing each individual whitespace character with an underscore, rather 
             // than grouping whitespace characters.  This handles situations where a developer decides 
             // to treat whitespace as significant. The token follows a pattern that includes the 
-            // exteded step name and a counter.  The counter is included to support situations where
-            // the developer uses the same directive moe than once in a continuation chain.
+            // extended step name and a counter.  The counter is included to support situations where
+            // the developer uses the same directive more than once in a continuation chain.
             const string ExtendsPrefixToken = "extends_";
             var tokenisedStepName = Regex.Replace(this.BamRootStepName, @"\s", "_");
             var counter = 0L;
