@@ -699,6 +699,13 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 this.Directive.BamActivity,
                 afterMap ? this.BamAfterMapStepName : this.BamStepName,
                 this.CurrentBamActivityId);
+
+            if (this.ActivityInstances.Count == 0)
+            {
+                // The BAM Activity is not registered.  This may indicate that it has been closed prematurely.
+                throw new EsbResolutionException(string.Format(Resources.ExceptionBamActivityNotAvailableForExtension, this.Directive.BamActivity, this.BamStepName, stepExtensionName));
+            }
+
             var currentId = this.ActivityInstances[activityInstanceKey];
             this.EnableContinuation(this.Directive.BamActivity, currentId, continuationId);
             this.EndActivity(this.Directive.BamActivity, currentId);

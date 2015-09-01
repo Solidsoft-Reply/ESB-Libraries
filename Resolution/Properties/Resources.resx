@@ -304,4 +304,7 @@
   <data name="ExceptionInvalidBamStepExtension" xml:space="preserve">
     <value>The BAM step extension '{0}' is invalid.  You cannot extend a step after performing an OnStep operation on the same event stream.</value>
   </data>
+  <data name="ExceptionBamActivityNotAvailableForExtension" xml:space="preserve">
+    <value>Bam Activity {0} is not available.  Step {1} could not be continued by extension {2}.  Check that the activity has not been ended prematurely.</value>
+  </data>
 </root>
