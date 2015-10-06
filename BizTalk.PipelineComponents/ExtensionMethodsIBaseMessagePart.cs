@@ -71,6 +71,9 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         {
             var bodyXml = new XmlDocument();
 
+            // Preserve whitespace to render document as original
+            bodyXml.PreserveWhitespace = true;
+
             if (messagePart.Data == null)
             {
                 return bodyXml;

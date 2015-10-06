@@ -20,7 +20,9 @@
 
 namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
 {
+    using System;
     using System.IO;
+    using System.Text;
     using System.Xml;
 
     using Microsoft.BizTalk.Streaming;
@@ -105,8 +107,18 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
 
             if (xmlDocument.HasChildNodes)
             {
+                // Get the XML encoding.  Defaults to UTF-8
+                Func<Encoding> xmlEncoding = () =>
+                    (xmlDocument.FirstChild.NodeType == XmlNodeType.XmlDeclaration) && 
+                    !string.IsNullOrWhiteSpace(((XmlDeclaration)xmlDocument.FirstChild).Encoding)
+                    ? Encoding.GetEncoding(((XmlDeclaration)xmlDocument.FirstChild).Encoding.ToLower())
+                    : Encoding.UTF8;
+
+                var xmlWriter = new XmlTextWriter(streamOut, xmlEncoding());
+
                 // Assign transformed message to outbound message
-                xmlDocument.Save(stream);
+                xmlDocument.WriteContentTo(xmlWriter);
+                xmlWriter.Flush();
             }
             else
             {
