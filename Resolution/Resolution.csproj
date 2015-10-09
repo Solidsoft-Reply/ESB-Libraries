@@ -136,6 +136,7 @@
     <Compile Include="TrackpointDirectiveEventStream.cs" />
     <Compile Include="Transformer.cs" />
     <Compile Include="TransformResults.cs" />
+    <Compile Include="XmlFormat.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Dictionaries\Resources\DirectivesSchema.xsd" />

@@ -393,4 +393,7 @@
   <data name="ExceptionInvalidRelatedActivityName" xml:space="preserve">
     <value>Invalid BAM related activity name for the {0} step in {1}.</value>
   </data>
+  <data name="ExceptionXmlFormat" xml:space="preserve">
+    <value>The {0} directive can format XML contnet in one way only.   Use multiple directives for multiple formats.</value>
+  </data>
 </root>

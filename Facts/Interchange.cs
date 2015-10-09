@@ -370,7 +370,7 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// Set the resolved transformation map for a directive.
         /// </summary>
         /// <param name="directiveKey">Key name that identifies a directive.</param>
-        /// <param name="mapToApply">Fully qualified .NET assembly and type name of a BTS map</param>
+        /// <param name="mapToApply">Fully qualified .NET assembly and type name of a BTS map.</param>
         public void SetTransformation(string directiveKey, string mapToApply)
         {
             if (string.IsNullOrWhiteSpace(directiveKey))
@@ -386,6 +386,32 @@ namespace SolidsoftReply.Esb.Libraries.Facts
             directive.KeyName = directiveKey;
             directive.MapToApply = mapToApply;
             directive.DirectiveCategories |= Categories.Transformation;
+        }
+
+        /// <summary>
+        /// Set the resolved XML content formatting requirement for a directive.
+        /// </summary>
+        /// <param name="directiveKey">Key name that identifies a directive.</param>
+        /// <param name="xmlFormat">Formatting required for XML content.</param>
+        public void SetXmlFormat(string directiveKey, XmlFormat xmlFormat)
+        {
+            if (string.IsNullOrWhiteSpace(directiveKey))
+            {
+                throw new EsbFactsException(
+                    string.Format(
+                        Properties.Resources.ExceptionInvalidDirective,
+                        "XML formatting of type",
+                        xmlFormat));
+            }
+
+            var directive = this.GetDirective(directiveKey);
+            directive.KeyName = directiveKey;
+            directive.XmlFormat = xmlFormat;
+
+            if (xmlFormat != XmlFormat.None)
+            {
+                directive.DirectiveCategories |= Categories.Transformation;
+            }
         }
 
         /// <summary>

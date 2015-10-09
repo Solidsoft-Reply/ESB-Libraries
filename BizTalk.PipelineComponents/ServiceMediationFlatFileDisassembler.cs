@@ -443,7 +443,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
                 this.serviceMediationDasm.SynchronizeBam = value;
             }
         }
-
+        
         /// <summary>
         /// Gets the version of the component.
         /// </summary>

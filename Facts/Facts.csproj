@@ -79,6 +79,7 @@
     <Compile Include="ValidationEntry.cs" />
     <Compile Include="ValidationLevel.cs" />
     <Compile Include="Validations.cs" />
+    <Compile Include="XmlFormat.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Dictionaries\Resources\DirectivesSchema.xsd" />

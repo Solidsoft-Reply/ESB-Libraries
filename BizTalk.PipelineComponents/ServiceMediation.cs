@@ -532,6 +532,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
             WritePropertyBag(pb, "rulePolicyVersion",  string.IsNullOrWhiteSpace(this.PolicyVersion) ? null : this.PolicyVersion);
             WritePropertyBag(pb, "resolutionData", this.ResolutionData.ToString());
             WritePropertyBag(pb, "resolutionDataProperties", this.ResolutionDataProperties.Count > 0 ? this.ResolutionDataProperties.Aggregate((p1, p2) => string.Format("{0}¦{1}", p1, p2)) : string.Empty);
+            WritePropertyBag(pb, "synchronizeBam", this.SynchronizeBam ? bool.TrueString : bool.FalseString);
             WritePropertyBag(pb, "version", (this.version == null) ? null : this.version.ToString(2));
         }
 
@@ -694,18 +695,14 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         /// </param>
         private static void WritePropertyBag(IPropertyBag pb, string propName, object val)
         {
-            Debug.WriteLine("WritePropertyBag");
             try
             {
                 pb.Write(propName, ref val);
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("WritePropertyBag error: " + ex.Message);
                 throw new EsbPipelineComponentException(ex.Message);
             }
-
-            Debug.WriteLine("Leaving WritePropertyBag");
         }
 
         /// <summary>
@@ -1139,6 +1136,10 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
                     this.ResolutionDataProperties = new ResolutionDataPropertyList(((string)val).Split('¦').ToList());
                 }
 
+                val = ReadPropertyBag(pb, "synchronizeBam");
+
+                this.SynchronizeBam = val == null ? false : bool.Parse((string)val);
+
                 val = ReadPropertyBag(pb, "version");
 
                 this.version = val == null ? null : new Version((string)val);
@@ -1305,16 +1306,16 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
 
                 if (transformedDoc.HasChildNodes)
                 {
+                    // Format the document as required
+                    transformedDoc = directive.Format(transformedDoc);
+
                     // Assign the transformed message to the body part of the outbound message
                     bodyPartAssigned = outMsg.PopulateBodyPartFromXmlDocument(transformedDoc, pc);
 
                     if (bodyPartAssigned)
                     {
-                        // Set the message type for the transformed document
-                        this.MessageType = transformedDoc.TypeSpecifier();
-
                         // Set the BTS.MessageType property.  This may be overridden by BtsProperties below.
-                        outMsg.Context.Promote("MessageType", Resources.UriBtsSystemProperties, this.MessageType);
+                        outMsg.Context.Promote("MessageType", Resources.UriBtsSystemProperties, transformedDoc.TypeSpecifier());
 
                         // Set the schema strong name property.  This may be overridden by BtsProperties below.
                         if (directive.MapTargetSchemaStrongNames != null)
@@ -1364,24 +1365,20 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
                 (inMsg.BodyPart ?? inMsg.Part(0) ?? pc.GetMessageFactory().CreateMessagePart()).RemoveEnvelope(
                     this.BodyContainerXPath);
 
-            // [fvar] The message type of the message to be processed.
-            var origMessageType = ExtensionMethodsGeneral.AsCachedVar(inMsg.MessageType);
-
-            // [fvar] The XML content of the message part.
-            var msgPartContentAsXml = ExtensionMethodsGeneral.AsCachedVar(inPart.AsXmlDocument);
+            var msgType = this.MessageType;
 
             // Use the message type if not overriden and if not de-enveloped.
-            if (string.IsNullOrWhiteSpace(this.MessageType))
+            if (string.IsNullOrWhiteSpace(msgType))
             {
-                this.MessageType = string.IsNullOrWhiteSpace(this.BodyContainerXPath)
-                    ? origMessageType()
-                    : msgPartContentAsXml().TypeSpecifier();
+                msgType = string.IsNullOrWhiteSpace(this.BodyContainerXPath)
+                    ? inMsg.MessageType()
+                    : inPart.AsXmlDocument().TypeSpecifier();
             }
 
             // Ensure message type is promoted on inbound message
-            if (string.IsNullOrWhiteSpace(origMessageType()) && !string.IsNullOrWhiteSpace(this.MessageType))
+            if (string.IsNullOrWhiteSpace(inMsg.MessageType()) && !string.IsNullOrWhiteSpace(msgType))
             {
-                inMsg.Context.Promote(MessageTypeProp.Name.Name, MessageTypeProp.Name.Namespace, this.MessageType);
+                inMsg.Context.Promote(MessageTypeProp.Name.Name, MessageTypeProp.Name.Namespace, msgType);
             }
 
             var parameters = new Parameters();
@@ -1433,7 +1430,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
                                 ServiceName = this.ServiceName,
                                 BindingAccessPoint = this.BindingAccessPoint,
                                 BindingUrlType = this.BindingUrlType,
-                                MessageType = this.MessageType,
+                                MessageType = msgType,
                                 OperationName = this.OperationName,
                                 MessageRole = this.MessageRole,
                                 MessageDirection = this.MessageDirection,

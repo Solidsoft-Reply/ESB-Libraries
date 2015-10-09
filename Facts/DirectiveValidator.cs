@@ -217,6 +217,21 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         }
 
         /// <summary>
+        /// Validates the format to apply to XML content.
+        /// </summary>
+        /// <returns>True if valid; otherwise false.</returns>
+        public bool ValidateXmlFormat()
+        {
+            if (this.directive.PropertySetCount("XmlFormat") <= 1)
+            {
+                return true;
+            }
+
+            this.errorStrings.AppendLine(string.Format(Properties.Resources.ExceptionXmlFormat, this.directive.KeyName));
+            return false;
+        }
+
+        /// <summary>
         /// Validates the name of BAM activity for which a BAM interception tracking point will be created.
         /// </summary>
         /// <returns>True if valid; otherwise false.</returns>

@@ -841,6 +841,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         {
             this.serviceMediationDasm = new ServiceMediation();
             this.serviceMediationDasm.Load(this.serviceMediationPropertyBag, 0);
+            this.serviceMediationDasmNoFurtherMessages = false;
         }
     }
 }

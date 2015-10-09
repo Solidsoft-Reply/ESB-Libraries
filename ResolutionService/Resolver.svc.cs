@@ -41,10 +41,6 @@ namespace SolidsoftReply.Esb.Libraries.ResolutionService
         /// </returns>
         public ResolveResponse Resolve(ResolveRequest request)
         {
-                Debug.Write("[ResolutionService] Resolve called");
-                // ReSharper disable once AssignNullToNotNullAttribute
-                Debug.WriteLine(OperationContext.Current.RequestContext.RequestMessage.ToString());
-
             try
             {
                 // Check parameters

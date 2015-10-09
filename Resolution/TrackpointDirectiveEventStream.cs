@@ -1052,7 +1052,6 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 return;
             }
 
-            Debug.WriteLine(this.BamStepName);
             var dataTrackPoints = this.GetTrackPoints(TrackPointType.Data, afterMap).TrackPoints;
 
             if (dataTrackPoints == null)

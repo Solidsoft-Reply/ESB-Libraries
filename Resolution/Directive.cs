@@ -23,8 +23,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
+    using System.IO;
     using System.Linq;
     using System.Runtime.InteropServices;
+    using System.Text;
     using System.Xml;
 
     using Microsoft.BizTalk.Bam.EventObservation;
@@ -32,8 +34,6 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
     using SolidsoftReply.Esb.Libraries.Resolution.Dictionaries;
     using SolidsoftReply.Esb.Libraries.Resolution.Properties;
     using SolidsoftReply.Esb.Libraries.Resolution.ResolutionService;
-
-    using Directive = SolidsoftReply.Esb.Libraries.Resolution.ResolutionService.DirectivesDictionaryItemValueDirective;
 
     /// <summary>
     /// Class representing the item on the output list
@@ -354,6 +354,17 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             get
             {
                 return this.directive == null || this.directive.ErrorOnInvalid;
+            }
+        }
+
+        /// <summary>
+        /// Gets a value indicating how XML content should be formatted.
+        /// </summary>
+        public virtual XmlFormat FormatXml
+        {
+            get
+            {
+                return this.directive == null ? XmlFormat.None : (XmlFormat)Enum.Parse(typeof(XmlFormat), this.directive.XmlFormat);
             }
         }
 
@@ -751,6 +762,16 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
         }
 
         /// <summary>
+        /// Format the XML content and return as an XML document.
+        /// </summary>
+        /// <param name="messageIn">An XML document whose content is to be formatted.</param>
+        /// <returns>An XML document containing formatted XML.</returns>
+        public virtual XmlDocument Format(XmlDocument messageIn)
+        {
+            return this.DoFormat(messageIn);
+        }
+
+        /// <summary>
         /// Performs all BAM actions for a configured BAM step.
         /// </summary>
         /// <param name="data">The BAM step data.</param>
@@ -874,10 +895,6 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
 
             foreach (var item1 in this.directive.Properties)
             {
-                Debug.WriteLine("Processing property " + item1.Key.@string);
-                Debug.WriteLine("Property name " + item1.Value.Property.Name);
-                Debug.WriteLine("Property value " + item1.Value.Property.Value);
-
                 if (item1.Key.@string == name)
                 {
                     return item1.Value.Property.Value;
@@ -998,6 +1015,62 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
 
             // Return the transformed message
             return transformedMessage;
+        }
+
+        /// <summary>
+        /// Format the XML content and return as an XML document.
+        /// </summary>
+        /// <param name="messageIn">An XML document whose content is to be formatted.</param>
+        /// <returns>An XML document containing formatted XML.</returns>
+        private XmlDocument DoFormat(XmlDocument messageIn)
+        {
+            var xmlDocument = new XmlDocument();
+
+            // Preserve whitespace to render document as original
+            xmlDocument.PreserveWhitespace = true;
+            xmlDocument.LoadXml(this.DoFormatAsString(messageIn));
+            return xmlDocument;
+        }
+
+        /// <summary>
+        /// Format the XML content and return as a string.
+        /// </summary>
+        /// <param name="messageIn">An XML document whose content is to be formatted.</param>
+        /// <returns>A string containing formatted XML.</returns>
+        private string DoFormatAsString(XmlDocument messageIn)
+        {
+            switch (this.FormatXml)
+            {
+                case XmlFormat.None:
+                    return messageIn.OuterXml;
+                case XmlFormat.Normalize:
+                    var xmlDocNormalized = new XmlDocument();
+                    xmlDocNormalized.LoadXml(messageIn.OuterXml);
+                    xmlDocNormalized.Normalize();
+                    return xmlDocNormalized.OuterXml;
+                case XmlFormat.Indent:
+                    var xmlDocIndented = new XmlDocument();
+                    xmlDocIndented.LoadXml(messageIn.OuterXml);
+
+                    // Get the current encoding or default to UTF 8.
+                    var xmlDeclaration = xmlDocIndented.CreateXmlDeclaration("1.0", "UTF-8", string.Empty);
+
+                    if (xmlDocIndented.FirstChild.NodeType == XmlNodeType.XmlDeclaration)
+                    {
+                        xmlDeclaration = (XmlDeclaration)xmlDocIndented.FirstChild;
+                    }
+
+                    var stream = new MemoryStream();
+                    var encoding = string.IsNullOrWhiteSpace(xmlDeclaration.Encoding) ? "utf-8" : xmlDeclaration.Encoding.ToLower();
+                    var xmlTextWriter = new XmlTextWriter(stream, Encoding.GetEncoding(encoding));
+                    xmlTextWriter.Formatting = Formatting.Indented;
+                    xmlDocIndented.Save(xmlTextWriter);
+                    stream.Position = 0;
+                    var streamReader = new StreamReader(stream);
+                    return streamReader.ReadToEnd();
+                default:
+                    return messageIn.OuterXml;
+            }
         }
 
         /// <summary>

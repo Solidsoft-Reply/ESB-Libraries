@@ -79,6 +79,12 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         private string mapToApply;
 
         /// <summary>
+        /// Format specifier for XML content.
+        /// </summary>
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
+        private XmlFormat xmlFormat;
+
+        /// <summary>
         /// Name of BAM activity for which a BAM interception tracking point will be created.
         /// </summary>
         private string bamActivity;
@@ -231,8 +237,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
             set
             {
                 this.endPoint = value;
-                this.SetValidity(this.directiveValidator.ValidateEndPoint());
                 this.IncrementPropertySetCount("EndPoint");
+                this.SetValidity(this.directiveValidator.ValidateEndPoint());
             }
         }
 
@@ -253,8 +259,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
             set
             {
                 this.transportType = value;
-                this.SetValidity(this.directiveValidator.ValidateTransportType());
                 this.IncrementPropertySetCount("TransportType");
+                this.SetValidity(this.directiveValidator.ValidateTransportType());
             }
         }
 
@@ -274,8 +280,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
             set
             {
                 this.endPointConfiguration = value;
-                this.SetValidity(this.directiveValidator.ValidateEndPointConfiguration());
                 this.IncrementPropertySetCount("EndPointConfiguration");
+                this.SetValidity(this.directiveValidator.ValidateEndPointConfiguration());
             }
         }
         
@@ -295,8 +301,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
             set
             {
                 this.soapAction = value;
-                this.SetValidity(this.directiveValidator.ValidateSoapAction());
                 this.IncrementPropertySetCount("SoapAction");
+                this.SetValidity(this.directiveValidator.ValidateSoapAction());
             }
         }
 
@@ -320,8 +326,29 @@ namespace SolidsoftReply.Esb.Libraries.Facts
             set
             {
                 this.mapToApply = value;
-                this.SetValidity(this.directiveValidator.ValidateMapToApply());
                 this.IncrementPropertySetCount("MapToApply");
+                this.SetValidity(this.directiveValidator.ValidateMapToApply());
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the format specifier for XML content.
+        /// </summary>
+        [DataMember(Name = "XmlFormat", Order = 7)]
+        [XmlElement("XmlFormat", Order = 7)]
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
+        public XmlFormat XmlFormat
+        {
+            get
+            {
+                return this.xmlFormat;
+            }
+
+            set
+            {
+                this.xmlFormat = value;
+                this.IncrementPropertySetCount("XmlFormat");
+                this.SetValidity(this.directiveValidator.ValidateXmlFormat());
             }
         }
 
@@ -332,8 +359,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// <summary>
         /// Gets or sets the name of BAM activity for which a BAM interception tracking point will be created.
         /// </summary>
-        [DataMember(Name = "BamActivity", Order = 7)]
-        [XmlElement("BamActivity", Order = 7)]
+        [DataMember(Name = "BamActivity", Order = 8)]
+        [XmlElement("BamActivity", Order = 8)]
         public string BamActivity
         {
             get
@@ -344,16 +371,16 @@ namespace SolidsoftReply.Esb.Libraries.Facts
             set
             {
                 this.bamActivity = value;
-                this.SetValidity(this.directiveValidator.ValidateBamActivity());
                 this.IncrementPropertySetCount("BamActivity");
+                this.SetValidity(this.directiveValidator.ValidateBamActivity());
             }
         }
 
         /// <summary>
         /// Gets or sets the name of conceptual BAM step ('location') within an activity.
         /// </summary>
-        [DataMember(Name = "BamStepName", Order = 8)]
-        [XmlElement("BamStepName", Order = 8)]
+        [DataMember(Name = "BamStepName", Order = 9)]
+        [XmlElement("BamStepName", Order = 9)]
         public string BamStepName
         {
             get
@@ -364,16 +391,16 @@ namespace SolidsoftReply.Esb.Libraries.Facts
             set
             {
                 this.bamStepName = value;
-                this.SetValidity(this.directiveValidator.ValidateBamStepName());
                 this.IncrementPropertySetCount("BamStepName");
+                this.SetValidity(this.directiveValidator.ValidateBamStepName());
             }
         }
 
         /// <summary>
         /// Gets or sets a list of steps that extend the step specified in the StepName property.
         /// </summary>
-        [DataMember(Name = "BamStepExtensions", Order = 9)]
-        [XmlElement("BamStepExtensions", Order = 9)]
+        [DataMember(Name = "BamStepExtensions", Order = 10)]
+        [XmlElement("BamStepExtensions", Order = 10)]
         public BamStepExtensionsType BamStepExtensions
         {
             get
@@ -401,8 +428,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// Gets or sets the name of conceptual BAM step ('location') within an activity that will
         /// be placed after a transformation
         /// </summary>
-        [DataMember(Name = "BamAfterMapStepName", Order = 10)]
-        [XmlElement("BamAfterMapStepName", Order = 10)]
+        [DataMember(Name = "BamAfterMapStepName", Order = 11)]
+        [XmlElement("BamAfterMapStepName", Order = 11)]
         public string BamAfterMapStepName
         {
             get
@@ -413,16 +440,16 @@ namespace SolidsoftReply.Esb.Libraries.Facts
             set
             {
                 this.bamAfterMapStepName = value;
-                this.SetValidity(this.directiveValidator.ValidateBamAfterMapStepName());
                 this.IncrementPropertySetCount("BamAfterMapStepName");
+                this.SetValidity(this.directiveValidator.ValidateBamAfterMapStepName());
             }
         }
 
         /// <summary>
         /// Gets or sets a list of steps that extend the post-transformation step specified in the AfterMapStepName property.
         /// </summary>
-        [DataMember(Name = "BamAfterMapStepExtensions", Order = 11)]
-        [XmlElement("BamAfterMapStepExtensions", Order = 11)]
+        [DataMember(Name = "BamAfterMapStepExtensions", Order = 12)]
+        [XmlElement("BamAfterMapStepExtensions", Order = 12)]
         public BamStepExtensionsType BamAfterMapStepExtensions
         {
             get
@@ -449,8 +476,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// <summary>
         /// Gets or sets the connection string for BAM.
         /// </summary>
-        [DataMember(Name = "BamConnectionString", Order = 12)]
-        [XmlElement("BamConnectionString", Order = 12)]
+        [DataMember(Name = "BamConnectionString", Order = 13)]
+        [XmlElement("BamConnectionString", Order = 13)]
         public string BamConnectionString
         {
             get
@@ -485,16 +512,16 @@ namespace SolidsoftReply.Esb.Libraries.Facts
             set
             {
                 this.bamConnectionString = value;
-                this.SetValidity(this.directiveValidator.ValidateBamConnectionString());
                 this.IncrementPropertySetCount("BamConnectionString");
+                this.SetValidity(this.directiveValidator.ValidateBamConnectionString());
             }
         }
 
         /// <summary>
         /// Gets or sets a value indicating whether BAM will use a buffered event stream.
         /// </summary>
-        [DataMember(Name = "BamIsBuffered", Order = 13)]
-        [XmlElement("BamIsBuffered", Order = 13)]
+        [DataMember(Name = "BamIsBuffered", Order = 14)]
+        [XmlElement("BamIsBuffered", Order = 14)]
         public bool BamIsBuffered
         {
             get
@@ -522,8 +549,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
             set
             {
                 this.bamIsBuffered = value;
-                this.SetValidity(this.directiveValidator.ValidateBamIsBuffered());
                 this.IncrementPropertySetCount("BamIsBuffered");
+                this.SetValidity(this.directiveValidator.ValidateBamIsBuffered());
             }
         }
 
@@ -541,8 +568,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         ///         event count equals or exceeds this threshold; at this point, the Flush 
         ///         method will be called internally. 
         /// </remarks>
-        [DataMember(Name = "BamFlushThreshold", Order = 14)]
-        [XmlElement("BamFlushThreshold", Order = 14)]
+        [DataMember(Name = "BamFlushThreshold", Order = 15)]
+        [XmlElement("BamFlushThreshold", Order = 15)]
         public int BamFlushThreshold
         {
             get
@@ -569,8 +596,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
             set
             {
                 this.bamFlushThreshold = value;
-                this.SetValidity(this.directiveValidator.ValidateBamFlushThreshold());
                 this.IncrementPropertySetCount("BamFlushThreshold");
+                this.SetValidity(this.directiveValidator.ValidateBamFlushThreshold());
             }
         }
 
@@ -578,8 +605,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// Gets or sets the name of the BAM Trackpoint policy.
         /// </summary>
         [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-        [DataMember(Name = "BamTrackpointPolicyName", Order = 15)]
-        [XmlElement("BamTrackpointPolicyName", Order = 15)]
+        [DataMember(Name = "BamTrackpointPolicyName", Order = 16)]
+        [XmlElement("BamTrackpointPolicyName", Order = 16)]
         public string BamTrackpointPolicyName
         {
             get
@@ -609,8 +636,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
                 }
 
                 this.bamTrackpointPolicyName = value;
-                this.SetValidity(this.directiveValidator.ValidateBamTrackpointPolicyName());
                 this.IncrementPropertySetCount("BamTrackpointPolicyName");
+                this.SetValidity(this.directiveValidator.ValidateBamTrackpointPolicyName());
             }
         }
 
@@ -618,8 +645,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// Gets or sets the version of the BAM Trackpoint policy.
         /// </summary>
         [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-        [DataMember(Name = "BamTrackpointPolicyVersion", Order = 16)]
-        [XmlElement("BamTrackpointPolicyVersion", Order = 16)]
+        [DataMember(Name = "BamTrackpointPolicyVersion", Order = 17)]
+        [XmlElement("BamTrackpointPolicyVersion", Order = 17)]
         public string BamTrackpointPolicyVersion
         {
             get
@@ -659,8 +686,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
                 Version version;
 
                 this.bamTrackpointPolicyVersion = Version.TryParse(value, out version) ? version.ToString(2) : value;
-                this.SetValidity(this.directiveValidator.ValidateBamTrackpointPolicyVersion());
                 this.IncrementPropertySetCount("BamTrackpointPolicyVersion");
+                this.SetValidity(this.directiveValidator.ValidateBamTrackpointPolicyVersion());
             }
         }
 
@@ -671,8 +698,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// <summary>
         /// Gets or sets the number of retries to perform on failure
         /// </summary>
-        [DataMember(Name = "RetryCount", Order = 17)]
-        [XmlElement("RetryCount", Order = 17)]
+        [DataMember(Name = "RetryCount", Order = 18)]
+        [XmlElement("RetryCount", Order = 18)]
         public int RetryCount
         {
             get
@@ -683,16 +710,16 @@ namespace SolidsoftReply.Esb.Libraries.Facts
             set
             {
                 this.retryCount = value;
-                this.SetValidity(this.directiveValidator.ValidateRetryCount());
                 this.IncrementPropertySetCount("RetryCount");
+                this.SetValidity(this.directiveValidator.ValidateRetryCount());
             }
         }
 
         /// <summary>
         /// Gets or sets the number of minutes between each retry.
         /// </summary>
-        [DataMember(Name = "RetryInterval", Order = 18)]
-        [XmlElement("RetryInterval", Order = 18)]
+        [DataMember(Name = "RetryInterval", Order = 19)]
+        [XmlElement("RetryInterval", Order = 19)]
         public int RetryInterval
         {
             get
@@ -703,8 +730,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
             set
             {
                 this.retryInterval = value;
-                this.SetValidity(this.directiveValidator.ValidateRetryInterval());
                 this.IncrementPropertySetCount("RetryInterval");
+                this.SetValidity(this.directiveValidator.ValidateRetryInterval());
             }
         }
 
@@ -719,8 +746,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// perform an additional set of retries once an hour for five hours.
         /// </remarks>
         [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-        [DataMember(Name = "RetryLevel", Order = 19)]
-        [XmlElement("RetryLevel", Order = 19)]
+        [DataMember(Name = "RetryLevel", Order = 20)]
+        [XmlElement("RetryLevel", Order = 20)]
         public int RetryLevel
         {
             get
@@ -731,8 +758,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
             set
             {
                 this.retryLevel = value;
-                this.SetValidity(this.directiveValidator.ValidateRetryLevel());
                 this.IncrementPropertySetCount("RetryLevel");
+                this.SetValidity(this.directiveValidator.ValidateRetryLevel());
             }
         }
 
@@ -743,8 +770,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// <summary>
         /// Gets or sets the time at which service window opens.
         /// </summary>
-        [DataMember(Name = "ServiceWindowStartTime", Order = 20)]
-        [XmlElement("ServiceWindowStartTime", Order = 20)]
+        [DataMember(Name = "ServiceWindowStartTime", Order = 21)]
+        [XmlElement("ServiceWindowStartTime", Order = 21)]
         public DateTime ServiceWindowStartTime
         {
             get
@@ -755,16 +782,16 @@ namespace SolidsoftReply.Esb.Libraries.Facts
             set
             {
                 this.serviceWindowStartTime = value;
-                this.SetValidity(this.directiveValidator.ValidateServiceWindowStartTime());
                 this.IncrementPropertySetCount("ServiceWindowStartTime");
+                this.SetValidity(this.directiveValidator.ValidateServiceWindowStartTime());
             }
         }
 
         /// <summary>
         /// Gets or sets the time at which service window closes
         /// </summary>
-        [DataMember(Name = "ServiceWindowStopTime", Order = 21)]
-        [XmlElement("ServiceWindowStopTime", Order = 21)]
+        [DataMember(Name = "ServiceWindowStopTime", Order = 22)]
+        [XmlElement("ServiceWindowStopTime", Order = 22)]
         public DateTime ServiceWindowStopTime
         {
             get
@@ -775,8 +802,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
             set
             {
                 this.serviceWindowStopTime = value;
-                this.SetValidity(this.directiveValidator.ValidateServiceWindowStopTime());
                 this.IncrementPropertySetCount("ServiceWindowStopTime");
+                this.SetValidity(this.directiveValidator.ValidateServiceWindowStopTime());
             }
         }
 
@@ -787,8 +814,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// <summary>
         /// Gets or sets the name of the validation policy.
         /// </summary>
-        [DataMember(Name = "ValidationPolicyName", Order = 22)]
-        [XmlElement("ValidationPolicyName", Order = 22)]
+        [DataMember(Name = "ValidationPolicyName", Order = 23)]
+        [XmlElement("ValidationPolicyName", Order = 23)]
         public string ValidationPolicyName
         {
             get
@@ -818,16 +845,16 @@ namespace SolidsoftReply.Esb.Libraries.Facts
                 }
 
                 this.validationPolicyName = value;
-                this.SetValidity(this.directiveValidator.ValidateValidationPolicyName());
                 this.IncrementPropertySetCount("ValidationPolicyName");
+                this.SetValidity(this.directiveValidator.ValidateValidationPolicyName());
             }
         }
 
         /// <summary>
         /// Gets or sets the version of the validation policy.
         /// </summary>
-        [DataMember(Name = "ValidationPolicyVersion", Order = 23)]
-        [XmlElement("ValidationPolicyVersion", Order = 23)]
+        [DataMember(Name = "ValidationPolicyVersion", Order = 24)]
+        [XmlElement("ValidationPolicyVersion", Order = 24)]
         public string ValidationPolicyVersion
         {
             get
@@ -867,16 +894,16 @@ namespace SolidsoftReply.Esb.Libraries.Facts
                 Version version;
 
                 this.validationPolicyVersion = Version.TryParse(value, out version) ? version.ToString(2) : value;
-                this.SetValidity(this.directiveValidator.ValidateValidationPolicyVersion());
                 this.IncrementPropertySetCount("ValidationPolicyVersion");
+                this.SetValidity(this.directiveValidator.ValidateValidationPolicyVersion());
             }
         }
 
         /// <summary>
         /// Gets or sets a value indicating whether to throw an error if a validation rule policy indicates invalidity.
         /// </summary>
-        [DataMember(Name = "ErrorOnInvalid", Order = 24)]
-        [XmlElement("ErrorOnInvalid", Order = 24)]
+        [DataMember(Name = "ErrorOnInvalid", Order = 25)]
+        [XmlElement("ErrorOnInvalid", Order = 25)]
         public bool ErrorOnInvalid
         {
             get
@@ -904,16 +931,16 @@ namespace SolidsoftReply.Esb.Libraries.Facts
             set
             {
                 this.errorOnInvalid = value;
-                this.SetValidity(this.directiveValidator.ValidateErrorOnInvalid());
                 this.IncrementPropertySetCount("ErrorOnInvalid");
+                this.SetValidity(this.directiveValidator.ValidateErrorOnInvalid());
             }
         }
 
         /// <summary>
         /// Gets or sets the collection of general purpose property name-value pairs.
         /// </summary>
-        [DataMember(Name = "Properties", Order = 25)]
-        [XmlElement("Properties", Order = 25)]
+        [DataMember(Name = "Properties", Order = 26)]
+        [XmlElement("Properties", Order = 26)]
         public Dictionaries.Properties Properties
         {
             get { return this.properties; }
@@ -927,8 +954,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// <summary>
         /// Gets or sets the collection of BTS property name-value pairs (with namespaces).
         /// </summary>
-        [DataMember(Name = "BtsProperties", Order = 26)]
-        [XmlElement("BtsProperties", Order = 26)]
+        [DataMember(Name = "BtsProperties", Order = 27)]
+        [XmlElement("BtsProperties", Order = 27)]
         public Dictionaries.BtsProperties BtsProperties
         {
             get { return this.btsProperties; }

@@ -2557,7 +2557,6 @@ namespace SolidsoftReply.Esb.Libraries.Uddi.Test
                         throw;
                     }
 
-                    System.Diagnostics.Debug.WriteLine("Error Message: " + ex.Message);
                     exceptionHandler(ex);
                 }
             }
