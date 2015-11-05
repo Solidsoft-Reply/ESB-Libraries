@@ -36,6 +36,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
     using Microsoft.BizTalk.Component;
     using Microsoft.BizTalk.Component.Interop;
     using Microsoft.BizTalk.Message.Interop;
+    using Microsoft.BizTalk.Streaming;
     using Microsoft.RuleEngine;
     using Microsoft.Win32;
     using Microsoft.XLANGs.BaseTypes;
@@ -402,7 +403,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         {
             this.directives = null;
             this.current = 0;
-            this.pipelineInMsg = this.ProcessMessage(pipelineContext, inMsg, true);
+            this.pipelineInMsg = this.PrepareMessage(pipelineContext, this.ProcessMessage(pipelineContext, inMsg, true));
         }
 
         /// <summary>
@@ -555,6 +556,89 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
         #endregion
 
         #region Methods
+
+        /// <summary>
+        /// Prepare a message for Disassembly.  If multiple directives have been defined and the message
+        /// contains non-seekable streams,the message is cloned using seekable streams.
+        /// </summary>
+        /// <param name="pc">The pipeline context.</param>
+        /// <param name="inMsg">The BizTalk message.</param>
+        /// <returns>The prepared BizTalk message.</returns>
+        private IBaseMessage PrepareMessage(IPipelineContext pc, IBaseMessage inMsg)
+        {
+            if (this.directives.Count <= 1)
+            {
+                return inMsg;
+            }
+
+            var outMsg = inMsg;
+            var nonSeekableParts = new List<int>();
+
+            for (int partIdx = 0; partIdx < inMsg.PartCount; partIdx++)
+            {
+                if (!inMsg.Part(partIdx).GetOriginalDataStream().CanSeek)
+                {
+                    nonSeekableParts.Add(partIdx);
+                }
+            }
+
+            if (nonSeekableParts.Count > 0)
+            {
+                // Create the cloned message
+                var messageFactory = pc.GetMessageFactory();
+                outMsg = messageFactory.CreateMessage();
+
+                // Clone each part
+                for (var partIdx = 0; partIdx < inMsg.PartCount; partIdx++)
+                {
+                    string partName;
+                    var part = inMsg.GetPartByIndex(partIdx, out partName);
+
+                    // Create and initilialize the new part
+                    var newPart = messageFactory.CreateMessagePart();
+                    newPart.Charset = part.Charset;
+                    newPart.ContentType = part.ContentType;
+
+                    // Get the original uncloned data stream
+                    var originalStream = part.GetOriginalDataStream();
+                    // Add the original stream to the Resource tracker to prevent it being
+                    // disposed, in case we need to clone the same stream multiple times.
+                    pc.ResourceTracker.AddResource(originalStream);
+
+                    // Create the new part with a Virtual Stream, and add the the resource tracker
+                    if (nonSeekableParts.Contains(partIdx))
+                    {
+                        newPart.Data = new VirtualStream(new ReadOnlySeekableStream(originalStream));
+                    }
+                    else 
+                    {
+                        newPart.Data = new VirtualStream(originalStream);
+                    }
+
+                    pc.ResourceTracker.AddResource(newPart.Data);
+
+                    // Create and populate the property bag for the new message part.
+                    newPart.GetOriginalDataStream().StreamAtStart();
+                    newPart.PartProperties = messageFactory.CreatePropertyBag();
+                    var partPoperties = part.PartProperties;
+
+                    for (var propertyNo = 0; propertyNo < partPoperties.CountProperties; propertyNo++)
+                    {
+                        string propertyName, propertyNamespace;
+                        var property = partPoperties.ReadAt(propertyNo, out propertyName, out propertyNamespace);
+                        newPart.PartProperties.Write(propertyName, propertyNamespace, property);
+                    }
+
+                    // Add the new part to the cloned message
+                    outMsg.AddPart(partName, newPart, partName == inMsg.BodyPartName);
+                }
+
+                // Copy the context from old to new
+                outMsg.Context = inMsg.Context;
+            }
+
+            return outMsg;
+        }
 
         /// <summary>
         /// Adds additional parts from the original message.

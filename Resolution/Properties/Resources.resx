@@ -192,9 +192,6 @@
   <data name="ExceptionNoBamActivity" xml:space="preserve">
     <value>Failed to get the Bam Activity object</value>
   </data>
-  <data name="ExceptionNoTrackpoints" xml:space="preserve">
-    <value>No TrackPoints are defined in the current policy</value>
-  </data>
   <data name="ExceptionXmlTransformationFailedOnNull" xml:space="preserve">
     <value>The XML document/message could not be transformed for resolver directive {0}.  Message is null.</value>
   </data>
@@ -295,7 +292,7 @@
   <data name="ExceptionUnregisteredBamAfterMapStepExtensionNameOnSelectBamStepExtension" xml:space="preserve">
     <value>An unrecognised BAM after-map step extension name was passed to the SelectBamStepExtension directive method.  Is the extension defined in the Service Mediation policy for the current directive?</value>
   </data>
-  <data name="ExceptionBamInvaidCallToOnStep" xml:space="preserve">
+  <data name="ExceptionBamInvalidCallToOnStep" xml:space="preserve">
     <value>Calls to OnStep are only valid when the BAM directive specifies a BAM interception policy for trackpoint data.</value>
   </data>
   <data name="ExceptionInvalidBamOnStep" xml:space="preserve">

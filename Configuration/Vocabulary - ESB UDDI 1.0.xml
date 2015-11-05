@@ -17,7 +17,7 @@
 <brl xmlns="http://schemas.microsoft.com/businessruleslanguage/2002">
   <vocabulary id="86b12fbc-47a1-4466-88da-ffb53daf6a60" name="ESB UDDI" uri="" description="">
     <version major="1" minor="0" description="" modifiedby="WIN-8L35R8E7JJS\Administrator" date="2015-10-10T21:01:18.4259372+00:00" />
-    <vocabularydefinition id="0c60b79b-5154-498b-9156-259a56c4f4b5" name="Find an access point type for a binding key" description="Uses UDDI to find an access point for a given binding key">
+    <vocabularydefinition id="0c60b79b-5154-498b-9156-259a56c4f4b5" name="Find an endpoint access point type for a binding key" description="Uses UDDI to find an access point for a given binding key">
       <bindingdefinition>
         <classmemberbindingdefinition member="FindAccessPointForBinding" type="string">
           <classinfo class="InquiryServices" instance="0">
@@ -40,7 +40,7 @@
         </argument>
       </formatstring>
     </vocabularydefinition>
-    <vocabularydefinition id="c5ab5a9d-35f1-47de-923a-8ad856560abd" name="Find a specific access point type for a provider and a service" description="Uses UDDI to find a specific access point type for a given provider and service">
+    <vocabularydefinition id="c5ab5a9d-35f1-47de-923a-8ad856560abd" name="Find an endpoint access point type for a provider and a service" description="Uses UDDI to find a specific access point type for a given provider and service">
       <bindingdefinition>
         <classmemberbindingdefinition member="FindAccessPointForService" type="string">
           <classinfo class="InquiryServices" instance="0">
@@ -71,7 +71,7 @@
         </argument>
       </formatstring>
     </vocabularydefinition>
-    <vocabularydefinition id="fb592fcd-155d-4d64-8acb-73b2096530ca" name="Find an access point for a service" description="Uses UDDI to find an access point for a given service">
+    <vocabularydefinition id="fb592fcd-155d-4d64-8acb-73b2096530ca" name="Find an endpoint access point for a service" description="Uses UDDI to find an access point for a given service">
       <bindingdefinition>
         <classmemberbindingdefinition member="FindAccessPointForService" type="string">
           <classinfo class="InquiryServices" instance="0">
@@ -92,7 +92,7 @@
     </vocabularydefinition>
     <vocabularydefinition id="e1765dfb-3a3d-45c2-98d0-3a823c858b42" name="A named service" description="A service identified by name">
       <bindingdefinition>
-        <classmemberbindingdefinition member="NewServiceName" type="SolidsoftReply.Esb.Libraries.Uddi.ServiceIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1">
+        <classmemberbindingdefinition member="CreateServiceName" type="SolidsoftReply.Esb.Libraries.Uddi.ServiceIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1">
           <classinfo class="InquiryServices" instance="0">
             <assembly>SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
             <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Uddi\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Uddi.dll-->
@@ -113,7 +113,7 @@
         </argument>
       </formatstring>
     </vocabularydefinition>
-    <vocabularydefinition id="dbdf1b8e-c435-4d4b-9591-6e2b674dfc25" name="Find an access point for a provider and a service" description="Uses UDDI to find an access point for a given provider and service">
+    <vocabularydefinition id="dbdf1b8e-c435-4d4b-9591-6e2b674dfc25" name="Find an endpoint access point for a provider and a service" description="Uses UDDI to find an access point for a given provider and service">
       <bindingdefinition>
         <classmemberbindingdefinition member="FindAccessPointForService" type="string">
           <classinfo class="InquiryServices" instance="0">
@@ -140,7 +140,7 @@
     </vocabularydefinition>
     <vocabularydefinition id="22c7ad43-980d-4242-83fc-3d0fc67f7b31" name="A provider key" description="A provider identified by a key value">
       <bindingdefinition>
-        <classmemberbindingdefinition member="NewProviderKey" type="SolidsoftReply.Esb.Libraries.Uddi.ProviderIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1">
+        <classmemberbindingdefinition member="CreateProviderKey" type="SolidsoftReply.Esb.Libraries.Uddi.ProviderIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1">
           <classinfo class="InquiryServices" instance="0">
             <assembly>SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
             <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Uddi\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Uddi.dll-->
@@ -163,7 +163,7 @@
     </vocabularydefinition>
     <vocabularydefinition id="85530176-cbdf-4018-ad13-e953f5d71869" name="A service key" description="A service identified by a key value">
       <bindingdefinition>
-        <classmemberbindingdefinition member="NewServiceKey" type="SolidsoftReply.Esb.Libraries.Uddi.ServiceIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1">
+        <classmemberbindingdefinition member="CreateServiceKey" type="SolidsoftReply.Esb.Libraries.Uddi.ServiceIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1">
           <classinfo class="InquiryServices" instance="0">
             <assembly>SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
             <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Uddi\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Uddi.dll-->
@@ -186,7 +186,7 @@
     </vocabularydefinition>
     <vocabularydefinition id="d5ef4b8d-8bf8-47bf-bb94-dcc3c82efffe" name="A named provider" description="A provider identified by name">
       <bindingdefinition>
-        <classmemberbindingdefinition member="NewProviderName" type="SolidsoftReply.Esb.Libraries.Uddi.ProviderIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1">
+        <classmemberbindingdefinition member="CreateProviderName" type="SolidsoftReply.Esb.Libraries.Uddi.ProviderIdentifier, SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1">
           <classinfo class="InquiryServices" instance="0">
             <assembly>SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
             <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Uddi\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Uddi.dll-->
@@ -207,7 +207,7 @@
         </argument>
       </formatstring>
     </vocabularydefinition>
-    <vocabularydefinition id="f21cfd29-f2fa-4fb2-bb55-4fec665b1923" name="Find a specific access point type for a service" description="Uses UDDI to find a specific access point type for a given service">
+    <vocabularydefinition id="f21cfd29-f2fa-4fb2-bb55-4fec665b1923" name="Find an endpoint access point type for a service" description="Uses UDDI to find a specific access point type for a given service">
       <bindingdefinition>
         <classmemberbindingdefinition member="FindAccessPointForService" type="string">
           <classinfo class="InquiryServices" instance="0">
@@ -232,9 +232,9 @@
         </argument>
       </formatstring>
     </vocabularydefinition>
-    <vocabularydefinition id="a774d4b7-8380-4814-a85a-1f8259cd70fb" name="Find an access point and amend the URL authority" description="Sets the URL authority for an access point">
+    <vocabularydefinition id="a774d4b7-8380-4814-a85a-1f8259cd70fb" name="Find an endpoint access point and amend the URL authority" description="Sets the URL authority for an access point">
       <bindingdefinition>
-        <classmemberbindingdefinition member="SetBaseUrl" type="string">
+        <classmemberbindingdefinition member="SetAsBaseUrlOn" type="string">
           <classinfo class="InquiryServices" instance="0">
             <assembly>SolidsoftReply.Esb.Libraries.Uddi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6faf29a9873a1</assembly>
             <!--C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SolidsoftReply.Esb.Libraries.Uddi\v4.0_1.0.0.0__7bd6faf29a9873a1\SolidsoftReply.Esb.Libraries.Uddi.dll-->

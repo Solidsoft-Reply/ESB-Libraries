@@ -60,7 +60,7 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
         }
 
         /// <summary>
-        /// Returns a new Provider Identifier for a key.
+        /// Returns a new Provider Identifier for a provider key.
         /// </summary>
         /// <param name="key">The key value.</param>
         /// <returns>A Provider Identifier.</returns>
@@ -80,7 +80,7 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
         }
 
         /// <summary>
-        /// Returns a new Provider Identifier for a key.
+        /// Returns a new Provider Identifier for a provider key.
         /// </summary>
         /// <param name="name">The provider name.</param>
         /// <returns>A Provider Identifier.</returns>
@@ -100,7 +100,7 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
         }
 
         /// <summary>
-        /// Returns a new Service Identifier for a key.
+        /// Returns a new Service Identifier for a service key.
         /// </summary>
         /// <param name="key">The key value.</param>
         /// <returns>A Service Identifier.</returns>
@@ -120,7 +120,7 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
         }
 
         /// <summary>
-        /// Returns a new Service Identifier for a key.
+        /// Returns a new Service Identifier for a service name.
         /// </summary>
         /// <param name="name">The service name.</param>
         /// <returns>A Service Identifier.</returns>
@@ -140,7 +140,7 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
         }
 
         /// <summary>
-        /// Find an access point for a given binding key.
+        /// Find an endpoint access point for a given binding key.
         /// </summary>
         /// <param name="bindingKey">A registered binding key.</param>
         /// <returns>As access point.</returns>
@@ -188,7 +188,7 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
         }
 
         /// <summary>
-        /// Find an access point for a given service .
+        /// Find an endpoint access point for a given service and of a given use type.
         /// </summary>
         /// <param name="service">The service key or name.</param>
         /// <param name="useType">The use type of the access point</param>
@@ -267,7 +267,7 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
         }
 
         /// <summary>
-        /// Find an access point for a given service provided by a given business entity and of a give use type.
+        /// Find an endpoint access point for a given service provided by a given business entity and of a given use type.
         /// </summary>
         /// <param name="provider">The provider key or name.</param>
         /// <param name="service">The service key or name.</param>
@@ -350,11 +350,11 @@ namespace SolidsoftReply.Esb.Libraries.Uddi
         }
 
         /// <summary>
-        /// Sets the base URL for the given access point.  If the access point
+        /// Sets the base URL for the given endpoint access point.  If the access point
         /// is an absolute URL, the schema and domain are overridden.
         /// </summary>
         /// <param name="baseUrl">The base URL.</param>
-        /// <param name="accessPoint">The access Point.</param>
+        /// <param name="accessPoint">The access point.</param>
         /// <returns>The access point with the given base URL.</returns>
         public static string SetAsBaseUrlOn(string baseUrl, string accessPoint)
         {

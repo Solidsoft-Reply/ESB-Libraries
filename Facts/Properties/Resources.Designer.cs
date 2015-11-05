@@ -223,6 +223,15 @@ namespace SolidsoftReply.Esb.Libraries.Facts.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The {0} directive specifies a pre-transformation BAM step for a BAM activity called {1} and a post-transformation BAM step for a BAM activity called {2}.  However, a directive can define steps for only one BAM activty.  Use different directives for different BAM activities.  The activity names must agree in a single directive.  For BizTalk pipelines, this may require adding an additional Service Mediation pipeline component instance later in the pipeline to handle post transformation BAM requirements..
+        /// </summary>
+        internal static string ExceptionBamNonMatchingStepNames {
+            get {
+                return ResourceManager.GetString("ExceptionBamNonMatchingStepNames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The {0} directive can encode a single BAM post-transformation step only.   Use multiple directives for multiple BAM steps..
         /// </summary>
         internal static string ExceptionBamPostTransformationStep {

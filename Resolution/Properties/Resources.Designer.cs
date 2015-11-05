@@ -216,9 +216,9 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Calls to OnStep are only valid when the BAM directive specifies a BAM interception policy for trackpoint data..
         /// </summary>
-        internal static string ExceptionBamInvaidCallToOnStep {
+        internal static string ExceptionBamInvalidCallToOnStep {
             get {
-                return ResourceManager.GetString("ExceptionBamInvaidCallToOnStep", resourceCulture);
+                return ResourceManager.GetString("ExceptionBamInvalidCallToOnStep", resourceCulture);
             }
         }
         
@@ -426,15 +426,6 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.Properties {
         internal static string ExceptionNoBamActivity {
             get {
                 return ResourceManager.GetString("ExceptionNoBamActivity", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No TrackPoints are defined in the current policy.
-        /// </summary>
-        internal static string ExceptionNoTrackpoints {
-            get {
-                return ResourceManager.GetString("ExceptionNoTrackpoints", resourceCulture);
             }
         }
         

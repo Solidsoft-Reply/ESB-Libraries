@@ -936,6 +936,10 @@ namespace SolidsoftReply.Esb.Libraries.Facts
             }
         }
 
+        #endregion
+
+        #region Properties
+
         /// <summary>
         /// Gets or sets the collection of general purpose property name-value pairs.
         /// </summary>
@@ -947,10 +951,6 @@ namespace SolidsoftReply.Esb.Libraries.Facts
             set { this.properties = value; }
         }
 
-        #endregion
-
-        #region Biztalk Properties
-
         /// <summary>
         /// Gets or sets the collection of BTS property name-value pairs (with namespaces).
         /// </summary>
@@ -961,6 +961,8 @@ namespace SolidsoftReply.Esb.Libraries.Facts
             get { return this.btsProperties; }
             set { this.btsProperties = value; }
         }
+
+        #endregion
 
         /// <summary>
         /// Gets a value indicating whether the directive is valid;
@@ -1093,8 +1095,6 @@ namespace SolidsoftReply.Esb.Libraries.Facts
             [XmlElement("Promoted", Order = 3)]
             public bool Promoted { get; set; }
         }
-
-        #endregion
 
         /// <summary>
         /// Structure representing a general purpose property name-value pair.

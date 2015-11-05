@@ -1091,7 +1091,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
             // interception policy
             if (string.IsNullOrWhiteSpace(this.directive.BamTrackpointPolicyName))
             {
-                throw new EsbResolutionException(Resources.ExceptionBamInvaidCallToOnStep);
+                throw new EsbResolutionException(Resources.ExceptionBamInvalidCallToOnStep);
             }
 
             // The directive must specify a BAM activity

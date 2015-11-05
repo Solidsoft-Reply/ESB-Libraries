@@ -53,7 +53,7 @@ namespace SolidsoftReply.Esb.Libraries.Resolution.ResolutionService
 
             set
             {
-                this.trackPointField = value == null ? null : (TrackPoint[])value.ToArray();
+                this.trackPointField = value == null ? null : value.Count == 0 ? new TrackPoint[0] : (TrackPoint[])value.ToArray();
             }
         }
     }

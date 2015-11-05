@@ -264,7 +264,7 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         }
 
         /// <summary>
-        /// Gets the date and time at which this attribute is first evaluated.  This can be used to
+        /// Gets the date and time at which this property is first evaluated.  This can be used to
         /// create rules for service windows.
         /// </summary>
         public DateTime TimeStamp
@@ -915,10 +915,28 @@ namespace SolidsoftReply.Esb.Libraries.Facts
                     string.Format(Properties.Resources.ExceptionBamActivityName, directiveKey));
             }
 
-            // Only set the BAM Activity on a pre-transformation step
             if (!afterMap)
             {
+                // Set the BAM Activity on a pre-transformation step
                 directive.BamActivity = bamActivity;
+            }
+            else
+            {
+                // Set the BAM Activity on a post-transformation step
+                if (string.IsNullOrWhiteSpace(directive.BamActivity))
+                {
+                    directive.BamActivity = bamActivity;
+                }
+
+                if (!string.IsNullOrWhiteSpace(bamActivity) && 
+                    directive.BamActivity != bamActivity)
+                {
+                    throw new EsbFactsException(
+                        string.Format(Properties.Resources.ExceptionBamNonMatchingStepNames, 
+                        directiveKey,
+                        directive.BamActivity,
+                        string.IsNullOrWhiteSpace(bamActivity) ? "<null or empty>": bamActivity));
+                }
             }
 
             if (afterMap)
