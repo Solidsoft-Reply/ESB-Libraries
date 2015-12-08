@@ -264,7 +264,7 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         }
 
         /// <summary>
-        /// Gets the date and time at which this attribute is first evaluated.  This can be used to
+        /// Gets the date and time at which this property is first evaluated.  This can be used to
         /// create rules for service windows.
         /// </summary>
         public DateTime TimeStamp
@@ -370,7 +370,7 @@ namespace SolidsoftReply.Esb.Libraries.Facts
         /// Set the resolved transformation map for a directive.
         /// </summary>
         /// <param name="directiveKey">Key name that identifies a directive.</param>
-        /// <param name="mapToApply">Fully qualified .NET assembly and type name of a BTS map</param>
+        /// <param name="mapToApply">Fully qualified .NET assembly and type name of a BTS map.</param>
         public void SetTransformation(string directiveKey, string mapToApply)
         {
             if (string.IsNullOrWhiteSpace(directiveKey))
@@ -386,6 +386,32 @@ namespace SolidsoftReply.Esb.Libraries.Facts
             directive.KeyName = directiveKey;
             directive.MapToApply = mapToApply;
             directive.DirectiveCategories |= Categories.Transformation;
+        }
+
+        /// <summary>
+        /// Set the resolved XML content formatting requirement for a directive.
+        /// </summary>
+        /// <param name="directiveKey">Key name that identifies a directive.</param>
+        /// <param name="xmlFormat">Formatting required for XML content.</param>
+        public void SetXmlFormat(string directiveKey, XmlFormat xmlFormat)
+        {
+            if (string.IsNullOrWhiteSpace(directiveKey))
+            {
+                throw new EsbFactsException(
+                    string.Format(
+                        Properties.Resources.ExceptionInvalidDirective,
+                        "XML formatting of type",
+                        xmlFormat));
+            }
+
+            var directive = this.GetDirective(directiveKey);
+            directive.KeyName = directiveKey;
+            directive.XmlFormat = xmlFormat;
+
+            if (xmlFormat != XmlFormat.None)
+            {
+                directive.DirectiveCategories |= Categories.Transformation;
+            }
         }
 
         /// <summary>
@@ -889,10 +915,28 @@ namespace SolidsoftReply.Esb.Libraries.Facts
                     string.Format(Properties.Resources.ExceptionBamActivityName, directiveKey));
             }
 
-            // Only set the BAM Activity on a pre-transformation step
             if (!afterMap)
             {
+                // Set the BAM Activity on a pre-transformation step
                 directive.BamActivity = bamActivity;
+            }
+            else
+            {
+                // Set the BAM Activity on a post-transformation step
+                if (string.IsNullOrWhiteSpace(directive.BamActivity))
+                {
+                    directive.BamActivity = bamActivity;
+                }
+
+                if (!string.IsNullOrWhiteSpace(bamActivity) && 
+                    directive.BamActivity != bamActivity)
+                {
+                    throw new EsbFactsException(
+                        string.Format(Properties.Resources.ExceptionBamNonMatchingStepNames, 
+                        directiveKey,
+                        directive.BamActivity,
+                        string.IsNullOrWhiteSpace(bamActivity) ? "<null or empty>": bamActivity));
+                }
             }
 
             if (afterMap)

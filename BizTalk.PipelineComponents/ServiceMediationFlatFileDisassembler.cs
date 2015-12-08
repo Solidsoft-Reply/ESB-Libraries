@@ -443,7 +443,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
                 this.serviceMediationDasm.SynchronizeBam = value;
             }
         }
-
+        
         /// <summary>
         /// Gets the version of the component.
         /// </summary>
@@ -602,7 +602,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
             this.innerDisasembledMessageIndex = 0;
             this.currentMediatedMessage = default(IBaseMessage);
 
-            // Fullt disassemble the flat file here and store each message in an 
+            // Fully disassemble the flat file here and store each message in an 
             // in-memory collection.  See the GetNext() method for a description
             // of why this is being done here.
             while (true)
@@ -700,7 +700,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
                 // If more diassembled FF messages exist, cycle to the next one.
                 this.serviceMediationDasm.Disassemble(
                     pipelineContext, 
-                    this.innerDisassembledMessages[++this.innerDisasembledMessageIndex]);
+                    this.innerDisassembledMessages[this.innerDisasembledMessageIndex]);
             }
         }
 

@@ -19,6 +19,7 @@
 namespace SolidsoftReply.Esb.Libraries.Resolution
 {
     using System;
+    using System.Collections;
     using System.Configuration;
     using System.Diagnostics;
     using System.Linq;
@@ -178,7 +179,10 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
 
                 if (bamActivityStep.TrackPoints == null)
                 {
-                    throw new EsbResolutionException(Resources.ExceptionNoTrackpoints);
+                    // This was originally treated as an exception, but this was too
+                    // restrictive.  It is entirely permissable to have no trackpoint
+                    // configuration for a given BAM step.
+                    bamActivityStep.TrackPoints = new ArrayList(0);
                 }
             }
 

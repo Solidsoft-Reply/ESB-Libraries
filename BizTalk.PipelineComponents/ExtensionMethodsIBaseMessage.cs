@@ -132,7 +132,7 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
             var messageFactory = pc.GetMessageFactory();
             var clonedMessage = messageFactory.CreateMessage();
 
-            // CLone each part
+            // Clone each part
             for (var partNo = 0; partNo < message.PartCount; partNo++)
             {
                 string partName;
@@ -146,9 +146,9 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
                 // Get the original uncloned data stream
                 var originalStream = part.GetOriginalDataStream();
 
-                // If the original data stream is non-seekable, check the
-                // clone returned by the Data property, and failing that, 
-                // manufacture a seekable stream
+                // If the original data stream is non-seekable, check the clone
+                // returned by the Data property, and failing that, or if the 
+                // clone is not seekablem manufacture a seekable stream.
                 if (!originalStream.CanSeek)
                 {
                     Stream candidateSeekableStream;
@@ -159,14 +159,21 @@ namespace SolidsoftReply.Esb.Libraries.BizTalk.PipelineComponents
                     }
                     catch (NotSupportedException)
                     {
-                        // Ssome streams (e.g. ICSharpCode.SharpZipLib.Zip.ZipInputStream) throw 
+                        // Some streams (e.g. ICSharpCode.SharpZipLib.Zip.ZipInputStream) throw 
                         // a System.NotSupportedException when an attempt is made to clone them
                         candidateSeekableStream = null;
                     }
 
                     if (candidateSeekableStream != null && !candidateSeekableStream.Equals(originalStream))
                     {
-                        originalStream = candidateSeekableStream;
+                        if (candidateSeekableStream.CanSeek)
+                        {
+                            originalStream = candidateSeekableStream;
+                        }
+                        else
+                        {
+                            originalStream = new ReadOnlySeekableStream(candidateSeekableStream);
+                        }
                     }
                     else
                     {

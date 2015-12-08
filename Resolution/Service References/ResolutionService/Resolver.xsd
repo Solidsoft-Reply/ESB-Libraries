@@ -137,6 +137,7 @@
                   <xs:element minOccurs="0" name="EndPointConfiguration" type="xs:string" />
                   <xs:element minOccurs="0" name="SoapAction" type="xs:string" />
                   <xs:element minOccurs="0" name="MapToApply" type="xs:string" />
+                  <xs:element minOccurs="0" name="XmlFormat" type="xs:string" />
                   <xs:element minOccurs="0" name="BamActivity" type="xs:string" />
                   <xs:element minOccurs="0" name="BamStepName" type="xs:string" />
                   <xs:element minOccurs="0" name="BamStepExtensions">

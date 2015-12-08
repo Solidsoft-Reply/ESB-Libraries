@@ -699,7 +699,19 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 this.Directive.BamActivity,
                 afterMap ? this.BamAfterMapStepName : this.BamStepName,
                 this.CurrentBamActivityId);
-            var currentId = this.ActivityInstances[activityInstanceKey];
+
+            string currentId;
+
+            try
+            {
+                currentId = this.ActivityInstances[activityInstanceKey];
+            }
+            catch (KeyNotFoundException)
+            {
+                // The BAM Activity is not registered.  This may indicate that it has been closed prematurely.
+                throw new EsbResolutionException(string.Format(Resources.ExceptionBamActivityNotAvailableForExtension, this.Directive.BamActivity, this.BamStepName, stepExtensionName));
+            }
+
             this.EnableContinuation(this.Directive.BamActivity, currentId, continuationId);
             this.EndActivity(this.Directive.BamActivity, currentId);
 
@@ -1040,7 +1052,6 @@ namespace SolidsoftReply.Esb.Libraries.Resolution
                 return;
             }
 
-            Debug.WriteLine(this.BamStepName);
             var dataTrackPoints = this.GetTrackPoints(TrackPointType.Data, afterMap).TrackPoints;
 
             if (dataTrackPoints == null)
